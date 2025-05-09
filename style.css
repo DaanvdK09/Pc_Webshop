@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     color: white;
+    background-color: #333333;
     font-size: 16px; /* Base font size */
 }
 
@@ -10,15 +11,12 @@ body{
 .navbar{
     overflow: hidden;
     top: 0;
-    width: 100%;
+    width: 97.9%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem;
     position: relative;
-    overflow: visible;
-    z-index: 999;
-    background-color: #333333;
+    background-color: #494949;
 }
 
 /* Navbar Links */
@@ -100,11 +98,12 @@ body{
 }
 
 .footer{
-    background-color: #333333;
+    background-color: #494949;
     text-align: center;
     padding: 1rem 0;
     width: 100%;
-    margin-top: 2%;
+    position: fixed;
+    bottom: 0;
 }
 
 .footer a{
