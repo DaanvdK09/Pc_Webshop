@@ -49,3 +49,71 @@ body{
     transform: scale(1.33);
     color: grey;
 }
+
+/* Content */
+.header{
+    margin-top: 7%;
+    margin-left: 20%;
+    display: block;
+    padding: 2rem;
+    text-align: left;
+}
+
+.name {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.header h1{
+    font-size: 4rem;
+    margin: 0;
+}
+
+.header p{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    font-weight: bold;
+}
+.header p1 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.content{
+    color: white;
+    padding: 1rem;
+}
+
+.content h1{
+    font-size: 4rem;
+    margin: 0;
+}
+
+.content p{
+    margin-top: 1rem;
+    font-size: 1.5rem; 
+}
+
+.footer{
+    background-color: #333333;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.footer a{
+    color: white;
+    margin: 0 2rem;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.footer a:hover{
+    transform: scale(1.33);
+}
