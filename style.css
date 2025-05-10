@@ -4,7 +4,7 @@ body{
     padding: 0;
     color: white;
     background-color: #333333;
-    font-size: 16px; /* Base font size */
+    font-size: 16px; /* Base font size (rem)*/
 }
 
  /* Navbar */
