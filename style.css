@@ -49,8 +49,8 @@ body{
     color: grey;
 }
 
-/* Github Icon */
-.git-icon {
+/* Navbar Icons */
+.git-icon, .login-icon, .color-changer {
     margin-right: 2%;
     font-weight: bold;
     font-size: 2rem;
@@ -60,70 +60,18 @@ body{
     transition: transform 0.3s;
 }
 
-.git-icon:hover {
+.git-icon:hover, .login-icon:hover, .color-changer:hover {
     transform: scale(1.33);
 }
 
-.git-icon a {
+.git-icon a, .login-icon a, .color-changer a {
     color: white;
     text-decoration: none;
     position: relative;
     display: inline-block;
 }
 
-.git-icon a:hover {
-    color: grey;
-}
-
-/* Login Icon */
-.login-icon {
-    margin-right: 2%;
-    font-weight: bold;
-    font-size: 2rem;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.login-icon:hover {
-    transform: scale(1.33);
-}
-
-.login-icon a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-}
-
-.login-icon a:hover {
-    color: grey;
-}
-
-/* Color Changer */
-.color-changer {
-    margin-right: 2%;
-    font-weight: bold;
-    font-size: 2rem;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.color-changer:hover {
-    transform: scale(1.33);
-}
-
-.color-changer a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-}
-
-.color-changer a:hover {
+.git-icon a:hover, .login-icon a:hover, .color-changer a:hover {
     color: grey;
 }
 
