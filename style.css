@@ -5,13 +5,14 @@ body{
     color: white;
     background-color: #333333;
     font-size: 16px; /* Base font size (rem)*/
+    overflow-x: hidden;
 }
 
  /* Navbar */
 .navbar{
     overflow: hidden;
     top: 0;
-    width: 97.9%;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 1rem 1rem;
@@ -45,6 +46,84 @@ body{
 
 .nav-links a:hover{
     transform: scale(1.33);
+    color: grey;
+}
+
+/* Github Icon */
+.git-icon {
+    margin-right: 2%;
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.git-icon:hover {
+    transform: scale(1.33);
+}
+
+.git-icon a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.git-icon a:hover {
+    color: grey;
+}
+
+/* Login Icon */
+.login-icon {
+    margin-right: 2%;
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.login-icon:hover {
+    transform: scale(1.33);
+}
+
+.login-icon a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.login-icon a:hover {
+    color: grey;
+}
+
+/* Color Changer */
+.color-changer {
+    margin-right: 2%;
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.color-changer:hover {
+    transform: scale(1.33);
+}
+
+.color-changer a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.color-changer a:hover {
     color: grey;
 }
 
@@ -97,6 +176,7 @@ body{
     font-size: 1.5rem; 
 }
 
+/* Footer */
 .footer{
     background-color: #494949;
     text-align: center;
