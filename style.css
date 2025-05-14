@@ -27,13 +27,13 @@ body {
     font-family: 'Roboto', sans-serif;
     visibility: hidden;
     background-color: var(--bg-black-900);
+    font-size: 16px; /* Base font size */
     
 }
 
 body.loaded {
     visibility: visible;
     transition: visibility 0s ease-in-out;
-    
 }
 
 *{
@@ -43,4 +43,74 @@ body.loaded {
     text-decoration: none;
     box-sizing: border-box;
 
+}
+
+/* Navbar */
+.navbar{
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    position: relative;
+    overflow: visible;
+    z-index: 999;
+    background-color: var(--bg-black-100);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links a{
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--text-black-900);
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    margin: 0 2rem;
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover{
+    transform: scale(1.33);
+    color: var(--text-black-700);
+}
+
+/* Github Icon */
+.git-icon {
+    margin-top: -2.5%;
+    margin-right: 2%;
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.git-icon:hover {
+    transform: scale(1.33);
+}
+
+.git-icon a {
+    color: var(--text-black-900);
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.git-icon a:hover {
+    color: var(--text-black-700);
 }
