@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
     --bg-black-900:#f2f2fc;
     --bg-black-100:#fdf9ff;
     --bg-black-50:#e8dfec;
     --text-black-900:#302e4d;
     --text-black-700:#504e70;
-}    
+}
 body.dark {
     --bg-black-900:#151515;
     --bg-black-100:#222222;
     --bg-black-50:#393939;
     --text-black-900:#ffffff;
     --text-black-700:#e9e9e9;
+
 }
 body {
     margin: 0;
@@ -18,6 +20,13 @@ body {
     line-height: 1,5;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
+    visibility: hidden;
+    
+}
+body.loaded {
+    visibility: visible;
+    transition: visibility 0s ease-in-out;
+    
 }
 *{
     margin: 0;
@@ -26,141 +35,4 @@ body {
     text-decoration: none;
     box-sizing: border-box;
 
-}
-
- /* Navbar */
-.navbar{
-    overflow: hidden;
-    top: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 1rem 1rem;
-    position: relative;
-    background-color: #494949;
-}
-
-/* Navbar Links */
-.nav-container {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-}
-
-.nav-links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-links a{
-    font-weight: bold;
-    font-size: 2rem;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    text-decoration: none;
-    margin: 0 2rem;
-    transition: transform 0.3s;
-}
-
-.nav-links a:hover{
-    transform: scale(1.33);
-    color: grey;
-}
-
-/* Navbar Icons */
-.git-icon, .login-icon, .color-changer {
-    margin-right: 2%;
-    font-weight: bold;
-    font-size: 2rem;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.git-icon:hover, .login-icon:hover, .color-changer:hover {
-    transform: scale(1.33);
-}
-
-.git-icon a, .login-icon a, .color-changer a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-}
-
-.git-icon a:hover, .login-icon a:hover, .color-changer a:hover {
-    color: grey;
-}
-
-/* Content */
-.header{
-    margin-top: 7%;
-    margin-left: 20%;
-    display: block;
-    padding: 2rem;
-    text-align: left;
-}
-
-.name {
-    font-size: 4rem;
-    margin: 0;
-}
-
-.header h1{
-    font-size: 4rem;
-    margin: 0;
-}
-
-.header p{
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    display: inline-block;
-    font-weight: bold;
-}
-.header p1 {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-    display: inline-block;
-    font-weight: bold;
-}
-
-.content{
-    color: white;
-    padding: 1rem;
-}
-
-.content h1{
-    font-size: 4rem;
-    margin: 0;
-}
-
-.content p{
-    margin-top: 1rem;
-    font-size: 1.5rem; 
-}
-
-/* Footer */
-.footer{
-    background-color: #494949;
-    text-align: center;
-    padding: 1rem 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-.footer a{
-    color: white;
-    margin: 0 2rem;
-    text-decoration: none;
-    font-size: 2rem;
-}
-
-.footer a:hover{
-    transform: scale(1.33);
 }
