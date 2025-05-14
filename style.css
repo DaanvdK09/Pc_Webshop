@@ -89,7 +89,7 @@ body.loaded {
 }
 
 /* Github Icon */
-.git-icon {
+.git-icon, .login-icon {
     margin-top: -2.5%;
     margin-right: 2%;
     font-weight: bold;
@@ -100,17 +100,17 @@ body.loaded {
     transition: transform 0.3s;
 }
 
-.git-icon:hover {
+.git-icon:hover, .login-icon:hover {
     transform: scale(1.33);
 }
 
-.git-icon a {
+.git-icon a, .login-icon a {
     color: var(--text-black-900);
     text-decoration: none;
     position: relative;
     display: inline-block;
 }
 
-.git-icon a:hover {
+.git-icon a:hover, .login-icon a:hover {
     color: var(--text-black-700);
 }
