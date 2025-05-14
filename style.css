@@ -1,11 +1,31 @@
-body{
-    font-family: Arial, sans-serif;
+:root {
+    --bg-black-900:#f2f2fc;
+    --bg-black-100:#fdf9ff;
+    --bg-black-50:#e8dfec;
+    --text-black-900:#302e4d;
+    --text-black-700:#504e70;
+}    
+body.dark {
+    --bg-black-900:#151515;
+    --bg-black-100:#222222;
+    --bg-black-50:#393939;
+    --text-black-900:#ffffff;
+    --text-black-700:#e9e9e9;
+}
+body {
     margin: 0;
     padding: 0;
-    color: white;
-    background-color: #333333;
-    font-size: 16px; /* Base font size (rem)*/
-    overflow-x: hidden;
+    line-height: 1,5;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+
 }
 
  /* Navbar */
