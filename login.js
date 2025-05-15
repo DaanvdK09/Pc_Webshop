@@ -36,10 +36,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (response.ok) {
             alert(data.message);
             window.location.href = "home.html";
-        } else {
+        }
+        
+        else {
             alert(data.message);
         }
-    } catch (error) {
+    }
+    
+    catch (error) {
         console.error('Error:', error);
     }
 });
@@ -68,10 +72,14 @@ document.getElementById("signupForm").addEventListener("submit", async function(
         if (response.ok) {
             alert(data.message);
             toggleForms(); // Switch to login form
-        } else {
+        }
+        
+        else {
             alert(data.message);
         }
-    } catch (error) {
+    }
+
+    catch (error) {
         console.error('Error:', error);
     }
 });

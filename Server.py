@@ -6,7 +6,7 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 CORS(app)
 
-# Mock database (replace with a real database like SQLite, MySQL, or MongoDB)
+# Mock database (replace with SQLite Database)
 users = {}
 
 @app.route('/register', methods=['POST'])
