@@ -116,8 +116,8 @@ body.loaded {
     align-items: center;
     margin: 5px;
 }
-    
 
+/* Home */
 .login-icon {
     font-size: 16px;
     color: var(--text-black-900);
@@ -135,7 +135,7 @@ body.loaded {
     text-align: center;
     text-decoration: none;
 }
-/* homepage */
+
 .cart-icon {
     text-align: center;
     text-decoration: none;
@@ -157,6 +157,7 @@ body.loaded {
     color: var(--text-black-900);
     font-size: 16px;
 }
+
 /* Login */
 .login-container {
     max-width: 400px;

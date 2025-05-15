@@ -10,7 +10,9 @@ function toggleForms() {
         signupForm.style.display = "none";
         formTitle.textContent = "Login";
         toggleLink.innerHTML = `Don't have an account? <a href="#" onclick="toggleForms()">Sign up</a>`;
-    } else {
+    }
+    
+    else {
         loginForm.style.display = "none";
         signupForm.style.display = "block";
         formTitle.textContent = "Sign Up";
@@ -35,15 +37,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         const data = await response.json();
         if (response.ok) {
             alert(data.message);
+            localStorage.setItem('isLoggedIn', 'true'); // Save login state
             window.location.href = "home.html";
         }
         
         else {
             alert(data.message);
         }
-    }
-    
-    catch (error) {
+    } catch (error) {
         console.error('Error:', error);
     }
 });
