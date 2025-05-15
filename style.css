@@ -44,6 +44,28 @@ body.loaded {
     box-sizing: border-box;
 
 }
+.page-back {
+    display: flex;
+    justify-content: left;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.page-back button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: var(--text-black-900);
+}
+.page-back button:hover {
+    transition: transform 0.3s;
+    transform: scale(1.2);
+    cursor: pointer;
+    text-decoration: underline;
+}
+.page-back i {
+    margin-right: 4px;
+    color: var(--text-black-900);
+}
 
 /* Navbar */
 .navbar{
@@ -88,33 +110,53 @@ body.loaded {
     color: var(--text-black-700);
 }
 
-/* Github Icon */
-.git-icon, .login-icon {
-    margin-top: -2.5%;
-    margin-right: 2%;
-    font-weight: bold;
-    font-size: 2rem;
-    display: inline-block;
-    align-items: center;
+.login {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+    
+
+.login-icon {
+    font-size: 16px;
+    color: var(--text-black-900);
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 3px;
+}
+.login:hover {
+    transform: scale(1.2);
     transition: transform 0.3s;
 }
-
-.git-icon:hover, .login-icon:hover {
-    transform: scale(1.33);
-}
-
-.git-icon a, .login-icon a {
+.login-text {
+    font-size: 16px;
     color: var(--text-black-900);
+    text-align: center;
     text-decoration: none;
-    position: relative;
-    display: inline-block;
 }
+/* homepage */
+.cart-icon {
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 3px;
+    margin-left: 18px;
 
-.git-icon a:hover, .login-icon a:hover {
-    color: var(--text-black-700);
 }
-
+.cart-icon i {
+    cursor: pointer;
+    font-size: 22px;
+}
+.cart-icon:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+.cart-icon button {
+    background-color: transparent;
+    border: none;
+    color: var(--text-black-900);
+    font-size: 16px;
+}
 /* Login */
 .login-container {
     max-width: 400px;
