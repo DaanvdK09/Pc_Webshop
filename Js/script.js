@@ -2,27 +2,25 @@ window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 });
 
-// Check login state and update text
 const loginStatus = document.getElementById("login-status");
 const loginLink = document.querySelector(".login a");
 
-if (localStorage.getItem('isLoggedIn') === 'true') {
-    loginStatus.textContent = "Log out";
-
-    // Log out
-    loginLink.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent navigation
-        localStorage.removeItem('isLoggedIn'); // Clear login state
-        alert("You have been logged out.");
+function setLoginState(isLoggedIn) {
+    if (isLoggedIn) {
+        loginStatus.textContent = "Log out";
+        loginLink.onclick = function(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            alert("You have been logged out.");
+            setLoginState(false);
+        };
+    } else {
         loginStatus.textContent = "Log in";
-    });
+        loginLink.onclick = function(event) {
+            window.location.href = "login.html";
+        };
+    }
 }
 
-else {
-    loginStatus.textContent = "Log in";
-
-    //  navigate to the login page
-    loginLink.addEventListener("click", () => {
-        window.location.href = "login.html";
-    });
-}
+// Initialize login on page load
+setLoginState(localStorage.getItem('isLoggedIn') === 'true');
