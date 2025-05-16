@@ -79,3 +79,15 @@ document.getElementById("signupForm").addEventListener("submit", async function(
         console.error('Error:', error);
     }
 });
+
+// Toggle Password
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text";
+        btn.innerHTML = '<i class="fa fa-eye-slash"></i>';
+    } else {
+        input.type = "password";
+        btn.innerHTML = '<i class="fa fa-eye"></i>';
+    }
+}

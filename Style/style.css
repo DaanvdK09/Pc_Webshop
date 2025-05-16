@@ -15,7 +15,6 @@ body.light {
     --bg-black-50:#e8dfec;
     --text-black-900:#302e4d;
     --text-black-700:#504e70;
-
 }
 
 /* General */
@@ -224,4 +223,31 @@ body.loaded {
 
 .login-container a:hover {
     text-decoration: underline;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    flex: 1;
+}
+
+.toggle-password i{
+    color: #222222;
+}
+
+.toggle-password {
+    background: none !important;
+    border: none !important;
+    position: absolute;
+    right: -5%;
+    top: -1%;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0;
+    outline: none !important;
+    box-shadow: none !important;
 }
