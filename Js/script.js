@@ -19,6 +19,8 @@ if (localStorage.getItem('isLoggedIn') === 'true') {
 }
 
 else {
+    loginStatus.textContent = "Log in";
+
     //  navigate to the login page
     loginLink.addEventListener("click", () => {
         window.location.href = "login.html";
