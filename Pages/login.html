@@ -39,8 +39,8 @@
     <div class="login-container">
         <h1 id="form-title">Login</h1>
         <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="login-identifier">Email or Username:</label>
+            <input type="text" id="login-identifier" name="login-identifier" required>
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -49,6 +49,9 @@
         </form>
 
         <form id="signupForm" style="display: none;">
+            <label for="new-email">Email:</label>
+            <input type="email" id="new-email" name="new-email" required>
+
             <label for="new-username">Username:</label>
             <input type="text" id="new-username" name="new-username" required>
             
