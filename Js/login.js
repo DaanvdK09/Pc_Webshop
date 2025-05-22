@@ -38,6 +38,8 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (response.ok) {
             alert(data.message);
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('email', data.email);
             window.location.href = "home.html";
         } else {
             alert(data.message);

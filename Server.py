@@ -56,7 +56,7 @@ def login():
     if not user or not bcrypt.check_password_hash(user.password, password):
         return jsonify({'message': 'Invalid credentials'}), 400
 
-    return jsonify({'message': 'Login successful'}), 200
+    return jsonify({'message': 'Login successful', 'username': user.username, 'email': user.email}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -24,40 +24,51 @@
                 <a href="">temp</a> <!--temporary-->
             </div>
         </div>
-    <div class="login">
-        <a href="login.html">
-            <div class="login-icon">
-                <i class="fas fa-user"></i>
-            </div> 
-            <div class="login-text">
-                <p id="login-status">Log in</p>
+
+        <div class="login">
+            <a href="#" id="login-link">
+                <div class="login-icon">
+                    <i class="fas fa-user"></i>
+                </div> 
+                <div class="login-text">
+                    <p id="login-status">Log in</p>
+                </div>
+            </a>
+        </div>
+
+        <div id="account-sidebar" class="account-sidebar">
+            <div class="sidebar-content">
+                <span id="close-sidebar" style="cursor:pointer;float:right;font-size:1.5em;">&times;</span>
+                <h2>Account Info</h2>
+                <p id="sidebar-username"></p>
+                <p id="sidebar-email"></p>
+                <div class="style-switcher">
+                    <div class="style-switcher-toggler s-icon">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                    <div class="day-night s-icon">
+                        <i class="fas "></i>
+                    </div>
+
+                    <h4>Theme Selection</h4>
+                    <div class="colors">
+                        <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+                        <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+                        <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+                        <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+                        <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+                    </div>
+                </div>
+                <button id="logout-btn">Log out</button>
             </div>
-        </a>
-    </div>
-
-    <div class="cart-icon">
-        <a href=""> <!--Need a new page for the shopping cart-->
-            <button>
-                <i class="fa fa-cart-shopping"></i>
-            </button>
-        </a>
-    </div>
-
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon">
-            <i class="fas fa-cog fa-spin"></i>
-        </div>
-        <div class="day-night s-icon">
-            <i class="fas "></i>
         </div>
 
-        <h4>Theme Selection</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-            <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+        <div class="cart-icon">
+            <a href=""> <!--Need a new page for the shopping cart-->
+                <button>
+                    <i class="fa fa-cart-shopping"></i>
+                </button>
+            </a>
         </div>
     </div>
 
