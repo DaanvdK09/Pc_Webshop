@@ -32,6 +32,22 @@ SELECT * FROM GPU;
       -- ('12', 'RTX 4070', 'NVIDIA', 609.99, 12, 'GDDR6X', 1920, 2480, 200, 'https://cdna.pcpartpicker.com/static/forever/images/product/8258cfebf744bbf8e9d175944093d490.256p.jpg'),
       -- ('13', 'RTX 4060 Ti', 'NVIDIA', 459.99, 16, 'GDDR6', 2310, 2540, 165, 'https://assets.nvidia.partners/images/png/GeForce-ADA-RTX4060Ti-Back.png'),
       -- ('14', 'RTX 4060', 'NVIDIA', 329.99, 8, 'GDDR6', 1830, 2460, 115, 'https://oc3dmedia.s3.eu-west-2.amazonaws.com/2023/07/nvidia-rtx-4060-3dmark-benchmark-scores-leak-23-faster-than-a-12gb-rtx-3060-on-average_64c2ad847eace.jpeg');
+      -- ('15', 'Radeon RX 6900 XT', 'AMD', 1000, 16, 'GDDR6', 1825, 2250, 300, ''),
+      -- ('16', 'Radeon RX 6800 XT', 'AMD', 800, 16, 'GDDR6', 1825, 2250, 300, ''),
+      -- ('17', 'Radeon RX 6800', 'AMD', 650, 16, 'GDDR6', 1700, 2105, 250, ''),
+      -- ('18', 'Radeon RX 6700 XT', 'AMD', 500, 12, 'GDDR6', 2321, 2581, 230, ''),
+      -- ('19', 'Radeon RX 6600 XT', 'AMD', 400, 8, 'GDDR6', 1968, 2589, 160, ''),
+      -- ('20', 'Radeon RX 6600', 'AMD', 350, 8, 'GDDR6', 1626, 2491, 132, ''),
+      -- ('21', 'Radeon RX 6500 XT', 'AMD', 200, 4, 'GDDR6', 2200, 2815, 107, ''),
+      -- ('22', 'Radeon RX 6400', 'AMD', 150, 4, 'GDDR6', 1797, 2321, 53, ''),
+      -- ('23', 'Radeon RX 7900 XTX', 'AMD', 1100, 24, 'GDDR6', 1855, 2500, 355, ''),
+      -- ('24', 'Radeon RX 7900 XT', 'AMD', 950, 20, 'GDDR6', 1500, 2400, 300, ''),
+      -- ('25', 'Radeon RX 7800 XT', 'AMD', 600, 16, 'GDDR6', 1231, 2430, 263, ''),
+      -- ('26', 'Radeon RX 7700 XT', 'AMD', 500, 12, 'GDDR6', 1700, 2544, 245, ''),
+      -- ('27', 'Radeon RX 7600 XT', 'AMD', 350, 16, 'GDDR6', 1720, 2755, 190, ''),
+      -- ('28', 'Radeon RX 7600', 'AMD', 300, 8, 'GDDR6', 1720, 2655, 165, ''),
+      -- ('29', 'Radeon RX 9070 XT', 'AMD', 1200, 16, 'GDDR6', 1800, 2600, 340, ''),
+      -- ('30', 'Radeon RX 9070', 'AMD', 1000, 12, 'GDDR6', 1600, 2400, 280, '');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
