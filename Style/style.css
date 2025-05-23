@@ -14,7 +14,7 @@ body.light {
     --bg-black-100:#fdf9ff;
     --bg-black-50:#e8dfec;
     --text-black-900:#191970;
-    --text-black-700:#000080;
+    --text-black-700:#000080; 
 }
 
 /* General */
@@ -195,6 +195,14 @@ body.loaded {
 
 .account-sidebar .sidebar-content {
     height: 100%;
+}
+
+.account-sidebar .img-circle {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
 }
 
 /* Home */
