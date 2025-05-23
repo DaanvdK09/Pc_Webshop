@@ -48,3 +48,12 @@ if (logoutBtn) {
 
 // Initialize login on page load
 setLoginState(localStorage.getItem('isLoggedIn') === 'true');
+//logo switch
+document.getElementById('wissel-icoon').onclick = function() {
+    var img = document.getElementById('wissel-img');
+    if (img.src.includes('Logo-white.png')) {
+        img.src = '../Foto/Logo-black.png';
+    } else {
+        img.src = '../Foto/Logo-white.png';
+    }
+};

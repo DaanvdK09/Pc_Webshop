@@ -108,7 +108,11 @@ body.loaded {
     transform: scale(1.1);
     color: var(--text-black-700);
 }
-
+.webshop-logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
 .login {
     display: flex;
     justify-content: center;
