@@ -134,6 +134,16 @@ body.loaded {
     text-decoration: none;
 }
 
+#login-status { /* # is for javascript id */
+    color: var(--text-black-900); 
+    transition: transform 0.3s;
+}
+
+#login-link:hover #login-status {
+    transform: scale(1.1);
+    color: var(--text-black-700);
+}
+
 .cart-icon {
     text-align: center;
     text-decoration: none;
