@@ -118,18 +118,13 @@ body.loaded {
 
 .login-icon {
     position: absolute;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
     margin-left: -1.5%;
     transition: transform 0.3s;
-}
-
-.login-icon:hover {
-    cursor: pointer;
-    transform: scale(1.2);
 }
 
 .login-text {
@@ -148,17 +143,14 @@ body.loaded {
 }
 .cart-icon i {
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
 }
-.cart-icon:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s;
-}
+
 .cart-icon button {
     background-color: transparent;
     border: none;
     color: var(--text-black-900);
-    font-size: 16px;
+    font-size: 18px;
 }
 
 /* Account Sidebar */
