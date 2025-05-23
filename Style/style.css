@@ -95,7 +95,7 @@ body.loaded {
 
 .nav-links a{
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     padding: 1rem;
@@ -105,7 +105,7 @@ body.loaded {
 }
 
 .nav-links a:hover{
-    transform: scale(1.33);
+    transform: scale(1.1);
     color: var(--text-black-700);
 }
 
@@ -113,20 +113,25 @@ body.loaded {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+    margin: 5px
 }
 
 .login-icon {
+    position: absolute;
     font-size: 16px;
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-}
-.login:hover {
-    transform: scale(1.2);
+    margin-left: -1.5%;
     transition: transform 0.3s;
 }
+
+.login-icon:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
 .login-text {
     font-size: 16px;
     color: var(--text-black-900);
