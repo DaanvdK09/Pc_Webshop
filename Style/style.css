@@ -5,7 +5,7 @@
     --bg-black-900:#151515;
     --bg-black-100:#222222;
     --bg-black-50:#393939;
-    --text-black-900:#ffffff;
+    --text-black-900:#E1EBEE;
     --text-black-700:#e9e9e9;
 }
 
@@ -13,8 +13,8 @@ body.light {
     --bg-black-900:#f2f2fc;
     --bg-black-100:#fdf9ff;
     --bg-black-50:#e8dfec;
-    --text-black-900:#302e4d;
-    --text-black-700:#504e70;
+    --text-black-900:#191970;
+    --text-black-700:#000080;
 }
 
 /* General */
@@ -123,7 +123,7 @@ body.loaded {
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-    margin-left: -1.5%;
+    margin-left: -2%;
     transition: transform 0.3s;
 }
 
@@ -293,4 +293,76 @@ body.loaded {
     padding: 0;
     outline: none !important;
     box-shadow: none !important;
+}
+/* Sidebar */
+.sidebar-content {
+    margin-left: 3%;
+}
+.sidebar-title {
+    margin-bottom: 50px;
+    padding: 0;
+    color: var(--text-black-900);
+    position: relative;
+    font-weight: 700;
+}
+.sidebar-title::before {
+    content: '';
+    height: 4px;
+    width: 50px;
+    background: var(--text-black-900);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+.sidebar-title::after {
+    content: '';
+    height: 4px;
+    width: 25px;
+    background: var(--text-black-900);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+}
+#close-sidebar {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--text-black-900);
+    cursor: pointer;
+    z-index: 1001;
+}
+#sidebar-username {
+    font-size: 16px;
+    color: var(--text-black-900);
+    margin-bottom: 10px;
+}
+#sidebar-email {
+    font-size: 16px;
+    color: var(--text-black-700);
+    margin-bottom: 20px;
+}
+.account-item {
+    font-size: 16px;
+    color: var(--text-black-900);
+    display: flex;
+    margin-bottom: 20px;
+}
+.account-item i {
+    margin-right: 10px;
+}
+#logout-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--text-black-900);
+}
+#logout-btn:hover {
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+#logout-btn i {
+    margin-right: 5px;
 }
