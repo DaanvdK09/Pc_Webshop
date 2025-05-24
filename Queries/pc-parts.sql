@@ -2,19 +2,22 @@
 
 -- .tables
 
-SELECT * FROM GPU;
+SELECT * FROM CPU;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS GPU (
+-- CREATE TABLE IF NOT EXISTS CPU (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- memory_size INTEGER NOT NULL,
-      -- memory_type TEXT NOT NULL,
-      -- core_clock REAL NOT NULL,
+      -- core_count INTEGER NOT NULL,
+      -- thread_count INTEGER NOT NULL,
+      -- base_clock REAL NOT NULL,
       -- boost_clock REAL NOT NULL,
       -- tdp INTEGER NOT NULL,
+      -- socket TEXT NOT NULL,
+      -- integrated_graphics TEXT NOT NULL,
+      -- image_url TEXT
 -- );
 
 -- Add new item
@@ -22,7 +25,7 @@ SELECT * FROM GPU;
       -- ('2', 'RTX 5080', 'NVIDIA', 1129.99, 16, 'GDDR7', 2300, 2620, 360, 'https://assets.nvidia.partners/images/png/RTX5080-3QTR-Back-Left-small.png'),
       -- ('3', 'RTX 5070 Ti', 'NVIDIA', 889.99, 16, 'GDDR7', 2300, 2450, 300, 'https://ucarecdn.com/1f969b9d-d012-4131-b02b-825c199ed1e0/-/format/auto/-/preview/3000x3000/-/quality/lighter/RTX5070.png'),
       -- ('4', 'RTX 5070', 'NVIDIA', 629.99, 12, 'GDDR7', 2330, 2510, 250, 'https://ucarecdn.com/1f969b9d-d012-4131-b02b-825c199ed1e0/-/format/auto/-/preview/3000x3000/-/quality/lighter/RTX5070.png'),
-      -- ('5', 'RTX 5060 Ti', 'NVIDIA', 489, 16, 'GDDR7', 2410, 2602, 180, 'https://tweakers.net/i/8ZNdG1qoKHIWIueLVeomFZ1Q7uY=/fit-in/374x326/filters:fill(white):strip_exif()/i/2007406302.png?f=imagemediumplus');
+      -- ('5', 'RTX 5060 Ti', 'NVIDIA', 489, 16, 'GDDR7', 2410, 2602, 180, 'https://tweakers.net/i/8ZNdG1qoKHIWIueLVeomFZ1Q7uY=/fit-in/374x326/filters:fill(white):strip_exif()/i/2007406302.png?f=imagemediumplus'),
       -- expected ('6', 'RTX 5060', 'NVIDIA', ?€, 8, 'GDDR7', 2280, 2500, 145, ''),
       -- ('7', 'RTX 4090', 'NVIDIA', 1779.99, 24, 'GDDR6X', 2230, 2520, 450, 'https://images.nvidia.com/aem-dam/Solutions/geforce/ada/news/rtx-40-series-graphics-cards-announcements/geforce-rtx-4090-product-photo-001.png'),
       -- ('8', 'RTX 4080 Super', 'NVIDIA', 1119.99, 16, 'GDDR6X', 2290, 2550, 320, 'https://assetsio.gnwcdn.com/4080-super.jpg?width=690&quality=70&format=jpg&dpr=2&auto=webp'),
@@ -48,6 +51,43 @@ SELECT * FROM GPU;
       -- ('28', 'Radeon RX 7600', 'AMD', 300, 8, 'GDDR6', 1720, 2655, 165, ''),
       -- ('29', 'Radeon RX 9070 XT', 'AMD', 1200, 16, 'GDDR6', 1800, 2600, 340, ''),
       -- ('30', 'Radeon RX 9070', 'AMD', 1000, 12, 'GDDR6', 1600, 2400, 280, '');
+
+-- INSERT INTO CPU (id, name, manufacturer, price, core_count, thread_count, base_clock, boost_clock, tdp, socket, integrated_graphics, image_url ) VALUES
+      -- ('1', 'Core i9-10900K', 'Intel', 500, 10, 20, 3.7, 5.3, 125, 'LGA 1200', 'Yes', ''),
+      -- ('2', 'Core i7-10700K', 'Intel', 400, 8, 16, 3.8, 5.1, 125, 'LGA 1200', 'Yes', ''),
+      -- ('3', 'Core i5-10600K', 'Intel', 300, 6, 12, 4.1, 4.8, 125, 'LGA 1200', 'Yes', ''),
+      -- ('4', 'Core i3-10320', 'Intel', 150, 4, 8, 3.8, 4.6, 65, 'LGA 1200', 'Yes', ''),
+      -- ('5', 'Core i9-11900K', 'Intel', 550, 8, 16, 3.5, 5.3, 125, 'LGA 1200', 'Yes', ''),
+      -- ('6', 'Core i7-11700K', 'Intel', 450, 8, 16, 3.6, 5.0, 125, 'LGA 1200', 'Yes', ''),
+      -- ('7', 'Core i5-11600K', 'Intel', 300, 6, 12, 3.9, 4.9, 125, 'LGA 1200', 'Yes', ''),
+      -- ('8', 'Core i3-11320', 'Intel', 160, 4, 8, 3.8, 4.6, 65, 'LGA 1200', 'Yes', ''),
+      -- ('9', 'Core i9-12900K', 'Intel', 600, 16, 24, 3.2, 5.2, 125, 'LGA 1700', 'Yes', ''),
+      -- ('10', 'Core i7-12700K', 'Intel', 500, 12, 20, 3.6, 5.0, 125, 'LGA 1700', 'Yes', ''),
+      -- ('11', 'Core i5-12600K', 'Intel', 350, 10, 16, 3.7, 4.9, 125, 'LGA 1700', 'Yes', ''),
+      -- ('12', 'Core i3-12300', 'Intel', 170, 4, 8, 3.5, 4.4, 60, 'LGA 1700', 'Yes', ''),
+      -- ('13', 'Core i9-13900K', 'Intel', 650, 24, 32, 3.0, 5.8, 125, 'LGA 1700', 'Yes', ''),
+      -- ('14', 'Core i7-13700K', 'Intel', 550, 16, 24, 3.4, 5.4, 125, 'LGA 1700', 'Yes', ''),
+      -- ('15', 'Core i5-13600K', 'Intel', 400, 14, 20, 3.5, 5.1, 125, 'LGA 1700', 'Yes', ''),
+      -- ('16', 'Core i3-13300', 'Intel', 200, 4, 8, 3.5, 4.6, 60, 'LGA 1700', 'Yes', ''),
+      -- ('17', 'Core i9-14900K', 'Intel', 700, 24, 32, 3.2, 6.0, 125, 'LGA 1700', 'Yes', ''),
+      -- ('18', 'Core i7-14700K', 'Intel', 600, 20, 28, 3.4, 5.6, 125, 'LGA 1700', 'Yes', ''),
+      -- ('19', 'Core i5-14600K', 'Intel', 450, 14, 20, 3.5, 5.3, 125, 'LGA 1700', 'Yes', ''),
+      -- ('20', 'Core i3-14300', 'Intel', 220, 4, 8, 3.5, 4.6, 60, 'LGA 1700', 'Yes', ''),
+      -- ('21', 'Ryzen 5 5600X', 'AMD', 300, 6, 12, 3.7, 4.6, 65, 'AM4', 'No', ''),
+      -- ('22', 'Ryzen 7 5800X', 'AMD', 450, 8, 16, 3.8, 4.7, 105, 'AM4', 'No', ''),
+      -- ('23', 'Ryzen 9 5900X', 'AMD', 550, 12, 24, 3.7, 4.8, 105, 'AM4', 'No', ''),
+      -- ('24', 'Ryzen 9 5950X', 'AMD', 800, 16, 32, 3.4, 4.9, 105, 'AM4', 'No', ''),
+      -- ('25', 'Ryzen 5 7600X', 'AMD', 300, 6, 12, 4.7, 5.3, 105, 'AM5', 'Yes', ''),
+      -- ('26', 'Ryzen 7 7700X', 'AMD', 400, 8, 16, 4.5, 5.4, 105, 'AM5', 'Yes', ''),
+      -- ('27', 'Ryzen 9 7900X', 'AMD', 550, 12, 24, 4.7, 5.6, 170, 'AM5', 'Yes', ''),
+      -- ('28', 'Ryzen 9 7950X', 'AMD', 700, 16, 32, 4.5, 5.7, 170, 'AM5', 'Yes', ''),
+      -- ('29', 'Ryzen 5 8600G', 'AMD', 250, 6, 12, 4.3, 5.0, 65, 'AM5', 'Yes', ''),
+      -- ('30', 'Ryzen 7 8700G', 'AMD', 350, 8, 16, 4.2, 5.1, 65, 'AM5', 'Yes', ''),
+      -- ('31', 'Ryzen 9 8950X', 'AMD', 600, 16, 32, 4.5, 5.7, 170, 'AM5', 'Yes', ''),
+      -- ('32', 'Ryzen 3 4300G', 'AMD', 150, 4, 8, 3.8, 4.0, 65, 'AM4', 'Yes', ''),
+      -- ('33', 'Ryzen 5 4600G', 'AMD', 200, 6, 12, 3.7, 4.2, 65, 'AM4', 'Yes', ''),
+      -- ('34', 'Ryzen 7 4700G', 'AMD', 300, 8, 16, 3.6, 4.4, 65, 'AM4', 'Yes', ''),
+      -- ('35', 'Ryzen 9 4900', 'AMD', 450, 12, 24, 3.0, 4.3, 65, 'AM4', 'No', '');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
