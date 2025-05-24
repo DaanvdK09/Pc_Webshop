@@ -53,11 +53,14 @@ SELECT * FROM CPU;
       -- ('30', 'Radeon RX 9070', 'AMD', 1000, 12, 'GDDR6', 1600, 2400, 280, '');
 
 -- INSERT INTO CPU (id, name, manufacturer, price, core_count, thread_count, base_clock, boost_clock, tdp, socket, integrated_graphics, image_url ) VALUES
+      -- ('1', 'Ryzen 7 5800x3d', 'AMD', 450, 8, 16, 3.4, 4.5, 105, 'AM4', 'No', 'https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-7-5800x3d.jpg'),
       -- ('2', 'Core i7-10700K', 'Intel', 400, 8, 16, 3.8, 5.1, 125, 'LGA 1200', 'Yes', ''),
       -- ('3', 'Core i5-10600K', 'Intel', 300, 6, 12, 4.1, 4.8, 125, 'LGA 1200', 'Yes', ''),
+      -- ('4', 'Ryzen 7 5700x3d', 'AMD', 350, 8, 16, 3.0, 4.1, 105, 'AM4', 'No', 'https://image.coolblue.nl/max/905xauto/products/2075521'),
       -- ('5', 'Core i9-11900K', 'Intel', 550, 8, 16, 3.5, 5.3, 125, 'LGA 1200', 'Yes', ''),
       -- ('6', 'Core i7-11700K', 'Intel', 450, 8, 16, 3.6, 5.0, 125, 'LGA 1200', 'Yes', ''),
       -- ('7', 'Core i5-11600K', 'Intel', 300, 6, 12, 3.9, 4.9, 125, 'LGA 1200', 'Yes', ''),
+      -- ('8', 'Ryzen 7 7800x3d', 'AMD', 500, 8, 16, 4.2, 5.0, 120, 'AM5', 'No', 'https://m.media-amazon.com/images/I/51HqC0rU9HL._AC_SX679_.jpg'),
       -- ('9', 'Core i9-12900K', 'Intel', 600, 16, 24, 3.2, 5.2, 125, 'LGA 1700', 'Yes', ''),
       -- ('10', 'Core i7-12700K', 'Intel', 500, 12, 20, 3.6, 5.0, 125, 'LGA 1700', 'Yes', ''),
       -- ('11', 'Core i5-12600K', 'Intel', 350, 10, 16, 3.7, 4.9, 125, 'LGA 1700', 'Yes', ''),
@@ -79,6 +82,11 @@ SELECT * FROM CPU;
       -- ('28', 'Ryzen 9 7950X', 'AMD', 700, 16, 32, 4.5, 5.7, 170, 'AM5', 'Yes', ''),
       -- ('29', 'Ryzen 5 8600G', 'AMD', 250, 6, 12, 4.3, 5.0, 65, 'AM5', 'Yes', ''),
       -- ('30', 'Ryzen 7 8700G', 'AMD', 350, 8, 16, 4.2, 5.1, 65, 'AM5', 'Yes', ''),
+      -- ('31', 'Ryzen 9 7950x3d', 'AMD', 700, 16, 32, 4.2, 5.7, 120, 'AM5', 'No', 'https://www.megekko.nl/productimg/294962/nw/1_AMD-Ryzen-9-7950X3D-Processor.jpg'),
+      -- ('32', 'Ryzen 7 9800x3d', 'AMD', 550, 8, 16, 4.0, 5.0, 120, 'AM5', 'No', 'https://cf-images.dustin.eu/cdn-cgi/image/fit=contain,format=auto,quality=75,width=828,fit=contain/image/d2000010011334385/amd-ryzen-7-9800x3d-47ghz-socket-am5-processor.png'),
+      -- ('33', 'Ryzen 9 9950x3d', 'AMD', 800, 16, 32, 4.3, 5.7, 120, 'AM5', 'No', 'https://tweakers.net/i/2FvXgPSTAJuVjojvn5Ms7j_-mHg=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2007169916.jpeg?f=imagemediumplus'),
+      -- ('34', 'Ryzen 5 9600x', 'AMD', 300, 6, 12, 3.9, 4.9, 65, 'AM5', 'Yes', 'https://m.media-amazon.com/images/I/61RfWUr4kvL.__AC_SX300_SY300_QL70_ML2_.jpg'),
+      -- ('35', 'Ryzen 9700x', 'AMD', 400, 8, 16, 3.8, 4.8, 65, 'AM5', 'Yes', 'https://m.media-amazon.com/images/I/61F3ZChalyL._AC_SX522_.jpg');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
