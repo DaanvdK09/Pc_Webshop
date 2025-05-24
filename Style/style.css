@@ -65,24 +65,7 @@ body.loaded {
     margin-right: 4px;
     color: var(--text-black-900);
 }
-/* Home page */
-.home-container {
-    color: var(--text-black-900);
-    width: 100%;
-    margin: auto;
-}
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.home-title  {
-    font-size: 1.5rem;
-    font-weight: 900;
-    margin-top: 30px;
-}
+
 /* Navbar */
 .navbar{
     overflow: hidden;
@@ -231,7 +214,25 @@ body.loaded {
 }
 
 /* Home */
+.home-container {
+    color: var(--text-black-900);
+    width: 100%;
+    margin: auto;
+}
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.home-title  {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-top: 30px;
+}
 
 /* Login */
 .login-container {
@@ -327,10 +328,12 @@ body.loaded {
     outline: none !important;
     box-shadow: none !important;
 }
+
 /* Sidebar */
 .sidebar-content {
     margin-left: 3%;
 }
+
 .sidebar-title {
     margin-bottom: 50px;
     padding: 0;
@@ -338,6 +341,7 @@ body.loaded {
     position: relative;
     font-weight: 700;
 }
+
 .sidebar-title::before {
     content: '';
     height: 4px;
@@ -347,6 +351,7 @@ body.loaded {
     top: 100%;
     left: 0;
 }
+
 .sidebar-title::after {
     content: '';
     height: 4px;
@@ -357,6 +362,7 @@ body.loaded {
     left: 0;
     margin-top: 8px;
 }
+
 #close-sidebar {
     position: absolute;
     top: 25px;
@@ -366,25 +372,30 @@ body.loaded {
     cursor: pointer;
     z-index: 1001;
 }
+
 #sidebar-username {
     font-size: 16px;
     color: var(--text-black-900);
     margin-bottom: 10px;
 }
+
 #sidebar-email {
     font-size: 16px;
     color: var(--text-black-900);
     margin-bottom: 20px;
 }
+
 .account-item {
     font-size: 16px;
     color: var(--text-black-900);
     display: flex;
     margin-bottom: 20px;
 }
+
 .account-item i {
     margin-right: 10px;
 }
+
 #logout-btn {
     background: transparent;
     border: none;
@@ -392,10 +403,110 @@ body.loaded {
     cursor: pointer;
     color: var(--text-black-900);
 }
+
 #logout-btn:hover {
     transition: transform 0.3s;
     transform: scale(1.1);
 }
+
 #logout-btn i {
     margin-right: 5px;
+}
+
+/* Pc Builder */
+.pc-builder-container {
+    color: var(--text-black-900);
+    width: 100%;
+    margin: auto;
+}
+
+.pc-builder-title  {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-top: 30px;
+}
+
+.add-button {
+    background-color: rgb(0, 173, 0);
+    color: var(--text-black-900);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.add-button:hover {
+    background-color: green;
+}
+
+.parts-list {
+    display: none;
+}
+
+/* List */
+.pc-parts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.item {
+    background: var(--bg-black-100);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 16px;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+}
+
+.img {
+    width: 180px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.info h3{
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-black-900);
+}
+
+.info p {
+    margin: 2px 0;
+    color: var(--text-black-900);
+    font-size: 0.97rem;
+}
+
+#selected {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.item.selected {
+    border: 2px solid #00ad00;
+    box-shadow: 0 0 10px #00ad0044;
+}
+
+.select-btn {
+    cursor:pointer;
+    display:inline-block;
+    margin-top:8px;
+    color:#00ad00;
+    font-weight:bold;
 }

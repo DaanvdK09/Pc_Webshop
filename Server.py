@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Flask, request, jsonify
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
@@ -57,6 +58,25 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 400
 
     return jsonify({'message': 'Login successful', 'username': user.username, 'email': user.email}), 200
+
+# GPU API
+@app.route('/api/gpus', methods=['GET'])
+def get_gpus():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, image_url, price, core_clock, boost_clock FROM GPU")
+    gpus = [
+        {
+            'name': row[0],
+            'image_url': row[1],
+            'price': row[2],
+            'core_clock': row[3],
+            'boost_clock': row[4]
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(gpus)
 
 if __name__ == '__main__':
     app.run(debug=True)
