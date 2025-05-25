@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         </td>
                         <td class="${selectedCpu ? '' : 'none-selected'}">
-                            ${selectedCpu ? `€${selectedCpu.price}` : '-'}
+                            ${selectedCpu ? `€${selectedCpu.price}.00` : '-'}
                         </td>
                         <td class="${selectedCpu ? '' : 'none-selected'}">
                             ${
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         </td>
                         <td class="${selectedGpu ? '' : 'none-selected'}">
-                            ${selectedGpu ? `€${selectedGpu.price}` : '-'}
+                            ${selectedGpu ? `€${selectedGpu.manufacturer === "AMD" ? selectedGpu.price + ".00" : selectedGpu.price}` : '-'}
                         </td>
                         <td class="${selectedGpu ? '' : 'none-selected'}">
                             ${
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${gpu.memory_size} GB</td>
                         <td>${gpu.core_clock} MHz</td>
                         <td>${gpu.boost_clock} MHz</td>
-                        <td>€${gpu.price}</td>
+                        <td>€${gpu.manufacturer === "AMD" ? gpu.price + ".00" : gpu.price}</td>
                         <td><a class="select-btn">Add</a></td>
                     </tr>
                 `).join('');
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${cpu.core_count}</td>
                     <td>${cpu.thread_count}</td>
                     <td>${cpu.socket}</td>
-                    <td>€${cpu.price}</td>
+                    <td>€${cpu.price}.00</td>
                     <td><a class="select-btn">Add</a></td>
                 </tr>
             `).join('');

@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM CPU;
+SELECT * FROM GPU;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS CPU (
