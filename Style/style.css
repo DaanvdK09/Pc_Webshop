@@ -447,11 +447,59 @@ body.loaded {
 
 /* List */
 .pc-parts-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
     gap: 24px;
-    justify-content: center;
-    margin-top: 20px;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--bg-black-100);
+    color: var(--text-black-900);
+}
+
+.table th, .table td {
+    border: none;
+    padding: 10px 8px;
+    text-align: left;
+}
+
+.table {
+    background: var(--bg-black-50);
+    font-weight: bold;
+}
+
+.table tr:hover {
+    background: var(--bg-black-900);
+}
+
+.table td img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-left: 0;
+    text-align: left;
+}
+
+.table th {
+    border-bottom: 2px solid #444;
+    text-align: left;
+}
+
+.table td {
+    text-align: left;
+}
+
+.table tr {
+    border-bottom: 1px solid #444;
+}
+
+.table tr:last-child {
+    border-bottom: none;
 }
 
 .item {
@@ -496,11 +544,13 @@ body.loaded {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
-.item.selected {
-    border: 2px solid #00ad00;
-    box-shadow: 0 0 10px #00ad0044;
+#selected .table {
+    width: 600px;
+    min-width: 400px;
+    max-width: 100%;
 }
 
 .select-btn {
@@ -509,4 +559,13 @@ body.loaded {
     margin-top:8px;
     color:#00ad00;
     font-weight:bold;
+}
+
+.add-button.remove {
+    background-color: #d32f2f !important;
+    color: #fff !important;
+}
+
+.add-button.remove:hover {
+    background-color: #b71c1c !important;
 }
