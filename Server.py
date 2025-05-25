@@ -64,19 +64,41 @@ def login():
 def get_gpus():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, image_url, price, core_clock, boost_clock FROM GPU")
+    cursor.execute("SELECT name, manufacturer, image_url, price, core_clock, boost_clock, memory_size FROM GPU")
     gpus = [
         {
             'name': row[0],
-            'image_url': row[1],
-            'price': row[2],
-            'core_clock': row[3],
-            'boost_clock': row[4]
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'core_clock': row[4],
+            'boost_clock': row[5],
+            'memory_size': row[6],
         }
         for row in cursor.fetchall()
     ]
     conn.close()
     return jsonify(gpus)
+
+@app.route('/api/cpus', methods=['GET'])
+def get_cpus():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, core_count, thread_count, socket FROM CPU")
+    cpus = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'core_count': row[4],
+            'thread_count': row[5],
+            'socket': row[6],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(cpus)
 
 if __name__ == '__main__':
     app.run(debug=True)
