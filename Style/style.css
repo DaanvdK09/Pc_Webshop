@@ -3,6 +3,7 @@
 /* Styles */
 :root {
     --bg-black-900:#151515;
+    --bg-black-800: #2a3439;
     --bg-black-100:#222222;
     --bg-black-50:#393939;
     --text-black-900:#E1EBEE;
@@ -11,6 +12,7 @@
 
 body.light {
     --bg-black-900: #f2f2fc;
+    --bg-black-800: #d5cbc6;
     --bg-black-100:#fdf9ff;
     --bg-black-50:#e8dfec;
     --text-black-900:#082567;
@@ -469,7 +471,7 @@ body.loaded {
 }
 
 .table tr:hover {
-    background: var(--bg-black-900);
+    background: var(--bg-black-800);
 }
 
 .table td img {
