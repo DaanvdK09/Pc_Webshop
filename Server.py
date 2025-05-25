@@ -64,16 +64,19 @@ def login():
 def get_gpus():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, core_clock, boost_clock, memory_size FROM GPU")
+    cursor.execute("SELECT name, manufacturer, image_url, price, memory_size, memory_type, core_clock, boost_clock, tdp, slot FROM GPU")
     gpus = [
         {
             'name': row[0],
             'manufacturer': row[1],
             'image_url': row[2],
             'price': row[3],
-            'core_clock': row[4],
-            'boost_clock': row[5],
-            'memory_size': row[6],
+            'memory_size': row[4],
+            'memory_type': row[5],
+            'core_clock': row[6],
+            'boost_clock': row[7],
+            'tdp': row[8],
+            'slot': row[9],
         }
         for row in cursor.fetchall()
     ]
@@ -84,7 +87,7 @@ def get_gpus():
 def get_cpus():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, core_count, thread_count, socket FROM CPU")
+    cursor.execute("SELECT name, manufacturer, image_url, price, core_count, thread_count, base_clock, boost_clock, tdp, socket, integrated_graphics FROM CPU")
     cpus = [
         {
             'name': row[0],
@@ -93,7 +96,11 @@ def get_cpus():
             'price': row[3],
             'core_count': row[4],
             'thread_count': row[5],
-            'socket': row[6],
+            'base_clock': row[6],
+            'boost_clock': row[7],
+            'tdp': row[8],
+            'socket': row[9],
+            'integrated_graphics': row[10],
         }
         for row in cursor.fetchall()
     ]

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const builderTitle = document.querySelector('.pc-builder-title h1');
     let selectedGpuDiv = null;
     let selectedGpu = null;
-    let selectedCpu = null; // NEW: Track selected CPU
+    let selectedCpu = null;
 
     // Create and insert the selected table container always
     selectedGpuDiv = document.createElement('div');
@@ -12,7 +12,21 @@ document.addEventListener('DOMContentLoaded', function() {
     pcBuilderContent.insertBefore(selectedGpuDiv, partsListDiv);
 
     function renderSelectedTable() {
-        selectedGpuDiv.innerHTML = `
+        // Calculate total TDP (power usage)
+        const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
+        const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
+        const totalTdp = cpuTdp + gpuTdp;
+
+        // Power usage meter HTML
+        const powerMeterHtml = `
+            <div style="width:100%;text-align:center;margin-bottom:16px;">
+                <strong><i class="fa-solid fa-bolt" ></i>Estimated Power Usage:</strong>
+                <meter min="0" max="800" value="${totalTdp}" style="width:250px;height:20px;"></meter>
+                <span style="margin-left:8px;">${totalTdp} W</span>
+            </div>
+        `;
+
+        selectedGpuDiv.innerHTML = powerMeterHtml + `
             <table class="table">
                 <thead>
                     <tr>
@@ -75,33 +89,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Remove handlers
         if (selectedGpu) {
-            selectedGpuDiv.querySelector('.remove-selected-btn').addEventListener('click', function() {
-                selectedGpu = null;
-                renderSelectedTable();
-            });
+            const removeGpuBtn = selectedGpuDiv.querySelector('.remove-selected-btn');
+            if (removeGpuBtn) {
+                removeGpuBtn.addEventListener('click', function() {
+                    selectedGpu = null;
+                    renderSelectedTable();
+                });
+            }
         }
         if (selectedCpu) {
-            selectedGpuDiv.querySelector('.remove-selected-cpu-btn').addEventListener('click', function() {
-                selectedCpu = null;
-                renderSelectedTable();
+            const removeCpuBtn = selectedGpuDiv.querySelector('.remove-selected-cpu-btn');
+            if (removeCpuBtn) {
+                removeCpuBtn.addEventListener('click', function() {
+                    selectedCpu = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
+        // Add handlers for add buttons (always use querySelector for dynamic HTML)
+        const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
+        if (addGpuBtn) {
+            addGpuBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showGpuSelection();
             });
         }
-        // Add handlers
-        if (!selectedGpu) {
-            const addGpuBtn = document.getElementById('add-gpu-btn');
-            if (addGpuBtn) {
-                addGpuBtn.addEventListener('click', function() {
-                    showGpuSelection();
-                });
-            }
-        }
-        if (!selectedCpu) {
-            const addCpuBtn = document.getElementById('add-cpu-btn');
-            if (addCpuBtn) {
-                addCpuBtn.addEventListener('click', function() {
-                    showCpuSelection();
-                });
-            }
+        const addCpuBtn = selectedGpuDiv.querySelector('#add-cpu-btn');
+        if (addCpuBtn) {
+            addCpuBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showCpuSelection();
+            });
         }
     }
 
@@ -159,59 +180,58 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // CPU selection logic
     function showCpuSelection() {
-    selectedGpuDiv.style.display = "none";
-    fetch('http://localhost:5000/api/cpus')
-        .then(response => response.json())
-        .then(cpus => {
-            let tableHtml = `
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Manufacturer</th>
-                            <th>Core Count</th>
-                            <th>Thread Count</th>
-                            <th>Socket</th>
-                            <th>Price</th> 
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            tableHtml += cpus.map((cpu, idx) => `
-                <tr data-idx="${idx}">
-                    <td>
-                        <img src="${cpu.image_url}" alt="${cpu.name}" class="img">
-                        <span>${cpu.name}</span>
-                    </td>
-                    <td>${cpu.manufacturer}</td>
-                    <td>${cpu.core_count}</td>
-                    <td>${cpu.thread_count}</td>
-                    <td>${cpu.socket}</td>
-                    <td>€${cpu.price}.00</td>
-                    <td><a class="select-btn">Add</a></td>
-                </tr>
-            `).join('');
-            tableHtml += `
-                    </tbody>
-                </table>
-            `;
-            partsListDiv.innerHTML = tableHtml;
-            partsListDiv.style.display = "block";
-            builderTitle.textContent = "Add a CPU";
+        selectedGpuDiv.style.display = "none";
+        fetch('http://localhost:5000/api/cpus')
+            .then(response => response.json())
+            .then(cpus => {
+                let tableHtml = `
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Manufacturer</th>
+                                <th>Core Count</th>
+                                <th>Thread Count</th>
+                                <th>Socket</th>
+                                <th>Price</th> 
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                tableHtml += cpus.map((cpu, idx) => `
+                    <tr data-idx="${idx}">
+                        <td>
+                            <img src="${cpu.image_url}" alt="${cpu.name}" class="img">
+                            <span>${cpu.name}</span>
+                        </td>
+                        <td>${cpu.manufacturer}</td>
+                        <td>${cpu.core_count}</td>
+                        <td>${cpu.thread_count}</td>
+                        <td>${cpu.socket}</td>
+                        <td>€${cpu.price}.00</td>
+                        <td><a class="select-btn">Add</a></td>
+                    </tr>
+                `).join('');
+                tableHtml += `
+                        </tbody>
+                    </table>
+                `;
+                partsListDiv.innerHTML = tableHtml;
+                partsListDiv.style.display = "block";
+                builderTitle.textContent = "Add a CPU";
 
-            document.querySelectorAll('.select-btn').forEach((btn, idx) => {
-                btn.addEventListener('click', function() {
-                    selectedCpu = cpus[idx];
-                    partsListDiv.style.display = "none";
-                    selectedGpuDiv.style.display = "flex";
-                    builderTitle.textContent = "PC Builder";
-                    renderSelectedTable();
+                document.querySelectorAll('.select-btn').forEach((btn, idx) => {
+                    btn.addEventListener('click', function() {
+                        selectedCpu = cpus[idx];
+                        partsListDiv.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
                 });
             });
-        });
     }
 
     // Initial render
