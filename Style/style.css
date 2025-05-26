@@ -67,7 +67,18 @@ body.loaded {
     margin-right: 4px;
     color: var(--text-black-900);
 }
-
+.col-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
 /* Navbar */
 .navbar{
     overflow: hidden;
@@ -76,7 +87,7 @@ body.loaded {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 0.8rem 0.8rem;
     position: relative;
     overflow: visible;
     z-index: 999;
@@ -97,7 +108,7 @@ body.loaded {
 
 .nav-links a{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     padding: 1rem;
@@ -111,7 +122,7 @@ body.loaded {
     color: var(--text-black-700);
 }
 .webshop-logo img {
-    width: 100px;
+    width: 70px;
     height: auto;
     margin-right: 20px;
     transition: transform 0.3s;
@@ -128,7 +139,7 @@ body.loaded {
 
 .login-icon {
     position: absolute;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
@@ -138,7 +149,7 @@ body.loaded {
 }
 
 .login-text {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
@@ -163,7 +174,7 @@ body.loaded {
 }
 .cart-icon i {
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .cart-icon button {
@@ -414,7 +425,72 @@ body.loaded {
 #logout-btn i {
     margin-right: 5px;
 }
+/* Prebuilt PC */
+.prebuilt-pc-container {
+    color: var(--text-black-900);
+    width: 100%;
+    margin: auto;
+}
+.prebuilt-pc-title  {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 25px;
+}
+.prebuilt-pc-sub-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    color: var(--text-black-700);
+}
+.prebuilt-pc-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2%;
+}
+.prebuilt-pc-card {
+    flex: 0 0 50%;
+    max-width: 50%;
+    text-align: center;
+    margin-bottom: 20px;
+    background: var(--bg-black-800);
+    margin: 15px;
+    padding: 20px;
+    border-radius: 15px;
+}
+.prebuilt-pc-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.24);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.prebuilt-pc-card h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    text-align: center;
+}
 
+.prebuilt-pc-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.prebuilt-pc-card p {
+    color: var(--text-black-700);
+    font-size: 16px;
+}
+.prebuilt-pc-card img {
+    width: 60%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 /* Pc Builder */
 .pc-builder-container {
     color: var(--text-black-900);
