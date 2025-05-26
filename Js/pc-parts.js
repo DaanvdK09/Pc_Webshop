@@ -11,18 +11,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const pcBuilderContent = document.querySelector('.pc-builder-content');
     pcBuilderContent.insertBefore(selectedGpuDiv, partsListDiv);
 
+
     function renderSelectedTable() {
-        // Calculate total TDP (power usage)
+        // Calculate total TDP
         const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
         const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
         const totalTdp = cpuTdp + gpuTdp;
 
-        // Power usage meter HTML
+        // Calculate total price
+        const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
+        const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
+        const totalPrice = cpuPrice + gpuPrice;
+
+        // Power usage meter
         const powerMeterHtml = `
-            <div style="width:100%;text-align:center;margin-bottom:16px;">
-                <strong><i class="fa-solid fa-bolt" ></i>Estimated Power Usage:</strong>
-                <meter min="0" max="800" value="${totalTdp}" style="width:250px;height:20px;"></meter>
-                <span style="margin-left:8px;">${totalTdp} W</span>
+            <div class="power-usage-meter">
+                <strong><i class="fa-solid fa-bolt"></i>Estimated Power Usage:</strong>
+                <meter min="0" max="800" value="${totalTdp}" class="power-meter"></meter>
+                <span class="power-watt">${totalTdp} W</span>
             </div>
         `;
 
@@ -43,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${
                                 selectedCpu
                                 ? `<img src="${selectedCpu.image_url}" alt="${selectedCpu.name}" class="img">
-                                   <span>${selectedCpu.name}</span>`
+                                <span>${selectedCpu.name}</span>`
                                 : `<div class="add-button" id="add-cpu-btn">
-                                       <a><i class="fa-solid fa-plus"></i>Add CPU</a>
-                                   </div>`
+                                    <a><i class="fa-solid fa-plus"></i>Add CPU</a>
+                                </div>`
                             }
                         </td>
                         <td class="${selectedCpu ? '' : 'none-selected'}">
@@ -66,10 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${
                                 selectedGpu
                                 ? `<img src="${selectedGpu.image_url}" alt="${selectedGpu.name}" class="img">
-                                   <span>${selectedGpu.name}</span>`
+                                <span>${selectedGpu.name}</span>`
                                 : `<div class="add-button" id="add-gpu-btn">
-                                       <a><i class="fa-solid fa-plus"></i>Add GPU</a>
-                                   </div>`
+                                    <a><i class="fa-solid fa-plus"></i>Add GPU</a>
+                                </div>`
                             }
                         </td>
                         <td class="${selectedGpu ? '' : 'none-selected'}">
@@ -81,6 +87,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ? `<a class="remove-selected-btn">Remove</a>`
                                 : 'No GPU selected'
                             }
+                        </td>
+                    </tr>
+                    <tr class="total-amount-row">
+                        <td colspan="2" class="total-label">Total Amount:</td>
+                        <td colspan="2" class="total-value">
+                            €${totalPrice.toFixed(2)}
                         </td>
                     </tr>
                 </tbody>
@@ -107,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Add handlers for add buttons (always use querySelector for dynamic HTML)
+        // Add handlers for add buttons
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
             addGpuBtn.addEventListener('click', function() {

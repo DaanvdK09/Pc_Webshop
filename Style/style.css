@@ -731,3 +731,30 @@ body.loaded {
     text-align:center;
     color:#888;
 }
+
+/* Power usage */
+.power-usage-meter {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.power-usage-meter strong {
+    margin-right: 8px;
+}
+.power-meter {
+    width: 250px;
+    height: 20px;
+    vertical-align: middle;
+}
+.power-watt {
+    margin-left: 8px;
+}
+
+/* Total amount */
+.total-amount-row .total-label {
+    text-align: right;
+    font-weight: bold;
+}
+.total-amount-row .total-value {
+    font-weight: bold;
+}
