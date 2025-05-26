@@ -24,3 +24,22 @@
 .git-icon a:hover, .login-icon a:hover {
     color: var(--text-black-700);
 }
+.nav-links a{
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--text-black-900);
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    margin: 0 2rem;
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover{
+    transform: scale(1.1);
+    color: var(--text-black-700);
+    transition: underline 2s;
+    text-decoration: underline;
+}
+
+

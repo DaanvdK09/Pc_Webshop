@@ -4,6 +4,8 @@
 :root {
     --bg-black-900:#151515;
     --bg-black-800: #2a3439;
+    --bg-black-600: #2D68C4;
+    --bg-black-500: #00BFFF;
     --bg-black-100:#222222;
     --bg-black-50:#393939;
     --text-black-900:#E1EBEE;
@@ -98,28 +100,36 @@ body.loaded {
     display: flex;
     justify-content: center;
     flex: 1;
-}
-
-.nav-links{
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
 .nav-links a{
-    font-weight: bold;
-    font-size: 18px;
-    color: var(--text-black-900);
-    text-align: center;
-    padding: 1rem;
     text-decoration: none;
-    margin: 0 2rem;
-    transition: transform 0.3s;
+    text-transform: capitalize;
+    color: var(--text-black-900);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 30px;
+    position: relative;
 }
 
 .nav-links a:hover{
-    transform: scale(1.1);
     color: var(--text-black-700);
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--bg-black-500);
+    transition: all 1s;
+}
+.nav-links a:hover::before {
+    width: 100%
 }
 .webshop-logo img {
     width: 70px;
@@ -144,17 +154,34 @@ body.loaded {
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-    margin-left: -2%;
+    margin-left: -35%;
     transition: transform 0.3s;
 }
 
-.login-text {
-    font-size: 18px;
-    color: var(--text-black-900);
-    text-align: center;
+.login {
     text-decoration: none;
+    text-transform: capitalize;
+    color: var(--text-black-900);
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
 }
-
+.login:hover{
+    color: var(--text-black-700);
+}
+.login::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--bg-black-500);
+    transition: all 1s;
+}
+.login:hover::before {
+    width: 100%
+}
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
     transition: transform 0.3s;
@@ -462,9 +489,8 @@ body.loaded {
     border-radius: 15px;
 }
 .prebuilt-pc-card:hover {
-    transform: scale(1.01);
     box-shadow: 0 4px 16px rgba(0,0,0,0.24);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: box-shadow 0.3s;
 }
 .prebuilt-pc-card h3 {
     font-size: 26px;
@@ -473,7 +499,11 @@ body.loaded {
     color: var(--text-black-900);
     text-align: center;
 }
-
+.prebuilt-pc-card h5 {
+    color: var(--text-black-700);
+    font-weight: 700;
+    font-size: 18px;
+}
 .prebuilt-pc-info {
     display: flex;
     justify-content: center;
@@ -490,6 +520,34 @@ body.loaded {
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+.buy-button {
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: var(--bg-black-500);
+    border: none;
+    margin-top: 10px;
+}
+.buy-button:hover {
+    background-color: var(--bg-black-600);
+    font-weight: 700;
+    transition: background-color 0.6s, color 0.6s;
+    cursor: pointer;
+}
+.specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.specs-list li {
+    color: var(--text-black-900);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.specs-list li span {
+    color: var(--text-black-700);
+    font-weight: 800;
 }
 /* Pc Builder */
 .pc-builder-container {
