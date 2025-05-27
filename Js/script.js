@@ -57,3 +57,12 @@ document.getElementById('wissel-icoon').onclick = function() {
         img.src = '../Foto/Logo-white.png';
     }
 };
+//specs menu
+document.querySelectorAll('.specs-menu').forEach(function(menu) {
+    const toggle = menu.querySelector('.specs-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+    }
+});
