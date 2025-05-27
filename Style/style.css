@@ -798,3 +798,152 @@ body.loaded {
 .total-amount-row .total-value {
     font-weight: bold;
 }
+/* contact page */
+section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    max-width: 550px;
+    margin: auto;
+    margin-top: 2em;
+}
+
+.sectionHeader{
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: var(--text-black-900);
+    margin-bottom: .5em;
+}
+
+.heading,.sub-heading{
+    margin-bottom: .5em;
+    font-weight: bold;
+    color: var(--text-black-700);
+}
+
+.heading{
+    font-size: 2.3em;
+    color: var(--bg-black-600);
+}
+
+.sub-heading{
+    text-align: left;
+}
+
+.contactForm{
+    display: grid;
+    gap: 3em;
+}
+
+form{
+    width: 100%;
+    margin-top: 3em;
+}
+
+.para{
+    color: var(--text-black-700);
+    font-size: 1.1rem;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.para2{
+    text-align: left;
+}
+
+.input{
+    width: 95%;
+    max-width: 700px;
+    border: none;
+    font-size: .9rem;
+    padding: 1em;
+    outline: none;
+    background-color: var(--bg-black-800);
+    color: var(--text-black-700);
+    border-radius: 10px;
+    border: 1px solid rgb(53, 53, 53);
+    margin-bottom: 1em;
+
+}
+
+.input:focus{
+    border: 1px solid var(--bg-black-600);
+}
+
+.input::placeholder{
+    text-transform: capitalize;
+}
+
+.submit{
+    background-color: var(--bg-black-600);
+    border: none;
+    color: var(--textColor);
+    font-weight: bold;
+    cursor: pointer;
+    width: 95%;
+}
+
+.map-container{
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.mapBg{
+    position: absolute;
+    background-color: var(--bg-black-600);
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 90%;
+    border-radius: 20px;
+}
+
+.map{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+}
+
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.contactMethod{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    text-align: left;
+    justify-content: space-evenly;
+}
+
+.method{
+    display: flex;
+    align-items: center;
+}
+
+.contactIcon{
+    font-size: 2rem;
+    color: var(--bg-black-600);
+    width: 70px;
+    margin-left: 5px;
+}
+/* responsiveness for contact page */
+@media screen and (min-width:800px) {
+    section{
+        max-width: 1100px;
+    }
+    .contactForm{
+        grid-template-columns: 1fr 1fr;
+    }   
+
+    .contactMethod{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
