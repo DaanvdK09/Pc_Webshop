@@ -2,21 +2,25 @@
 
 -- .tables
 
-SELECT * FROM GPU;
+SELECT * FROM Motherboard;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS CPU (
+-- CREATE TABLE IF NOT EXISTS Motherboard (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- core_count INTEGER NOT NULL,
-      -- thread_count INTEGER NOT NULL,
-      -- base_clock REAL NOT NULL,
-      -- boost_clock REAL NOT NULL,
-      -- tdp INTEGER NOT NULL,
       -- socket TEXT NOT NULL,
-      -- integrated_graphics TEXT NOT NULL,
+      -- chipset TEXT NOT NULL,
+      -- form_factor TEXT NOT NULL,
+      -- ram_slots INTEGER NOT NULL,
+      -- max_ram INTEGER NOT NULL,
+      -- ram_type TEXT NOT NULL,
+      -- expansion_slots INTEGER NOT NULL,
+      -- M_2_slots INTEGER NOT NULL,
+      -- SATA_ports INTEGER NOT NULL,
+      -- wifi BOOLEAN NOT NULL,
+      -- bluetooth BOOLEAN NOT NULL,
       -- image_url TEXT
 -- );
 
@@ -87,6 +91,43 @@ SELECT * FROM GPU;
       -- ('33', 'Ryzen 9 9950x3d', 'AMD', 800, 16, 32, 4.3, 5.7, 120, 'AM5', 'No', 'https://tweakers.net/i/2FvXgPSTAJuVjojvn5Ms7j_-mHg=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2007169916.jpeg?f=imagemediumplus'),
       -- ('34', 'Ryzen 5 9600x', 'AMD', 300, 6, 12, 3.9, 4.9, 65, 'AM5', 'Yes', 'https://m.media-amazon.com/images/I/61RfWUr4kvL.__AC_SX300_SY300_QL70_ML2_.jpg'),
       -- ('35', 'Ryzen 9700x', 'AMD', 400, 8, 16, 3.8, 4.8, 65, 'AM5', 'Yes', 'https://m.media-amazon.com/images/I/61F3ZChalyL._AC_SX522_.jpg');
+
+-- INSERT INTO Motherboard (id, name, manufacturer, price, socket, chipset, form_factor, ram_slots, max_ram, ram_type, expansion_slots, m_2_slots, sata_ports, wifi, bluetooth, image_url) VALUES
+      -- ('1', 'ASUS PRIME X870-P', 'ASUS', 199.99, 'AM5', 'X870', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'Wi-Fi 7', 'Yes', 'https://tweakers.net/i/ljizRMayTQF0pZcKwKFRlbBXjzw=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2006948150.jpeg?f=imagemediumplus'),
+      -- ('2', 'ASUS TUF GAMING X870-PLUS WIFI', 'ASUS', 289.99, 'AM5', 'X870', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 4, 6, 'Wi-Fi 7', 'Yes', 'https://tweakers.net/i/yC4v9Mk88MO4kApvggNzG2hlrsg=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2006948300.jpeg?f=imagemediumplus'),
+      -- ('3', 'ASRock X870 Pro RS', 'ASRock', 217.99, 'AM5', 'X870', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'No', 'No', 'https://tweakers.net/i/PzNzRn0hZaDl-oAGpJ75USUoYSQ=/fit-in/374x326/filters:fill(white):strip_exif()/i/2006966204.png?f=imagemediumplus'),
+      -- ('4', 'GIGABYTE X870 AORUS ELITE WIFI7', 'GIGABYTE', 269.99, 'AM5', 'X870', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 4, 6, 'Wi-Fi 7', 'Yes', 'https://tweakers.net/i/lQlxe8-8iQLGNu-ZatpjFmrZxFI=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2006943488.jpeg?f=imagemediumplus'),
+      -- ('5', 'ASRock B850 Steel Legend WiFi', 'ASRock', 205.99, 'AM5', 'B850', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 4, 4, 'Wi-Fi 7', 'Yes', 'https://tweakers.net/i/i_k2EQ8yytzegPOmTX6J6JtHym0=/i/2007217256.jpeg'),
+      -- ('6', 'ASUS TUF GAMING B650-PLUS WIFI', 'ASUS', 140.26, 'AM5', 'B650', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/V4hQ5s95n8EOtARL9PVHKCR--U4=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005408112.jpeg?f=imagemediumplus'),
+      -- ('7', 'MSI MAG B650 TOMAHAWK WIFI', 'MSI', 179.99, 'AM5', 'B650', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/zhDM4IPEpdViCrww3WH6Frfeyko=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005423960.png?f=imagemediumplus'),
+      -- ('8', 'ASUS ROG STRIX B650E-F GAMING WIFI', 'ASUS', 189.99, 'AM5', 'B650E', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 4, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/U6A2VWYkuBpr2PK4jUwJLHoLgb0=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005408192.jpeg?f=imagemediumplus'),
+      -- ('9', 'GIGABYTE B650 AORUS ELITE AX', 'GIGABYTE', 303.70, 'AM5', 'B650', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/MqbHxCTbEoRwuHtYiizgnikxEiM=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005403842.png?f=imagemediumplus'),
+      -- ('10', 'ASRock B650M-HDV/M.2', 'ASRock', 112.99, 'AM5', 'B650', 'Micro-ATX', 2, 64, 'DDR5', 'PCIe 4.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/RGj33ONeZBwosaxLHcIlUdpY0Xg=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005672562.png?f=imagemediumplus'),
+      -- ('11', 'ASUS ROG CROSSHAIR X670E HERO', 'ASUS', 1079.88, 'AM5', 'X670E', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/GopIiSW_7sWROa81mtVUxf7rbVE=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005375486.png?f=imagemediumplus'),
+      -- ('12', 'MSI MEG X670E GODLIKE', 'MSI', 229.99, 'AM5', 'X670E', 'E-ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/OoT04Ub6WIxWv7uZ4RYcpIWDYEw=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005397742.jpeg?f=imagemediumplus'),
+      -- ('13', 'GIGABYTE X670 AORUS ELITE AX', 'GIGABYTE', 279.99, 'AM5', 'X670', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 4, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/zf_XKjolua5hhBBkezc3OTPZ8jM=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005336308.png?f=imagemediumplus'),
+      -- ('14', 'ASRock X670E TAICHI', 'ASRock', 939.29, 'AM5', 'X670E', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 5, 8, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/QImb8yCNvySc4olsN-hwRf0ftq0=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005415258.jpeg?f=imagemediumplus'),
+      -- ('15', 'ASUS ROG STRIX X670E-E GAMING WIFI', 'ASUS', 568.10, 'AM5', 'X670E', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/WPi82avBA0j2LFuRK0dLwyTa4qA=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005713760.jpeg?f=imagemediumplus'),
+      -- ('16', 'MSI MPG B650 CARBON WIFI', 'MSI', 149.99, 'AM5', 'B650', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x16', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/RlareDnuvgKUSNhc8j1aOVyftK0=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005423972.png?f=imagemediumplus'),
+      -- ('17', 'ASUS PRIME B650M-A', 'ASUS', 207.00, 'AM5', 'B650', 'Micro-ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/gpXSZGyXyrcshjemwvnKFLSjSjQ=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005512226.jpeg?f=imagemediumplus'),
+      -- ('18', 'ASUS ROG MAXIMUS Z790 HERO', 'ASUS', 575.00, 'LGA 1700', 'Z790', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/VxsGt8pIV_ZFuEBIEUwbqLN4qSM=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005417558.jpeg?f=imagemediumplus'),
+      -- ('19', 'MSI MPG Z790 EDGE WIFI', 'MSI', 462.49, 'LGA 1700', 'Z790', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 4, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/WFnQej0rina1vrkIuiIJ7dsAzkQ=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005418344.png?f=imagemediumplus'),
+      -- ('20', 'GIGABYTE Z790 AORUS MASTER', 'GIGABYTE', 443.88, 'LGA 1700', 'Z790', 'E-ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/CMG9m2xNt7bw_Q2-CmjJFOiDFHY=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2006140604.jpeg?f=imagemediumplus'),
+      -- ('21', 'ASRock Z790 TAICHI', 'ASRock', 209.99, 'LGA 1700', 'Z790', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 5, 8, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/KHLyUyo_wmJhSV176sIa8lin75o=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005430064.jpeg?f=imagemediumplus'),
+      -- ('22', 'ASUS PRIME B760-PLUS', 'ASUS', 129.99, 'LGA 1700', 'B760', 'ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16, PCIe 3.0 x4', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/lLe4XpLRK-BzlTneatZqXH3O5qM=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005682894.png?f=imagemediumplus'),
+      -- ('23', 'MSI PRO B760M-A WIFI', 'MSI', 177.03, 'LGA 1700', 'B760', 'Micro-ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16, PCIe 3.0 x4', 2, 4, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/rEJUX2Rfwx4VB3LcDy7nyvYR9kg=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005637236.png?f=imagemediumplus'),
+      -- ('24', 'GIGABYTE B760M DS3H', 'GIGABYTE', 110.99, 'LGA 1700', 'B760', 'Micro-ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16, PCIe 3.0 x4', 1, 4, 'No', 'No', 'https://tweakers.net/i/9AauOhPhiVaBE9JFMDK0dWG1eZ8=/fit-in/374x326/filters:fill(white):strip_exif()/i/2005561448.png?f=imagemediumplus'),
+      -- ('25', 'ASRock B760M-HDV', 'ASRock', 90.00, 'LGA 1700', 'B760', 'Micro-ATX', 2, 64, 'DDR5', 'PCIe 4.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/AHEni201svMsKDHYAiMM5CH2Yc4=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2006268852.jpeg?f=imagemediumplus'),
+      -- ('26', 'ASUS ROG STRIX B670-I GAMING WIFI', 'ASUS', 229.99, 'LGA 1700', 'H670', 'Mini-ITX', 2, 64, 'DDR5', 'PCIe 4.0 x16', 2, 4, 'Wi-Fi 6', 'Yes', 'https://www.megekko.nl/productimg/1075389/nw/1_ASUS-ROG-STRIX-B760-I-GAMING-WIFI-moederbord.jpg'),
+      -- ('27', 'MSI MAG H670 TOMAHAWK WIFI', 'MSI', 199.99, 'LGA 1700', 'H670', 'ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16, PCIe 3.0 x4', 3, 6, 'Wi-Fi 6', 'Yes', 'https://tweakers.net/i/Bt8YV_l2KFg8DHaXAKosr3fSEnc=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004981444.jpeg?f=imagemediumplus'),
+      -- ('28', 'GIGABYTE B670M DS3H', 'GIGABYTE', 143.85, 'LGA 1700', 'H670', 'Micro-ATX', 4, 128, 'DDR5', 'PCIe 4.0 x16, PCIe 3.0 x4', 1, 4, 'No', 'No', 'https://www.megekko.nl/productimg/1086327/nw/1_Gigabyte-B760M-DS3H-moederbord.jpg'),
+      -- ('29', 'ASRock H670M-ITX/ac', 'ASRock', 134.90, 'LGA 1700', 'H670', 'Mini-ITX', 2, 64, 'DDR5', 'PCIe 4.0 x16', 1, 4, 'Wi-Fi 5', 'Yes', 'https://tweakers.net/i/C0d2VA4Da4eXkXK08t_Z1woPwec=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004875920.jpeg?f=imagemediumplus'),
+      -- ('30', 'ASUS PRIME H510M-A', 'ASUS', 66.99, 'LGA 1200', 'H510', 'Micro-ATX', 2, 64, 'DDR4', 'PCIe 3.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/pb1bFJx6GHCmRD4uCgO5Q2K2l8o=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004223018.jpeg?f=imagemediumplus'),
+      -- ('31', 'MSI PRO H510M-B', 'MSI', 101.99, 'LGA 1200', 'H510', 'Micro-ATX', 2, 64, 'DDR4', 'PCIe 3.0 x16', 1, 4, 'No', 'No', 'https://asset.msi.com/resize/image/global/product/product_1671522651ca338465c9ac33db0a150980fe04ad3b.png62405b38c58fe0f07fcef2367d8a9ba1/600.png'),
+      -- ('32', 'GIGABYTE H510M H', 'GIGABYTE', 63.99, 'LGA 1200', 'H510', 'Micro-ATX', 2, 64, 'DDR4', 'PCIe 3.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/UBratEnfKO4nYfY15ehVPSeeUSU=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2005825196.jpeg?f=imagemediumplus'),
+      -- ('33', 'ASRock H510M-HVS', 'ASRock', 69.99, 'LGA 1200', 'H510', 'Micro-ATX', 2, 64, 'DDR4', 'PCIe 3.0 x16', 1, 4, 'No', 'No', 'https://tweakers.net/i/yOmPvGRYNWdggVa-PeXQhb6ss58=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004278110.jpeg?f=imagemediumplus'),
+      -- ('34', 'ASUS ROG STRIX Z690-E GAMING WIFI', 'ASUS', 261.03, 'LGA 1700', 'Z690', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/KmxAtyWGUCbiatiSmDy0QP3buyI=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004752420.jpeg?f=imagemediumplus'),
+      -- ('35', 'MSI MPG Z690 CARBON WIFI', 'MSI', 209.99, 'LGA 1700', 'Z690', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 4, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/reiMcQcvIyyELQyxdRbyx28Y5no=/fit-in/374x326/filters:fill(white):strip_exif()/i/2004744372.png?f=imagemediumplus');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
