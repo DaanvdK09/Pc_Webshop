@@ -26,7 +26,7 @@ dayNight.addEventListener("click", () => {
     dayNight.querySelector("i").classList.toggle("fa-moon");
     dayNight.querySelector("i").classList.toggle("fa-sun");
     document.body.classList.toggle("light");
-
+    updateLogo(); // Updates logo bases on the current mode
 
     if (document.body.classList.contains("light")) {
         localStorage.setItem("lightMode", "enabled");

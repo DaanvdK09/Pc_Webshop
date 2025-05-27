@@ -14,7 +14,9 @@
 
 body.light {
     --bg-black-900: #f2f2fc;
-    --bg-black-800: #d5cbc6;
+    --bg-black-800: #e6e6fa;
+    --bg-black-600: #4A90E2;
+    --bg-black-500: #87CEFA;
     --bg-black-100:#fdf9ff;
     --bg-black-50:#e8dfec;
     --text-black-900:#082567;

@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
+    updateLogo();
 });
 
 const loginStatus = document.getElementById("login-status");
@@ -49,14 +50,14 @@ if (logoutBtn) {
 // Initialize login on page load
 setLoginState(localStorage.getItem('isLoggedIn') === 'true');
 //logo switch
-document.getElementById('wissel-icoon').onclick = function() {
+function updateLogo() {
     var img = document.getElementById('wissel-img');
-    if (img.src.includes('Logo-white.png')) {
+    if (document.body.classList.contains('light')) {
         img.src = '../Foto/Logo-black.png';
     } else {
         img.src = '../Foto/Logo-white.png';
     }
-};
+}
 //specs menu
 document.querySelectorAll('.specs-menu').forEach(function(menu) {
     const toggle = menu.querySelector('.specs-toggle');
