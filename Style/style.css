@@ -590,7 +590,7 @@ body.loaded {
 
 .table {
     margin-top: 5%;
-    width: 160%;
+    width: 150%;
     margin-left: -20%;
     border-collapse: collapse;
     background: var(--bg-black-50);

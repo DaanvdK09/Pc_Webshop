@@ -83,6 +83,7 @@ def get_gpus():
     conn.close()
     return jsonify(gpus)
 
+# CPU API
 @app.route('/api/cpus', methods=['GET'])
 def get_cpus():
     conn = sqlite3.connect('instance/pc-parts.db')
@@ -106,6 +107,27 @@ def get_cpus():
     ]
     conn.close()
     return jsonify(cpus)
+
+# Motherboard API
+@app.route('/api/motherboards', methods=['GET'])
+def get_motherboards():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor FROM Motherboard")
+    motherboards = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'socket': row[4],
+            'chipset': row[5],
+            'form_factor': row[6],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(motherboards)
 
 if __name__ == '__main__':
     app.run(debug=True)
