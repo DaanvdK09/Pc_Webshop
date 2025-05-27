@@ -454,6 +454,7 @@ body.loaded {
 #logout-btn i {
     margin-right: 5px;
 }
+
 /* Prebuilt PC */
 .prebuilt-pc-container {
     color: var(--text-black-900);
@@ -517,6 +518,7 @@ body.loaded {
     color: var(--text-black-700);
     font-size: 16px;
 }
+
 .prebuilt-pc-card img {
     width: 60%;
     height: auto;
@@ -749,7 +751,7 @@ body.loaded {
     background-color: #b71c1c !important;
 }
 
-.remove-selected-btn, .remove-selected-cpu-btn {
+.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn {
     cursor:pointer;
     display:inline-block;
     margin-top:8px;
@@ -763,7 +765,7 @@ body.loaded {
     display:inline-block;
 }
 
-.remove-selected-btn:hover, .remove-selected-cpu-btn:hover {
+.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-slected-motherboard-btn:hover {
     background-color: #b71c1c;
 }
 
