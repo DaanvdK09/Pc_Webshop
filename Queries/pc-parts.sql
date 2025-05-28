@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM RAM;
+SELECT * FROM Motherboard;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS RAM (

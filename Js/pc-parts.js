@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedGpu = null;
     let selectedCpu = null;
     let selectedMotherboard = null;
+    let selectedRam = null;
 
     // Create and insert the selected table
     selectedGpuDiv = document.createElement('div');
@@ -16,13 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate total TDP
         const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
         const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
-        const totalTdp = cpuTdp + gpuTdp;
+        const motherboardTdp = selectedMotherboard && selectedMotherboard.tdp ? Number(selectedMotherboard.tdp) : 0;
+        const totalTdp = cpuTdp + gpuTdp + motherboardTdp;
 
         // Calculate total price
         const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
         const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
         const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
-        const totalPrice = cpuPrice + gpuPrice + motherboardPrice;
+        const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
+        const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice;
 
         // Power usage meter
         const powerMeterHtml = `
@@ -57,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         </td>
                         <td class="${selectedCpu ? '' : 'none-selected'}">
-                            ${selectedCpu ? `€${selectedCpu.price}.00` : '-'}
+                            ${selectedCpu ? `€${selectedCpu.price}` : '-'}
                         </td>
                         <td class="${selectedCpu ? '' : 'none-selected'}">
                             ${
@@ -80,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         </td>
                         <td class="${selectedGpu ? '' : 'none-selected'}">
-                            ${selectedGpu ? `€${selectedGpu.price}.00` : '-'}
+                            ${selectedGpu ? `€${selectedGpu.price}` : '-'}
                         </td>
                         <td class="${selectedGpu ? '' : 'none-selected'}">
                             ${
@@ -103,13 +106,36 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         </td>
                         <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                            ${selectedMotherboard ? `€${selectedMotherboard.price}.00` : '-'}
+                            ${selectedMotherboard ? `€${selectedMotherboard.price}` : '-'}
                         </td>
                         <td class="${selectedMotherboard ? '' : 'none-selected'}">
                             ${
                                 selectedMotherboard
                                 ? `<a class="remove-selected-motherboard-btn">Remove</a>`
                                 : 'No Motherboard selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>
+                            ${
+                                selectedRam
+                                ? `<img src="${selectedRam.image_url}" alt="${selectedRam.name}" class="img">
+                                <span>${selectedRam.name}</span>`
+                                : `<div class="add-button" id="add-ram-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add RAM</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedRam ? '' : 'none-selected'}">
+                            ${selectedRam ? `€${selectedRam.price}` : '-'}
+                        </td>
+                        <td class="${selectedRam ? '' : 'none-selected'}">
+                            ${
+                                selectedRam
+                                ? `<a class="remove-selected-ram-btn">Remove</a>`
+                                : 'No RAM selected'
                             }
                         </td>
                     </tr>
@@ -154,6 +180,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        if (selectedRam) {
+            const removeRamBtn = selectedGpuDiv.querySelector('.remove-selected-ram-btn');
+            if (removeRamBtn) {
+                removeRamBtn.addEventListener('click', function() {
+                    selectedRam = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
         // Add handlers for add buttons
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
@@ -181,6 +217,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMotherboardSelection();
             });
         }
+
+        const addRamBtn = selectedGpuDiv.querySelector('#add-ram-btn');
+        if (addRamBtn) {
+            addRamBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showRamSelection();
+            });
+        }
     }
 
     function showGpuSelection() {
@@ -188,9 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const gpuTable = document.getElementById('gpu-table');
         const cpuTable = document.getElementById('cpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
+        const ramTable = document.getElementById('ram-table');
         gpuTable.style.display = "table";
         cpuTable.style.display = "none";
         motherboardTable.style.display = "none";
+        ramTable.style.display = "none";
         fetch('http://localhost:5000/api/gpus')
             .then(response => response.json())
             .then(gpus => {
@@ -207,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${gpu.memory_size} GB</td>
                         <td>${gpu.core_clock} MHz</td>
                         <td>${gpu.boost_clock} MHz</td>
-                        <td>€${gpu.manufacturer === "AMD" ? gpu.price + ".00" : gpu.price}</td>
+                        <td>€${gpu.price}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -232,9 +279,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
+        const ramTable = document.getElementById('ram-table');
         cpuTable.style.display = "table";
         gpuTable.style.display = "none";
         motherboardTable.style.display = "none";
+        ramTable.style.display = "none";
         fetch('http://localhost:5000/api/cpus')
             .then(response => response.json())
             .then(cpus => {
@@ -251,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${cpu.core_count}</td>
                         <td>${cpu.thread_count}</td>
                         <td>${cpu.socket}</td>
-                        <td>€${cpu.price}.00</td>
+                        <td>€${cpu.price}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -276,9 +325,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const motherboardTable = document.getElementById('motherboard-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
+        const ramTable = document.getElementById('ram-table');
         motherboardTable.style.display = "table";
         cpuTable.style.display = "none";
         gpuTable.style.display = "none";
+        ramTable.style.display = "none";
         fetch('http://localhost:5000/api/motherboards')
             .then(response => response.json())
             .then(motherboards => {
@@ -295,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${mb.socket}</td>
                         <td>${mb.chipset}</td>
                         <td>${mb.form_factor}</td>
-                        <td>€${mb.price}.00</td>
+                        <td>€${mb.price}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -307,6 +358,52 @@ document.addEventListener('DOMContentLoaded', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedMotherboard = motherboards[idx];
                         motherboardTable.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
+                });
+            });
+    }
+
+    function showRamSelection() {
+        selectedGpuDiv.style.display = "none";
+        const ramTable = document.getElementById('ram-table');
+        const cpuTable = document.getElementById('cpu-table');
+        const gpuTable = document.getElementById('gpu-table');
+        const motherboardTable = document.getElementById('motherboard-table');
+        ramTable.style.display = "table";
+        cpuTable.style.display = "none";
+        gpuTable.style.display = "none";
+        motherboardTable.style.display = "none";
+        fetch('http://localhost:5000/api/rams')
+            .then(response => response.json())
+            .then(rams => {
+                const tbody = ramTable.querySelector('tbody');
+                tbody.innerHTML = "";
+                rams.forEach((ram, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <img src="${ram.image_url}" alt="${ram.name}" class="img">
+                            <span>${ram.name}</span>
+                        </td>
+                        <td>${ram.manufacturer}</td>
+                        <td>${ram.capacity} GB</td>
+                        <td>${ram.ram_speed} MHz</td>
+                        <td>${ram.ram_type}</td>
+                        <td>€${ram.price}</td>
+                        <td><a class="select-btn" data-idx="${idx}">Add</a></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                builderTitle.textContent = "Add RAM";
+                // Add event listeners
+                tbody.querySelectorAll('.select-btn').forEach((btn) => {
+                    btn.addEventListener('click', function() {
+                        const idx = btn.getAttribute('data-idx');
+                        selectedRam = rams[idx];
+                        ramTable.style.display = "none";
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();

@@ -129,5 +129,26 @@ def get_motherboards():
     conn.close()
     return jsonify(motherboards)
 
+# RAM API
+@app.route('/api/rams', methods=['GET'])
+def get_rams():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, ram_speed, ram_type FROM RAM")
+    rams = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'capacity': row[4],
+            'ram_speed': row[5],
+            'ram_type': row[6]
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(rams)
+
 if __name__ == '__main__':
     app.run(debug=True)
