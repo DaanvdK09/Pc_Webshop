@@ -146,7 +146,7 @@ body.loaded {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px
+    margin-right: 50px;
 }
 
 .login-icon {
@@ -198,7 +198,8 @@ body.loaded {
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-    margin-left: 18px;
+    margin-left: 0px;
+    margin-right: 50px;
 
 }
 .cart-icon i {
