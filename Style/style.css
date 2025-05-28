@@ -156,7 +156,7 @@ body.loaded {
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-    margin-left: -35%;
+    margin-left: -42%;
     transition: transform 0.3s;
 }
 
@@ -388,6 +388,7 @@ body.loaded {
 .sidebar-title::before {
     content: '';
     height: 4px;
+    border-radius: 10px;
     width: 50px;
     background: var(--text-black-900);
     position: absolute;
@@ -398,6 +399,7 @@ body.loaded {
 .sidebar-title::after {
     content: '';
     height: 4px;
+    border-radius: 10px;
     width: 25px;
     background: var(--text-black-900);
     position: absolute;
