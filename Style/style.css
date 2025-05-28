@@ -110,7 +110,7 @@ body.loaded {
     text-decoration: none;
     text-transform: capitalize;
     color: var(--text-black-900);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     padding: 0 10px;
     margin: 0 30px;
@@ -123,10 +123,10 @@ body.loaded {
 .nav-links a::before {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     left: 0;
     width: 0%;
-    height: 3px;
+    height: 2px;
     background-color: var(--bg-black-500);
     transition: all 1s;
 }
@@ -164,7 +164,7 @@ body.loaded {
     text-decoration: none;
     text-transform: capitalize;
     color: var(--text-black-900);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     position: relative;
 }
@@ -174,10 +174,10 @@ body.loaded {
 .login::before {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     left: 0;
     width: 0%;
-    height: 3px;
+    height: 2px;
     background-color: var(--bg-black-500);
     transition: all 1s;
 }
