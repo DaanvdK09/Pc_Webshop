@@ -179,18 +179,16 @@ body.loaded {
     width: 0%;
     height: 2px;
     background-color: var(--bg-black-500);
-    transition: all 1s;
+    transition: all 0.5s;
 }
 .login:hover::before {
     width: 100%
 }
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
-    transition: transform 0.3s;
 }
 
 #login-link:hover #login-status {
-    transform: scale(1.1);
     color: var(--text-black-700);
 }
 
