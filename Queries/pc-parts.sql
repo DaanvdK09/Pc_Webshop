@@ -2,25 +2,18 @@
 
 -- .tables
 
-SELECT * FROM Motherboard;
+SELECT * FROM RAM;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS Motherboard (
+-- CREATE TABLE IF NOT EXISTS RAM (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- socket TEXT NOT NULL,
-      -- chipset TEXT NOT NULL,
-      -- form_factor TEXT NOT NULL,
-      -- ram_slots INTEGER NOT NULL,
-      -- max_ram INTEGER NOT NULL,
+      -- ram_speed INTEGER NOT NULL,
       -- ram_type TEXT NOT NULL,
-      -- expansion_slots INTEGER NOT NULL,
-      -- M_2_slots INTEGER NOT NULL,
-      -- SATA_ports INTEGER NOT NULL,
-      -- wifi BOOLEAN NOT NULL,
-      -- bluetooth BOOLEAN NOT NULL,
+      -- ram_slots INTEGER NOT NULL,
+      -- capacity INTEGER NOT NULL,
       -- image_url TEXT
 -- );
 
@@ -129,6 +122,55 @@ SELECT * FROM Motherboard;
       -- ('34', 'ASUS ROG STRIX Z690-E GAMING WIFI', 'ASUS', 261.03, 'LGA 1700', 'Z690', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 5, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/KmxAtyWGUCbiatiSmDy0QP3buyI=/fit-in/374x326/filters:strip_icc():fill(white):strip_exif()/i/2004752420.jpeg?f=imagemediumplus'),
       -- ('35', 'MSI MPG Z690 CARBON WIFI', 'MSI', 209.99, 'LGA 1700', 'Z690', 'ATX', 4, 128, 'DDR5', 'PCIe 5.0 x16, PCIe 4.0 x4', 4, 6, 'Wi-Fi 6E', 'Yes', 'https://tweakers.net/i/reiMcQcvIyyELQyxdRbyx28Y5no=/fit-in/374x326/filters:fill(white):strip_exif()/i/2004744372.png?f=imagemediumplus');
 
+-- INSERT INTO RAM (id, name, manufacturer, price, ram_speed, ram_type, ram_slots, capacity, cas_latency) VALUES
+    -- ('1', 'Viper Steel DDR4-3600 C18', 'Patriot', 170, 3600, 'DDR4', 2, 16, 18),
+    -- ('2', 'Trident Z5 RGB DDR5-6400 C32', 'G.Skill', 300, 6400, 'DDR5', 2, 32, 32),
+    -- ('3', 'Xtreem ARGB DDR4-3600', 'TeamGroup', 170, 3600, 'DDR4', 2, 16, 18),
+    -- ('4', 'Viper Steel DDR4-4400', 'Patriot', 200, 4400, 'DDR4', 2, 16, 19),
+    -- ('5', 'Corsair Dominator Platinum RGB', 'Corsair', 250, 3200, 'DDR4', 2, 32, 16),
+    -- ('6', 'Corsair Vengeance DDR5', 'Corsair', 220, 5200, 'DDR5', 2, 32, 38),
+    -- ('7', 'Crucial DDR5-4800 CL40', 'Crucial', 200, 4800, 'DDR5', 2, 32, 40),
+    -- ('8', 'Crucial DDR5-5600 CL46', 'Crucial', 230, 5600, 'DDR5', 2, 32, 46),
+    -- ('9', 'G.Skill Trident Z Neo DDR4-3600', 'G.Skill', 180, 3600, 'DDR4', 2, 16, 16),
+    -- ('10', 'G.Skill Ripjaws V DDR4-3200', 'G.Skill', 150, 3200, 'DDR4', 2, 16, 16),
+    -- ('11', 'Kingston HyperX Fury DDR4-3200', 'Kingston', 140, 3200, 'DDR4', 2, 16, 16),
+    -- ('12', 'Corsair Vengeance LPX DDR4-3000', 'Corsair', 130, 3000, 'DDR4', 2, 16, 15),
+    -- ('13', 'TeamGroup T-Force Vulcan Z DDR4-3000', 'TeamGroup', 120, 3000, 'DDR4', 2, 16, 16),
+    -- ('14', 'ADATA XPG Spectrix D60G DDR4-3200', 'ADATA', 160, 3200, 'DDR4', 2, 16, 16),
+    -- ('15', 'Ballistix Sport LT DDR4-3200', 'Crucial', 145, 3200, 'DDR4', 2, 16, 16),
+    -- ('16', 'OLOy WarHawk RGB DDR4-3600', 'OLOy', 155, 3600, 'DDR4', 2, 16, 18),
+    -- ('17', 'Silicon Power XPOWER Turbine DDR4-3200', 'Silicon Power', 135, 3200, 'DDR4', 2, 16, 16),
+    -- ('18', 'Thermaltake TOUGHRAM RGB DDR4-3600', 'Thermaltake', 175, 3600, 'DDR4', 2, 16, 18),
+    -- ('19', 'T-Force Delta RGB DDR4-3200', 'TeamGroup', 150, 3200, 'DDR4', 2, 16, 16),
+    -- ('20', 'Corsair Vengeance RGB Pro DDR4-3200', 'Corsair', 165, 3200, 'DDR4', 2, 16, 16),
+    -- ('21', 'G.Skill Trident Z Royal DDR4-3600', 'G.Skill', 200, 3600, 'DDR4', 2, 16, 16),
+    -- ('22', 'Kingston HyperX Predator DDR4-3200', 'Kingston', 170, 3200, 'DDR4', 2, 16, 16),
+    -- ('23', 'Patriot Viper 4 DDR4-3400', 'Patriot', 160, 3400, 'DDR4', 2, 16, 16),
+    -- ('24', 'Silicon Power Gaming DDR4-3000', 'Silicon Power', 130, 3000, 'DDR4', 2, 16, 16),
+    -- ('25', 'TeamGroup T-Force Dark Za DDR4-3200', 'TeamGroup', 140, 3200, 'DDR4', 2, 16, 16),
+    -- ('26', 'Thermaltake TOUGHRAM Z-ONE DDR4-3200', 'Thermaltake', 150, 3200, 'DDR4', 2, 16, 16),
+    -- ('27', 'G.Skill Ripjaws V DDR4-2400', 'G.Skill', 110, 2400, 'DDR4', 2, 16, 15),
+    -- ('28', 'Kingston ValueRAM DDR4-2666', 'Kingston', 115, 2666, 'DDR4', 2, 16, 19),
+    -- ('29', 'Patriot Signature Line DDR4-2400', 'Patriot', 105, 2400, 'DDR4', 2, 16, 17),
+    -- ('30', 'Silicon Power SP016GXLZU240BD2', 'Silicon Power', 100, 2400, 'DDR4', 2, 16, 16),
+    -- ('31', 'TeamGroup Elite DDR4-2400', 'TeamGroup', 105, 2400, 'DDR4', 2, 16, 16),
+    -- ('32', 'Thermaltake Lite DDR4-2400', 'Thermaltake', 110, 2400, 'DDR4', 2, 16, 16),
+    -- ('33', 'XPG Z1 DDR4-2400', 'ADATA', 110, 2400, 'DDR4', 2, 16, 16),
+    -- ('34', 'Corsair Vengeance DDR5-5200', 'Corsair', 240, 5200, 'DDR5', 2, 32, 38),
+    -- ('35', 'G.Skill Trident Z5 DDR5-6000', 'G.Skill', 280, 6000, 'DDR5', 2, 32, 36),
+    -- ('36', 'Kingston Fury Beast DDR5-4800', 'Kingston', 210, 4800, 'DDR5', 2, 32, 40),
+    -- ('37', 'Patriot Viper Venom DDR5-5200', 'Patriot', 250, 5200, 'DDR5', 2, 32, 38),
+    -- ('38', 'TeamGroup T-Force Vulcan Z DDR5-5600', 'TeamGroup', 260, 5600, 'DDR5', 2, 32, 40),
+    -- ('39', 'ADATA XPG Lancer DDR5-5200', 'ADATA', 245, 5200, 'DDR5', 2, 32, 38),
+    -- ('40', 'Silicon Power XPOWER Zenith DDR5-6000', 'Silicon Power', 290, 6000, 'DDR5', 2, 32, 36),
+    -- ('41', 'Thermaltake TOUGHRAM RGB DDR5-5600', 'Thermaltake', 270, 5600, 'DDR5', 2, 32, 40),
+    -- ('42', 'V-Color Xtreem DDR5-6400', 'V-Color', 310, 6400, 'DDR5', 2, 32, 32),
+    -- ('43', 'G.Skill Trident Z5 Neo DDR5-6000', 'G.Skill', 300, 6000, 'DDR5', 2, 32, 30),
+    -- ('44', 'Corsair Dominator Platinum RGB DDR5-6000', 'Corsair', 320, 6000, 'DDR5', 2, 32, 30),
+    -- ('45', 'Kingston Fury Renegade DDR5-6000', 'Kingston', 310, 6000, 'DDR5', 2, 32, 30),
+    -- ('46', 'Patriot Viper Steel DDR5-6000', 'Patriot', 290, 6000, 'DDR5', 2, 32, 30),
+    -- ('47', 'TeamGroup T-Force Xtreem DDR5-6000', 'TeamGroup', 305, 6000, 'DDR5', 2, 32, 30);
+
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
 
@@ -136,4 +178,4 @@ SELECT * FROM Motherboard;
 -- UPDATE GPU SET boost_clock ='2602' WHERE id = 5;
 
 -- Add new column
--- ALTER TABLE GPU ADD COLUMN image_url TEXT;
+-- ALTER TABLE RAM ADD COLUMN CAS_Latency TEXT;
