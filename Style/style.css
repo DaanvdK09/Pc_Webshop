@@ -754,7 +754,7 @@ body.loaded {
     background-color: #b71c1c !important;
 }
 
-.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn {
+.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn, .remove-selected-ram-btn {
     cursor:pointer;
     display:inline-block;
     margin-top:8px;
@@ -768,7 +768,7 @@ body.loaded {
     display:inline-block;
 }
 
-.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-slected-motherboard-btn:hover {
+.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-slected-motherboard-btn:hover, .remove-selected-btn:hover {
     background-color: #b71c1c;
 }
 
