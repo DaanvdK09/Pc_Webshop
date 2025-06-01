@@ -85,6 +85,16 @@ body.loaded {
     flex: 0 0 100%;
     max-width: 100%;
 }
+footer {
+    text-align: center;
+    padding: 1.8rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-black-700);
+    background-color: var(--bg-black-100);
+    user-select: none;
+    border-top: 1px solid #222;
+    margin-bottom: 0;
+}
 /* Navbar */
 .navbar{
     overflow: hidden;
@@ -307,17 +317,22 @@ body.loaded {
 .go-button {
     border-radius: 25px;
     padding: 5px 10px;
-    background-color: var(--bg-black-500);
+    background-color: var(--bg-black-550);
     border: none;
     margin-top: 10px;
 }
 .go-button:hover {
     background-color: var(--bg-black-600);
-    font-weight: 700;
+    font-weight: 600;
     transition: background-color 0.6s, color 0.6s;
     cursor: pointer;
 }
-
+.home-container h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--text-black-900);
+}
 /* Login */
 .login-container {
     max-width: 400px;
@@ -927,7 +942,7 @@ form{
     background-color: var(--bg-black-800);
     color: var(--text-black-700);
     border-radius: 10px;
-    border: 1px solid rgb(53, 53, 53);
+    border: 1px solid rgb(43, 43, 43);
     margin-bottom: 1em;
 
 }
@@ -1142,6 +1157,10 @@ form{
   .content-text {
     flex: 1 1 320px;
   }
+  .content-text a:hover {
+    color: var(--bg-black-600);
+    text-decoration: underline;
+  }
   .content-image {
     flex: 1 1 320px;
     max-width: 320px;
@@ -1173,11 +1192,11 @@ form{
   .contact-section p {
     font-size: 1rem;
     margin-bottom: 1.2rem;
-    color: #999;
+    color: var(--text-black-700);
   }
   .btn-contact {
-    background-color: #4a90e2;
-    color: white;
+    background-color: var(--bg-black-550);
+    color: var(--text-black-700);
     padding: 0.65rem 1.7rem;
     font-size: 1.05rem;
     border-radius: 25px;
@@ -1191,20 +1210,13 @@ form{
   }
   .btn-contact:hover,
   .btn-contact:focus {
-    background-color: #1c5db6;
+    background-color: var(--bg-black-600);
     outline: none;
     text-decoration: none;
+    color: var(--text-black-900);
   }
 
-  footer {
-    text-align: center;
-    padding: 1.8rem 1rem;
-    font-size: 0.9rem;
-    color: #555;
-    background-color: #0a0a0a;
-    user-select: none;
-    border-top: 1px solid #222;
-  }
+
 
   /* Animations */
   @keyframes fadeUp {
