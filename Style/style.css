@@ -277,6 +277,47 @@ body.loaded {
     margin-top: 30px;
 }
 
+.bestsellers-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    width: 100%;
+    margin: auto;
+}
+
+.bestseller-card {
+    flex: 0 0 30%;
+    max-width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+    background: var(--bg-black-800);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bestseller-card img {
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.go-button {
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: var(--bg-black-500);
+    border: none;
+    margin-top: 10px;
+}
+.go-button:hover {
+    background-color: var(--bg-black-600);
+    font-weight: 700;
+    transition: background-color 0.6s, color 0.6s;
+    cursor: pointer;
+}
+
 /* Login */
 .login-container {
     max-width: 400px;
@@ -464,17 +505,20 @@ body.loaded {
     width: 100%;
     margin: auto;
 }
+
 .prebuilt-pc-title  {
     font-size: 1.3rem;
     font-weight: 900;
     margin-top: 25px;
 }
+
 .prebuilt-pc-sub-title {
     font-size: 1.1rem;
     font-weight: 500;
     margin-top: 10px;
     color: var(--text-black-700);
 }
+
 .prebuilt-pc-content {
     flex: 0 0 100%;
     max-width: 100%;
@@ -484,6 +528,7 @@ body.loaded {
     align-items: center;
     padding-left: 2%;
 }
+
 .prebuilt-pc-card {
     flex: 0 0 50%;
     max-width: 50%;
@@ -494,10 +539,12 @@ body.loaded {
     padding: 20px;
     border-radius: 15px;
 }
+
 .prebuilt-pc-card:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.24);
     transition: box-shadow 0.3s;
 }
+
 .prebuilt-pc-card h3 {
     font-size: 26px;
     margin-bottom: 10px;
@@ -505,11 +552,13 @@ body.loaded {
     color: var(--text-black-900);
     text-align: center;
 }
+
 .prebuilt-pc-card h5 {
     color: var(--text-black-700);
     font-weight: 700;
     font-size: 18px;
 }
+
 .prebuilt-pc-info {
     display: flex;
     justify-content: center;
@@ -528,6 +577,7 @@ body.loaded {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
 .buy-button {
     border-radius: 25px;
     padding: 5px 10px;
@@ -535,6 +585,7 @@ body.loaded {
     border: none;
     margin-top: 10px;
 }
+
 .buy-button:hover {
     background-color: var(--bg-black-600);
     font-weight: 700;
@@ -620,6 +671,14 @@ body.loaded {
 
 .add-button:hover {
     background-color: green;
+}
+
+.add-button a {
+    color: var(--text-black-900);
+}
+
+.add-button:hover a {
+    color: var(--text-black-900);
 }
 
 .parts-list {
