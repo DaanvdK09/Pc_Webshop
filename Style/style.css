@@ -593,6 +593,38 @@ footer {
     margin-bottom: 10px;
 }
 
+.special-pc-info {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 30px;
+    padding-bottom: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-black-600) var(--bg-black-100);
+}
+
+.special-pc-info .prebuilt-pc-card {
+    flex: 0 0 320px;
+    max-width: 320px;
+    min-width: 280px;
+}
+
+.special-pc-info::-webkit-scrollbar {
+    height: 10px;
+}
+
+.special-pc-info::-webkit-scrollbar-thumb {
+    background: var(--bg-black-600);
+    border-radius: 8px;
+}
+
+.special-pc-info::-webkit-scrollbar-track {
+    background: var(--bg-black-100);
+    border-radius: 8px;
+}
+
 .buy-button {
     border-radius: 25px;
     padding: 5px 10px;
