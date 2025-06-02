@@ -2,18 +2,19 @@
 
 -- .tables
 
-SELECT * FROM RAM;
+SELECT * FROM SSD;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS RAM (
+-- CREATE TABLE IF NOT EXISTS SSD (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- ram_speed INTEGER NOT NULL,
-      -- ram_type TEXT NOT NULL,
-      -- ram_slots INTEGER NOT NULL,
       -- capacity INTEGER NOT NULL,
+      -- form_factor TEXT NOT NULL,
+      -- interface TEXT NOT NULL,
+      -- read_speed INTEGER NOT NULL,
+      -- write_speed INTEGER NOT NULL,
       -- image_url TEXT
 -- );
 
@@ -170,6 +171,9 @@ SELECT * FROM RAM;
     -- ('45', 'Kingston Fury Renegade DDR5-6000', 'Kingston', 310, 6000, 'DDR5', 2, 32, 30),
     -- ('46', 'Patriot Viper Steel DDR5-6000', 'Patriot', 290, 6000, 'DDR5', 2, 32, 30),
     -- ('47', 'TeamGroup T-Force Xtreem DDR5-6000', 'TeamGroup', 305, 6000, 'DDR5', 2, 32, 30);
+
+INSERT INTO SSD (id, name, manufacturer, price, capacity, read_speed, write_speed, form_factor, interface, image_url) VALUES
+    
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');

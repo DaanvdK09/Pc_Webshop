@@ -706,7 +706,7 @@ footer {
 }
 
 .add-button {
-    background-color: rgb(0, 173, 0);
+    background-color: var(--bg-black-600);
     color: var(--text-black-900);
     padding: 10% 5%;
     border-radius: 5px;
@@ -717,7 +717,7 @@ footer {
 }
 
 .add-button:hover {
-    background-color: green;
+    background-color: var(--bg-black-550);
 }
 
 .add-button a {
@@ -837,7 +837,7 @@ footer {
     cursor:pointer;
     display:inline-block;
     margin-top:8px;
-    background-color: rgb(0, 173, 0);
+    background-color: var(--bg-black-600);
     color: var(--text-black-900);
     font-weight:bold;
     padding: 15% 25%;
@@ -848,7 +848,7 @@ footer {
 }
 
 .select-btn:hover {
-    background-color: green;
+    background-color: var(--bg-black-550);
 }
 
 .add-button.remove {
@@ -1247,7 +1247,6 @@ form{
     text-decoration: none;
     color: var(--text-black-900);
   }
-
 
 
   /* Animations */
