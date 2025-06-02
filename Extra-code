@@ -41,5 +41,106 @@
     transition: underline 2s;
     text-decoration: underline;
 }
+/*
+<body>
+    <main class="container">
+<!-------------------------------------------------------------------What do want to use the pc for?----------------------------------------------------------------------------->
+  <section>
+    <h2>Choose Your Use Case</h2>
+    <div class="content-row">
+      <div class="content-text">
+        <p class="use-case-text">	
+          Identify what you primarily want to do with your PC. Are you focused on gaming at high FPS, video editing in 4K, streaming your gameplay, or just daily productivity? Your use case defines the components you’ll need.
+        </p>
+        <ul>
+          <li><strong>Gaming:</strong> Prioritize powerful GPU and CPU combo.</li>
+          <li><strong>Content Creation:</strong> Focus on CPU cores/threads and RAM.</li>
+          <li><strong>Streaming:</strong> Balanced CPU/GPU with capture cards or software.</li>
+          <li><strong>Everyday Use:</strong> Budget builds with efficiency and reliability.</li>
+        </ul>
+      </div>
+      <div class="content-image">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="Gamer setup with RGB lighting" />
+      </div>
+    </div>
+  </section>
+<!--Budget-->
+  <section>
+    <h2>Pick Your Budget</h2>
+    <div class="content-row">
+      <div class="content-image">
+        <img src="https://cdn.mos.cms.futurecdn.net/CF3yiQbbWYsPvopVGutjxe-650-80.jpg.webp" alt="Stack of computer hardware boxes" />
+      </div>
+      <div class="content-text">
+        <p class="budget-text">
+          Define your budget to find the best parts that fit your needs without overspending. We recommend:
+        </p>
+        <ul>
+          <li>Budget (Under $800): Great for entry-level gaming and productivity.</li>
+          <li>Midrange ($800 - $1500): Smooth gaming at 1080p/1440p, good multitasking.</li>
+          <li>High-end ($1500 - $3000): Max settings in 1440p/4K, streaming, content creation.</li>
+          <li>Ultra High-end ($3000+): Best of the best, future-proof, extreme workloads.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <section>
+    <h2>Customize Your Build</h2>
+    <div class="content-row">
+      <div class="content-text">
+        <p class="customize-text">
+          Choose components carefully. Our site helps you select:
+        </p>
+        <ul>
+          <li>Compatible CPU, GPU, RAM, and motherboard combos.</li>
+          <li>Efficient cooling solutions.</li>
+          <li>Power supplies with enough headroom.</li>
+          <li>Case styles and cable management preferences.</li>
+        </ul>
+        <p class="customize-text">
+          Every build includes compatibility checks and detailed specs.
+        </p>
+        <p>
+          Try the <a href="pc-builder.html">Build Configurator</a> now!
+        </p>
+      </div>
+      <div class="content-image">
+        <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/10/pc-building.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5" alt="Person customizing PC parts on a laptop" />
+      </div>
+    </div>
+  </section>
 
+  <section>
+    <h2>Need Help Deciding?</h2>
+    <div class="content-row">
+      <div class="content-image">
+        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80" alt="Support agent with headset" />
+      </div>
+      <div class="content-text">
+        <p class="help-text">
+          Our team is here to help you build the perfect PC. Not sure what build fits best? Use our builder to get personalized recommendations based on your answers.
+         </p>
+        <p class="help-text">
+          You can also chat or email our build experts for tailored advice. We offer:
+        </p>
+        <ul>
+          <li>Free component compatibility checks</li>
+          <li>Recommendations based on latest hardware trends</li>
+          <li>24-hour response time guaranteed</li>
+        </ul>
+        <p>
+          <a href="contact.html">Contact Us</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Still unsure?</h2>
+    <p>Message our team for free build advice within 24 hours.</p>
+    <a href="contact.html" class="btn-contact">Contact a Build Expert</a>
+  </section>
+
+  </main>
+*/

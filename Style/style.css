@@ -941,6 +941,7 @@ section{
 
 .sub-heading{
     text-align: left;
+    margin-left: 3%;
 }
 
 .contactForm{
@@ -962,6 +963,7 @@ form{
 
 .para2{
     text-align: left;
+    margin-left: 3%;
 }
 
 .input{
@@ -985,6 +987,7 @@ form{
 
 .input::placeholder{
     text-transform: capitalize;
+    font-family: 'Roboto', sans-serif;
 }
 
 .submit{
