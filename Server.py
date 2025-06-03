@@ -1,3 +1,5 @@
+# Run Server.py in the terminal to start the server, otherwise the Login and Register pages will not work.
+# Make sure to have Flask, Flask-Bcrypt, Flask-CORS, and Flask-SQLAlchemy installed.
 import sqlite3
 from flask import Flask, request, jsonify
 from flask_bcrypt import Bcrypt
