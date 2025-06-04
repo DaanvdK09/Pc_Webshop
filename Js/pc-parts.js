@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedCpu = null;
     let selectedMotherboard = null;
     let selectedRam = null;
+    let selectedSsd = null;
 
     // Create and insert the selected table
     selectedGpuDiv = document.createElement('div');
@@ -13,12 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const pcBuilderContent = document.querySelector('.pc-builder-content');
     pcBuilderContent.insertBefore(selectedGpuDiv, partsListDiv);
 
+
     function renderSelectedTable() {
         // Calculate total TDP
         const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
         const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
         const motherboardTdp = selectedMotherboard && selectedMotherboard.tdp ? Number(selectedMotherboard.tdp) : 0;
-        const totalTdp = cpuTdp + gpuTdp + motherboardTdp;
+        const ssdTdp = selectedSsd && selectedSsd.tdp ? Number(selectedSsd.tdp) : 0;
+        const totalTdp = cpuTdp + gpuTdp + motherboardTdp + ssdTdp;
 
         // Calculate total price
         const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
@@ -31,122 +34,151 @@ document.addEventListener('DOMContentLoaded', function() {
         const powerMeterHtml = `
             <div class="power-usage-meter">
                 <strong><i class="fa-solid fa-bolt"></i>Estimated Power Usage:</strong>
-                <meter min="0" max="800" value="${totalTdp}" class="power-meter"></meter>
+                <meter min="0" max="1200" value="${totalTdp}" class="power-meter"></meter>
                 <span class="power-watt">${totalTdp} W</span>
             </div>
         `;
 
-        selectedGpuDiv.innerHTML = powerMeterHtml + `
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CPU</td>
-                        <td>
-                            ${
-                                selectedCpu
-                                ? `<img src="${selectedCpu.image_url}" alt="${selectedCpu.name}" class="img">
-                                <span>${selectedCpu.name}</span>`
-                                : `<div class="add-button" id="add-cpu-btn">
-                                    <a><i class="fa-solid fa-plus"></i>Add CPU</a>
-                                </div>`
-                            }
-                        </td>
-                        <td class="${selectedCpu ? '' : 'none-selected'}">
-                            ${selectedCpu ? `€${selectedCpu.price}` : '-'}
-                        </td>
-                        <td class="${selectedCpu ? '' : 'none-selected'}">
-                            ${
-                                selectedCpu
-                                ? `<a class="remove-selected-cpu-btn">Remove</a>`
-                                : 'No CPU selected'
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>GPU</td>
-                        <td>
-                            ${
-                                selectedGpu
-                                ? `<img src="${selectedGpu.image_url}" alt="${selectedGpu.name}" class="img">
-                                <span>${selectedGpu.name}</span>`
-                                : `<div class="add-button" id="add-gpu-btn">
-                                    <a><i class="fa-solid fa-plus"></i>Add GPU</a>
-                                </div>`
-                            }
-                        </td>
-                        <td class="${selectedGpu ? '' : 'none-selected'}">
-                            ${selectedGpu ? `€${selectedGpu.price}` : '-'}
-                        </td>
-                        <td class="${selectedGpu ? '' : 'none-selected'}">
-                            ${
-                                selectedGpu
-                                ? `<a class="remove-selected-btn">Remove</a>`
-                                : 'No GPU selected'
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Motherboard</td>
-                        <td>
-                            ${
-                                selectedMotherboard
-                                ? `<img src="${selectedMotherboard.image_url}" alt="${selectedMotherboard.name}" class="img">
-                                <span>${selectedMotherboard.name}</span>`
-                                : `<div class="add-button" id="add-motherboard-btn">
-                                    <a><i class="fa-solid fa-plus"></i>Add Motherboard</a>
-                                </div>`
-                            }
-                        </td>
-                        <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                            ${selectedMotherboard ? `€${selectedMotherboard.price}` : '-'}
-                        </td>
-                        <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                            ${
-                                selectedMotherboard
-                                ? `<a class="remove-selected-motherboard-btn">Remove</a>`
-                                : 'No Motherboard selected'
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>RAM</td>
-                        <td>
-                            ${
-                                selectedRam
-                                ? `<img src="${selectedRam.image_url}" alt="${selectedRam.name}" class="img">
-                                <span>${selectedRam.name}</span>`
-                                : `<div class="add-button" id="add-ram-btn">
-                                    <a><i class="fa-solid fa-plus"></i>Add RAM</a>
-                                </div>`
-                            }
-                        </td>
-                        <td class="${selectedRam ? '' : 'none-selected'}">
-                            ${selectedRam ? `€${selectedRam.price}` : '-'}
-                        </td>
-                        <td class="${selectedRam ? '' : 'none-selected'}">
-                            ${
-                                selectedRam
-                                ? `<a class="remove-selected-ram-btn">Remove</a>`
-                                : 'No RAM selected'
-                            }
-                        </td>
-                    </tr>
-                    <tr class="total-amount-row">
-                        <td colspan="2" class="total-label">Total Amount:</td>
-                        <td colspan="2" class="total-value">
-                            €${totalPrice.toFixed(2)}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        // Render selected
+        selectedGpuDiv.innerHTML = `
+            <div class="power-usage">
+                ${powerMeterHtml}
+            </div>
+            <div class="selected-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CPU</td>
+                            <td>
+                                ${
+                                    selectedCpu
+                                    ? `<img src="${selectedCpu.image_url}" alt="${selectedCpu.name}" class="img">
+                                    <span>${selectedCpu.name}</span>`
+                                    : `<div class="add-button" id="add-cpu-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add CPU</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedCpu ? '' : 'none-selected'}">
+                                ${selectedCpu ? `€${selectedCpu.price}` : '-'}
+                            </td>
+                            <td class="${selectedCpu ? '' : 'none-selected'}">
+                                ${
+                                    selectedCpu
+                                    ? `<a class="remove-selected-cpu-btn">Remove</a>`
+                                    : 'No CPU selected'
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GPU</td>
+                            <td>
+                                ${
+                                    selectedGpu
+                                    ? `<img src="${selectedGpu.image_url}" alt="${selectedGpu.name}" class="img">
+                                    <span>${selectedGpu.name}</span>`
+                                    : `<div class="add-button" id="add-gpu-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add GPU</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedGpu ? '' : 'none-selected'}">
+                                ${selectedGpu ? `€${selectedGpu.price}` : '-'}
+                            </td>
+                            <td class="${selectedGpu ? '' : 'none-selected'}">
+                                ${
+                                    selectedGpu
+                                    ? `<a class="remove-selected-btn">Remove</a>`
+                                    : 'No GPU selected'
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Motherboard</td>
+                            <td>
+                                ${
+                                    selectedMotherboard
+                                    ? `<img src="${selectedMotherboard.image_url}" alt="${selectedMotherboard.name}" class="img">
+                                    <span>${selectedMotherboard.name}</span>`
+                                    : `<div class="add-button" id="add-motherboard-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add Motherboard</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedMotherboard ? '' : 'none-selected'}">
+                                ${selectedMotherboard ? `€${selectedMotherboard.price}` : '-'}
+                            </td>
+                            <td class="${selectedMotherboard ? '' : 'none-selected'}">
+                                ${
+                                    selectedMotherboard
+                                    ? `<a class="remove-selected-motherboard-btn">Remove</a>`
+                                    : 'No Motherboard selected'
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>
+                                ${
+                                    selectedRam
+                                    ? `<img src="${selectedRam.image_url}" alt="${selectedRam.name}" class="img">
+                                    <span>${selectedRam.name}</span>`
+                                    : `<div class="add-button" id="add-ram-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add RAM</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedRam ? '' : 'none-selected'}">
+                                ${selectedRam ? `€${selectedRam.price}` : '-'}
+                            </td>
+                            <td class="${selectedRam ? '' : 'none-selected'}">
+                                ${
+                                    selectedRam
+                                    ? `<a class="remove-selected-ram-btn">Remove</a>`
+                                    : 'No RAM selected'
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>SSD</td>
+                            <td>
+                                ${
+                                    selectedSsd
+                                    ? `<img src="${selectedSsd.image_url}" alt="${selectedSsd.name}" class="img">
+                                    <span>${selectedSsd.name}</span>`
+                                    : `<div class="add-button" id="add-ssd-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add SSD</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedSsd ? '' : 'none-selected'}">
+                                ${selectedSsd ? `€${selectedSsd.price}` : '-'}
+                            </td>
+                            <td class="${selectedSsd ? '' : 'none-selected'}">
+                                ${
+                                    selectedSsd
+                                    ? `<a class="remove-selected-ssd-btn">Remove</a>`
+                                    : 'No SSD selected'
+                                }
+                            </td>
+                        </tr>
+                        <tr class="total-amount-row">
+                            <td colspan="2" class="total-label">Total Amount:</td>
+                            <td colspan="2" class="total-value">
+                                €${totalPrice.toFixed(2)}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         `;
 
         // Remove handlers
@@ -190,7 +222,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Add handlers for add buttons
+        if (selectedSsd) {
+            const removeSsdBtn = selectedGpuDiv.querySelector('.remove-selected-ssd-btn');
+            if (removeSsdBtn) {
+                removeSsdBtn.addEventListener('click', function() {
+                    selectedSsd = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
+        // Add handlers
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
             addGpuBtn.addEventListener('click', function() {
@@ -224,6 +266,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedGpuDiv.style.display = "none";
                 partsListDiv.style.display = "block";
                 showRamSelection();
+            });
+        }
+
+        const addSsdBtn = selectedGpuDiv.querySelector('#add-ssd-btn');
+        if (addSsdBtn) {
+            addSsdBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showSsdSelection();
             });
         }
     }
@@ -404,6 +455,53 @@ document.addEventListener('DOMContentLoaded', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedRam = rams[idx];
                         ramTable.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
+                });
+            });
+    }
+
+    function showSsdSelection() {
+        selectedGpuDiv.style.display = "none";
+        const ramTable = document.getElementById('ram-table');
+        const cpuTable = document.getElementById('cpu-table');
+        const gpuTable = document.getElementById('gpu-table');
+        const motherboardTable = document.getElementById('motherboard-table');
+        const ssdTable = document.getElementById('ssd-table');
+        ramTable.style.display = "none";
+        cpuTable.style.display = "none";
+        gpuTable.style.display = "none";
+        motherboardTable.style.display = "none";
+        ssdTable.style.display = "table";
+        fetch('http://localhost:5000/api/ssds')
+            .then(response => response.json())
+            .then(ssds => {
+                const tbody = ssdTable.querySelector('tbody');
+                tbody.innerHTML = "";
+                ssds.forEach((ssd, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <img src="${ssd.image_url}" alt="${ssd.name}" class="img">
+                            <span>${ssd.name}</span>
+                        </td>
+                        <td>${ssd.manufacturer}</td>
+                        <td>${ssd.capacity} GB</td>
+                        <td>${ssd.read_speed} MHz</td>
+                        <td>${ssd.write_speed} MHz</td>
+                        <td><a class="select-btn" data-idx="${idx}">Add</a></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                builderTitle.textContent = "Add SSD";
+                // Add event listeners
+                tbody.querySelectorAll('.select-btn').forEach((btn) => {
+                    btn.addEventListener('click', function() {
+                        const idx = btn.getAttribute('data-idx');
+                        selectedSsd = ssds[idx];
+                        ssdTable.style.display = "none";
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();
