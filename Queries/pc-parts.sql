@@ -172,14 +172,62 @@ SELECT * FROM SSD;
     -- ('46', 'Patriot Viper Steel DDR5-6000', 'Patriot', 290, 6000, 'DDR5', 2, 32, 30),
     -- ('47', 'TeamGroup T-Force Xtreem DDR5-6000', 'TeamGroup', 305, 6000, 'DDR5', 2, 32, 30);
 
-INSERT INTO SSD (id, name, manufacturer, price, capacity, read_speed, write_speed, form_factor, interface, image_url) VALUES
-    
+-- INSERT INTO SSD (id, name, manufacturer, price, capacity, read_speed, write_speed, form_factor, interface) VALUES
+    -- ('3', 'Samsung 980 PRO', 'Samsung', 0, 1000, 7000, 5000, 'M.2 2280', 'PCIe 4.0'),
+    -- ('4', 'Samsung 980 PRO', 'Samsung', 0, 2000, 7000, 5100, 'M.2 2280', 'PCIe 4.0'),
+    -- ('7', 'Samsung 970 EVO Plus', 'Samsung', 0, 1000, 3500, 3300, 'M.2 2280', 'PCIe 3.0'),
+    -- ('8', 'Samsung 970 EVO Plus', 'Samsung', 0, 2000, 3500, 3300, 'M.2 2280', 'PCIe 3.0'),
+    -- ('11', 'Kingston KC2500', 'Kingston', 0, 1000, 3500, 2900, 'M.2 2280', 'PCIe 3.0'),
+    -- ('12', 'Kingston KC2500', 'Kingston', 0, 2000, 3500, 2900, 'M.2 2280', 'PCIe 3.0'),
+    -- ('15', 'Lexar NM620', 'Lexar', 0, 1000, 3300, 3000, 'M.2 2280', 'PCIe 3.0'),
+    -- ('16', 'Lexar NM790', 'Lexar', 0, 1000, 7400, 6500, 'M.2 2280', 'PCIe 4.0'),
+    -- ('17', 'Lexar NM790', 'Lexar', 0, 2000, 7400, 6500, 'M.2 2280', 'PCIe 4.0'),
+    -- ('19', 'Corsair MP600', 'Corsair', 0, 1000, 4950, 4250, 'M.2 2280', 'PCIe 4.0'),
+    -- ('20', 'Corsair MP600', 'Corsair', 0, 2000, 4950, 4250, 'M.2 2280', 'PCIe 4.0'),
+    -- ('22', 'Crucial P5 Plus', 'Crucial', 0, 1000, 6600, 5000, 'M.2 2280', 'PCIe 4.0'),
+    -- ('23', 'Crucial P5 Plus', 'Crucial', 0, 2000, 6600, 5000, 'M.2 2280', 'PCIe 4.0'),
+    -- ('26', 'Crucial P2', 'Crucial', 0, 1000, 2400, 1900, 'M.2 2280', 'PCIe 3.0'),
+    -- ('27', 'Crucial P2', 'Crucial', 0, 2000, 2400, 2200, 'M.2 2280', 'PCIe 3.0'),
+    -- ('28', 'Samsung 990 PRO', 'Samsung', 0, 1000, 7450, 6900, 'M.2 2280', 'PCIe 4.0'),
+    -- ('29', 'Samsung 990 PRO', 'Samsung', 0, 2000, 7450, 6900, 'M.2 2280', 'PCIe 4.0'),
+    -- ('31', 'Kingston Fury Renegade', 'Kingston', 0, 1000, 7300, 6000, 'M.2 2280', 'PCIe 4.0'),
+    -- ('32', 'Kingston Fury Renegade', 'Kingston', 0, 2000, 7300, 7000, 'M.2 2280', 'PCIe 4.0'),
+    -- ('33', 'Corsair MP600 PRO', 'Corsair', 0, 1000, 7100, 6100, 'M.2 2280', 'PCIe 4.0'),
+    -- ('34', 'Corsair MP600 PRO', 'Corsair', 0, 2000, 7100, 6800, 'M.2 2280', 'PCIe 4.0'),
+    -- ('35', 'Corsair MP600 PRO XT', 'Corsair', 0, 2000, 7100, 6800, 'M.2 2280', 'PCIe 4.0'),
+    -- ('37', 'Crucial T500', 'Crucial', 0, 1000, 5800, 4200, 'M.2 2280', 'PCIe 4.0'),
+    -- ('38', 'Crucial T500', 'Crucial', 0, 2000, 5800, 4200, 'M.2 2280', 'PCIe 4.0');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
 
 -- Edit
 -- UPDATE GPU SET boost_clock ='2602' WHERE id = 5;
+
+UPDATE SSD SET price = , image_url = '' WHERE id = 3;
+UPDATE SSD SET price = , image_url = '' WHERE id = 4;
+UPDATE SSD SET price = , image_url = '' WHERE id = 7;
+UPDATE SSD SET price = , image_url = '' WHERE id = 8;
+UPDATE SSD SET price = , image_url = '' WHERE id = 11;
+UPDATE SSD SET price = , image_url = '' WHERE id = 12;
+UPDATE SSD SET price = , image_url = '' WHERE id = 15;
+UPDATE SSD SET price = , image_url = '' WHERE id = 16;
+UPDATE SSD SET price = , image_url = '' WHERE id = 17;
+UPDATE SSD SET price = , image_url = '' WHERE id = 19;
+UPDATE SSD SET price = , image_url = '' WHERE id = 20;
+UPDATE SSD SET price = , image_url = '' WHERE id = 22;
+UPDATE SSD SET price = , image_url = '' WHERE id = 23;
+UPDATE SSD SET price = , image_url = '' WHERE id = 26;
+UPDATE SSD SET price = , image_url = '' WHERE id = 27;
+UPDATE SSD SET price = , image_url = '' WHERE id = 28;
+UPDATE SSD SET price = , image_url = '' WHERE id = 29;
+UPDATE SSD SET price = , image_url = '' WHERE id = 31;
+UPDATE SSD SET price = , image_url = '' WHERE id = 32;
+UPDATE SSD SET price = , image_url = '' WHERE id = 33;
+UPDATE SSD SET price = , image_url = '' WHERE id = 34;
+UPDATE SSD SET price = , image_url = '' WHERE id = 35;
+UPDATE SSD SET price = , image_url = '' WHERE id = 37;
+UPDATE SSD SET price = , image_url = '' WHERE id = 38;
 
 -- Add new column
 -- ALTER TABLE RAM ADD COLUMN CAS_Latency TEXT;
