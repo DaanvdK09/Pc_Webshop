@@ -1065,28 +1065,60 @@ form{
     }
 }
 /* Reset & base */
-  * {
-    box-sizing: border-box;
+
+  .content-container {
+    margin: 10%;
+    padding: 5%;
+    background-color: var(--bg-black-800);
+    margin-top: 10%;
+    border-radius: 2%;
+    box-shadow: #000000 0px 0px 10px 0px;
+    transition: box-shadow 0.3s ease-in-out;
   }
-  body {
-    margin: 0;
-    background-color: var(--bg-black-900);
-    color: var(--text-black-900);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .content-container:hover{
+    box-shadow: #000000 0px 0px 20px 0px;
+    transition: box-shadow 0.3s ease-in-out;
   }
-  a {
-    color: var(--bg-black-550);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    .content-container2 {
+    margin: 10%;
+    padding: 5%;
+    background-color: var(--bg-black-800);
+    margin-top: 10%;
+    border-radius: 2%;
+    box-shadow: #000000 0px 0px 10px 0px;
+    transition: box-shadow 0.3s ease-in-out;
+    }
+    
+    .content-container2:hover{
+    box-shadow: #000000 0px 0px 20px 0px;
+    transition: box-shadow 0.3s ease-in-out;
   }
-  a:hover, a:focus {
-    color: var(--bg-black-800);
-    text-decoration: none;
-    outline: none;
+    .content-container3 {
+    margin: 10%;
+    padding: 5%;
+    background-color: var(--bg-black-800);
+    margin-top: 10%;
+    border-radius: 2%;
+    box-shadow: #000000 0px 0px 10px 0px;
+    transition: box-shadow 0.3s ease-in-out;
   }
+    .content-container3:hover{
+        box-shadow: #000000 0px 0px 20px 0px;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    .content-container4 {
+    margin: 10%;
+    padding: 5%;
+    background-color: var(--bg-black-800);
+    margin-top: 10%;
+    border-radius: 2%;
+    box-shadow: #000000 0px 0px 10px 0px;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+    .content-container4:hover{
+        box-shadow: #000000 0px 0px 20px 0px;
+        transition: box-shadow 0.3s ease-in-out;
+    }
 
   .container {
     max-width: 900px;
@@ -1110,25 +1142,6 @@ form{
     font-weight: 700;
     color: var(--bg-black-550);
     letter-spacing: 0.05em;
-  }
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  nav a {
-    margin-left: 1.3rem;
-    font-size: 0.9rem;
-    color: var(--bg-black-550);
-    font-weight: 500;
-    transition: color 0.25s ease;
-    white-space: nowrap;
-  }
-  nav a:first-child {
-    margin-left: 0;
-  }
-  nav a:hover {
-    color: var(--bg-black-600);
-    text-decoration: none;
   }
 
   /* Section styling */
@@ -1170,12 +1183,6 @@ form{
   }
 
   /* Layout for text + images */
-  .content-row {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap; /* wrap on small widths */
-  }
 
   .use-case-text{
   color: var(--bg-black-550);
@@ -1214,22 +1221,22 @@ form{
   }
 
   /* Contact Section */
-  .contact-section {
-    border-top: 1px solid var(--bg-black-50);
-    padding-top: 2rem;
+  .build-help-contact-part {
+    margin: 3rem auto;
     text-align: center;
-  }
-  .contact-section h2 {
+}
+ 
+  .build-help-contact-part h2 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
     color: var(--bg-black-550);
   }
-  .contact-section p {
+  .build-help-contact-part p {
     font-size: 1rem;
     margin-bottom: 1.2rem;
     color: var(--text-black-700);
   }
-  .btn-contact {
+  .build-help-btn {
     background-color: var(--bg-black-550);
     color: var(--text-black-700);
     padding: 0.65rem 1.7rem;
@@ -1243,8 +1250,11 @@ form{
     display: inline-block;
     user-select: none;
   }
-  .btn-contact:hover,
-  .btn-contact:focus {
+.build-help-btn a {
+    text-decoration: none;
+}
+  .build-help-btn:hover,
+  .build-help-btn:focus {
     background-color: var(--bg-black-600);
     outline: none;
     text-decoration: none;

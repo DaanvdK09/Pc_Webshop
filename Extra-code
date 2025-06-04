@@ -42,10 +42,9 @@
     text-decoration: underline;
 }
 /*
-<body>
-    <main class="container">
+
 <!-------------------------------------------------------------------What do want to use the pc for?----------------------------------------------------------------------------->
-  <section>
+  <div>
     <h2>Choose Your Use Case</h2>
     <div class="content-row">
       <div class="content-text">
@@ -63,9 +62,9 @@
         <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="Gamer setup with RGB lighting" />
       </div>
     </div>
-  </section>
+  </div>
 <!--Budget-->
-  <section>
+  <div>
     <h2>Pick Your Budget</h2>
     <div class="content-row">
       <div class="content-image">
@@ -83,9 +82,9 @@
         </ul>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section>
+  <div>
     <h2>Customize Your Build</h2>
     <div class="content-row">
       <div class="content-text">
@@ -109,9 +108,9 @@
         <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/10/pc-building.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5" alt="Person customizing PC parts on a laptop" />
       </div>
     </div>
-  </section>
+  </div>
 
-  <section>
+  <div>
     <h2>Need Help Deciding?</h2>
     <div class="content-row">
       <div class="content-image">
@@ -134,13 +133,13 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="contact-section">
+  <div class="contact-section">
     <h2>Still unsure?</h2>
     <p>Message our team for free build advice within 24 hours.</p>
     <a href="contact.html" class="btn-contact">Contact a Build Expert</a>
-  </section>
+  </div>
 
   </main>
 */
