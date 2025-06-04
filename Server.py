@@ -152,5 +152,28 @@ def get_rams():
     conn.close()
     return jsonify(rams)
 
+# SSD API
+@app.route('/api/ssds', methods=['GET'])
+def get_ssds():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, form_factor, interface, read_speed, write_speed FROM SSD")
+    ssds = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'capacity': row[4],
+            'form_factor': row[5],
+            'interface': row[6],
+            'read_speed': row[7],
+            'write_speed': row[8],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(ssds)
+
 if __name__ == '__main__':
     app.run(debug=True)
