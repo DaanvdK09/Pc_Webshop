@@ -1108,258 +1108,77 @@ form{
         justify-content: space-between;
     }
 }
-/* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    background-color: var(--bg-black-900);
+/* buildhelp page */
+.build-help-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--text-black-900);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  a {
-    color: var(--bg-black-550);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover, a:focus {
-    color: var(--bg-black-800);
-    text-decoration: none;
-    outline: none;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 3rem auto 5rem;
-    padding: 0 1.5rem;
-  }
-
-  header {
-    position: sticky;
-    top: 0;
-    background: var(--bg-black-900);
-    padding: 1.2rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    box-shadow: 0 2px 10px var(--bg-black-900);
-    z-index: 100;
-  }
-  header h1 {
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: var(--bg-black-550);
-    letter-spacing: 0.05em;
-  }
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  nav a {
-    margin-left: 1.3rem;
-    font-size: 0.9rem;
-    color: var(--bg-black-550);
-    font-weight: 500;
-    transition: color 0.25s ease;
-    white-space: nowrap;
-  }
-  nav a:first-child {
-    margin-left: 0;
-  }
-  nav a:hover {
-    color: var(--bg-black-600);
-    text-decoration: none;
-  }
-
-  /* Section styling */
-  section {
-    background: var(--bg-black-800);
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 6px 15px var(--bg-black-900);
-    transition: box-shadow 0.4s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s forwards;
-    margin-bottom: 3rem;
-  }
-  section:nth-child(1) { animation-delay: 0.1s; }
-  section:nth-child(2) { animation-delay: 0.3s; }
-  section:nth-child(3) { animation-delay: 0.5s; }
-  section:nth-child(4) { animation-delay: 0.7s; }
-  section:nth-child(5) { animation-delay: 0.9s; }
-
-  section:hover {
-    box-shadow: 0 10px 25px rgb(74 144 226 / 0.5);
-    text-decoration: none;
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--bg-black-550);
-    letter-spacing: 0.04em;
-  }
-  section p {
-    font-size: 1.05rem;
-    color: var(--bg-black-800);
-    margin-bottom: 1.1rem;
-  }
-
-  /* Layout for text + images */
-  .content-row {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap; /* wrap on small widths */
-  }
-
-  .use-case-text{
-  color: var(--bg-black-550);
-  }
-  .budget-text{
-  color: var(--bg-black-550);
-  }
-  .customize-text{
-    color: var(--bg-black-550);
-    }
-  .help-text{
-    color: var(--bg-black-550);
-  }
-  .content-text {
-    flex: 1 1 320px;
-  }
-  .content-text a:hover {
-    color: var(--bg-black-600);
-    text-decoration: underline;
-  }
-  .content-image {
-    flex: 1 1 320px;
-    max-width: 320px;
-  }
-  .content-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease;
-    display: block;
-  }
-  .content-image img:hover {
-    transform: scale(1.05);
+}
+.build-help-sub-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--text-black-700);
+    margin: 4rem;
+}
+.build-help-list {
+    line-height: 1.6;
+    margin: 20px;
+    margin-left: 10%;
+    color: var(--text-black-900);
+}
+.pc-builder-link-btn {
+    display: inline-block;
+    color: var(--text-black-900);
+    border-radius: 5px;
     text-decoration: none;
-  }
+    transition: background-color 0.3s, color 0.3s;
+}
+.pc-builder-link-btn a {
+    text-decoration: none;
+    color: var(--bg-black-550);
+}
+.pc-builder-link-btn a:hover {
+    text-decoration: underline;
+    transition: underline 0.3s ease;
+}
 
-  /* Contact Section */
-  .build-help-contact-part {
+/* Link to contact page section !!!this is finished!!!! */
+  .build-help-contact-section {
     margin: 3rem auto;
     text-align: center;
 }
- 
-  .build-help-contact-part h2 {
+  .build-help-contact-section h2 {
     font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.9rem;
     color: var(--bg-black-550);
   }
-  .build-help-contact-part p {
+  .build-help-contact-section p {
     font-size: 1rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2.6rem;
     color: var(--text-black-700);
   }
-  .build-help-btn {
-    background-color: var(--bg-black-550);
-    color: var(--text-black-700);
-    padding: 0.65rem 1.7rem;
-    font-size: 1.05rem;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    user-select: none;
-  }
-.build-help-btn a {
-    text-decoration: none;
-}
-  .build-help-btn:hover,
-  .build-help-btn:focus {
-    background-color: var(--bg-black-600);
-    outline: none;
-    text-decoration: none;
+
+.btn-contact {
     color: var(--text-black-900);
-  }
-
-
+    background: var(--bg-black-550);
+    padding: 0.8rem 1.7rem;
+    border: none;
+    border-radius: 25px;
+}
+.btn-contact:hover {
+    background: var(--bg-black-600);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
   /* Animations */
   @keyframes fadeUp {
     to {
       opacity: 1;
       transform: translateY(0);
-    }
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 900px) {
-    .container {
-      max-width: 95%;
-      padding: 0 1rem;
-    }
-    header {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8rem;
-    }
-    header h1 {
-      flex: 1 1 100%;
-      text-align: center;
-      font-size: 1.7rem;
-    }
-    nav {
-      justify-content: center;
-      width: 100%;
-      margin-top: 0.4rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    section h2 {
-      font-size: 1.4rem;
-    }
-    section p {
-      font-size: 1rem;
-    }
-    nav a {
-      font-size: 0.85rem;
-      margin-left: 1rem;
-    }
-    nav a:first-child {
-      margin-left: 0;
-    }
-    .content-text, .content-image {
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-    .content-row {
-      gap: 1.5rem;
-    }
-  }
-
-  @media (max-width: 400px) {
-    header h1 {
-      font-size: 1.3rem;
-    }
-    .btn-contact {
-      font-size: 0.95rem;
-      padding: 0.55rem 1.3rem;
     }
   }
 
