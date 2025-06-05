@@ -742,12 +742,13 @@ footer {
 .add-button {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
-    padding: 10% 5%;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
-    display:inline-block;
+    display: inline-block;
+    text-align: center;
 }
 
 .add-button:hover {
@@ -756,6 +757,7 @@ footer {
 
 .add-button a {
     color: var(--text-black-900);
+    text-decoration: none;
 }
 
 .add-button:hover a {
@@ -789,6 +791,7 @@ footer {
     border: none;
     padding: 1% 2%;
     text-align: left;
+    width: auto;
 }
 
 .table tr:hover {
@@ -809,6 +812,7 @@ footer {
 
 .table td {
     text-align: left;
+    padding: 8px;
 }
 
 .table tr {
@@ -871,6 +875,13 @@ footer {
 
 .selected-table {
     width:100%;
+}
+
+#cpu_cooler-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
 }
 
 .select-btn {

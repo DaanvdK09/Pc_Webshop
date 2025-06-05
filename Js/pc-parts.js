@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </td>
                         <td>${cpuCooler.manufacturer}</td>
                         <td>${cpuCooler.fan_size} mm</td>
-                        <td>${cpuCooler.socket}</td>
+                        <td>${cpuCooler.socket.replace(';', ';<br>')}</td>
                         <td>${cpuCooler.cooling_type}</td>
                         <td>${cpuCooler.price}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
