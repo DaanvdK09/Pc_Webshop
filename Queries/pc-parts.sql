@@ -2,19 +2,20 @@
 
 -- .tables
 
-SELECT * FROM SSD;
+SELECT * FROM CPU_Cooler;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS SSD (
+-- CREATE TABLE IF NOT EXISTS CPU_Cooler (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- capacity INTEGER NOT NULL,
-      -- form_factor TEXT NOT NULL,
-      -- interface TEXT NOT NULL,
-      -- read_speed INTEGER NOT NULL,
-      -- write_speed INTEGER NOT NULL,
+      -- fan_size INTEGER,
+      -- fan_count INTEGER,
+      -- max_rpm INTEGER,
+      -- socket TEXT,
+      -- noise_level REAL,
+      -- cooling_type TEXT,
       -- image_url TEXT
 -- );
 
@@ -198,36 +199,39 @@ SELECT * FROM SSD;
     -- ('37', 'Crucial T500', 'Crucial', 0, 1000, 5800, 4200, 'M.2 2280', 'PCIe 4.0'),
     -- ('38', 'Crucial T500', 'Crucial', 0, 2000, 5800, 4200, 'M.2 2280', 'PCIe 4.0');
 
+INSERT INTO CPU_Cooler (id, name, manufacturer, price, socket, fan_size, max_rpm, noise_level, cooling_type) VALUES 
+      
+
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
 
 -- Edit
 -- UPDATE GPU SET boost_clock ='2602' WHERE id = 5;
 
-UPDATE SSD SET price = , image_url = '' WHERE id = 3;
-UPDATE SSD SET price = , image_url = '' WHERE id = 4;
-UPDATE SSD SET price = , image_url = '' WHERE id = 7;
-UPDATE SSD SET price = , image_url = '' WHERE id = 8;
-UPDATE SSD SET price = , image_url = '' WHERE id = 11;
-UPDATE SSD SET price = , image_url = '' WHERE id = 12;
-UPDATE SSD SET price = , image_url = '' WHERE id = 15;
-UPDATE SSD SET price = , image_url = '' WHERE id = 16;
-UPDATE SSD SET price = , image_url = '' WHERE id = 17;
-UPDATE SSD SET price = , image_url = '' WHERE id = 19;
-UPDATE SSD SET price = , image_url = '' WHERE id = 20;
-UPDATE SSD SET price = , image_url = '' WHERE id = 22;
-UPDATE SSD SET price = , image_url = '' WHERE id = 23;
-UPDATE SSD SET price = , image_url = '' WHERE id = 26;
-UPDATE SSD SET price = , image_url = '' WHERE id = 27;
-UPDATE SSD SET price = , image_url = '' WHERE id = 28;
-UPDATE SSD SET price = , image_url = '' WHERE id = 29;
-UPDATE SSD SET price = , image_url = '' WHERE id = 31;
-UPDATE SSD SET price = , image_url = '' WHERE id = 32;
-UPDATE SSD SET price = , image_url = '' WHERE id = 33;
-UPDATE SSD SET price = , image_url = '' WHERE id = 34;
-UPDATE SSD SET price = , image_url = '' WHERE id = 35;
-UPDATE SSD SET price = , image_url = '' WHERE id = 37;
-UPDATE SSD SET price = , image_url = '' WHERE id = 38;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 3;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 4;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 7;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 8;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 11;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 12;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 15;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 16;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 17;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 19;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 20;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 22;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 23;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 26;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 27;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 28;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 29;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 31;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 32;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 33;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 34;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 35;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 37;
+-- UPDATE SSD SET price = , image_url = '' WHERE id = 38;
 
 -- Add new column
 -- ALTER TABLE RAM ADD COLUMN CAS_Latency TEXT;
