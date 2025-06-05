@@ -41,11 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Render selected
         selectedGpuDiv.innerHTML = `
-            <div class="power-usage">
-                ${powerMeterHtml}
-            </div>
             <div class="selected-table">
                 <table class="table">
+                <thead>
+                        <tr>
+                            <div class="power-usage">
+                                ${powerMeterHtml}
+                            </div>
+                        </tr>
+                    </thead>
                     <thead>
                         <tr>
                             <th>Component</th>
