@@ -1161,7 +1161,10 @@ form{
     margin-bottom: 2.6rem;
     color: var(--text-black-700);
   }
-
+.build-help-list span {
+    color: var(--text-black-900);
+    font-weight: 900;
+}
 .btn-contact {
     color: var(--text-black-900);
     background: var(--bg-black-550);
