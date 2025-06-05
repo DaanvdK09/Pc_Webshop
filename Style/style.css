@@ -5,7 +5,7 @@
 :root {
     --bg-black-900:#151515;
     --bg-black-800: #2a3439;
-    --bg-black-600: #2d5079;
+    --bg-black-600: #007FFF;
     --bg-black-550: #4a90e2;
     --bg-black-500: #e9e9e9;
     --bg-black-100:#222222;
@@ -141,12 +141,15 @@ footer {
     bottom: -5px;
     left: 0;
     width: 0%;
-    height: 2px;
+    height: 3px;
     background-color: var(--bg-black-500);
     transition: all 1s;
 }
 .nav-links a:hover::before {
     width: 100%
+}
+.nav-links a.active::before {
+    width: 100%;
 }
 .webshop-logo img {
     width: 70px;
@@ -738,7 +741,21 @@ footer {
     font-weight: 900;
     margin-top: 30px;
 }
-
+.disclamers-pc-builder {
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: var(--text-black-900);
+}
+.disclamer {
+    margin: 5px 0;
+}
+.disclamer a {
+    color: var(--bg-black-600);
+}
+.disclamer a:hover {
+    text-decoration: underline;
+    transition: underline 0.8s;
+}
 .add-button {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
@@ -936,8 +953,6 @@ footer {
 
 /* Button */
 .add-button,
-.buy-button,
-.go-button,
 .select-btn,
 .remove-selected-btn,
 .remove-selected-cpu-btn,
@@ -949,7 +964,11 @@ footer {
     font-size: 1rem;
     border-radius: 5px;
 }
-
+.buy-button {
+    padding: 5px 10px; /* Shorter buttons: less vertical, keep horizontal */
+    font-size: 1rem;
+    border-radius: 25px;
+}
 /* Power usage */
 .power-usage-meter {
     margin-top: 10%;
@@ -1015,7 +1034,6 @@ section{
 
 .sub-heading{
     text-align: left;
-    margin-left: 3%;
 }
 
 .contactForm{
@@ -1124,20 +1142,7 @@ form{
     width: 70px;
     margin-left: 5px;
 }
-/* responsiveness for contact page */
-    @media screen and (min-width:800px) {
-        section{
-            max-width: 1100px;
-        }
-        .contactForm{
-            grid-template-columns: 1fr 1fr;
-        }   
 
-    .contactMethod{
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
 /* buildhelp page */
 .build-help-title {
     text-align: center;
@@ -1214,4 +1219,18 @@ form{
       transform: translateY(0);
     }
   }
+/* Responsiveness*/
+/* contact page */
+@media screen and (min-width:800px) {
+    section{
+        max-width: 1100px;
+    }
+    .contactForm{
+        grid-template-columns: 1fr 1fr;
+    }   
 
+    .contactMethod{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
