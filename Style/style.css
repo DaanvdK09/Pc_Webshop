@@ -774,9 +774,11 @@ footer {
 }
 
 .table {
-    margin-top: 5%;
+    margin-top: 2rem;
     width: 150%;
-    margin-left: -20%;
+    max-width: 150%;
+    margin-left: -25%;
+    margin-right: -25%;
     border-collapse: collapse;
     background: var(--bg-black-50);
     color: var(--text-black-900);
@@ -785,7 +787,7 @@ footer {
 
 .table th, .table td {
     border: none;
-    padding: 10px 8px;
+    padding: 1% 2%;
     text-align: left;
 }
 
@@ -919,6 +921,22 @@ footer {
 .none-selected {
     text-align:center;
     color:#888;
+}
+
+/* Button */
+.add-button,
+.buy-button,
+.go-button,
+.select-btn,
+.remove-selected-btn,
+.remove-selected-cpu-btn,
+.remove-selected-motherboard-btn,
+.remove-selected-ram-btn,
+.remove-selected-ssd-btn,
+.remove-selected-cpu-cooler-btn {
+    padding: 2% 5%; /* Shorter buttons: less vertical, keep horizontal */
+    font-size: 1rem;
+    border-radius: 5px;
 }
 
 /* Power usage */

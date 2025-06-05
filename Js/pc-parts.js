@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedSsd = null;
     let selectedCpuCooler = null;
 
-    // Create and insert the selected table
+    // Create and insert selected table
     selectedGpuDiv = document.createElement('div');
     selectedGpuDiv.id = 'selected';
     const pcBuilderContent = document.querySelector('.pc-builder-content');
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     btn.addEventListener('click', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedCpuCooler = cpuCoolers[idx];
-                        cpuCoolerTable.style.display = "none"; // <-- Corrected line
+                        cpuCoolerTable.style.display = "none";
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();
