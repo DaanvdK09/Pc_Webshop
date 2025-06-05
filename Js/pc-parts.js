@@ -42,14 +42,44 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
+        // Compatibility check
+        let compatibilityWarnings = [];
+
+        // CPU | Motherboard socket
+        if (selectedCpu && selectedMotherboard && selectedCpu.socket !== selectedMotherboard.socket) {
+            compatibilityWarnings.push("⚠️ CPU and Motherboard sockets do not match.");
+        }
+
+        // CPU Cooler | CPU socket
+        if (selectedCpu && selectedCpuCooler) {
+            // Cpu Cooler socket can be a string
+            const coolerSockets = selectedCpuCooler.socket
+                .split(/[,;]+/)
+                .map(s => s.trim().toUpperCase());
+            if (!coolerSockets.includes(selectedCpu.socket.toUpperCase())) {
+                compatibilityWarnings.push("⚠️ CPU Cooler may not fit the selected CPU socket.");
+            }
+        }
+
+        const compatibilityHtml = `
+            <div class="compatibility-bar">
+                ${
+                    compatibilityWarnings.length === 0
+                    ? '<span class="compatibility-warning"><i class="fa fa-check-circle"></i> All selected parts are compatible.</span>'
+                    : compatibilityWarnings.map(w => `<span class="compatibility-warning-red">${w}</span>`).join('<br>')
+                }
+            </div>
+        `;
+
         // Render selected
         selectedGpuDiv.innerHTML = `
             <div class="selected-table">
                 <table class="table">
                     <thead>
                         <tr>
-                            <div class="power-usage">
+                            <div class="pc-builder-status-row">
                                 ${powerMeterHtml}
+                                ${compatibilityHtml}
                             </div>
                         </tr>
                     </thead>

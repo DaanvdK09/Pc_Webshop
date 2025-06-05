@@ -878,8 +878,8 @@ footer {
 }
 
 #selected {
-    width: 140%;
-    margin-left: -35%;
+    width: 100%;
+    margin-left: -10%;
     display: flex;
     justify-content: center;
 }
@@ -969,21 +969,24 @@ footer {
     font-size: 1rem;
     border-radius: 25px;
 }
-/* Power usage */
-.power-usage-meter {
+/* Power usage  and compatibility*/
+.power-usage-meter, .compatibility-bar {
     margin-top: 10%;
     width: 100%;
     text-align: center;
     margin-bottom: -2%;
 }
+
 .power-usage-meter strong {
     margin-right: 8px;
 }
+
 .power-meter {
     width: 250px;
     height: 20px;
     vertical-align: middle;
 }
+
 .power-watt {
     margin-left: 8px;
 }
@@ -992,6 +995,22 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.pc-builder-status-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+.compatibility-warning {
+    color: #2ecc40;
+}
+
+.compatibility-warning-red {
+    color: #ff4136;
 }
 
 /* Total amount and Build cost */
