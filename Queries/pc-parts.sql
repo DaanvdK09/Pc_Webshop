@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM CPU_Cooler;
+SELECT * FROM Motherboard;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS CPU_Cooler (

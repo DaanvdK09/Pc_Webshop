@@ -61,6 +61,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // GPU | Motherboard Slot
+        if (selectedGpu && selectedMotherboard) {
+            const expansionSlots = selectedMotherboard.expansion_slots
+                .split(/[,;]/)
+                .map(s => s.trim().toUpperCase());
+            if (!expansionSlots.includes(selectedGpu.slot.toUpperCase())) {
+                compatibilityWarnings.push("⚠️ GPU and Motherboard slot do not match");
+            }
+        }
+
+        // RAM | Motherboard Type
+        if (selectedRam && selectedMotherboard && selectedRam.ram_type !== selectedMotherboard.ram_type) {
+            compatibilityWarnings.push("⚠️ RAM and Motherboard slots do not match.");
+        }
+
         const compatibilityHtml = `
             <div class="compatibility-bar">
                 ${
@@ -240,6 +255,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
                                 €${totalPrice.toFixed(2)}
+                                <button id="add-to-cart-btn" class="pc-builder-cart-button">
+                                    <i class="fa fa-cart-plus"></i> Add to Cart
+                                </button>
                             </td>
                         </tr>
                     </tbody>

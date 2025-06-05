@@ -115,7 +115,7 @@ def get_cpus():
 def get_motherboards():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor FROM Motherboard")
+    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor, expansion_slots, ram_type FROM Motherboard")
     motherboards = [
         {
             'name': row[0],
@@ -125,6 +125,8 @@ def get_motherboards():
             'socket': row[4],
             'chipset': row[5],
             'form_factor': row[6],
+            'expansion_slots': row[7],
+            'ram_type': row[8],
         }
         for row in cursor.fetchall()
     ]
@@ -145,7 +147,7 @@ def get_rams():
             'price': row[3],
             'capacity': row[4],
             'ram_speed': row[5],
-            'ram_type': row[6]
+            'ram_type': row[6],
         }
         for row in cursor.fetchall()
     ]
