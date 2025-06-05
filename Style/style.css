@@ -994,14 +994,16 @@ footer {
     justify-content: center;
 }
 
-/* Total amount */
-.total-amount-row .total-label {
+/* Total amount and Build cost */
+.total-amount-row .total-label, .build-price-row .build-label {
     text-align: right;
     font-weight: bold;
 }
-.total-amount-row .total-value {
+
+.total-amount-row .total-value, .build-price-row .build-value {
     font-weight: bold;
 }
+
 /* contact page */
 section{
     display: flex;

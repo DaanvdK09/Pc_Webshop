@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
         const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
         const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + 150; // Adding a base price for build cost
+        const buildPrice = totalPrice - 150; // Build Cost
 
         // Power usage meter
         const powerMeterHtml = `
@@ -197,6 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                     ? `<a class="remove-selected-cpu-cooler-btn">Remove</a>`
                                     : 'No CPU Cooler selected'
                                 }
+                            </td>
+                        </tr>
+                        <tr class="build-price-row">
+                            <td colspan="2" class="build-label">Build Cost:</td>
+                            <td colspan="2" class="build-value">
+                                €${buildPrice.toFixed(2)}
                             </td>
                         </tr>
                         <tr class="total-amount-row">
