@@ -863,7 +863,7 @@ footer {
 
 #selected .table {
     width: 140%;
-    margin-left: -35%;
+    margin-left: -10%;
     text-align: left;
 }
 
@@ -923,9 +923,10 @@ footer {
 
 /* Power usage */
 .power-usage-meter {
+    margin-top: 10%;
     width: 100%;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: -2%;
 }
 .power-usage-meter strong {
     margin-right: 8px;
