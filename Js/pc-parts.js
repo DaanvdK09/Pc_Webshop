@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedMotherboard = null;
     let selectedRam = null;
     let selectedSsd = null;
+    let selectedCpuCooler = null;
 
     // Create and insert the selected table
     selectedGpuDiv = document.createElement('div');
@@ -28,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
         const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
         const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
-        const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice;
+        const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
+        const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + 150; // Adding a base price for build cost
 
         // Power usage meter
         const powerMeterHtml = `
@@ -174,6 +176,29 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                         </tr>
+                        <tr>
+                            <td>CPU Cooler</td>
+                            <td>
+                                ${
+                                    selectedCpuCooler
+                                    ? `<img src="${selectedCpuCooler.image_url}" alt="${selectedCpuCooler.name}" class="img">
+                                    <span>${selectedCpuCooler.name}</span>`
+                                    : `<div class="add-button" id="add-cpu-cooler-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add CPU Cooler</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedCpuCooler ? '' : 'none-selected'}">
+                                ${selectedCpuCooler ? `€${selectedCpuCooler.price}` : '-'}
+                            </td>
+                            <td class="${selectedCpuCooler ? '' : 'none-selected'}">
+                                ${
+                                    selectedCpuCooler
+                                    ? `<a class="remove-selected-cpu-cooler-btn">Remove</a>`
+                                    : 'No CPU Cooler selected'
+                                }
+                            </td>
+                        </tr>
                         <tr class="total-amount-row">
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
@@ -236,6 +261,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        if (selectedCpuCooler) {
+            const removeCpuCoolerBtn = selectedGpuDiv.querySelector('.remove-selected-cpu-cooler-btn');
+            if (removeCpuCoolerBtn) {
+                removeCpuCoolerBtn.addEventListener('click', function() {
+                    selectedCpuCooler = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
         // Add handlers
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
@@ -279,6 +314,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedGpuDiv.style.display = "none";
                 partsListDiv.style.display = "block";
                 showSsdSelection();
+            });
+        }
+
+        const addCpuCoolerBtn = selectedGpuDiv.querySelector('#add-cpu-cooler-btn');
+        if (addCpuCoolerBtn) {
+            addCpuCoolerBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showCpuCoolerSelection();
             });
         }
     }
@@ -495,6 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${ssd.capacity} GB</td>
                         <td>${ssd.read_speed} MHz</td>
                         <td>${ssd.write_speed} MHz</td>
+                        <td>${ssd.price}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -506,6 +551,56 @@ document.addEventListener('DOMContentLoaded', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedSsd = ssds[idx];
                         ssdTable.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
+                });
+            });
+    }
+
+    function showCpuCoolerSelection() {
+        selectedGpuDiv.style.display = "none";
+        const ramTable = document.getElementById('ram-table');
+        const cpuTable = document.getElementById('cpu-table');
+        const gpuTable = document.getElementById('gpu-table');
+        const motherboardTable = document.getElementById('motherboard-table');
+        const ssdTable = document.getElementById('ssd-table');
+        const cpuCoolerTable = document.getElementById('cpu_cooler-table');
+        ramTable.style.display = "none";
+        cpuTable.style.display = "none";
+        gpuTable.style.display = "none";
+        motherboardTable.style.display = "none";
+        ssdTable.style.display = "none";
+        cpuCoolerTable.style.display = "table";
+        fetch('http://localhost:5000/api/cpu_coolers')
+            .then(response => response.json())
+            .then(cpuCoolers => {
+                const tbody = cpuCoolerTable.querySelector('tbody');
+                tbody.innerHTML = "";
+                cpuCoolers.forEach((cpuCooler, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <img src="${cpuCooler.image_url}" alt="${cpuCooler.name}" class="img">
+                            <span>${cpuCooler.name}</span>
+                        </td>
+                        <td>${cpuCooler.manufacturer}</td>
+                        <td>${cpuCooler.fan_size} mm</td>
+                        <td>${cpuCooler.socket}</td>
+                        <td>${cpuCooler.cooling_type}</td>
+                        <td>${cpuCooler.price}</td>
+                        <td><a class="select-btn" data-idx="${idx}">Add</a></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                builderTitle.textContent = "Add CPU Cooler";
+                // Add event listeners
+                tbody.querySelectorAll('.select-btn').forEach((btn) => {
+                    btn.addEventListener('click', function() {
+                        const idx = btn.getAttribute('data-idx');
+                        selectedCpuCooler = cpuCoolers[idx];
+                        cpuCoolerTable.style.display = "none"; // <-- Corrected line
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();

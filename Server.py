@@ -175,5 +175,28 @@ def get_ssds():
     conn.close()
     return jsonify(ssds)
 
+# CPU Cooler API
+@app.route('/api/cpu_coolers', methods=['GET'])
+def get_cpu_coolers():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, fan_size, socket, max_rpm, noise_level, cooling_type FROM CPU_Cooler")
+    cpu_coolers = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'fan_size': row[4],
+            'socket': row[5],
+            'max_rpm': row[6],
+            'noise_level': row[7],
+            'cooling_type': row[8],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(cpu_coolers)
+
 if __name__ == '__main__':
     app.run(debug=True)
