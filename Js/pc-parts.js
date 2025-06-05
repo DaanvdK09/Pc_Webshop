@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedSsd = null;
     let selectedCpuCooler = null;
 
+    // Price format
+    let EURO = new Intl.NumberFormat('nl-NL', {
+        style: 'currency',
+        currency: 'EUR',
+    });
+
     // Create and insert selected table
     selectedGpuDiv = document.createElement('div');
     selectedGpuDiv.id = 'selected';
@@ -120,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedCpu ? '' : 'none-selected'}">
-                                ${selectedCpu ? `€${selectedCpu.price}` : '-'}
+                                ${selectedCpu ? `${EURO.format(selectedCpu.price)}` : '-'}
                             </td>
                             <td class="${selectedCpu ? '' : 'none-selected'}">
                                 ${
@@ -143,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedGpu ? '' : 'none-selected'}">
-                                ${selectedGpu ? `€${selectedGpu.price}` : '-'}
+                                ${selectedGpu ? `${EURO.format(selectedGpu.price)}` : '-'}
                             </td>
                             <td class="${selectedGpu ? '' : 'none-selected'}">
                                 ${
@@ -166,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                                ${selectedMotherboard ? `€${selectedMotherboard.price}` : '-'}
+                                ${selectedMotherboard ? `${EURO.format(selectedMotherboard.price)}` : '-'}
                             </td>
                             <td class="${selectedMotherboard ? '' : 'none-selected'}">
                                 ${
@@ -189,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedRam ? '' : 'none-selected'}">
-                                ${selectedRam ? `€${selectedRam.price}` : '-'}
+                                ${selectedRam ? `${EURO.format(selectedRam.price)}` : '-'}
                             </td>
                             <td class="${selectedRam ? '' : 'none-selected'}">
                                 ${
@@ -212,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedSsd ? '' : 'none-selected'}">
-                                ${selectedSsd ? `€${selectedSsd.price}` : '-'}
+                                ${selectedSsd ? `${EURO.format(selectedSsd.price)}` : '-'}
                             </td>
                             <td class="${selectedSsd ? '' : 'none-selected'}">
                                 ${
@@ -235,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                             <td class="${selectedCpuCooler ? '' : 'none-selected'}">
-                                ${selectedCpuCooler ? `€${selectedCpuCooler.price}` : '-'}
+                                ${selectedCpuCooler ? `${EURO.format(selectedCpuCooler.price)}` : '-'}
                             </td>
                             <td class="${selectedCpuCooler ? '' : 'none-selected'}">
                                 ${
@@ -248,13 +254,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr class="build-price-row">
                             <td colspan="2" class="build-label">Build Cost:</td>
                             <td colspan="2" class="build-value">
-                                €${buildPrice.toFixed(2)}
+                                ${EURO.format(buildPrice.toFixed(2))}
                             </td>
                         </tr>
                         <tr class="total-amount-row">
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
-                                €${totalPrice.toFixed(2)}
+                                ${EURO.format(totalPrice.toFixed(2))}
                                 <button id="add-to-cart-btn" class="pc-builder-cart-button">
                                     <i class="fa fa-cart-plus"></i> Add to Cart
                                 </button>
@@ -408,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${gpu.memory_size} GB</td>
                         <td>${gpu.core_clock} MHz</td>
                         <td>${gpu.boost_clock} MHz</td>
-                        <td>€${gpu.price}</td>
+                        <td>${EURO.format(gpu.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -454,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${cpu.core_count}</td>
                         <td>${cpu.thread_count}</td>
                         <td>${cpu.socket}</td>
-                        <td>€${cpu.price}</td>
+                        <td>${EURO.format(cpu.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -500,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${mb.socket}</td>
                         <td>${mb.chipset}</td>
                         <td>${mb.form_factor}</td>
-                        <td>€${mb.price}</td>
+                        <td>${EURO.format(mb.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -546,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${ram.capacity} GB</td>
                         <td>${ram.ram_speed} MHz</td>
                         <td>${ram.ram_type}</td>
-                        <td>€${ram.price}</td>
+                        <td>${EURO.format(ram.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -594,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${ssd.capacity} GB</td>
                         <td>${ssd.read_speed} MHz</td>
                         <td>${ssd.write_speed} MHz</td>
-                        <td>${ssd.price}</td>
+                        <td>${EURO.format(ssd.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
@@ -644,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${cpuCooler.fan_size} mm</td>
                         <td>${cpuCooler.socket.replace(';', ';<br>')}</td>
                         <td>${cpuCooler.cooling_type}</td>
-                        <td>${cpuCooler.price}</td>
+                        <td>${EURO.format(cpuCooler.price)}</td>
                         <td><a class="select-btn" data-idx="${idx}">Add</a></td>
                     `;
                     tbody.appendChild(tr);
