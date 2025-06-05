@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM CPU_Cooler;
+SELECT * FROM SSD;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS CPU_Cooler (
@@ -247,31 +247,6 @@ SELECT * FROM CPU_Cooler;
 
 -- Edit
 -- UPDATE GPU SET boost_clock ='2602' WHERE id = 5;
-
--- UPDATE SSD SET price = , image_url = '' WHERE id = 3;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 4;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 7;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 8;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 11;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 12;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 15;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 16;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 17;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 19;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 20;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 22;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 23;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 26;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 27;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 28;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 29;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 31;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 32;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 33;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 34;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 35;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 37;
--- UPDATE SSD SET price = , image_url = '' WHERE id = 38;
 
 -- Add new column
 -- ALTER TABLE RAM ADD COLUMN CAS_Latency TEXT;
