@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM SSD;
+SELECT * FROM CPU_Cooler;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS Powersuply (
