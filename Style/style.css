@@ -13,6 +13,7 @@
     --text-black-900:#E1EBEE;
     --text-black-700:#e9e9e9;
     --text-black-600:#ecf9ff;
+    --text-black-500: #4a90e2;
 }
 /* Light Mode */
 body.light {
@@ -113,26 +114,25 @@ footer {
     background-color: var(--bg-black-100);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
+.nav-links {
+    position: relative;
+    width: 90%;
+    background: var(--bg-black-100);
+    border-radius: 8px;
+    font-size: 0;
+    justify-content: space-between;
 }
 .nav-links .animation {
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 0;
-    background: var(--bg-black-550);
-    
+    background: var(--bg-black-550); 
 }
 .nav-links a {
-    font-size: 15px;
-    text-transform: uppercase;
+    font-size: 20px;
+    text-transform: capitalize;
     color: var(--text-black-900);
-    font-weight: 600;
     text-decoration: none;
     line-height: 50px;
     display: inline-block;
@@ -140,19 +140,19 @@ footer {
     z-index: 1;
 }
 .nav-links a:nth-child(1) {
-    width: 100px;
+    width: 20%;
 }
 .nav-links a:nth-child(2) {
-    width: 140px;
+    width: 20%;
 }
 .nav-links a:nth-child(3) {
-    width: 130px;
+    width: 20%;
 }
 .nav-links a:nth-child(4) {
-    width: 170px;
+    width: 20%;
 }
 .nav-links a:nth-child(5) {
-    width: 120px;
+    width: 20%;
 }
 
 .webshop-logo img {
@@ -164,31 +164,29 @@ footer {
 .webshop-logo img:hover {
     transform: scale(1.1);
 }
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 50px;
-}
 
 .login-icon {
-    position: absolute;
+    position: relative;
     font-size: 18px;
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
-    margin-left: -42%;
+    margin-left: 0;
     transition: transform 0.3s;
 }
 
 .login {
+    display: flex;
+    align-items: center;   
+    margin-right: 2%;
     text-decoration: none;
     text-transform: capitalize;
     color: var(--text-black-900);
     font-size: 18px;
     font-weight: 600;
     position: relative;
+    gap: 12%;
 }
 .login:hover{
     color: var(--text-black-700);
@@ -204,7 +202,7 @@ footer {
     transition: all 0.5s;
 }
 .login:hover::before {
-    width: 100%
+    width: 112%
 }
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
@@ -219,7 +217,7 @@ footer {
     text-decoration: none;
     margin-bottom: 3px;
     margin-left: 0px;
-    margin-right: 50px;
+    margin-right: 40px;
 
 }
 .cart-icon i {
