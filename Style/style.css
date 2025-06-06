@@ -295,14 +295,6 @@ footer {
     margin-top: 30px;
 }
 
-.home-container img {
-    width: 100%;
-    height: auto;
-    z-index: 8;
-    filter: blur(1px);
-    margin-top: 200px;
-}
-
 .bestsellers-row {
     display: flex;
     justify-content: center;
