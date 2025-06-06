@@ -291,3 +291,34 @@
     transform: scale(1.05);
     text-decoration: none;
   }
+
+<!--.nav-links a{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--text-black-900);
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 20px;
+    position: relative;
+}
+
+.nav-links a:hover{
+    color: var(--text-black-700);
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--bg-black-500);
+    transition: all 1s;
+}
+.nav-links a:hover::before {
+    width: 100%
+}
+.nav-links a.active::before {
+    width: 100%;
+}-->

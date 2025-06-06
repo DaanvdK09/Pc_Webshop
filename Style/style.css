@@ -120,37 +120,41 @@ footer {
     flex-direction: column;
     align-items: center;
 }
-
-.nav-links a{
-    text-decoration: none;
-    text-transform: capitalize;
-    color: var(--text-black-900);
-    font-size: 18px;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 20px;
-    position: relative;
-}
-
-.nav-links a:hover{
-    color: var(--text-black-700);
-}
-.nav-links a::before {
-    content: '';
+.nav-links .animation {
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background-color: var(--bg-black-500);
-    transition: all 1s;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    background: var(--bg-black-550);
+    
 }
-.nav-links a:hover::before {
-    width: 100%
+.nav-links a {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--text-black-900);
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    z-index: 1;
 }
-.nav-links a.active::before {
-    width: 100%;
+.nav-links a:nth-child(1) {
+    width: 100px;
 }
+.nav-links a:nth-child(2) {
+    width: 140px;
+}
+.nav-links a:nth-child(3) {
+    width: 130px;
+}
+.nav-links a:nth-child(4) {
+    width: 170px;
+}
+.nav-links a:nth-child(5) {
+    width: 120px;
+}
+
 .webshop-logo img {
     width: 70px;
     height: auto;
