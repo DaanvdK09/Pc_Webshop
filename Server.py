@@ -115,7 +115,7 @@ def get_cpus():
 def get_motherboards():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor, expansion_slots, ram_type FROM Motherboard")
+    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor, expansion_slots, ram_type, tdp FROM Motherboard")
     motherboards = [
         {
             'name': row[0],
@@ -127,6 +127,7 @@ def get_motherboards():
             'form_factor': row[6],
             'expansion_slots': row[7],
             'ram_type': row[8],
+            'tdp': row[9],
         }
         for row in cursor.fetchall()
     ]
@@ -138,7 +139,7 @@ def get_motherboards():
 def get_rams():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, ram_speed, ram_type FROM RAM")
+    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, ram_speed, ram_type, tdp FROM RAM")
     rams = [
         {
             'name': row[0],
@@ -148,6 +149,7 @@ def get_rams():
             'capacity': row[4],
             'ram_speed': row[5],
             'ram_type': row[6],
+            'tdp': row[7],
         }
         for row in cursor.fetchall()
     ]
@@ -159,7 +161,7 @@ def get_rams():
 def get_ssds():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, form_factor, interface, read_speed, write_speed FROM SSD")
+    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, form_factor, interface, read_speed, write_speed, tdp FROM SSD")
     ssds = [
         {
             'name': row[0],
@@ -171,6 +173,7 @@ def get_ssds():
             'interface': row[6],
             'read_speed': row[7],
             'write_speed': row[8],
+            'tdp': row[9],
         }
         for row in cursor.fetchall()
     ]
@@ -182,7 +185,7 @@ def get_ssds():
 def get_cpu_coolers():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, fan_size, socket, max_rpm, noise_level, cooling_type FROM CPU_Cooler")
+    cursor.execute("SELECT name, manufacturer, image_url, price, fan_size, socket, max_rpm, noise_level, cooling_type, tdp FROM CPU_Cooler")
     cpu_coolers = [
         {
             'name': row[0],
@@ -194,6 +197,7 @@ def get_cpu_coolers():
             'max_rpm': row[6],
             'noise_level': row[7],
             'cooling_type': row[8],
+            'tdp': row[9],
         }
         for row in cursor.fetchall()
     ]

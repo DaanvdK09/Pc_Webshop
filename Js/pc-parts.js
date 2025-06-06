@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
         const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
         const motherboardTdp = selectedMotherboard && selectedMotherboard.tdp ? Number(selectedMotherboard.tdp) : 0;
+        const ramTdp = selectedRam && selectedRam.tdp ? Number(selectedRam.tdp) : 0;
         const ssdTdp = selectedSsd && selectedSsd.tdp ? Number(selectedSsd.tdp) : 0;
-        const totalTdp = cpuTdp + gpuTdp + motherboardTdp + ssdTdp;
+        const cpuCoolerTdp = selectedCpuCooler && selectedCpuCooler.tdp ? Number(selectedCpuCooler.tdp) : 0;
+        const totalTdp = cpuTdp + gpuTdp + motherboardTdp + ramTdp + ssdTdp + cpuCoolerTdp;
 
         // Calculate total price
         const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;

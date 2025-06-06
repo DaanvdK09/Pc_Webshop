@@ -5,7 +5,7 @@
 SELECT * FROM SSD;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS CPU_Cooler (
+-- CREATE TABLE IF NOT EXISTS Powersuply (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
