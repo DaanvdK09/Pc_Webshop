@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM CPU_Cooler;
+SELECT * FROM PSU;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS Powersuply (
@@ -10,12 +10,10 @@ SELECT * FROM CPU_Cooler;
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- fan_size INTEGER,
-      -- fan_count INTEGER,
-      -- max_rpm INTEGER,
-      -- socket TEXT,
-      -- noise_level REAL,
-      -- cooling_type TEXT,
+      -- wattage INTEGER NOT NULL,
+      -- efficiency_rating TEXT,
+      -- form_factor TEXT,
+      -- modularity TEXT,
       -- image_url TEXT
 -- );
 
@@ -240,7 +238,43 @@ SELECT * FROM CPU_Cooler;
       -- (38, 'Enermax LIQMAX III ARGB 240', 'Enermax', 72.90, 'Intel LGA1700, LGA1200; AMD AM4, AM5', '2 × 120mm', 1600, 23.0, 'AIO Liquid'),
       -- (39, 'Thermaltake TH360 ARGB Sync', 'Thermaltake', 114.90, 'Intel LGA1700, LGA1200; AMD AM4, AM5', '3 × 120mm', 1500, 28.2, 'AIO Liquid'),
       -- (40, 'be quiet! Silent Loop 2 360mm', 'be quiet!', 149.90, 'Intel LGA1700, LGA1200; AMD AM4, AM5', '3 × 120mm', 2200, 32.1, 'AIO Liquid');
-  
+ 
+-- INSERT INTO Powersuply (id, name, manufacturer, price, wattage, efficiency_rating, form_factor, modularity) VALUES
+      -- (1, 'Cooler Master GX III Gold 750W', 'Cooler Master', 148.80, 750, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (2, 'Corsair RM850x (2021)', 'Corsair', 129.19, 850, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (3, 'Seasonic Focus GX-750', 'Seasonic', 120.90, 750, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (4, 'be quiet! Straight Power 12 1000W', 'be quiet!', 186.99, 1000, '80+ Platinum', 'ATX 3.0', 'Fully Modular'),
+      -- (5, 'Thermaltake Toughpower GF3 850W', 'Thermaltake', 120.89, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (6, 'ASUS ROG Strix 850G Aura Edition', 'ASUS', 177.39, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (7, 'MSI MPG A850G PCIE5', 'MSI', 129.19, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (8, 'NZXT C850', 'NZXT', 129.19, 850, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (9, 'Corsair RM1000x Shift', 'Corsair', 167.39, 1000, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (10, 'Seasonic Vertex GX-850', 'Seasonic', 167.39, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (11, 'Cooler Master V850 SFX Gold', 'Cooler Master', 148.80, 850, '80+ Gold', 'SFX', 'Fully Modular'),
+      -- (12, 'SilverStone DA850 Gold', 'SilverStone', 120.89, 850, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (13, 'EVGA SuperNOVA 850 G6', 'EVGA', 139.49, 850, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (14, 'Fractal Design Ion+ 2 Platinum 860W', 'Fractal Design', 139.49, 860, '80+ Platinum', 'ATX', 'Fully Modular'),
+      -- (15, 'Be Quiet! Pure Power 12 M 750W', 'be quiet!', 111.59, 750, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (16, 'XPG Core Reactor II 850W', 'XPG', 111.59, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (17, 'Lian Li SP750 SFX', 'Lian Li', 120.89, 750, '80+ Gold', 'SFX', 'Fully Modular'),
+      -- (18, 'Thermaltake Toughpower GF1 750W', 'Thermaltake', 111.59, 750, '80+ Gold', 'ATX', 'Fully Modular'),
+      -- (19, 'Corsair SF750 Platinum', 'Corsair', 167.39, 750, '80+ Platinum', 'SFX', 'Fully Modular'),
+      -- (20, 'Cooler Master V750 SFX Gold', 'Cooler Master', 129.19, 750, '80+ Gold', 'SFX', 'Fully Modular'),
+      -- (21, 'Gigabyte UD850GM PG5', 'Gigabyte', 111.59, 850, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (22, 'FSP Hydro PTM Pro 850W', 'FSP', 148.80, 850, '80+ Platinum', 'ATX', 'Fully Modular'),
+      -- (23, 'SilverStone HELA 850R Platinum', 'SilverStone', 176.69, 850, '80+ Platinum', 'ATX 3.0', 'Fully Modular'),
+      -- (24, 'Montech Titan Gold 1000W', 'Montech', 111.59, 1000, '80+ Gold', 'ATX 3.0', 'Fully Modular'),
+      -- (25, 'EVGA 600 BR', 'EVGA', 46.49, 600, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (26, 'Thermaltake Smart 500W', 'Thermaltake', 37.19, 500, '80+', 'ATX', 'Non-Modular'),
+      -- (27, 'Corsair CX650M', 'Corsair', 74.39, 650, '80+ Bronze', 'ATX', 'Semi-Modular'),
+      -- (28, 'Cooler Master MWE Bronze 650W', 'Cooler Master', 65.09, 650, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (29, 'Seasonic S12III 500', 'Seasonic', 51.14, 500, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (30, 'Be Quiet! System Power 10 650W', 'Be Quiet!', 65.00, 650, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (31, 'FSP Hydro K PRO 500W', 'FSP', 51.14, 500, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (32, 'Montech Gamma II 550W', 'Montech', 41.84, 550, '80+ Bronze', 'ATX', 'Non-Modular'),
+      -- (33, 'EVGA SuperNOVA 650 GM', 'EVGA', 92.99, 650, '80+ Gold', 'SFX', 'Fully Modular'),
+      -- (34, 'SilverStone SX700-G', 'SilverStone', 130.19, 700, '80+ Gold', 'SFX', 'Fully Modular'),
+      -- (35, 'Corsair SF600', 'Corsair', 120.89, 600, '80+ Gold', 'SFX', 'Fully Modular');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
