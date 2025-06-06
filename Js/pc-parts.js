@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedRam = null;
     let selectedSsd = null;
     let selectedCpuCooler = null;
+    let selectedPsu = null;
 
     // Price format
     let EURO = new Intl.NumberFormat('nl-NL', {
@@ -253,6 +254,29 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             </td>
                         </tr>
+                        <tr>
+                            <td>Powersupply</td>
+                            <td>
+                                ${
+                                    selectedPsu
+                                    ? `<img src="${selectedPsu.image_url}" alt="${selectedPsu.name}" class="img">
+                                    <span>${selectedPsu.name}</span>`
+                                    : `<div class="add-button" id="add-psu-btn">
+                                        <a><i class="fa-solid fa-plus"></i>Add Powersupply</a>
+                                    </div>`
+                                }
+                            </td>
+                            <td class="${selectedPsu ? '' : 'none-selected'}">
+                                ${selectedPsu ? `${EURO.format(selectedPsu.price)}` : '-'}
+                            </td>
+                            <td class="${selectedPsu ? '' : 'none-selected'}">
+                                ${
+                                    selectedPsu
+                                    ? `<a class="remove-selected-psu-btn">Remove</a>`
+                                    : 'No Powersupply selected'
+                                }
+                            </td>
+                        </tr>
                         <tr class="build-price-row">
                             <td colspan="2" class="build-label">Build Cost:</td>
                             <td colspan="2" class="build-value">
@@ -334,6 +358,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        if (selectedPsu) {
+            const removePsuBtn = selectedGpuDiv.querySelector('.remove-selected-psu-btn');
+            if (removePsuBtn) {
+                removePsuBtn.addEventListener('click', function() {
+                    selectedPsu = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
         // Add handlers
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
@@ -386,6 +420,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedGpuDiv.style.display = "none";
                 partsListDiv.style.display = "block";
                 showCpuCoolerSelection();
+            });
+        }
+
+        const addPsuBtn = selectedGpuDiv.querySelector('#add-psu-btn');
+        if (addPsuBtn) {
+            addPsuBtn.addEventListener('click', function() {
+                console.log("Add Powersupply button clicked"); // Check if this log appears
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showPsuSelection();
             });
         }
     }
@@ -664,6 +708,52 @@ document.addEventListener('DOMContentLoaded', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedCpuCooler = cpuCoolers[idx];
                         cpuCoolerTable.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
+                });
+            });
+    }
+
+    function showPsuSelection() {
+        selectedGpuDiv.style.display = "none";
+        const psuTable = document.getElementById('psu-table');
+        document.getElementById('gpu-table').style.display = "none";
+        document.getElementById('cpu-table').style.display = "none";
+        document.getElementById('motherboard-table').style.display = "none";
+        document.getElementById('ram-table').style.display = "none";
+        document.getElementById('ssd-table').style.display = "none";
+        document.getElementById('cpu_cooler-table').style.display = "none";
+        psuTable.style.display = "table";
+        fetch('http://localhost:5000/api/psus')
+            .then(response => response.json())
+            .then(psus => {
+                const tbody = psuTable.querySelector('tbody');
+                tbody.innerHTML = "";
+                psus.forEach((psu, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <img src="${psu.image_url}" alt="${psu.name}" class="img">
+                            <span>${psu.name}</span>
+                        </td>
+                        <td>${psu.manufacturer}</td>
+                        <td>${psu.wattage} W</td>
+                        <td>${psu.efficiency_rating}</td>
+                        <td>${psu.form_factor}</td>
+                        <td>${EURO.format(psu.price)}</td>
+                        <td><a class="select-btn" data-idx="${idx}">Add</a></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                builderTitle.textContent = "Add a Powersupply";
+                // Add event listeners
+                tbody.querySelectorAll('.select-btn').forEach((btn) => {
+                    btn.addEventListener('click', function() {
+                        const idx = btn.getAttribute('data-idx');
+                        selectedPsu = psus[idx];
+                        psuTable.style.display = "none";
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();

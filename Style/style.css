@@ -935,7 +935,7 @@ footer {
     background-color: #b71c1c !important;
 }
 
-.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn, .remove-selected-ram-btn, .remove-selected-ssd-btn, .remove-selected-cpu-cooler-btn {
+.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn, .remove-selected-ram-btn, .remove-selected-ssd-btn, .remove-selected-cpu-cooler-btn, .remove-selected-psu-btn {
     cursor:pointer;
     display:inline-block;
     margin-top:8px;
@@ -949,7 +949,7 @@ footer {
     display:inline-block;
 }
 
-.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-selected-motherboard-btn:hover, .remove-selected-ram-btn:hover, .remove-selected-ssd-btn:hover, .remove-selected-cpu-cooler-btn:hover {
+.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-selected-motherboard-btn:hover, .remove-selected-ram-btn:hover, .remove-selected-ssd-btn:hover, .remove-selected-cpu-cooler-btn:hover, .remove-selected-psu-btn:hover {
     background-color: #b71c1c;
 }
 

@@ -204,5 +204,26 @@ def get_cpu_coolers():
     conn.close()
     return jsonify(cpu_coolers)
 
+# PSU API
+@app.route('/api/psus', methods=['GET'])
+def get_psus():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, wattage, efficiency_rating, form_factor FROM PSU")
+    psus = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'wattage': row[4],
+            'efficiency_rating': row[5],
+            'form_factor': row[6],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(psus)
+
 if __name__ == '__main__':
     app.run(debug=True)
