@@ -297,6 +297,14 @@ footer {
     margin-top: 30px;
 }
 
+.home-container img {
+    width: 100%;
+    height: auto;
+    z-index: 8;
+    filter: blur(1px);
+    margin-top: 200px;
+}
+
 .bestsellers-row {
     display: flex;
     justify-content: center;
@@ -343,6 +351,7 @@ footer {
     text-align: center;
     color: var(--text-black-900);
     margin-top: 100px;
+    position: relative;
 }
 
 .home-title h1 {
