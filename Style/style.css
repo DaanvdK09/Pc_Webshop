@@ -124,10 +124,11 @@ footer {
 }
 .nav-links .animation {
     position: absolute;
-    height: 100%;
-    top: 0;
+    height: 8%;
+    bottom: 0;
     z-index: 0;
-    background: var(--bg-black-550); 
+    background: var(--bg-black-550);
+    
 }
 .nav-links a {
     font-size: 20px;
@@ -138,27 +139,50 @@ footer {
     display: inline-block;
     text-align: center;
     z-index: 1;
+    position: relative;
+    margin: 0 10px;
 }
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--bg-black-500);
+    transition: all 1s;
+}
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: 100%
+}
+
 .nav-links a:nth-child(1) {
-    width: 20%;
+    width: 100px;
 }
+
 .nav-links a:nth-child(2) {
-    width: 20%;
+    width: 140px;
 }
+
 .nav-links a:nth-child(3) {
-    width: 20%;
+    width: 130px;
 }
+
 .nav-links a:nth-child(4) {
     width: 20%;
 }
+
 .nav-links a:nth-child(5) {
-    width: 20%;
+    width: 120px;
 }
+
 
 .webshop-logo img {
     width: 70px;
     height: auto;
-    margin-left: 50px;
+    margin-left: 40px;
+    margin-right: 20px;
     transition: transform 0.3s;
 }
 .webshop-logo img:hover {
@@ -186,7 +210,6 @@ footer {
     font-size: 18px;
     font-weight: 600;
     position: relative;
-    gap: 12%;
 }
 .login:hover{
     color: var(--text-black-700);
@@ -197,7 +220,7 @@ footer {
     bottom: -5px;
     left: 0;
     width: 0%;
-    height: 2px;
+    height: 6%;
     background-color: var(--bg-black-500);
     transition: all 0.5s;
 }
@@ -217,7 +240,7 @@ footer {
     text-decoration: none;
     margin-bottom: 3px;
     margin-left: 0px;
-    margin-right: 40px;
+    margin-right: 50px;
 
 }
 .cart-icon i {
@@ -229,8 +252,12 @@ footer {
     background-color: transparent;
     border: none;
     color: var(--text-black-900);
-    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
 }
+
+
 
 /* Account Sidebar */
 .account-sidebar {
@@ -627,7 +654,7 @@ footer {
 }
 
 .prebuilt-pc-card img {
-    width: 60%;
+    width: 65%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -665,21 +692,113 @@ footer {
     border-radius: 8px;
 }
 
+/* add to cart button */
 .buy-button {
-    border-radius: 25px;
-    padding: 5px 10px;
-    background-color: var(--bg-black-550);
-    border: none;
-    margin-top: 10px;
-    transition: background-color 0.5s, color 0.5s;
-}
-
-.buy-button:hover {
-    background-color: var(--bg-black-600);
-    color: var(--text-black-600);
+    position: relative;
+    padding: 2%;
+    margin: 5%;
+    width: 38%;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--bg-black-550);
+    outline: none;
     cursor: pointer;
+    color: var(--text-black-900);
+    transition: .3s ease-in-out;
+    overflow: hidden;
+}
+.buy-button:hover {
+    background: var(--bg-black-600);
+}
+.buy-button:active {
+    transform: scale(0.9);
+}
+.buy-button .fa-shopping-cart {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: -10%;
+    font-size: 1.8rem;
+    transform: translate(-50%, -50%);
+}
+.buy-button .fa-box {
+    position: absolute;
+    z-index: 3;
+    top: -20%;
+    left: 52%;
+    font-size: 1.1em;
+    transform: translate(-50%, -50%);
+}
+.buy-button span {
+    position: absolute;
+    left: 50%;
+    z-index: 3;
+    top: 50%;
+    color: var(--text-black-900);
+    font-size: 1.2em;
+    transform: translate(-50%, -50%);
+}
+.buy-button span.add-to-cart {
+    opacity: 1;
+}
+.buy-button span.added {
+    opacity: 0;
+}
+.buy-button.clicked .fa-shopping-cart {
+    animation: cart 1.5s ease-in-out forwards;
+}
+.buy-button.clicked .fa-box {
+    animation: box 1.5s ease-in-out forwards;
+}
+.buy-button.clicked span.add-to-cart {
+    animation: txt1 1.5s ease-in-out forwards;
+}
+.buy-button.clicked span.added {
+    animation: txt2 1.5s ease-in-out forwards;
+}
+@keyframes cart {
+    0% {
+        left: -10%;
+    }
+    40%, 60% {
+        left: 50%;
+    }
+    100% {
+        left: 110%;
+    }
+}
+@keyframes box {
+    0%, 40% {
+        top: -20%;
+    }
+    60% {
+        top: 30%;
+        left: 52%;
+    }
+    100% {
+        top: 40%;
+        left: 112%;
+    }
+}
+@keyframes txt1 {
+    0% {
+        opacity: 1;
+    }
+    20%, 100% {
+        opacity: 0;
+    }
+}
+@keyframes txt2 {
+    0%, 80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
+/* Specs Menu */
 .specs-menu {
     width: 250px;
     box-sizing: border-box;

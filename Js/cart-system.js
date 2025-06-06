@@ -1,62 +1,110 @@
 // Hier is Bram nog mee bezig, maar ik moet nog ffe bedenken hoe ik de specs erbij ga zetten
-const products = [{
-    image: '../Foto/budget-prebuilt-gaming-pc-white.png',
-    name: 'Glacier 800',
-    priceCents: 89999
-}, {
-    image: '../Foto/budget-prebuilt-gaming-pc-black.png',
-    name: 'BlackBeast Lite',
-    priceCents: 79999
-}, {
-    image: '../Foto/prebuild-pc-mr-white.jpg',
-    name: 'IceBreaker X14',
-    priceCents: 139999
-}, {
-    image: '../Foto/prebuilt-pc-mr-black.jpg',
-    name: 'PhantomCore',
-    priceCents: 139999
-}, {
-    image: '../Foto/high-end-prebuilt-gaming-pc-white.png',
-    name: 'FrostTitan C5',
-    priceCents: 289999
-}, {
-    image: '../Foto/high-end-prebuilt-gaming-pc-black.png',
-    name: 'ShadowForce V2',
-    priceCents: 279999
-}, {
-    image: '../Foto/ultra-high-end-prebuilt-gaming-pc-white.png',
-    name: 'Whiteout Ultra V3',
-    priceCents: 439999
-}, {
-    image: '../Foto/ultra-high-end-prebuilt-gaming-pc-black.png',
-    name: 'Darkflow Domination Max',
-    priceCents: 429999
-}]
+const products = [
+    {
+        id: 1,
+        image: "../Foto/budget-prebuilt-gaming-pc-white.png",
+        name: "Glacier 800",
+        price: 899.99,
+        cpu: "AMD Ryzen 5 5500",
+        gpu: "NVIDIA GeForce RTX 4060",
+        ram: "16GB DDR4 RAM",
+        storage: "1TB NVMe SSD",
+        cooler: "120mm fan Air Cooler",
+        psu: "650W Power Supply"
+    }, {
+        id: 2,
+        image: "../Foto/budget-prebuilt-gaming-pc-black.png",
+        name: "BlackBeast Lite",
+        price: 799.99,
+        cpu: "AMD Ryzen 5 5500",
+        gpu: "NVIDIA GeForce RTX 4060",
+        ram: "16GB DDR4 RAM",
+        storage: "1TB NVMe SSD",
+        cooler: "Stock AMD cooler",
+        psu: "650W Power Supply"
+    }, {
+        id: 3,
+        image: "../Foto/prebuild-pc-mr-white.jpg",
+        name: "IceBreaker X14",
+        price: 1399.99,
+        cpu: "AMD Ryzen 5 9600x",
+        gpu: "AMD RX 7700 XT 12 GB",
+        ram: "32GB DDR5 RAM",
+        storage: "2TB NVMe SSD",
+        cooler: "240mm AIO",
+        psu: "750W Power Supply"
+    }, {
+        id: 4,
+        image: "../Foto/prebuilt-pc-mr-black.jpg",
+        name: "PhantomCore",
+        price: 1399.99,
+        cpu: "AMD Ryzen 5 9600x",
+        gpu: "AMD RX 7700 XT 12 GB",
+        ram: "32GB DDR5 RAM",
+        storage: "2TB NVMe SSD",
+        cooler: "240mm AIO",
+        psu: "750W Power Supply"
+    }, {
+        id: 5,
+        image: "../Foto/high-end-prebuilt-gaming-pc-white.png",
+        name: "FrostTitan C5",
+        price: 2899.99,
+        cpu: "AMD Ryzen 7 7800X3D",
+        gpu: "NVIDIA GeForce RTX 5080",
+        ram: "64GB DDR5 RAM",
+        storage: "2TB NVMe SSD",
+        cooler: "360mm AIO",
+        psu: "850W Power Supply"
+    }, {
+        id: 6,
+        image: "../Foto/high-end-prebuilt-gaming-pc-black.png",
+        name: "ShadowForce V2",
+        price: 2799.99,
+        cpu: "AMD Ryzen 7 7800X3D",
+        gpu: "NVIDIA GeForce RTX 5080",
+        ram: "64GB DDR5 RAM",
+        storage: "2TB NVMe SSD",
+        cooler: "360mm AIO",
+        psu: "850W Power Supply"
+    }, {
+        id: 7,
+        image: "../Foto/ultra-high-end-prebuilt-gaming-pc-white.jpg",
+        name: "Whiteout Ultra V3",
+        price: 4399.99,
+        cpu: "AMD Ryzen 7 9800X3D",
+        gpu: "NVIDIA GeForce RTX 5090",
+        ram: "96GB DDR5 RAM",
+        storage: "4TB NVMe SSD",
+        cooler: "360mm AIO",
+        psu: "1000W Power Supply"
+    }, {
+        id: 8,
+        image: "../Foto/ultra-high-end-prebuilt-gaming-pc-black.png",
+        name: "Darkflow Domination Max",
+        price: 4299.99,
+        cpu: "AMD Ryzen 7 9800X3D",
+        gpu: "NVIDIA GeForce RTX 5090",
+        ram: "96GB DDR5 RAM",
+        storage: "4TB NVMe SSD",
+        cooler: "Custom Water Loop",
+        psu: "1000W Power Supply"
+    }
+]
 
-let productsHTML = '';
+const productContainer = document.querySelector(".prebuilt-list");
 
-products.forEach((product) => {
-    productsHTML += `
-    <div class="prebuilt-pc-card col-6">
-                <img src="${product.image}" style="width: 65%;">
-                <h3>${product.name}</h3>
-                <div class="specs-menu">
-                    <div class="specs-toggle">
-                        <span class="spects-toggle-text">Specs</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                        <ul class="specs-list">
-                            <li class="spec">AMD Ryzen 5 5500</li>
-                            <li class="spec">NVIDIA GeForce RTX 4060</li>
-                            <li class="spec">16GB DDR4 RAM</li>
-                            <li class="spec">1TB NVMe SSD</li>
-                            <li class="spec">120mm fan Air Cooler</li>
-                            <li class="spec">650W Power Supply</li>
-                        </ul>
-                </div>
-                <h5>€${product.priceCents / 100}</h5>
-                <button class="buy-button">Add to cart</button>
-    </div>
-    `;
-});
-console.log(productsHTML);
+if (productContainer) {
+    displayProducts();
+}
+
+function displayProducts() {
+    products.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("prebuilt-pc-card", "col-6");
+        productCard.innerHTML = `
+            <div class="prebuilt-pc-image">
+                <img src="${product.image}">
+            </div>
+            `
+    });
+}

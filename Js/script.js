@@ -58,6 +58,21 @@ function updateLogo() {
         img.src = '../Foto/Logo-white.png';
     }
 }
+//add-to-cart-button
+document.querySelectorAll('.buy-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        // Verwijder eerst de class als hij er al op zit (voor snel dubbelklikken)
+        button.classList.remove('clicked');
+        // Force reflow zodat de animatie opnieuw kan starten
+        void button.offsetWidth;
+        // Voeg de class toe voor de animatie
+        button.classList.add('clicked');
+        // Verwijder de class na de animatie (1.5s, gelijk aan je keyframes)
+        setTimeout(function() {
+            button.classList.remove('clicked');
+        }, 2200);
+    });
+});
 //specs menu
 document.querySelectorAll('.specs-menu').forEach(function(menu) {
     const toggle = menu.querySelector('.specs-toggle');
@@ -69,17 +84,12 @@ document.querySelectorAll('.specs-menu').forEach(function(menu) {
 });
 //nav underline
 document.addEventListener('DOMContentLoaded', function() {
-    // Zoek de actieve nav-link
     const activeLink = document.querySelector('.nav-links .nav-link.active');
     if (activeLink) {
-        const underline = activeLink;
-        // Zet de underline eerst op 0%
-        underline.classList.remove('active');
-        // Forceer reflow zodat de browser het registreert
-        void underline.offsetWidth;
-        // Voeg na een korte delay de active class weer toe zodat de animatie afspeelt
+        activeLink.classList.remove('active');
+        void activeLink.offsetWidth; // force reflow
         setTimeout(() => {
-            underline.classList.add('active');
-        }, 100);
+            activeLink.classList.add('active');
+        }, 50);
     }
 });
