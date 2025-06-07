@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedSsd = null;
     let selectedCpuCooler = null;
     let selectedPsu = null;
+    let selectedCase = null;
 
     // Price format
     let EURO = new Intl.NumberFormat('nl-NL', {
@@ -24,278 +25,308 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function renderSelectedTable() {
-        // Calculate total TDP
-        const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
-        const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
-        const motherboardTdp = selectedMotherboard && selectedMotherboard.tdp ? Number(selectedMotherboard.tdp) : 0;
-        const ramTdp = selectedRam && selectedRam.tdp ? Number(selectedRam.tdp) : 0;
-        const ssdTdp = selectedSsd && selectedSsd.tdp ? Number(selectedSsd.tdp) : 0;
-        const cpuCoolerTdp = selectedCpuCooler && selectedCpuCooler.tdp ? Number(selectedCpuCooler.tdp) : 0;
-        const totalTdp = cpuTdp + gpuTdp + motherboardTdp + ramTdp + ssdTdp + cpuCoolerTdp;
+    // Calculate total TDP
+    const cpuTdp = selectedCpu && selectedCpu.tdp ? Number(selectedCpu.tdp) : 0;
+    const gpuTdp = selectedGpu && selectedGpu.tdp ? Number(selectedGpu.tdp) : 0;
+    const motherboardTdp = selectedMotherboard && selectedMotherboard.tdp ? Number(selectedMotherboard.tdp) : 0;
+    const ramTdp = selectedRam && selectedRam.tdp ? Number(selectedRam.tdp) : 0;
+    const ssdTdp = selectedSsd && selectedSsd.tdp ? Number(selectedSsd.tdp) : 0;
+    const cpuCoolerTdp = selectedCpuCooler && selectedCpuCooler.tdp ? Number(selectedCpuCooler.tdp) : 0;
+    const totalTdp = cpuTdp + gpuTdp + motherboardTdp + ramTdp + ssdTdp + cpuCoolerTdp;
 
-        // Calculate total price
-        const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
-        const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
-        const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
-        const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
-        const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
-        const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + 150; // Adding a base price for build cost
-        const buildPrice = totalPrice - 150; // Build Cost
+    // Calculate total price
+    const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
+    const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
+    const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
+    const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
+    const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
+    const casePrice = selectedCase ? Number(selectedCase.price) : 0;
+    const psuPrice = selectedPsu ? Number(selectedPsu.price) : 0;
+    const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + psuPrice + casePrice + 150; // Adding a base price for build cost
+    const buildPrice = totalPrice - 150; // Build Cost
 
-        // Power usage meter
-        const powerMeterHtml = `
-            <div class="power-usage-meter">
-                <strong><i class="fa-solid fa-bolt"></i>Estimated Power Usage:</strong>
-                <meter min="0" max="1200" value="${totalTdp}" class="power-meter"></meter>
-                <span class="power-watt">${totalTdp} W</span>
-            </div>
-        `;
+    // Power usage meter
+    const powerMeterHtml = `
+        <div class="power-usage-meter">
+            <strong><i class="fa-solid fa-bolt"></i>Estimated Power Usage:</strong>
+            <meter min="0" max="1200" value="${totalTdp}" class="power-meter"></meter>
+            <span class="power-watt">${totalTdp} W</span>
+        </div>
+    `;
 
-        // Compatibility check
-        let compatibilityWarnings = [];
+    // Compatibility check
+    let compatibilityWarnings = [];
 
-        // CPU | Motherboard socket
-        if (selectedCpu && selectedMotherboard && selectedCpu.socket !== selectedMotherboard.socket) {
-            compatibilityWarnings.push("⚠️ CPU and Motherboard sockets do not match.");
+    // CPU | Motherboard socket
+    if (selectedCpu && selectedMotherboard && selectedCpu.socket !== selectedMotherboard.socket) {
+        compatibilityWarnings.push("⚠️ CPU and Motherboard sockets do not match.");
+    }
+
+    // CPU Cooler | CPU socket
+    if (selectedCpu && selectedCpuCooler) {
+        // Cpu Cooler socket can be a string
+        const coolerSockets = selectedCpuCooler.socket
+            .split(/[,;]+/)
+            .map(s => s.trim().toUpperCase());
+        if (!coolerSockets.includes(selectedCpu.socket.toUpperCase())) {
+            compatibilityWarnings.push("⚠️ CPU Cooler may not fit the selected CPU socket.");
         }
+    }
 
-        // CPU Cooler | CPU socket
-        if (selectedCpu && selectedCpuCooler) {
-            // Cpu Cooler socket can be a string
-            const coolerSockets = selectedCpuCooler.socket
-                .split(/[,;]+/)
-                .map(s => s.trim().toUpperCase());
-            if (!coolerSockets.includes(selectedCpu.socket.toUpperCase())) {
-                compatibilityWarnings.push("⚠️ CPU Cooler may not fit the selected CPU socket.");
+    // GPU | Motherboard Slot
+    if (selectedGpu && selectedMotherboard) {
+        const expansionSlots = selectedMotherboard.expansion_slots
+            .split(/[,;]/)
+            .map(s => s.trim().toUpperCase());
+        if (!expansionSlots.includes(selectedGpu.slot.toUpperCase())) {
+            compatibilityWarnings.push("⚠️ GPU and Motherboard slot do not match");
+        }
+    }
+
+    // RAM | Motherboard Type
+    if (selectedRam && selectedMotherboard && selectedRam.ram_type !== selectedMotherboard.ram_type) {
+        compatibilityWarnings.push("⚠️ RAM and Motherboard slots do not match.");
+    }
+
+    // PSU | Powerusage
+    if (selectedPsu && totalTdp && selectedPsu.wattage < totalTdp) {
+        compatibilityWarnings.push("⚠️ Powersupply may not supply sufficient wattage.");
+    }
+
+    const compatibilityHtml = `
+        <div class="compatibility-bar">
+            ${
+                compatibilityWarnings.length === 0
+                ? '<span class="compatibility-warning"><i class="fa fa-check-circle"></i> All selected parts are compatible.</span>'
+                : compatibilityWarnings.map(w => `<span class="compatibility-warning-red">${w}</span>`).join('<br>')
             }
-        }
+        </div>
+    `;
 
-        // GPU | Motherboard Slot
-        if (selectedGpu && selectedMotherboard) {
-            const expansionSlots = selectedMotherboard.expansion_slots
-                .split(/[,;]/)
-                .map(s => s.trim().toUpperCase());
-            if (!expansionSlots.includes(selectedGpu.slot.toUpperCase())) {
-                compatibilityWarnings.push("⚠️ GPU and Motherboard slot do not match");
-            }
-        }
-
-        // RAM | Motherboard Type
-        if (selectedRam && selectedMotherboard && selectedRam.ram_type !== selectedMotherboard.ram_type) {
-            compatibilityWarnings.push("⚠️ RAM and Motherboard slots do not match.");
-        }
-
-        const compatibilityHtml = `
-            <div class="compatibility-bar">
-                ${
-                    compatibilityWarnings.length === 0
-                    ? '<span class="compatibility-warning"><i class="fa fa-check-circle"></i> All selected parts are compatible.</span>'
-                    : compatibilityWarnings.map(w => `<span class="compatibility-warning-red">${w}</span>`).join('<br>')
-                }
-            </div>
-        `;
-
-        // Render selected
-        selectedGpuDiv.innerHTML = `
-            <div class="selected-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <div class="pc-builder-status-row">
-                                ${powerMeterHtml}
-                                ${compatibilityHtml}
-                            </div>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>CPU</td>
-                            <td>
-                                ${
-                                    selectedCpu
-                                    ? `<img src="${selectedCpu.image_url}" alt="${selectedCpu.name}" class="img">
-                                    <span>${selectedCpu.name}</span>`
-                                    : `<div class="add-button" id="add-cpu-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add CPU</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedCpu ? '' : 'none-selected'}">
-                                ${selectedCpu ? `${EURO.format(selectedCpu.price)}` : '-'}
-                            </td>
-                            <td class="${selectedCpu ? '' : 'none-selected'}">
-                                ${
-                                    selectedCpu
-                                    ? `<a class="remove-selected-cpu-btn">Remove</a>`
-                                    : 'No CPU selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>GPU</td>
-                            <td>
-                                ${
-                                    selectedGpu
-                                    ? `<img src="${selectedGpu.image_url}" alt="${selectedGpu.name}" class="img">
-                                    <span>${selectedGpu.name}</span>`
-                                    : `<div class="add-button" id="add-gpu-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add GPU</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedGpu ? '' : 'none-selected'}">
-                                ${selectedGpu ? `${EURO.format(selectedGpu.price)}` : '-'}
-                            </td>
-                            <td class="${selectedGpu ? '' : 'none-selected'}">
-                                ${
-                                    selectedGpu
-                                    ? `<a class="remove-selected-btn">Remove</a>`
-                                    : 'No GPU selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Motherboard</td>
-                            <td>
-                                ${
-                                    selectedMotherboard
-                                    ? `<img src="${selectedMotherboard.image_url}" alt="${selectedMotherboard.name}" class="img">
-                                    <span>${selectedMotherboard.name}</span>`
-                                    : `<div class="add-button" id="add-motherboard-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add Motherboard</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                                ${selectedMotherboard ? `${EURO.format(selectedMotherboard.price)}` : '-'}
-                            </td>
-                            <td class="${selectedMotherboard ? '' : 'none-selected'}">
-                                ${
-                                    selectedMotherboard
-                                    ? `<a class="remove-selected-motherboard-btn">Remove</a>`
-                                    : 'No Motherboard selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>RAM</td>
-                            <td>
-                                ${
-                                    selectedRam
-                                    ? `<img src="${selectedRam.image_url}" alt="${selectedRam.name}" class="img">
-                                    <span>${selectedRam.name}</span>`
-                                    : `<div class="add-button" id="add-ram-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add RAM</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedRam ? '' : 'none-selected'}">
-                                ${selectedRam ? `${EURO.format(selectedRam.price)}` : '-'}
-                            </td>
-                            <td class="${selectedRam ? '' : 'none-selected'}">
-                                ${
-                                    selectedRam
-                                    ? `<a class="remove-selected-ram-btn">Remove</a>`
-                                    : 'No RAM selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>SSD</td>
-                            <td>
-                                ${
-                                    selectedSsd
-                                    ? `<img src="${selectedSsd.image_url}" alt="${selectedSsd.name}" class="img">
-                                    <span>${selectedSsd.name}</span>`
-                                    : `<div class="add-button" id="add-ssd-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add SSD</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedSsd ? '' : 'none-selected'}">
-                                ${selectedSsd ? `${EURO.format(selectedSsd.price)}` : '-'}
-                            </td>
-                            <td class="${selectedSsd ? '' : 'none-selected'}">
-                                ${
-                                    selectedSsd
-                                    ? `<a class="remove-selected-ssd-btn">Remove</a>`
-                                    : 'No SSD selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CPU Cooler</td>
-                            <td>
-                                ${
-                                    selectedCpuCooler
-                                    ? `<img src="${selectedCpuCooler.image_url}" alt="${selectedCpuCooler.name}" class="img">
-                                    <span>${selectedCpuCooler.name}</span>`
-                                    : `<div class="add-button" id="add-cpu-cooler-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add CPU Cooler</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedCpuCooler ? '' : 'none-selected'}">
-                                ${selectedCpuCooler ? `${EURO.format(selectedCpuCooler.price)}` : '-'}
-                            </td>
-                            <td class="${selectedCpuCooler ? '' : 'none-selected'}">
-                                ${
-                                    selectedCpuCooler
-                                    ? `<a class="remove-selected-cpu-cooler-btn">Remove</a>`
-                                    : 'No CPU Cooler selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Powersupply</td>
-                            <td>
-                                ${
-                                    selectedPsu
-                                    ? `<img src="${selectedPsu.image_url}" alt="${selectedPsu.name}" class="img">
-                                    <span>${selectedPsu.name}</span>`
-                                    : `<div class="add-button" id="add-psu-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add Powersupply</a>
-                                    </div>`
-                                }
-                            </td>
-                            <td class="${selectedPsu ? '' : 'none-selected'}">
-                                ${selectedPsu ? `${EURO.format(selectedPsu.price)}` : '-'}
-                            </td>
-                            <td class="${selectedPsu ? '' : 'none-selected'}">
-                                ${
-                                    selectedPsu
-                                    ? `<a class="remove-selected-psu-btn">Remove</a>`
-                                    : 'No Powersupply selected'
-                                }
-                            </td>
-                        </tr>
-                        <tr class="build-price-row">
-                            <td colspan="2" class="build-label">Build Cost:</td>
-                            <td colspan="2" class="build-value">
-                                ${EURO.format(buildPrice.toFixed(2))}
-                            </td>
-                        </tr>
-                        <tr class="total-amount-row">
-                            <td colspan="2" class="total-label">Total Amount:</td>
-                            <td colspan="2" class="total-value">
-                                ${EURO.format(totalPrice.toFixed(2))}
-                                <button id="add-to-cart-btn" class="pc-builder-cart-button">
-                                    <i class="fa fa-cart-plus"></i> Add to Cart
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        `;
+    // Render selected
+    selectedGpuDiv.innerHTML = `
+        <div class="selected-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <div class="pc-builder-status-row">
+                            ${powerMeterHtml}
+                            ${compatibilityHtml}
+                        </div>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CPU</td>
+                        <td>
+                            ${
+                                selectedCpu
+                                ? `<img src="${selectedCpu.image_url}" alt="${selectedCpu.name}" class="img">
+                                <span>${selectedCpu.name}</span>`
+                                : `<div class="add-button" id="add-cpu-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add CPU</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedCpu ? '' : 'none-selected'}">
+                            ${selectedCpu ? `${EURO.format(selectedCpu.price)}` : '-'}
+                        </td>
+                        <td class="${selectedCpu ? '' : 'none-selected'}">
+                            ${
+                                selectedCpu
+                                ? `<a class="remove-selected-cpu-btn">Remove</a>`
+                                : 'No CPU selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GPU</td>
+                        <td>
+                            ${
+                                selectedGpu
+                                ? `<img src="${selectedGpu.image_url}" alt="${selectedGpu.name}" class="img">
+                                <span>${selectedGpu.name}</span>`
+                                : `<div class="add-button" id="add-gpu-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add GPU</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedGpu ? '' : 'none-selected'}">
+                            ${selectedGpu ? `${EURO.format(selectedGpu.price)}` : '-'}
+                        </td>
+                        <td class="${selectedGpu ? '' : 'none-selected'}">
+                            ${
+                                selectedGpu
+                                ? `<a class="remove-selected-btn">Remove</a>`
+                                : 'No GPU selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Motherboard</td>
+                        <td>
+                            ${
+                                selectedMotherboard
+                                ? `<img src="${selectedMotherboard.image_url}" alt="${selectedMotherboard.name}" class="img">
+                                <span>${selectedMotherboard.name}</span>`
+                                : `<div class="add-button" id="add-motherboard-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add Motherboard</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedMotherboard ? '' : 'none-selected'}">
+                            ${selectedMotherboard ? `${EURO.format(selectedMotherboard.price)}` : '-'}
+                        </td>
+                        <td class="${selectedMotherboard ? '' : 'none-selected'}">
+                            ${
+                                selectedMotherboard
+                                ? `<a class="remove-selected-motherboard-btn">Remove</a>`
+                                : 'No Motherboard selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>
+                            ${
+                                selectedRam
+                                ? `<img src="${selectedRam.image_url}" alt="${selectedRam.name}" class="img">
+                                <span>${selectedRam.name}</span>`
+                                : `<div class="add-button" id="add-ram-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add RAM</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedRam ? '' : 'none-selected'}">
+                            ${selectedRam ? `${EURO.format(selectedRam.price)}` : '-'}
+                        </td>
+                        <td class="${selectedRam ? '' : 'none-selected'}">
+                            ${
+                                selectedRam
+                                ? `<a class="remove-selected-ram-btn">Remove</a>`
+                                : 'No RAM selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SSD</td>
+                        <td>
+                            ${
+                                selectedSsd
+                                ? `<img src="${selectedSsd.image_url}" alt="${selectedSsd.name}" class="img">
+                                <span>${selectedSsd.name}</span>`
+                                : `<div class="add-button" id="add-ssd-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add SSD</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedSsd ? '' : 'none-selected'}">
+                            ${selectedSsd ? `${EURO.format(selectedSsd.price)}` : '-'}
+                        </td>
+                        <td class="${selectedSsd ? '' : 'none-selected'}">
+                            ${
+                                selectedSsd
+                                ? `<a class="remove-selected-ssd-btn">Remove</a>`
+                                : 'No SSD selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CPU Cooler</td>
+                        <td>
+                            ${
+                                selectedCpuCooler
+                                ? `<img src="${selectedCpuCooler.image_url}" alt="${selectedCpuCooler.name}" class="img">
+                                <span>${selectedCpuCooler.name}</span>`
+                                : `<div class="add-button" id="add-cpu-cooler-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add CPU Cooler</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedCpuCooler ? '' : 'none-selected'}">
+                            ${selectedCpuCooler ? `${EURO.format(selectedCpuCooler.price)}` : '-'}
+                        </td>
+                        <td class="${selectedCpuCooler ? '' : 'none-selected'}">
+                            ${
+                                selectedCpuCooler
+                                ? `<a class="remove-selected-cpu-cooler-btn">Remove</a>`
+                                : 'No CPU Cooler selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Powersupply</td>
+                        <td>
+                            ${
+                                selectedPsu
+                                ? `<img src="${selectedPsu.image_url}" alt="${selectedPsu.name}" class="img">
+                                <span>${selectedPsu.name}</span>`
+                                : `<div class="add-button" id="add-psu-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add Powersupply</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedPsu ? '' : 'none-selected'}">
+                            ${selectedPsu ? `${EURO.format(selectedPsu.price)}` : '-'}
+                        </td>
+                        <td class="${selectedPsu ? '' : 'none-selected'}">
+                            ${
+                                selectedPsu
+                                ? `<a class="remove-selected-psu-btn">Remove</a>`
+                                : 'No Powersupply selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Case</td>
+                        <td>
+                            ${
+                                selectedCase
+                                ? `<img src="${selectedCase.image_url}" alt="${selectedCase.name}" class="img">
+                                <span>${selectedCase.name}</span>`
+                                : `<div class="add-button" id="add-case-btn">
+                                    <a><i class="fa-solid fa-plus"></i>Add Case</a>
+                                </div>`
+                            }
+                        </td>
+                        <td class="${selectedCase ? '' : 'none-selected'}">
+                            ${selectedCase ? `${EURO.format(selectedCase.price)}` : '-'}
+                        </td>
+                        <td class="${selectedCase ? '' : 'none-selected'}">
+                            ${
+                                selectedCase
+                                ? `<a class="remove-selected-case-btn">Remove</a>`
+                                : 'No Case selected'
+                            }
+                        </td>
+                    </tr>
+                    <tr class="build-price-row">
+                        <td colspan="2" class="build-label">Build Cost:</td>
+                        <td colspan="2" class="build-value">
+                            ${EURO.format(buildPrice.toFixed(2))}
+                        </td>
+                    </tr>
+                    <tr class="total-amount-row">
+                        <td colspan="2" class="total-label">Total Amount:</td>
+                        <td colspan="2" class="total-value">
+                            ${EURO.format(totalPrice.toFixed(2))}
+                            <button id="add-to-cart-btn" class="pc-builder-cart-button">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `  ;
 
         // Remove handlers
         if (selectedGpu) {
@@ -368,6 +399,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        if (selectedCase) {
+            const removeCaseBtn = selectedGpuDiv.querySelector('.remove-selected-case-btn');
+            if (removeCaseBtn) {
+                removeCaseBtn.addEventListener('click', function() {
+                    selectedCase = null;
+                    renderSelectedTable();
+                });
+            }
+        }
+
         // Add handlers
         const addGpuBtn = selectedGpuDiv.querySelector('#add-gpu-btn');
         if (addGpuBtn) {
@@ -426,10 +467,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const addPsuBtn = selectedGpuDiv.querySelector('#add-psu-btn');
         if (addPsuBtn) {
             addPsuBtn.addEventListener('click', function() {
-                console.log("Add Powersupply button clicked"); // Check if this log appears
                 selectedGpuDiv.style.display = "none";
                 partsListDiv.style.display = "block";
                 showPsuSelection();
+            });
+        }
+
+        const addCaseBtn = selectedGpuDiv.querySelector('#add-case-btn');
+        if (addCaseBtn) {
+            addCaseBtn.addEventListener('click', function() {
+                selectedGpuDiv.style.display = "none";
+                partsListDiv.style.display = "block";
+                showCaseSelection();
             });
         }
     }
@@ -725,7 +774,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('ram-table').style.display = "none";
         document.getElementById('ssd-table').style.display = "none";
         document.getElementById('cpu_cooler-table').style.display = "none";
-        psuTable.style.display = "table";
+        document.getElementById('psu-table').style.display = "table";
         fetch('http://localhost:5000/api/psus')
             .then(response => response.json())
             .then(psus => {
@@ -754,6 +803,55 @@ document.addEventListener('DOMContentLoaded', function() {
                         const idx = btn.getAttribute('data-idx');
                         selectedPsu = psus[idx];
                         psuTable.style.display = "none";
+                        selectedGpuDiv.style.display = "flex";
+                        builderTitle.textContent = "PC Builder";
+                        renderSelectedTable();
+                    });
+                });
+            });
+    }
+
+    function showCaseSelection() {
+        selectedGpuDiv.style.display = "none";
+        const pcCaseTable = document.getElementById('case-table');
+        document.getElementById('gpu-table').style.display = "none";
+        document.getElementById('cpu-table').style.display = "none";
+        document.getElementById('motherboard-table').style.display = "none";
+        document.getElementById('ram-table').style.display = "none";
+        document.getElementById('ssd-table').style.display = "none";
+        document.getElementById('cpu_cooler-table').style.display = "none";
+        document.getElementById('psu-table').style.display = "none";
+        pcCaseTable.style.display = "table";
+
+        fetch('http://localhost:5000/api/cases')
+            .then(response => response.json())
+            .then(pcCases => {
+                const tbody = pcCaseTable.querySelector('tbody');
+                tbody.innerHTML = "";
+                pcCases.forEach((pcCase, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <img src="${pcCase.image_url}" alt="${pcCase.name}" class="img">
+                            <span>${pcCase.name}</span>
+                        </td>
+                        <td>${pcCase.manufacturer}</td>
+                        <td>${pcCase.form_factor}</td>
+                        <td>${pcCase.drive_bays}</td>
+                        <td>${pcCase.expansion_slots}</td>
+                        <td>${pcCase.front_panel_ports}</td>
+                        <td>${EURO.format(pcCase.price)}</td>
+                        <td><a class="select-btn" data-idx="${idx}">Add</a></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                builderTitle.textContent = "Add a Case";
+                // Add event listeners
+                tbody.querySelectorAll('.select-btn').forEach((btn) => {
+                    btn.addEventListener('click', function() {
+                        const idx = btn.getAttribute('data-idx');
+                        selectedCase = pcCases[idx];
+                        pcCaseTable.style.display = "none";
                         selectedGpuDiv.style.display = "flex";
                         builderTitle.textContent = "PC Builder";
                         renderSelectedTable();

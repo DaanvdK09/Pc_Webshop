@@ -1020,7 +1020,7 @@ footer {
     width:100%;
 }
 
-#cpu_cooler-table {
+#cpu_cooler-table, #case-table, #psu-table {
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0% !important;
@@ -1054,7 +1054,7 @@ footer {
     background-color: #b71c1c !important;
 }
 
-.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn, .remove-selected-ram-btn, .remove-selected-ssd-btn, .remove-selected-cpu-cooler-btn, .remove-selected-psu-btn {
+.remove-selected-btn, .remove-selected-cpu-btn, .remove-selected-motherboard-btn, .remove-selected-ram-btn, .remove-selected-ssd-btn, .remove-selected-cpu-cooler-btn, .remove-selected-psu-btn, .remove-selected-case-btn {
     cursor:pointer;
     display:inline-block;
     margin-top:8px;
@@ -1068,7 +1068,7 @@ footer {
     display:inline-block;
 }
 
-.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-selected-motherboard-btn:hover, .remove-selected-ram-btn:hover, .remove-selected-ssd-btn:hover, .remove-selected-cpu-cooler-btn:hover, .remove-selected-psu-btn:hover {
+.remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-selected-motherboard-btn:hover, .remove-selected-ram-btn:hover, .remove-selected-ssd-btn:hover, .remove-selected-cpu-cooler-btn:hover, .remove-selected-psu-btn:hover, .remove-selected-case-btn:hover {
     background-color: #b71c1c;
 }
 
@@ -1085,16 +1085,19 @@ footer {
 .remove-selected-motherboard-btn,
 .remove-selected-ram-btn,
 .remove-selected-ssd-btn,
-.remove-selected-cpu-cooler-btn {
-    padding: 2% 5%; /* Shorter buttons: less vertical, keep horizontal */
+.remove-selected-cpu-cooler-btn,
+.remove-selected-psu-btn,
+.remove-selected-case-btn {
+    padding: 2% 5%;
     font-size: 1rem;
     border-radius: 5px;
 }
 .buy-button {
-    padding: 5px 10px; /* Shorter buttons: less vertical, keep horizontal */
+    padding: 5px 10px;
     font-size: 1rem;
     border-radius: 25px;
 }
+
 /* Power usage  and compatibility*/
 .power-usage-meter, .compatibility-bar {
     margin-top: 10%;

@@ -2,18 +2,18 @@
 
 -- .tables
 
-SELECT * FROM PSU;
+SELECT * FROM Pc_Case;
 
 -- Create Table
--- CREATE TABLE IF NOT EXISTS Powersuply (
+-- CREATE TABLE IF NOT EXISTS Pc_Case (
       -- id INTEGER PRIMARY KEY AUTOINCREMENT,
       -- name TEXT NOT NULL,
       -- manufacturer TEXT NOT NULL,
       -- price REAL NOT NULL,
-      -- wattage INTEGER NOT NULL,
-      -- efficiency_rating TEXT,
       -- form_factor TEXT,
-      -- modularity TEXT,
+      -- drive_bays TEXT,
+      -- expansion_slots TEXT,
+      -- front_panel_ports TEXT,
       -- image_url TEXT
 -- );
 
@@ -275,6 +275,48 @@ SELECT * FROM PSU;
       -- (33, 'EVGA SuperNOVA 650 GM', 'EVGA', 92.99, 650, '80+ Gold', 'SFX', 'Fully Modular'),
       -- (34, 'SilverStone SX700-G', 'SilverStone', 130.19, 700, '80+ Gold', 'SFX', 'Fully Modular'),
       -- (35, 'Corsair SF600', 'Corsair', 120.89, 600, '80+ Gold', 'SFX', 'Fully Modular');
+
+ -- INSERT INTO Pc_Case (id, name, manufacturer, price, form_factor, drive_bays, expansion_slots, front_panel_ports) VALUES
+      -- (1, 'SilverStone CS381', 'SilverStone', 138.00, 'Micro-ATX', '3.5" x 8, 2.5" x 4', 4, 'USB 3.1 Gen 1 x 2, Audio'),
+      -- (2, 'SilverStone DS380', 'SilverStone', 128.00, 'Mini-ITX', '3.5" x 8, 2.5" x 4', 2, 'USB 3.0 x 2, Audio'),
+      -- (3, 'Fractal Design Node 804', 'Fractal Design', 110.00, 'Micro-ATX', '3.5" x 10, 2.5" x 4', 5, 'USB 3.0 x 2, Audio'),
+      -- (4, 'SilverStone TJ04-EW', 'SilverStone', 120.00, 'Mid-Tower', '5.25" x 4, 3.5" x 9, 2.5" x 6', 8, 'USB 3.0 x 2, Audio'),
+      -- (5, 'Fractal Design Define R5', 'Fractal Design', 100.00, 'Mid-Tower', '5.25" x 2, 3.5" x 8, 2.5" x 2', 7, 'USB 3.0 x 2, USB 2.0 x 2, Audio'),
+      -- (6, 'SilverStone CS380', 'SilverStone', 115.00, 'Mid-Tower', '5.25" x 2, 3.5" x 8', 7, 'USB 3.0 x 2, Audio'),
+      -- (7, 'Antec P101 Silent', 'Antec', 92.00, 'Mid-Tower', '5.25" x 1, 2.5" x 2, 3.5" x 8', 8, 'USB 3.0 x 2, USB 2.0 x 2, Audio'),
+      -- (8, 'Fractal Design Define 7 XL', 'Fractal Design', 184.00, 'Full Tower', 'Customizable', 8, 'USB 3.1 Gen 2 x 1, USB 3.0 x 2, Audio'),
+      -- (9, 'Lian Li PC-D600', 'Lian Li', 230.00, 'Full Tower', 'Customizable', 8, 'USB 3.0 x 2, Audio'),
+      -- (10, 'Thermaltake Core V71', 'Thermaltake', 138.00, 'Full Tower', 'Customizable', 8, 'USB 3.0 x 2, Audio'),
+      -- (11, 'Cooler Master HAF Stacker 935', 'Cooler Master', 165.00, 'Full Tower', 'Customizable', 9, 'USB 3.0 x 2, Audio'),
+      -- (12, 'JONSBO N4', 'JONSBO', 120.00, 'Mini-ITX', '3.5" x 6, 2.5" x 2', 4, 'USB 3.2 Gen2 Type-C, USB 3.0'),
+      -- (13, 'Anidees AI Raider XL', 'Anidees', 147.00, 'Full Tower', '5.25" x 12', 8, 'USB 3.0 x 2, Audio'),
+      -- (14, 'Cooler Master TD500 Mesh V2', 'Cooler Master', 92.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.2 Gen 2 Type C, USB 3.0 x 2'),
+      -- (15, 'Cooler Master NR200', 'Cooler Master', 78.00, 'Mini-ITX', 'Customizable', 4, 'USB 3.2 Gen 2 Type C'),
+      -- (16, 'CORSAIR 3500X', 'Corsair', 110.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.1 x 2, Audio'),
+      -- (17, 'JONSBO D41 MESH SC', 'JONSBO', 129.00, 'ATX', 'Customizable', 7, 'USB 3.0 x 2, Type-C, Audio'),
+      -- (18, 'CORSAIR 2000D AIRFLOW', 'Corsair', 83.00, 'Mini-ITX', 'Customizable', 3, 'USB 3.1 x 2, Audio'),
+      -- (19, 'Raidmax Vector V300', 'Raidmax', 69.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (20, 'Zalman T8', 'Zalman', 59.00, 'Mid-Tower', '5.25" x 1', 7, 'USB 3.0 x 2, Audio'),
+      -- (21, 'Zalman CUBIX', 'Zalman', 73.00, 'Mini-ITX', 'Customizable', 4, 'USB 3.0 x 2'),
+      -- (22, 'COUGAR Uniface Mini', 'COUGAR', 64.00, 'Mini Tower', 'Customizable', 4, 'USB 3.0 x 2'),
+      -- (23, 'Zalman T3', 'Zalman', 55.00, 'Mini Tower', 'Customizable', 4, 'USB 3.0 x 2, Audio'),
+      -- (24, 'DIYPC DIY-S05-BK', 'DIYPC', 50.00, 'ATX', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (25, 'DARKROCK Classico Storage Master', 'DARKROCK', 156.00, 'ATX', '3.5" x 10, 2.5" x 3', 7, 'USB 3.0 x 2, Audio'),
+      -- (26, 'NZXT H510', 'NZXT', 64.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.1 Gen 2 Type-C, USB 3.1 Gen 1'),
+      -- (27, 'Phanteks Eclipse P400A', 'Phanteks', 73.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, USB 2.0 x 2, Audio'),
+      -- (28, 'be quiet! Pure Base 600', 'be quiet!', 83.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (29, 'Lian Li Lancool II Mesh', 'Lian Li', 92.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (30, 'Thermaltake View 37', 'Thermaltake', 138.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, USB 2.0 x 2, Audio'),
+      -- (31, 'Corsair Carbide Series 275R', 'Corsair', 73.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (32, 'Cooler Master MasterBox MB511', 'Cooler Master', 64.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (33, 'Fractal Design Meshify C', 'Fractal Design', 83.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (34, 'BitFenix Aurora', 'BitFenix', 110.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (35, 'In Win 303', 'In Win', 83.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (36, 'Deepcool Matrexx 55', 'Deepcool', 55.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 1, USB 2.0 x 1, Audio'),
+      -- (37, 'Montech X3 Mesh', 'Montech', 64.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 1, USB 2.0 x 2, Audio'),
+      -- (38, 'Rosewill CULLINAN MX', 'Rosewill', 92.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, USB 2.0 x 1, Audio'),
+      -- (39, 'SilverStone Primera PM01', 'SilverStone', 83.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 2, Audio'),
+      -- (40, 'Antec NX400', 'Antec', 55.00, 'Mid-Tower', 'Customizable', 7, 'USB 3.0 x 1, USB 2.0 x 1, Audio');
 
 -- Remove
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');

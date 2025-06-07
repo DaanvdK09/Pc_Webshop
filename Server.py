@@ -225,5 +225,27 @@ def get_psus():
     conn.close()
     return jsonify(psus)
 
+# Case API
+@app.route('/api/cases', methods=['GET'])
+def get_cases():
+    conn = sqlite3.connect('instance/pc-parts.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, manufacturer, image_url, price, form_factor, drive_bays, expansion_slots, front_panel_ports FROM Pc_Case")
+    pc_cases = [
+        {
+            'name': row[0],
+            'manufacturer': row[1],
+            'image_url': row[2],
+            'price': row[3],
+            'form_factor': row[4],
+            'drive_bays': row[5],
+            'expansion_slots': row[6],
+            'front_panel_ports': row[7],
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    return jsonify(pc_cases)
+
 if __name__ == '__main__':
     app.run(debug=True)
