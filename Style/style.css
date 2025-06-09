@@ -710,7 +710,11 @@ footer {
 .product-detail .rating i {
     color: var(--bg-black-550);
 }
-
+.product-detail .rating span {
+    color: var(--text-black-700);
+    font-size: 14px;
+    margin-left: 5px;
+}
 .product-detail .price {
     display: block;
     font-size: 25px;
@@ -720,7 +724,7 @@ footer {
 }
 
 .product-detail .description {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-black-700);
     margin-bottom: 20px;
 }
@@ -731,8 +735,8 @@ footer {
 }
 
 .product-detail .product-policy p {
-    margin: 3px 0;
-    font-size: 14px;
+    margin: 5px 0;
+    font-size: 16px;
     color: var(--text-black-700);
 }
 /* miss voor later
@@ -773,7 +777,7 @@ footer {
 .buy-button {
     position: relative;
     padding: 2%;
-    margin: 1%;
+    margin: 3% 0;
     width: 38%;
     height: 40px;
     border: 0;

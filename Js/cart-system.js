@@ -5,6 +5,7 @@ const products = [
         mainImage: "../Foto/budget-prebuilt-gaming-pc-white.png",
         name: "Glacier 800",
         price: "€899.99",
+        description: "This is our most budget friendly option, for a white gaming pc. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
             {
                 cpu: "AMD Ryzen 5 5500",
@@ -25,6 +26,7 @@ const products = [
         ],
         name: "Shadow Bolt",
         price: "€799.99",
+        description: "This is our most budget friendly option. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
             {
                 cpu: "AMD Ryzen 5 5500",
