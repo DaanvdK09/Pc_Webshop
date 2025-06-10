@@ -4,10 +4,12 @@ const products = [
         id: 1,
         mainImage: "../Foto/budget-prebuilt-gaming-pc-white.png",
         thumbnails: [
+            "../Foto/budget-white-thumbnail-1.png",
             "../Foto/thumbnail-benchmarks-RX6600.png",
         ],
         name: "Glacier 800",
         price: "€899.99",
+        rating: 4.3,
         description: "This is our most budget friendly option, for a white gaming pc. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
             {
@@ -25,11 +27,11 @@ const products = [
         thumbnails: [
             "../Foto/budget-black-thumbnail-1.png",
             "../Foto/budget-black-thumbnail-2.png",
-            "../Foto/budget-black-thumbnail-3.png",
             "../Foto/thumbnail-benchmarks-RX6600.png"
         ],
         name: "Shadow Bolt",
         price: "€799.99",
+        rating: 4.1,
         description: "This is our most budget friendly option. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
             {
@@ -45,13 +47,14 @@ const products = [
         id: 3,
         mainImage: "../Foto/prebuild-pc-mr-white.jpg",
         thumbnails: [
-                    "../Foto/mid-range-white-thumbnail-1.jpg",
-                    "../Foto/mid-range-white-thumbnail-2.jpg",
-                    "../Foto/mid-range-white-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RX7700XT.png"
-                ],
+            "../Foto/mid-range-white-thumbnail-1.jpg",
+            "../Foto/mid-range-white-thumbnail-2.jpg",
+            "../Foto/mid-range-white-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RX7700XT.png"
+        ],
         name: "IceBreaker X14",
         price: "€1399.99",
+        rating: 4.5,
         description: "This is our mid-range option, for a white gaming pc. With this mid-range white gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -67,13 +70,14 @@ const products = [
         id: 4,
         mainImage: "../Foto/prebuilt-pc-mr-black.jpg",
         thumbnails: [
-                    "../Foto/mid-range-black-thumbnail-1.jpg",
-                    "../Foto/mid-range-black-thumbnail-2.jpg",
-                    "../Foto/mid-range-black-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RX7700XT.png"
-                ],
+            "../Foto/mid-range-black-thumbnail-1.jpg",
+            "../Foto/mid-range-black-thumbnail-2.jpg",
+            "../Foto/mid-range-black-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RX7700XT.png"
+        ],
         name: "PhantomCore",
         price: "€1399.99",
+        rating: 4.4,
         description: "This is our mid-range option, for a black gaming pc. With this mid-range black gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -89,13 +93,14 @@ const products = [
         id: 5,
         mainImage: "../Foto/high-end-prebuilt-gaming-pc-white.png",
         thumbnails: [
-                    "../Foto/high-end-white-thumbnail-1.jpg",
-                    "../Foto/high-end-white-thumbnail-2.jpg",
-                    "../Foto/high-end-white-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RTX5080.png"
-                ],
+            "../Foto/high-end-white-thumbnail-1.jpg",
+            "../Foto/high-end-white-thumbnail-2.jpg",
+            "../Foto/high-end-white-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RTX5080.png"
+        ],
         name: "FrostTitan C5",
         price: "€2899.99",
+        rating: 4.8,
         description: "This is our high-end option, for a white gaming pc. With this high-end white gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -111,13 +116,14 @@ const products = [
         id: 6,
         mainImage: "../Foto/high-end-prebuilt-gaming-pc-black.jpg",
         thumbnails: [
-                    "../Foto/high-end-black-thumbnail-1.jpg",
-                    "../Foto/high-end-black-thumbnail-2.jpg",
-                    "../Foto/high-end-black-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RTX5080.png"
-                ],
+            "../Foto/high-end-black-thumbnail-1.jpg",
+            "../Foto/high-end-black-thumbnail-2.jpg",
+            "../Foto/high-end-black-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RTX5080.png"
+        ],
         name: "ShadowForce V2",
         price: "€2799.99",
+        rating: 4.6,
         description: "This is our high-end option, for a black gaming pc. With this high-end black gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -133,13 +139,14 @@ const products = [
         id: 7,
         mainImage: "../Foto/ultra-high-end-prebuilt-gaming-pc-white.jpg",
         thumbnails: [
-                    "../Foto/ultra-high-end-white-thumbnail-1.jpg",
-                    "../Foto/ultra-high-end-white-thumbnail-2.jpg",
-                    "../Foto/ultra-high-end-white-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RTX5090.png"
-                ],
+            "../Foto/ultra-high-end-white-thumbnail-1.jpg",
+            "../Foto/ultra-high-end-white-thumbnail-2.jpg",
+            "../Foto/ultra-high-end-white-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RTX5090.png"
+        ],
         name: "Whiteout Ultra V3",
         price: "€4399.99",
+        rating: 4.9,
         description: "This is our ultra high-end option, for a white gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -155,13 +162,14 @@ const products = [
         id: 8,
         mainImage: "../Foto/ultra-high-end-prebuilt-gaming-pc-black.png",
         thumbnails: [
-                    "../Foto/ultra-high-end-black-thumbnail-1.jpg",
-                    "../Foto/ultra-high-end-black-thumbnail-2.jpg",
-                    "../Foto/ultra-high-end-black-thumbnail-3.jpg",
-                    "../Foto/thumbnail-benchmarks-RTX5090.png"
-                ],
+            "../Foto/ultra-high-end-black-thumbnail-1.jpg",
+            "../Foto/ultra-high-end-black-thumbnail-2.jpg",
+            "../Foto/ultra-high-end-black-thumbnail-3.jpg",
+            "../Foto/thumbnail-benchmarks-RTX5090.png"
+        ],
         name: "Darkflow Domination Max",
         price: "€4299.99",
+        rating: 4.7,
         description: "This is our ultra high-end option, for a black gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
@@ -176,10 +184,32 @@ const products = [
     }
 ];
 
+// Puts amount of stars relative to the rating
+function getStarIcons(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (rating >= i) {
+            stars += '<i class="fas fa-star"></i>';
+        } else if (rating >= i - 0.5) {
+            stars += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+            stars += '<i class="fa-regular fa-star"></i>';
+        }
+    }
+    return stars;
+}
+// The whole cart system and product display system
+// This code handles the display of products on the prebuilt PC page, the product detail page, and the cart system.
 const productContainer = document.querySelector(".prebuilt-list");
+const isProductDetailPage = window.location.pathname.includes("prebuilt-pc-detail.html");
+const isCartPage = document.querySelector(".cart");
 
 if (productContainer) {
     displayProducts();
+} else if (isProductDetailPage) {
+    displayProductDetail();
+} else if (isCartPage) {
+    displayCart();
 }
 
 function displayProducts() {
@@ -191,14 +221,152 @@ function displayProducts() {
                 <img src="${product.mainImage}">
             </div>
             <h3 class="title">${product.name}</h3>
-            <h5>${product.price}</h5> 
-            `;
-            productContainer.appendChild(productCard);
+            <h5>${product.price}</h5>
+        `;
+        productContainer.appendChild(productCard);
 
-            const prebuiltPcImage = productCard.querySelector(".prebuilt-pc-image img");
-            prebuiltPcImage.addEventListener("click", () => {
-                sessionStorage.setItem('selectedProduct', JSON.stringify(product));
-                window.location.href = "prebuilt-pc-detail.html";
-            });
+        const prebuiltPcImage = productCard.querySelector(".prebuilt-pc-image img");
+        prebuiltPcImage.addEventListener("click", () => {
+            sessionStorage.setItem('selectedProduct', JSON.stringify(product));
+            window.location.href = "prebuilt-pc-detail.html";
+        });
     });
+}
+
+function displayProductDetail() {
+    const productData = JSON.parse(sessionStorage.getItem('selectedProduct'));
+
+    const titleEL = document.querySelector(".title");
+    const priceEL = document.querySelector(".price");
+    const descriptionEL = document.querySelector(".description");
+    const specsTitleEL = document.querySelector(".specs-title");
+    const specsListEL = document.querySelector(".specs");
+    const mainImageEL = document.querySelector(".main-img");
+    const thumbnailsEL = document.querySelector(".thumbnail-list");
+    const addToCartButton = document.querySelector(".buy-button");
+    const ratingEL = document.querySelector(".rating");
+
+    function updateProductDisplay(product) {
+        if (!product) {
+            console.error("Product data is not available.");
+            return;
+        }
+
+        mainImageEL.innerHTML = `<img src="${product.mainImage}">`;
+
+        thumbnailsEL.innerHTML = "";
+        const allThumbnails = [product.mainImage, ...product.thumbnails];
+        allThumbnails.forEach(thumbnail => {
+            const thumbnailImg = document.createElement("img");
+            thumbnailImg.src = thumbnail;
+
+            thumbnailsEL.appendChild(thumbnailImg);
+
+            thumbnailImg.addEventListener("click", () => {
+                mainImageEL.innerHTML = `<img src="${thumbnail}">`;
+            });
+        });
+
+        specsListEL.innerHTML = "";
+        product.specs.forEach(spec => {
+            const specItem = document.createElement("li");
+            specItem.innerHTML = `
+                <span>Cpu:</span> ${spec.cpu}<br>
+                <span>Gpu:</span> ${spec.gpu}<br>
+                <span>Ram:</span> ${spec.ram}<br>
+                <span>Storage:</span> ${spec.storage}<br>
+                <span>Cooler:</span> ${spec.cooler}<br>
+                <span>Power Supply:</span> ${spec.psu}
+            `;
+            specsListEL.appendChild(specItem);
+        });
+
+        // Dynamische rating alleen op detailpagina
+        if (ratingEL) {
+            ratingEL.innerHTML = `
+                ${getStarIcons(product.rating)}
+                <span>(${product.rating})</span>
+            `;
+        }
+    }
+    
+    if (titleEL) titleEL.textContent = productData.name;
+    if (priceEL) priceEL.textContent = productData.price;
+    if (descriptionEL) descriptionEL.textContent = productData.description;
+
+    updateProductDisplay(productData);
+
+    if (addToCartButton) {
+        addToCartButton.addEventListener("click", () => {
+            addToCart(productData);
+        });
+    }
+}
+
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex > -1) {
+        cart[existingProductIndex].quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.mainImage,
+            quantity: 1
+        });
+    }
+
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function displayCart() {
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+    const cartItemContainer = document.querySelector(".cart-items");
+    const subtotalEl = document.querySelector(".subtotal");
+    const grandTotalEl = document.querySelector(".grand-total");
+
+    cartItemContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItemContainer.innerHTML = "<p>Your cart is empty.</p>";
+        subtotalEl.textContent = "€0.00";
+        grandTotalEl.textContent = "€0.00";
+        return;
+    }
+
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = parseFloat(item.price.replace("€", "")) * item.quantity;
+        subtotal += itemTotal;
+
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+        cartItem.innerHTML = `
+        <div class="product">
+            <img src="${item.image}">
+            <div class="item-detail">
+                <p>${item.name}</p>
+            </div>
+        </div>
+        <span class="price">${item.price}</span>
+        <div class="quantity">
+            <input type="number" value="${item.quantity}" min="1" data-index="${index}">
+        </div>
+        <span class="total-price">€${itemTotal}</span>
+        <button class="remove" data-index="${index}">
+            <i class="fa fa-x"></i>
+        </button>
+        `;
+
+        cartItemContainer.appendChild(cartItem);
+    });
+
+    subtotalEl.textContent = `€${subtotal.toFixed(2)}`;
+    grandTotalEl.textContent = `€${subtotal.toFixed(2)}`;
 }

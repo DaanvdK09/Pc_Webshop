@@ -25,13 +25,11 @@
             <div class="animation start-home"></div>
         </div>
         <div class="login">
-            <a href="#" id="login-link">
-                <div class="login-icon">
+            <a href="#" id="login-link" class="login">
+                <span class="login-icon">
                     <i class="fas fa-user"></i>
-                </div> 
-                <div class="login-text">
-                    <p id="login-status">Log in</p>
-                </div>
+                </span>
+                <span class="login-text" id="login-status">Log in</span>
             </a>
         </div>
 
@@ -66,13 +64,10 @@
             </div>
         </div>
 
-        <div class="cart-icon">
-            <a href=""> <!--Need a new page for the shopping cart-->
-                <button>
-                    <i class="fa fa-cart-shopping"></i>
-                </button>
-            </a>
-        </div>
+        <a href="cart.html" class="cart-icon"> <!--Need a new page for the shopping cart-->
+            <i class="fa fa-cart-shopping"></i>
+            <span class="cart-item-count"></span>
+        </a>
     </div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
     <div class="home-container">
@@ -124,7 +119,6 @@
     </div>
     <footer>
     © 2025 The PC Boys. Built by gamers, for gamers.
-    <!--dit is alleen maar temp zodat Bram de test pagina kan testen--><a href="prebuilt-pc-test!!!!.html">Prebuilt-test-site</a>
     </footer> 
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
     <script src="../Js/style-switcher.js"></script>

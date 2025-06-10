@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="../Style/style.css" rel="stylesheet" type="text/CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../Style/style-switcher.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The PC Boys</title>
+    <link rel="icon" type="image/x-icon" href="../Foto's/Logo.png">
+</head>
+<body>
+    <div class="navbar">
+    <div class="webshop-logo">
+        <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
+    </div>
+        <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="prebuilt-pc.html" class="nav-link active">Prebuilt pc's</a>
+                <a href="build-help.html" class="nav-link">Build help</a>
+                <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="login">
+                <a href="#" id="login-link" class="login">
+                    <span class="login-icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="login-text" id="login-status">Log in</span>
+                </a>
+            </div>
+
+        <div id="account-sidebar" class="account-sidebar">
+            <div class="sidebar-content">
+                <span id="close-sidebar" style="cursor:pointer;float:right;font-size:1.5em;">&times;</span>
+                <h2 class="sidebar-title">Account Info</h2>
+                <div class="account-item">
+                    <i class="fa fa-user"></i>
+                    <p id="sidebar-username"></p>
+                </div>
+                <div class="account-item">
+                    <i class="fa fa-briefcase"></i>
+                    <p id="sidebar-email"></p>
+                </div>
+                <div class="style-switcher">
+                    <div class="style-switcher-toggler s-icon">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                    <div class="day-night s-icon">
+                        <i id="wissel-icoon" class="fas "></i>
+                    </div>
+                        <h4>Development team</h4> 
+                        <div class="colors">
+                            <a href="https://github.com/Bramblokker"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911489?v=4" class="img-circle"><p>Bram</p></span></a> <!--icons voor onze github accounts-->
+                            <a href="https://github.com/DaanvdK09"><span class="github-icons"><img src="../Foto/Logo-daan-github.png" class="img-circle"><p>Daan</p></span></a>
+                            <a href="https://github.com/Steven-str"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/211330477?v=4" class="img-circle"><p>Steven</p></span></a>
+                            <a href="https://github.com/KingJulian1239"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911524?v=4" class="img-circle"><p>Julian</p></span></a> <!--icons voor onze github accounts-->
+                        </div>
+                </div>
+                <button id="logout-btn"><i class="fa fa-arrow-right-from-bracket"></i>Log out</button>
+            </div>
+        </div>
+
+        <div class="cart-icon">
+            <a href=""> <!--Need a new page for the shopping cart-->
+                <button>
+                    <i class="fa fa-cart-shopping"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+<!-------------------------------------------------------------------All of the page content under the navbar--------------------------------------------------------------------><!--Bram gaat hier later nog verder aan werken, dus deze pagina ffe niet aan werken zonder overleg :)-->
+<div class="prebuilt-pc-container">
+    <div class="row">
+        <div class="prebuilt-pc-title">
+            <h1>Prebuilt PC's</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="prebuilt-pc-sub-title">
+            <p>Pick here a prebuilt pc for different priceranges</p>
+        </div>
+    </div>
+    <div class="prebuilt-pc-content">
+        <div class="prebuilt-pc-info">
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/budget-prebuilt-gaming-pc-white.png">
+                <h3>Glacier 800</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 5 5500</li>
+                            <li class="spec">NVIDIA GeForce RTX 4060</li>
+                            <li class="spec">16GB DDR4 RAM</li>
+                            <li class="spec">1TB NVMe SSD</li>
+                            <li class="spec">120mm fan Air Cooler</li>
+                            <li class="spec">650W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€899,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/budget-prebuilt-gaming-pc-black.png">
+                <h3>BlackBeast Lite</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 5 5500</li>
+                            <li class="spec">NVIDIA GeForce RTX 4060</li>
+                            <li class="spec">16GB DDR4 RAM</li>
+                            <li class="spec">1TB NVMe SSD</li>
+                            <li class="spec">Stock AMD cooler</li>
+                            <li class="spec">650W Power Supply</li>
+                        </ul>
+                </div> 
+                <h5>€799,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+        </div>
+        <div class="prebuilt-pc-info">
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/prebuild-pc-mr-white.jpg">
+                <h3>IceBreaker X14</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 5 9600x</li>
+                            <li class="spec">AMD RX 7700 XT 12 GB</li>
+                            <li class="spec">32GB DDR5 RAM</li>
+                            <li class="spec">2TB NVMe SSD</li>
+                            <li class="spec">240mm AIO</li>
+                            <li class="spec">750W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€1399,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/prebuilt-pc-mr-black.jpg">
+                <h3>PhantomCore</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 5 9600x</li>
+                            <li class="spec">AMD RX 7700 XT 12 GB</li>
+                            <li class="spec">32GB DDR5 RAM</li>
+                            <li class="spec">2TB NVMe SSD</li>
+                            <li class="spec">240mm AIO</li>
+                            <li class="spec">750W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€1299,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+        </div>                                                                                           
+        <div class="prebuilt-pc-info">
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/high-end-prebuilt-gaming-pc-white.png">
+                <h3>FrostTitan C5</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 7 7800X3D</li>
+                            <li class="spec">NVIDIA GeForce RTX 5080</li>
+                            <li class="spec">64GB DDR5 RAM</li>
+                            <li class="spec">2TB NVMe SSD</li>
+                            <li class="spec">360mm AIO</li>
+                            <li class="spec">850W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€2899,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/high-end-prebuilt-gaming-pc-black.jpg">
+                <h3>ShadowForce V2</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 7 7800X3D</li>
+                            <li class="spec">NVIDIA GeForce RTX 5080</li>
+                            <li class="spec">64GB DDR5 RAM</li>
+                            <li class="spec">2TB NVMe SSD</li>
+                            <li class="spec">360mm AIO</li>
+                            <li class="spec">850W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€2799,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+        </div>
+        <div class="prebuilt-pc-info">
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/ultra-high-end-prebuilt-gaming-pc-white.jpg">
+                <h3>Whiteout Ultra V3</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 7 9800X3D</li>
+                            <li class="spec">NVIDIA GeForce RTX 5090</li>
+                            <li class="spec">96GB DDR5 RAM</li>
+                            <li class="spec">4TB NVMe SSD</li>
+                            <li class="spec">360mm AIO</li>
+                            <li class="spec">1000W Power Supply</li>
+                        </ul>
+                </div>
+                <h5>€4999,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+            <div class="prebuilt-pc-card col-6">
+                <img src="../Foto/ultra-high-end-prebuilt-gaming-pc-black.png">
+                <h3>Darkflow Domination Max</h3>
+                <div class="specs-menu">
+                    <div class="specs-toggle">
+                        <span class="spects-toggle-text">Specs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <ul class="specs-list">
+                            <li class="spec">AMD Ryzen 7 9800X3D</li>
+                            <li class="spec">NVIDIA GeForce RTX 5090</li>
+                            <li class="spec">96GB DDR5 RAM</li>
+                            <li class="spec">4TB NVMe SSD</li>
+                            <li class="spec">Custom Water Loop</li>
+                            <li class="spec">1000W Power Supply</li>
+                        </ul>
+                </div> 
+                <h5>€4899,99</h5>
+                <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+<!-- Daan ffe voor jou, ik weet niet of dit wel zo handig is, miss later als er nog tijd over is.
+<div class="row">
+    <div class="prebuilt-pc-title">
+        <h1>Special Pc's</h1>
+    </div>
+    </div>
+    <div class="row">
+        <div class="prebuilt-pc-sub-title">
+            <p>Our limited, one time pc's, gone = gone forever</p>
+        </div>
+    </div>
+<div class="special-pc-info">
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+    <div class="prebuilt-pc-card col-6">
+        <img src="../Foto/budget-prebuilt-gaming-pc-white.png" style="width: 65%;">
+        <h3>Temp</h3>
+        <div class="specs-menu">
+            <div class="specs-toggle">
+                <span class="spects-toggle-text">Specs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="specs-list">
+                <li class="spec">CPU</li>
+                <li class="spec">GPU</li>
+                <li class="spec">RAM</li>
+                <li class="spec">SSD</li>
+                <li class="spec">fan Air Cooler</li>
+                <li class="spec">Power Supply</li>
+            </ul>
+        </div>
+        <h5>€?</h5>
+        <button class="buy-button">
+                    <span class="add-to-cart">Add to cart</span>
+                    <span class="added">Added</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-box"></i>
+                </button>
+    </div>
+</div>
+-->
+
+<footer>
+  © 2025 The PC Boys. Built by gamers, for gamers.
+</footer>
+<!--Alle afbeeldingen zijn in gebruik met dank aan gamecomputers.nl en zttbuilds.com-->
+<!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
+    <script src="../Js/style-switcher.js"></script>
+    <script src="../Js/script.js"></script>
+</body>
+</html>
