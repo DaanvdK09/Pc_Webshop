@@ -3,13 +3,16 @@ const products = [
     {
         id: 1,
         mainImage: "../Foto/budget-prebuilt-gaming-pc-white.png",
+        thumbnails: [
+            "../Foto/thumbnail-benchmarks-RX6600.png",
+        ],
         name: "Glacier 800",
         price: "€899.99",
         description: "This is our most budget friendly option, for a white gaming pc. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
             {
                 cpu: "AMD Ryzen 5 5500",
-                gpu: "NVIDIA GeForce RTX 4060",
+                gpu: "RX 6600 8 GB",
                 ram: "16GB DDR4 RAM",
                 storage: "1TB NVMe SSD",
                 cooler: "120mm fan Air Cooler",
@@ -22,7 +25,8 @@ const products = [
         thumbnails: [
             "../Foto/budget-black-thumbnail-1.png",
             "../Foto/budget-black-thumbnail-2.png",
-            "../Foto/budget-black-thumbnail-3.png"
+            "../Foto/budget-black-thumbnail-3.png",
+            "../Foto/thumbnail-benchmarks-RX6600.png"
         ],
         name: "Shadow Bolt",
         price: "€799.99",
@@ -43,10 +47,12 @@ const products = [
         thumbnails: [
                     "../Foto/mid-range-white-thumbnail-1.jpg",
                     "../Foto/mid-range-white-thumbnail-2.jpg",
-                    "../Foto/mid-range-white-thumbnail-3.jpg"
+                    "../Foto/mid-range-white-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RX7700XT.png"
                 ],
         name: "IceBreaker X14",
         price: "€1399.99",
+        description: "This is our mid-range option, for a white gaming pc. With this mid-range white gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 5 9600x",
@@ -63,10 +69,12 @@ const products = [
         thumbnails: [
                     "../Foto/mid-range-black-thumbnail-1.jpg",
                     "../Foto/mid-range-black-thumbnail-2.jpg",
-                    "../Foto/mid-range-black-thumbnail-3.jpg"
+                    "../Foto/mid-range-black-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RX7700XT.png"
                 ],
         name: "PhantomCore",
         price: "€1399.99",
+        description: "This is our mid-range option, for a black gaming pc. With this mid-range black gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 5 9600x",
@@ -83,10 +91,12 @@ const products = [
         thumbnails: [
                     "../Foto/high-end-white-thumbnail-1.jpg",
                     "../Foto/high-end-white-thumbnail-2.jpg",
-                    "../Foto/high-end-white-thumbnail-3.jpg"
+                    "../Foto/high-end-white-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RTX5080.png"
                 ],
         name: "FrostTitan C5",
         price: "€2899.99",
+        description: "This is our high-end option, for a white gaming pc. With this high-end white gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 7 7800X3D",
@@ -103,10 +113,12 @@ const products = [
         thumbnails: [
                     "../Foto/high-end-black-thumbnail-1.jpg",
                     "../Foto/high-end-black-thumbnail-2.jpg",
-                    "../Foto/high-end-black-thumbnail-3.jpg"
+                    "../Foto/high-end-black-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RTX5080.png"
                 ],
         name: "ShadowForce V2",
         price: "€2799.99",
+        description: "This is our high-end option, for a black gaming pc. With this high-end black gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 7 7800X3D",
@@ -123,10 +135,12 @@ const products = [
         thumbnails: [
                     "../Foto/ultra-high-end-white-thumbnail-1.jpg",
                     "../Foto/ultra-high-end-white-thumbnail-2.jpg",
-                    "../Foto/ultra-high-end-white-thumbnail-3.jpg"
+                    "../Foto/ultra-high-end-white-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RTX5090.png"
                 ],
         name: "Whiteout Ultra V3",
         price: "€4399.99",
+        description: "This is our ultra high-end option, for a white gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 7 9800X3D",
@@ -143,10 +157,12 @@ const products = [
         thumbnails: [
                     "../Foto/ultra-high-end-black-thumbnail-1.jpg",
                     "../Foto/ultra-high-end-black-thumbnail-2.jpg",
-                    "../Foto/ultra-high-end-black-thumbnail-3.jpg"
+                    "../Foto/ultra-high-end-black-thumbnail-3.jpg",
+                    "../Foto/thumbnail-benchmarks-RTX5090.png"
                 ],
         name: "Darkflow Domination Max",
         price: "€4299.99",
+        description: "This is our ultra high-end option, for a black gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
             {
                 cpu: "AMD Ryzen 7 9800X3D",
