@@ -1267,6 +1267,13 @@ section{
     text-align: left;
 }
 
+.sub-heading1{
+    text-align: left;
+    color: var(--text-black-700);
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
 .contactForm{
     display: grid;
     gap: 3em;
@@ -1301,7 +1308,7 @@ form{
     border-radius: 10px;
     border: 1px solid rgb(43, 43, 43);
     margin-bottom: 1em;
-
+    resize: none;
 }
 
 .input:focus{
