@@ -1563,6 +1563,42 @@ form{
     text-decoration: underline;
     transition: underline 0.3s ease;
 }
+.row{
+    background-color: var(--bg-black-50);
+    margin: 10%;
+    border-radius: 50px;
+    justify-content: center;
+}
+.instructions-text{
+    color: var(--text-black-900);
+    margin: 2rem;
+    font-size: 1.2rem;
+}
+.build-help-image-image{
+    width: 75%;
+    border-radius: 20px;
+    margin: 2rem auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.build-help-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+.build-help-image-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.build-link:hover{
+    text-decoration: none;
+    color: var(--text-black-500);
+}
+.build-link{
+    text-decoration: dotted underline;
+    color: var(--text-black-900);
+    transition: color 0.3s ease;
+}
 
 /* Link to contact page section !!!this is finished!!!! */
   .build-help-contact-section {
@@ -1589,12 +1625,13 @@ form{
     padding: 0.8rem 1.7rem;
     border: none;
     border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 .btn-contact:hover {
     background: var(--bg-black-600);
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+    transform: scale(1.15);
 }
   /* Animations */
   @keyframes fadeUp {
