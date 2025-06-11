@@ -710,7 +710,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    padding: 130px 9% 30px;
+    padding: 100px 9% 30px;
 }
 
 .product-detail .title {
@@ -1664,6 +1664,7 @@ form{
   .build-help-contact-section {
     margin: 3rem auto;
     text-align: center;
+    padding: 1.5rem;
 }
   .build-help-contact-section h2 {
     font-size: 1.4rem;
