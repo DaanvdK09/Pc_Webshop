@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
     updateLogo();
+    updateHomepageImage();
 });
 
 const loginStatus = document.getElementById("login-status");
@@ -56,6 +57,15 @@ function updateLogo() {
         img.src = '../Foto/Logo-black.png';
     } else {
         img.src = '../Foto/Logo-white.png';
+    }
+}
+//homepage img switch
+function updateHomepageImage() {
+    var img = document.getElementById('homepage-img');
+    if (document.body.classList.contains('light')) {
+        img.src = '../Foto/HomepageCSTBuilderPNGDark.png';
+    } else {
+        img.src = '../Foto/HomepageCSTBuilderPNG.png';
     }
 }
 //add-to-cart-button
