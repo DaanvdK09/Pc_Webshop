@@ -434,4 +434,28 @@ function updateCartBadge() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const popup = document.getElementById('checkout-popup');
+    const popupClose = document.querySelector('.checkout-popup-close');
+    const popupOk = document.querySelector('.checkout-popup-ok');
+
+    if (checkoutBtn && popup) {
+        checkoutBtn.addEventListener('click', function() {
+            // Show popup
+            popup.classList.add('active');
+            // Empty the cart
+            sessionStorage.removeItem('cart');
+            displayCart();
+            if (typeof updateCartBadge === "function") updateCartBadge();
+        });
+    }
+    // Close popup on X or OK
+    [popupClose, popupOk].forEach(btn => {
+        if (btn) btn.addEventListener('click', function() {
+            popup.classList.remove('active');
+        });
+    });
+});
+
 updateCartBadge();

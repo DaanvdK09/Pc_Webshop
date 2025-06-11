@@ -952,6 +952,11 @@ footer {
     background-color: var(--bg-black-550);
 }
 
+.cart-total .checkout-btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
 .custom-parts {
     margin: 8px 0 0 0;
     list-style: none;
@@ -987,6 +992,45 @@ footer {
 .custom-part-key {
     font-weight: 900;
     margin-right: 5px;
+}
+
+/* Checkout button */
+.checkout-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* using rgba for this so the opacity gets lower */
+    justify-content: center;
+    align-items: center;
+}
+.checkout-popup.active {
+    display: flex;
+}
+.checkout-popup-content {
+    background: var(--bg-black-800);
+    padding: 32px 24px 24px 24px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    position: relative;
+    color: var(--text-black-900);
+}
+.checkout-popup-ok {
+    margin-top: 18px;
+    padding: 8px 28px;
+    border: none;
+    border-radius: 6px;
+    background: var(--bg-black-550);
+    color: var(--text-black-700);
+    font-size: 1em;
+    cursor: pointer;
+}
+.checkout-popup-ok:hover {
+    background: var(--bg-black-900);
+    transform: scale(1.1);
+    transition: transform, background 0.4s ease;
 }
 /* add to cart button */
 .buy-button {

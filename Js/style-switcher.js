@@ -43,10 +43,14 @@ window.addEventListener("load", () => {
     }
 
     const lightMode = localStorage.getItem("lightMode");
+    const icon = dayNight.querySelector("i");
     if (lightMode === "enabled") {
         document.body.classList.add("light");
-        dayNight.querySelector("i").classList.add("fa-moon");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
     } else {
-        dayNight.querySelector("i").classList.add("fa-sun");
+        document.body.classList.remove("light");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
     }
 });
