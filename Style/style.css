@@ -353,9 +353,10 @@ footer {
     flex: 0 0 30%;
     max-width: 30%;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 75px;
     background: var(--bg-black-1000);
-    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 50px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -367,19 +368,24 @@ footer {
     margin-bottom: 10px;
 }
 
-.go-button {
-    border-radius: 25px;
-    padding: 10px 10px;
+.go-button a {
+    color: var(--text-black-900);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 20px;
     background-color: var(--bg-black-550);
     border: none;
-    margin-top: 10px;
+    border-radius: 10px;
     transition: background-color 0.5s, color 0.5s;
 }
-.go-button:hover {
+
+.go-button a:hover {
     background-color: var(--bg-black-600);
     color: var(--text-black-600);
-    cursor: pointer;
+    
 }
+
 .home-container h1 {
     margin-top: 20px;
     margin-bottom: 20px;
