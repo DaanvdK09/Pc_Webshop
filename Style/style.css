@@ -1538,6 +1538,17 @@ footer {
     font-weight: bold;
 }
 
+.part-detail-link,
+.part-detail-link *,
+.part-detail-link:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.part-detail-link:hover {
+    text-decoration: underline;
+}
+
 /* contact page */
 section{
     display: flex;
