@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const supported = caseSupportMap[caseType];
             if (!supported || !supported.includes(motherboardType)) {
-                compatibilityWarnings.push("⚠️ Motherboard form factor may not fit in selected Case.");
+                compatibilityWarnings.push("⚠️ Motherboard may not fit in selected Case.");
             }
         }
 
