@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ) {
             // Map case form factor to supported motherboards
             const caseSupportMap = {
+                "E-ATX": ["E-ATX", "ATX", "Micro-ATX", "Mini-ITX"],
                 "Full Tower": ["E-ATX", "ATX", "Micro-ATX", "Mini-ITX"],
                 "Mid Tower": ["ATX", "Micro-ATX", "Mini-ITX"],
                 "Mini Tower": ["Micro-ATX", "Mini-ITX"],
@@ -373,10 +374,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>
                                 ${
                                     selectedCase
-                                    ? `<img src="${selectedCase.image_url}" alt="${selectedCase.name}" class="img">
-                                    <span>${selectedCase.name}</span>`
+                                    ? `<a href="#" class="part-detail-link" data-type="case" data-part='${JSON.stringify(selectedCase)}'>
+                                            <img src="${selectedCase.image_url}" alt="${selectedCase.name}" class="img">
+                                            <span>${selectedCase.name}</span>
+                                    </a>`
                                     : `<div class="add-button" id="add-case-btn">
-                                        <a><i class="fa-solid fa-plus"></i>Add Case</a>
+                                            <a><i class="fa-solid fa-plus"></i>Add Case</a>
                                     </div>`
                                 }
                             </td>
