@@ -61,13 +61,13 @@ function updateLogo() {
 //add-to-cart-button
 document.querySelectorAll('.buy-button').forEach(function(button) {
     button.addEventListener('click', function() {
-        // Verwijder eerst de class als hij er al op zit (voor snel dubbelklikken)
+        
         button.classList.remove('clicked');
-        // Force reflow zodat de animatie opnieuw kan starten
+       
         void button.offsetWidth;
-        // Voeg de class toe voor de animatie
+        
         button.classList.add('clicked');
-        // Verwijder de class na de animatie (1.5s, gelijk aan je keyframes)
+        
         setTimeout(function() {
             button.classList.remove('clicked');
         }, 2200);
