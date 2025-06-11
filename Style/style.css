@@ -356,7 +356,7 @@ footer {
     margin-bottom: 75px;
     background: var(--bg-black-1000);
     padding-bottom: 10px;
-    padding-top: 50px;
+    padding-top: 75px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -369,21 +369,33 @@ footer {
 }
 
 .go-button a {
-    color: var(--text-black-900);
+    color: var(--text-black-600);
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    padding: 15px 20px;
+    padding: 20px 25px;
     background-color: var(--bg-black-550);
     border: none;
-    border-radius: 10px;
+    border-radius: 35px;
     transition: background-color 0.5s, color 0.5s;
 }
 
 .go-button a:hover {
     background-color: var(--bg-black-600);
-    color: var(--text-black-600);
     
+}
+
+.go-button img {
+    width: 40px;
+    height: auto;
+    position: relative;
+    top: 10px;
+
+    transition: transform 0.3s ease-in-out;
+}
+
+.go-button:hover img {
+    transform: translateX(20px);
 }
 
 .home-container h1 {
