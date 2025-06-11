@@ -1,4 +1,5 @@
-// Hier is Bram nog mee bezig, maar ik moet nog ffe bedenken hoe ik de specs erbij ga zetten
+// This code handles the display of products on the prebuilt PC page, the product detail page, and the cart system.
+// Prebuilt PC products data
 const products = [
     {
         id: 1,
@@ -8,7 +9,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RX6600.png",
         ],
         name: "Glacier 800",
-        price: "€899.99",
+        price: "€999.99",
         rating: 4.3,
         description: "This is our most budget friendly option, for a white gaming pc. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
@@ -30,7 +31,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RX6600.png"
         ],
         name: "Shadow Bolt",
-        price: "€799.99",
+        price: "€899.99",
         rating: 4.1,
         description: "This is our most budget friendly option. With this budget black gaming pc you can comformbly play in 1080p with medium settings. Click on the other picktures to see our benchmarks.",
         specs: [
@@ -53,7 +54,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RX7700XT.png"
         ],
         name: "IceBreaker X14",
-        price: "€1399.99",
+        price: "€1799.99",
         rating: 4.5,
         description: "This is our mid-range option, for a white gaming pc. With this mid-range white gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
@@ -76,7 +77,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RX7700XT.png"
         ],
         name: "PhantomCore",
-        price: "€1399.99",
+        price: "€1699.99",
         rating: 4.4,
         description: "This is our mid-range option, for a black gaming pc. With this mid-range black gaming pc you can comformbly play in 1440p with high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
@@ -99,7 +100,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RTX5080.png"
         ],
         name: "FrostTitan C5",
-        price: "€2899.99",
+        price: "€3699.99",
         rating: 4.8,
         description: "This is our high-end option, for a white gaming pc. With this high-end white gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
@@ -122,7 +123,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RTX5080.png"
         ],
         name: "ShadowForce V2",
-        price: "€2799.99",
+        price: "€3599.99",
         rating: 4.6,
         description: "This is our high-end option, for a black gaming pc. With this high-end black gaming pc you can play 1440p in super high fps or 4k medium to high settings. Click on the other picktures to see different angles of the pc.",
         specs: [
@@ -131,7 +132,7 @@ const products = [
                 gpu: "NVIDIA GeForce RTX 5080",
                 ram: "64GB DDR5 RAM",
                 storage: "2TB NVMe SSD",
-                cooler: "360mm AIO",
+                cooler: "240mm AIO",
                 psu: "850W Power Supply"
             }
         ]
@@ -145,7 +146,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RTX5090.png"
         ],
         name: "Whiteout Ultra V3",
-        price: "€4399.99",
+        price: "€5399.99",
         rating: 4.9,
         description: "This is our ultra high-end option, for a white gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
@@ -168,7 +169,7 @@ const products = [
             "../Foto/thumbnail-benchmarks-RTX5090.png"
         ],
         name: "Nightfall Titan",
-        price: "€4299.99",
+        price: "€5299.99",
         rating: 4.7,
         description: "This is our ultra high-end option, for a black gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
         specs: [
