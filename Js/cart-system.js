@@ -167,7 +167,7 @@ const products = [
             "../Foto/ultra-high-end-black-thumbnail-3.jpg",
             "../Foto/thumbnail-benchmarks-RTX5090.png"
         ],
-        name: "Darkflow Domination Max",
+        name: "Nightfall Titan",
         price: "€4299.99",
         rating: 4.7,
         description: "This is our ultra high-end option, for a black gaming pc. This ultra-high-end pc is only for the pc enthousiast, it delivers very good performance in 4k ultra. Click on the other picktures to see different angles of the pc.",
@@ -227,7 +227,6 @@ function displayProducts() {
                 <img src="${product.mainImage}">
             </div>
             <h3 class="title">${product.name}</h3>
-            <h5>${product.price}</h5>
         `;
         productContainer.appendChild(productCard);
 
@@ -357,16 +356,27 @@ function displayCart() {
         cartItem.classList.add("cart-item");
         cartItem.innerHTML = `
         <div class="product">
-            <img src="${item.image}">
+            ${
+                item.image === "wrench"
+                ? `<i class="fa-solid fa-wrench"></i>`
+                : `<img src="${item.image}">`
+            }
             <div class="item-detail">
-                <p>${item.name}</p>
+                <p class="item-detail-heading">${item.name}</p>
+                ${
+                    item.image === "wrench" && item.parts
+                    ? `<ul class="custom-parts">
+                        ${Object.entries(item.parts).map(([key, part]) => part ? `<li><span class="custom-part-key">${key.toUpperCase()}:</span> <span class="custom-part-value">${part.name}</span></li>` : '').join('')}
+                    </ul>`
+                    : ''
+                }
             </div>
         </div>
         <span class="price">${item.price}</span>
         <div class="quantity">
             <input type="number" value="${item.quantity}" min="1" data-index="${index}">
         </div>
-        <span class="total-price">${EURO.format(itemTotal.toFixed(2))}</span>
+        <span class="total-price">€${itemTotal.toFixed(2)}</span>
         <button class="remove" data-index="${index}">
             <i class="fa fa-x"></i>
         </button>
@@ -375,8 +385,8 @@ function displayCart() {
         cartItemContainer.appendChild(cartItem);
     });
 
-    subtotalEl.textContent = `${EURO.format(subtotal.toFixed(2))}`;
-    grandTotalEl.textContent = `${EURO.format(subtotal.toFixed(2))}`;
+    subtotalEl.textContent = `€${subtotal.toFixed(2)}`;
+    grandTotalEl.textContent = `€${subtotal.toFixed(2)}`;
 
     removeCartItem();
     updateCartQuantity();

@@ -414,10 +414,46 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // Buy Button animation
+        // Add to cart for custom PC
         const buyButton = selectedGpuDiv.querySelector('#buy-button-builder');
         if (buyButton) {
             buyButton.addEventListener('click', function () {
+                // Gather all selected parts for the custom PC
+                const selectedParts = {
+                    cpu: selectedCpu,
+                    gpu: selectedGpu,
+                    motherboard: selectedMotherboard,
+                    ram: selectedRam,
+                    ssd: selectedSsd,
+                    cpu_cooler: selectedCpuCooler,
+                    psu: selectedPsu,
+                    case: selectedCase
+                };
+                // Calculate total price (including build cost)
+                const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
+                const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
+                const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
+                const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
+                const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
+                const casePrice = selectedCase ? Number(selectedCase.price) : 0;
+                const psuPrice = selectedPsu ? Number(selectedPsu.price) : 0;
+                const ssdPrice = selectedSsd ? Number(selectedSsd.price) : 0;
+                const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + psuPrice + casePrice + ssdPrice + 150;
+
+                // Add custom PC to cart
+                let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+                cart.push({
+                    id: "custom-" + Date.now(),
+                    name: "Custom PC",
+                    price: `€${totalPrice.toFixed(2)}`,
+                    image: "wrench", // Special label for custom
+                    quantity: 1,
+                    parts: selectedParts
+                });
+                sessionStorage.setItem("cart", JSON.stringify(cart));
+                if (typeof updateCartBadge === "function") updateCartBadge();
+
+                // Button animation
                 if (!buyButton.classList.contains('clicked')) {
                     buyButton.classList.add('clicked');
                     setTimeout(() => {
