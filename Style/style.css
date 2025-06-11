@@ -11,6 +11,7 @@
     --bg-black-100:#222222;
     --bg-black-200:#242425;
     --bg-black-300: #ffffff6e;
+    --bg-black-400: #638fda;
     --bg-black-50:#393939;
     --text-black-900:#E1EBEE;
     --text-black-700:#e9e9e9;
@@ -27,6 +28,7 @@ body.light {
     --bg-black-100:#fdf9ff;
     --bg-black-200:#e7eafa;
     --bg-black-300: #00000070;
+    --bg-black-400: #638fda;
     --bg-black-50:#e8dfec;
     --text-black-900:#082567;
     --text-black-700:#000080; 
@@ -418,6 +420,20 @@ footer {
     border: none;
     border-radius: 10px;
     box-shadow: 0px -4px 16px var(--bg-black-300);
+}
+
+.home-contentbestellers {
+    background: var(--bg-black-400);
+    width: 100%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    position: relative;
+    top: -20vh;
+    border: none;
+}
+
+.home-contentbestellers h1 {
+    margin-top: 0%;
 }
 
 /* Login */
