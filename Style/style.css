@@ -3,6 +3,7 @@
 /* Styles */
 /* Dark Mode */
 :root {
+    --bg-black-1000: #1d232b;
     --bg-black-900:#151515;
     --bg-black-800: #2a3439;
     --bg-black-600: #007FFF;
@@ -11,7 +12,7 @@
     --bg-black-100:#222222;
     --bg-black-200:#242425;
     --bg-black-300: #ffffff6e;
-    --bg-black-400: #638fda;
+    --bg-black-400: #313846;
     --bg-black-50:#393939;
     --text-black-900:#E1EBEE;
     --text-black-700:#e9e9e9;
@@ -20,6 +21,7 @@
 }
 /* Light Mode */
 body.light {
+    --bg-black-1000: #e2e9f1;
     --bg-black-900: #f2f2fc;
     --bg-black-800: #e6e6fa;
     --bg-black-600: #2d5079;
@@ -27,7 +29,7 @@ body.light {
     --bg-black-500: #000080;
     --bg-black-100:#fdf9ff;
     --bg-black-200:#e7eafa;
-    --bg-black-300: #00000070;
+    --bg-black-300: #00000081;
     --bg-black-400: #638fda;
     --bg-black-50:#e8dfec;
     --text-black-900:#082567;
@@ -346,7 +348,7 @@ footer {
     max-width: 30%;
     text-align: center;
     margin-bottom: 20px;
-    background: var(--bg-black-800);
+    background: var(--bg-black-1000);
     padding: 20px;
     border-radius: 15px;
     display: flex;
@@ -422,7 +424,7 @@ footer {
     box-shadow: 0px -4px 16px var(--bg-black-300);
 }
 
-.home-contentbestellers {
+.home-contentbestsellers {
     background: var(--bg-black-400);
     width: 100%;
     padding-bottom: 5%;
@@ -432,8 +434,10 @@ footer {
     border: none;
 }
 
-.home-contentbestellers h1 {
+.home-contentbestsellers h1 {
     margin-top: 0%;
+    margin-bottom: 50px;
+    color: var(--text-black-600);
 }
 
 /* Login */
