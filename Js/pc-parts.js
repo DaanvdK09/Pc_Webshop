@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
                                 ${EURO.format(totalPrice.toFixed(2))}
-                                <button class="buy-button">
+                                <button class="buy-button" id="buy-button-builder">
                                     <span class="add-to-cart">Add to cart</span>
                                     <span class="added">Added</span>
                                     <i class="fas fa-shopping-cart"></i>
@@ -387,6 +387,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 </table>
             </div>
         `;
+
+        // Buy Button animation
+        const buyButton = selectedGpuDiv.querySelector('#buy-button-builder');
+        if (buyButton) {
+            buyButton.addEventListener('click', function () {
+                if (!buyButton.classList.contains('clicked')) {
+                    buyButton.classList.add('clicked');
+                    setTimeout(() => {
+                        buyButton.classList.remove('clicked');
+                    }, 1500);
+                }
+            });
+        }
 
         // Add event listeners detail links
         selectedGpuDiv.querySelectorAll('.part-detail-link').forEach(link => {
