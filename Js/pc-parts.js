@@ -429,16 +429,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     psu: selectedPsu,
                     case: selectedCase
                 };
-                // Calculate total price (including build cost)
-                const cpuPrice = selectedCpu ? Number(selectedCpu.price) : 0;
-                const gpuPrice = selectedGpu ? Number(selectedGpu.price) : 0;
-                const motherboardPrice = selectedMotherboard ? Number(selectedMotherboard.price) : 0;
-                const ramPrice = selectedRam ? Number(selectedRam.price) : 0;
-                const cpuCoolerPrice = selectedCpuCooler ? Number(selectedCpuCooler.price) : 0;
-                const casePrice = selectedCase ? Number(selectedCase.price) : 0;
-                const psuPrice = selectedPsu ? Number(selectedPsu.price) : 0;
-                const ssdPrice = selectedSsd ? Number(selectedSsd.price) : 0;
-                const totalPrice = cpuPrice + gpuPrice + motherboardPrice + ramPrice + cpuCoolerPrice + psuPrice + casePrice + ssdPrice + 150;
 
                 // Add custom PC to cart
                 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
