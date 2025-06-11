@@ -136,6 +136,32 @@ document.addEventListener('DOMContentLoaded', function() {
             compatibilityWarnings.push("⚠️ Powersupply may not supply sufficient wattage.");
         }
 
+        // Motherboard | Case Form factor
+        if (
+            selectedMotherboard &&
+            selectedCase &&
+            selectedMotherboard.form_factor &&
+            selectedCase.form_factor
+        ) {
+            // Map case form factor to supported motherboards
+            const caseSupportMap = {
+                "Full Tower": ["E-ATX", "ATX", "Micro-ATX", "Mini-ITX"],
+                "Mid Tower": ["ATX", "Micro-ATX", "Mini-ITX"],
+                "Mini Tower": ["Micro-ATX", "Mini-ITX"],
+                "ATX": ["ATX", "Micro-ATX", "Mini-ITX"],
+                "Micro-ATX": ["Micro-ATX", "Mini-ITX"],
+                "Mini-ITX": ["Mini-ITX"]
+            };
+
+            const caseType = selectedCase.form_factor.trim();
+            const motherboardType = selectedMotherboard.form_factor.trim();
+
+            const supported = caseSupportMap[caseType];
+            if (!supported || !supported.includes(motherboardType)) {
+                compatibilityWarnings.push("⚠️ Motherboard form factor may not fit in selected Case.");
+            }
+        }
+
         const compatibilityHtml = `
             <div class="compatibility-bar">
                 ${
