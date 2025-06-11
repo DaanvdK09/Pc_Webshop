@@ -244,29 +244,35 @@ footer {
 #login-link:hover #login-status {
     color: var(--text-black-700);
 }
-
+/* Cart Icon */
 .cart-icon {
     text-align: center;
     text-decoration: none;
     margin-bottom: 3px;
     margin-left: 0px;
     margin-right: 50px;
-
+    position: relative;
 }
 .cart-icon i {
     cursor: pointer;
     font-size: 16px;
     text-decoration: none;
     color: var(--text-black-900);
+    position: relative;
 }
 
-.cart-icon button {
-    background-color: transparent;
-    border: none;
+.cart-icon .cart-item-count {
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-black-600);
+    border-radius: 50%;
+    font-size: 12px;
     color: var(--text-black-900);
     line-height: 20px;
     text-align: center;
-    display: none; /* Initially hidden */
 }
 
 
@@ -708,7 +714,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    padding: 130px 9% 30px;
+    padding: 100px 9% 30px;
 }
 
 .product-detail .title {
@@ -868,7 +874,10 @@ footer {
     text-align: center;
     color: var(--text-black-900);
 }
-
+.cart-items p {
+    color: var(--text-black-900);
+    margin-top: 5px;
+}
 .cart-item .quantity input {
     width: 50px;
     padding: 5px;
@@ -948,6 +957,18 @@ footer {
 #buy-button-builder {
     margin-left: 5%;
     width: 200px;
+    color: var(--text-black-600);
+    background-color: var(--bg-black-600);
+}
+
+#buy-button-builder span {
+    color: var(--text-black-600);
+    background-color: var(--bg-black-600);
+}
+
+#buy-button-builder span:hover {
+    color: var(--text-black-900);
+    background-color: var(--bg-black-900);
 }
 
 .buy-button:hover {
@@ -1647,6 +1668,7 @@ form{
   .build-help-contact-section {
     margin: 3rem auto;
     text-align: center;
+    padding: 1.5rem;
 }
   .build-help-contact-section h2 {
     font-size: 1.4rem;

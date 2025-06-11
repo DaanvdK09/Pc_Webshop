@@ -198,6 +198,12 @@ function getStarIcons(rating) {
     }
     return stars;
 }
+//price format
+let EURO = new Intl.NumberFormat('nl-NL', {
+    style: 'currency',
+    currency: 'EUR',
+});
+
 // The whole cart system and product display system
 // This code handles the display of products on the prebuilt PC page, the product detail page, and the cart system.
 const productContainer = document.querySelector(".prebuilt-list");
@@ -281,7 +287,7 @@ function displayProductDetail() {
             specsListEL.appendChild(specItem);
         });
 
-        // Dynamische rating alleen op detailpagina
+        // Dynamische rating
         if (ratingEL) {
             ratingEL.innerHTML = `
                 ${getStarIcons(product.rating)}
@@ -304,7 +310,7 @@ function displayProductDetail() {
 }
 
 function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
     const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
@@ -321,6 +327,8 @@ function addToCart(product) {
     }
 
     sessionStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartBadge();
 }
 
 function displayCart() {
@@ -358,7 +366,7 @@ function displayCart() {
         <div class="quantity">
             <input type="number" value="${item.quantity}" min="1" data-index="${index}">
         </div>
-        <span class="total-price">€${itemTotal}</span>
+        <span class="total-price">${EURO.format(itemTotal.toFixed(2))}</span>
         <button class="remove" data-index="${index}">
             <i class="fa fa-x"></i>
         </button>
@@ -367,6 +375,52 @@ function displayCart() {
         cartItemContainer.appendChild(cartItem);
     });
 
-    subtotalEl.textContent = `€${subtotal.toFixed(2)}`;
-    grandTotalEl.textContent = `€${subtotal.toFixed(2)}`;
+    subtotalEl.textContent = `${EURO.format(subtotal.toFixed(2))}`;
+    grandTotalEl.textContent = `${EURO.format(subtotal.toFixed(2))}`;
+
+    removeCartItem();
+    updateCartQuantity();
 }
+
+function removeCartItem() {
+    document.querySelectorAll(".remove").forEach(button => {
+        button.addEventListener("click", function() {
+            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+            const index = this.getAttribute("data-index");
+            cart.splice(index, 1);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+            updateCartBadge();
+        });
+    });
+}
+
+function updateCartQuantity() {
+    document.querySelectorAll(".quantity input").forEach(input => {
+        input.addEventListener("change", function() {
+            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+            const index = this.getAttribute("data-index");
+            cart[index].quantity = parseInt(this.value);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+            updateCartBadge();
+        });
+    });
+}
+
+function updateCartBadge() {
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const badge = document.querySelector(".cart-item-count");
+
+    if (badge) {
+        if (cartCount > 0) {
+            badge.textContent = cartCount;
+            badge.style.display = "block";
+        } else {
+            badge.style.display = "none";
+        }
+    }
+}
+
+updateCartBadge();
