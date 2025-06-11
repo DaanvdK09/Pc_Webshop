@@ -710,7 +710,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    padding: 130px 9% 30px;
+    padding: 100px 9% 30px;
 }
 
 .product-detail .title {
