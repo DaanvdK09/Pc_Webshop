@@ -907,6 +907,11 @@ footer {
     overflow: hidden;
 }
 
+#buy-button-builder {
+    margin-left: 5%;
+    width: 200px;
+}
+
 .buy-button:hover {
     background: var(--bg-black-600);
 }
