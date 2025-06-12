@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeof updateCartBadge === "function") updateCartBadge();
         });
     }
-    // Close popup on X or OK
+    // Close popup on OK
     [popupClose, popupOk].forEach(btn => {
         if (btn) btn.addEventListener('click', function() {
             popup.classList.remove('active');
