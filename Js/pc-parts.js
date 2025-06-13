@@ -719,6 +719,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showGpuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const gpuTable = document.getElementById('gpu-table');
         const cpuTable = document.getElementById('cpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
@@ -780,6 +782,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCpuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
@@ -841,6 +845,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showMotherboardSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const motherboardTable = document.getElementById('motherboard-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -902,6 +908,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showRamSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -963,6 +971,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showSsdSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -1026,6 +1036,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCpuCoolerSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.add('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -1091,6 +1103,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showPsuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const psuTable = document.getElementById('psu-table');
         document.getElementById('gpu-table').style.display = "none";
         document.getElementById('cpu-table').style.display = "none";
@@ -1152,6 +1166,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCaseSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const pcCaseTable = document.getElementById('case-table');
         document.getElementById('gpu-table').style.display = "none";
         document.getElementById('cpu-table').style.display = "none";
@@ -1163,15 +1179,15 @@ document.addEventListener('DOMContentLoaded', function() {
         pcCaseTable.style.display = "table";
 
         let subtitle = document.getElementById('case-subtitle');
+        const filterBar = document.getElementById('filter-bar');
         if (!subtitle) {
             subtitle = document.createElement('div');
             subtitle.id = 'case-subtitle';
             subtitle.textContent = "All Cases are Available in Black and White.";
-            pcCaseTable.parentNode.insertBefore(subtitle, pcCaseTable);
+            filterBar.parentNode.insertBefore(subtitle, filterBar);
         }
         subtitle.style.display = "block";
         pcCaseTable.style.display = "table";
-
         fetch('http://localhost:5000/api/cases')
             .then(response => response.json())
             .then(pcCases => {
