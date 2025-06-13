@@ -204,7 +204,6 @@ footer {
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
-    margin-bottom: 3px;
     margin-left: 0;
     margin-right: 12%;
     transition: transform 0.3s;
@@ -221,22 +220,11 @@ footer {
     font-weight: 600;
     position: relative;
 }
-.login:hover{
+.login:hover .login-icon {
     color: var(--text-black-700);
+    transform: scale(1.2);
 }
-.login::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 6%;
-    background-color: var(--bg-black-500);
-    transition: all 0.5s;
-}
-.login:hover::before {
-    width: 112%
-}
+
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
 }
@@ -259,6 +247,12 @@ footer {
     text-decoration: none;
     color: var(--text-black-900);
     position: relative;
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover i {
+    color: var(--text-black-700);
+    transform: scale(1.2);
 }
 
 .cart-icon .cart-item-count {
@@ -462,6 +456,10 @@ footer {
     margin-top: 0%;
     margin-bottom: 50px;
     color: var(--text-black-600);
+}
+
+.favorites-content {
+    margin-top: -100px;
 }
 
 /* Login */
@@ -1000,7 +998,7 @@ footer {
     position: fixed;
     z-index: 9999;
     left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4); /* using rgba for this so the opacity gets lower */
+    background: rgba(0,0,0,0.4); /* using rgba for this so the opacity for the rest op the page gets lower */
     justify-content: center;
     align-items: center;
 }
@@ -1463,6 +1461,16 @@ footer {
     color:#888;
 }
 
+#case-subtitle {
+    font-size: 1rem;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* Button */
 .add-button,
 .select-btn,
@@ -1639,7 +1647,7 @@ form{
 .submit{
     background-color: var(--bg-black-600);
     border: none;
-    color: var(--textColor);
+    color: var(--bg-black-100);
     font-weight: bold;
     cursor: pointer;
     width: 95%;
@@ -1849,3 +1857,4 @@ form{
         justify-content: space-between;
     }
 }
+
