@@ -204,7 +204,6 @@ footer {
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
-    margin-bottom: 3px;
     margin-left: 0;
     margin-right: 12%;
     transition: transform 0.3s;
@@ -221,22 +220,11 @@ footer {
     font-weight: 600;
     position: relative;
 }
-.login:hover{
+.login:hover .login-icon {
     color: var(--text-black-700);
+    transform: scale(1.2);
 }
-.login::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 6%;
-    background-color: var(--bg-black-500);
-    transition: all 0.5s;
-}
-.login:hover::before {
-    width: 112%
-}
+
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
 }
@@ -259,6 +247,12 @@ footer {
     text-decoration: none;
     color: var(--text-black-900);
     position: relative;
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover i {
+    color: var(--text-black-700);
+    transform: scale(1.2);
 }
 
 .cart-icon .cart-item-count {
@@ -462,6 +456,10 @@ footer {
     margin-top: 0%;
     margin-bottom: 50px;
     color: var(--text-black-600);
+}
+
+.favorites-content {
+    margin-top: -100px;
 }
 
 /* Login */
@@ -1766,6 +1764,7 @@ form{
     margin: 10%;
     border-radius: 50px;
     justify-content: center;
+    align-items: center;
 }
 .instructions-text{
     color: var(--text-black-900);
@@ -1773,7 +1772,7 @@ form{
     font-size: 1.2rem;
 }
 .build-help-image-image{
-    width: 75%;
+    width: 50%;
     border-radius: 20px;
     margin: 2rem auto;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -1796,6 +1795,28 @@ form{
     text-decoration: dotted underline;
     color: var(--text-black-900);
     transition: color 0.3s ease;
+}
+.instructions-text{
+    margin-left: 7%;
+    margin-right: 15%;
+    margin-bottom: 2%;
+    font-size: 150%;
+    position: relative;
+    text-align: left;
+}
+.build-help-list{
+    margin-left: 5%;
+    margin-right: 35%;
+    margin-bottom: 5%;
+    font-size: 1.1rem;
+    color: var(--text-black-900);
+    font-size: 120%;
+    margin-top: 5%;
+}
+.budget-text {
+    font-size: 130%;
+    color: var(--text-black-900);
+    margin-left: 7%;
 }
 
 /* Link to contact page section !!!this is finished!!!! */
@@ -1854,3 +1875,4 @@ form{
         justify-content: space-between;
     }
 }
+
