@@ -453,8 +453,16 @@ footer {
 
 .home-contentbestsellers h1 {
     margin-top: 0%;
-    margin-bottom: 50px;
-    color: var(--text-black-600);
+    margin-bottom: 1rem;
+    color: var(--text-black-900);
+    font-weight: 900;
+    font-size: 2.2rem;
+}
+
+.home-sub-title-bestsellers {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
 }
 
 .favorites-content {
@@ -1403,13 +1411,15 @@ footer {
 .add-button, .pc-builder-cart-button {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
     display: inline-block;
     text-align: center;
+    border: none;
+
 }
 
 .add-button:hover, .pc-builder-cart-button:hover {
