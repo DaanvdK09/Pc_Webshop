@@ -204,7 +204,6 @@ footer {
     color: var(--text-black-900);
     text-align: center;
     text-decoration: none;
-    margin-bottom: 3px;
     margin-left: 0;
     margin-right: 12%;
     transition: transform 0.3s;
@@ -221,22 +220,11 @@ footer {
     font-weight: 600;
     position: relative;
 }
-.login:hover{
+.login:hover .login-icon {
     color: var(--text-black-700);
+    transform: scale(1.2);
 }
-.login::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 6%;
-    background-color: var(--bg-black-500);
-    transition: all 0.5s;
-}
-.login:hover::before {
-    width: 112%
-}
+
 #login-status { /* # is for javascript id */
     color: var(--text-black-900); 
 }
@@ -259,6 +247,12 @@ footer {
     text-decoration: none;
     color: var(--text-black-900);
     position: relative;
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover i {
+    color: var(--text-black-700);
+    transform: scale(1.2);
 }
 
 .cart-icon .cart-item-count {
