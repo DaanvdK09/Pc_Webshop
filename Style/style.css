@@ -1473,6 +1473,24 @@ footer {
     font-weight: bold;
 }
 
+/* Filter Bar */
+.filter-bar {
+    font-size: 2rem;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-right: -28%;
+    text-align: right;
+    font-weight: bold;
+    display: none;
+}
+
+.filter-input {
+    width: 300px;
+    padding: 6px;
+}
+
 /* Button */
 .add-button,
 .select-btn,

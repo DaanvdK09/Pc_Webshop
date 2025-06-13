@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const partsListDiv = document.getElementById('parts-list');
     const builderTitle = document.querySelector('.pc-builder-title h1');
+    const filterBar = document.getElementById('filter-bar');
+    const filterInput = document.getElementById('filter-input');
     let selectedGpuDiv = null;
     let selectedGpu = null;
     let selectedCpu = null;
@@ -10,6 +12,30 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedCpuCooler = null;
     let selectedPsu = null;
     let selectedCase = null;
+
+    // filter table rows
+    function filterTableRows(tbody, items, columns) {
+        const filter = filterInput.value.trim().toLowerCase();
+        Array.from(tbody.children).forEach((tr, idx) => {
+            const item = items[idx];
+            const text = columns.map(col => (item[col] || '').toString().toLowerCase()).join(' ');
+            tr.style.display = text.includes(filter) ? '' : 'none';
+        });
+    }
+
+    // Show/hide filter bar and set up filtering
+    function setupFilter(tbody, items, columns) {
+        filterBar.style.display = 'block';
+        filterInput.value = '';
+        filterInput.oninput = () => filterTableRows(tbody, items, columns);
+    }
+
+    // Hide filter bar when not needed
+    function hideFilter() {
+        filterBar.style.display = 'none';
+        filterInput.value = '';
+        filterInput.oninput = null;
+    }
 
     // Load all selected parts from sessionStorage
     const storedParts = JSON.parse(sessionStorage.getItem('selectedParts'));
@@ -665,6 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a GPU";
+                setupFilter(tbody, gpus, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -724,6 +751,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a CPU";
+                setupFilter(tbody, cpus, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -783,6 +811,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Motherboard";
+                setupFilter(tbody, motherboards, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -842,6 +871,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add RAM";
+                setupFilter(tbody, rams, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -903,6 +933,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add SSD";
+                setupFilter(tbody, ssds, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -966,6 +997,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add CPU Cooler";
+                setupFilter(tbody, cpuCoolers, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1025,6 +1057,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Powersupply";
+                setupFilter(tbody, psus, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1097,6 +1130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Case";
+                setupFilter(tbody, pcCases, ['name', 'manufacturer']);
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
