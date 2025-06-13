@@ -103,3 +103,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 50);
     }
 });
+
+// Toggle between grid and list view
+document.addEventListener('DOMContentLoaded', function() {
+    const gridBtn = document.getElementById('grid-view-btn');
+    const listBtn = document.getElementById('list-view-btn');
+    const prebuiltList = document.querySelector('.prebuilt-list');
+
+    // look which list style is selected by user earlier
+    const savedView = localStorage.getItem('prebuiltView') || 'grid';
+    if (savedView === 'list') {
+        prebuiltList.classList.add('list-view');
+        prebuiltList.classList.remove('grid-view');
+        listBtn.classList.add('activeviewbutton');
+        gridBtn.classList.remove('activeviewbutton');
+    } else {
+        prebuiltList.classList.add('grid-view');
+        prebuiltList.classList.remove('list-view');
+        gridBtn.classList.add('activeviewbutton');
+        listBtn.classList.remove('activeviewbutton');
+    }
+
+    gridBtn.addEventListener('click', function() {
+        prebuiltList.classList.add('grid-view');
+        prebuiltList.classList.remove('list-view');
+        gridBtn.classList.add('activeviewbutton');
+        listBtn.classList.remove('activeviewbutton');
+        localStorage.setItem('prebuiltView', 'grid');
+    });
+
+    listBtn.addEventListener('click', function() {
+        prebuiltList.classList.add('list-view');
+        prebuiltList.classList.remove('grid-view');
+        listBtn.classList.add('activeviewbutton');
+        gridBtn.classList.remove('activeviewbutton');
+        localStorage.setItem('prebuiltView', 'list');
+    });
+});

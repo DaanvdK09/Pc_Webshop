@@ -221,12 +221,14 @@ if (productContainer) {
 
 function displayProducts() {
     products.forEach(product => {
+        const spec = product.specs[0];
         const productCard = document.createElement("div");
         productCard.classList.add("prebuilt-pc-card");
         productCard.innerHTML = `
             <div class="prebuilt-pc-image">
                 <img src="${product.mainImage}">
                 <ul class="image-text-specs">
+                <li><span>Specs:</span></li>
                 <li>${spec.cpu}</li>
                 <li>${spec.gpu}</li>
                 <li>${spec.ram}</li>
