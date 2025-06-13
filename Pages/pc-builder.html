@@ -78,152 +78,157 @@
         </div>
         <div class="row">
             <div class="pc-builder-content">
-                <div class='parts-list' id="parts-list">
-                    <table class="table" id="cpu-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>         
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Core Count</th>
-                                <th>Thread Count</th>
-                                <th>Socket</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- CPU is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="gpu-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>    
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Memory Size</th>
-                                <th>Core Clock</th>
-                                <th>Boost Clock</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- GPU is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="motherboard-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>  
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Socket</th>
-                                <th>Chipset</th>
-                                <th>Form Factor</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Motherboard is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="ram-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr> 
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Capacity</th>
-                                <th>Speed</th>
-                                <th>Type</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- RAM is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="ssd-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr> 
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Capacity</th>
-                                <th>Read Speed</th>
-                                <th>Write Speed</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- SSD is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="cpu_cooler-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>                     
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Fan Size</th>
-                                <th>Socket</th>
-                                <th>Cooling Type</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- CPU Cooler is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="psu-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>                     
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>wattage</th>
-                                <th>efficiency rating</th>
-                                <th>form factor</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- PSU is inserted here -->
-                        </tbody>
-                    </table>
-                    <table class="table" id="case-table" style="display:none;">
-                        <thead>
-                            <div class="filter-bar" id="filter-bar">
-                                <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
-                            </div>
-                            <tr>                     
-                                <th>Name</th>
-                                <th>Manufacturer</th>
-                                <th>Form Factor</th>
-                                <th>Drive Bays</th>
-                                <th>Expansion Slots</th>
-                                <th>Front Panel Ports</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Case is inserted here -->
-                        </tbody>
-                    </table>
+                <div id="selected"></div>
+                <div class="builder-main-row">
+                    <div id="filter-sidebar" class="filter-sidebar"></div>
+                    <div class='parts-list' id="parts-list">
+                        <div class="filter-bar" id="filter-bar-cpu">
+                            <input class="filter-input" type="text" id="filter-input-cpu" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="cpu-table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Core Count</th>
+                                    <th>Thread Count</th>
+                                    <th>Socket</th>
+                                    <th>Price</th>
+                                    <th>Select</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- CPU is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="gpu-table" style="display:none;">
+                            <thead>
+                                <tr>    
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Memory Size</th>
+                                    <th>Core Clock</th>
+                                    <th>Boost Clock</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- GPU is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="motherboard-table" style="display:none;">
+                            <thead>
+                                <tr>  
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Socket</th>
+                                    <th>Chipset</th>
+                                    <th>Form Factor</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Motherboard is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="ram-table" style="display:none;">
+                            <thead>
+                                <tr> 
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Capacity</th>
+                                    <th>Speed</th>
+                                    <th>Type</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- RAM is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="ssd-table" style="display:none;">
+                            <thead>
+                                <tr> 
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Capacity</th>
+                                    <th>Read Speed</th>
+                                    <th>Write Speed</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- SSD is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="cpu_cooler-table" style="display:none;">
+                            <thead>
+                                <tr>                     
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Fan Size</th>
+                                    <th>Socket</th>
+                                    <th>Cooling Type</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- CPU Cooler is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="psu-table" style="display:none;">
+                            <thead>
+                                <tr>                     
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>wattage</th>
+                                    <th>efficiency rating</th>
+                                    <th>form factor</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- PSU is inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="filter-bar" id="filter-bar">
+                            <input class="filter-input" type="text" id="filter-input" placeholder="Search Parts">
+                        </div>
+                        <table class="table" id="case-table" style="display:none;">
+                            <thead>
+                                <tr>                     
+                                    <th>Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Form Factor</th>
+                                    <th>Drive Bays</th>
+                                    <th>Expansion Slots</th>
+                                    <th>Front Panel Ports</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Case is inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="disclamers-pc-builder">
                     <h3>Disclamers</h3>

@@ -16,10 +16,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // filter table rows
     function filterTableRows(tbody, items, columns) {
         const filter = filterInput.value.trim().toLowerCase();
+        const filterWords = filter.split(/\s+/).filter(Boolean);
         Array.from(tbody.children).forEach((tr, idx) => {
             const item = items[idx];
             const text = columns.map(col => (item[col] || '').toString().toLowerCase()).join(' ');
-            tr.style.display = text.includes(filter) ? '' : 'none';
+            const matches = filterWords.every(word => text.includes(word));
+            tr.style.display = matches ? '' : 'none';
+        });
+    }
+
+    function createFilterButtons(items, columns, onFilter) {
+        const sidebar = document.getElementById('filter-sidebar');
+        sidebar.innerHTML = '';
+
+        columns.forEach(col => {
+            // get column values
+            const values = [...new Set(items.map(item => item[col]).filter(Boolean))].sort();
+            if (values.length === 0) return;
+
+            const group = document.createElement('div');
+            group.className = 'filter-btn-group';
+            const label = document.createElement('h4');
+            label.textContent = col.charAt(0).toUpperCase() + col.slice(1);
+            group.appendChild(label);
+
+            values.forEach(val => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.textContent = val;
+                btn.onclick = () => {
+                    // Toggle active
+                    sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    onFilter(col, val);
+                };
+                group.appendChild(btn);
+            });
+
+            // Add reset button
+            const resetBtn = document.createElement('button');
+            resetBtn.className = 'filter-btn';
+            resetBtn.textContent = 'All';
+            resetBtn.onclick = () => {
+                sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                resetBtn.classList.add('active');
+                onFilter(null, null);
+            };
+            group.appendChild(resetBtn);
+
+            sidebar.appendChild(group);
         });
     }
 
@@ -28,6 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
         filterBar.style.display = 'block';
         filterInput.value = '';
         filterInput.oninput = () => filterTableRows(tbody, items, columns);
+
+        // Add filter buttons for the first two columns
+        createFilterButtons(items, columns, (filterCol, filterVal) => {
+            filterInput.value = '';
+            if (!filterCol) {
+                // Show all
+                Array.from(tbody.children).forEach(tr => tr.style.display = '');
+            } else {
+                Array.from(tbody.children).forEach((tr, idx) => {
+                    const item = items[idx];
+                    tr.style.display = (item[filterCol] === filterVal) ? '' : 'none';
+                });
+            }
+        });
     }
 
     // Hide filter bar when not needed
@@ -88,10 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Create and insert selected table
-    selectedGpuDiv = document.createElement('div');
-    selectedGpuDiv.id = 'selected';
-    const pcBuilderContent = document.querySelector('.pc-builder-content');
-    pcBuilderContent.insertBefore(selectedGpuDiv, partsListDiv);
+    selectedGpuDiv = document.getElementById('selected');
 
     function renderSelectedTable() {
         // Calculate total TDP
@@ -198,6 +254,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             </div>
         `;
+
+        // Hide filters
+        hideFilter();
+        document.getElementById('filter-sidebar').style.display = 'none';
 
         // Render selected
         selectedGpuDiv.innerHTML = `
@@ -330,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <span>${selectedSsd.name}</span>
                                     </a>`
                                     : `<div class="add-button" id="add-ssd-btn">
-                                            <a><i class="fa-solid fa-plus"></i>Add Ssd</a>
+                                            <a><i class="fa-solid fa-plus"></i>Add SSD</a>
                                     </div>`
                                 }
                             </td>
@@ -691,7 +751,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a GPU";
-                setupFilter(tbody, gpus, ['name', 'manufacturer']);
+                setupFilter(tbody, gpus, ['manufacturer', 'memory_size']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -751,7 +812,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a CPU";
-                setupFilter(tbody, cpus, ['name', 'manufacturer']);
+                setupFilter(tbody, cpus, ['manufacturer', 'socket', 'core_count', 'thread_count']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -811,7 +873,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Motherboard";
-                setupFilter(tbody, motherboards, ['name', 'manufacturer']);
+                setupFilter(tbody, motherboards, ['manufacturer', 'form_factor', 'socket', 'chipset']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -871,7 +934,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add RAM";
-                setupFilter(tbody, rams, ['name', 'manufacturer']);
+                setupFilter(tbody, rams, ['manufacturer', 'capacity', 'ram_type']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -933,7 +997,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add SSD";
-                setupFilter(tbody, ssds, ['name', 'manufacturer']);
+                setupFilter(tbody, ssds, ['manufacturer', 'capacity']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -997,7 +1062,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add CPU Cooler";
-                setupFilter(tbody, cpuCoolers, ['name', 'manufacturer']);
+                setupFilter(tbody, cpuCoolers, ['manufacturer', 'fan_size', 'socket', 'cooling_type']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1057,7 +1123,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Powersupply";
-                setupFilter(tbody, psus, ['name', 'manufacturer']);
+                setupFilter(tbody, psus, ['manufacturer', 'wattage', 'efficiency_rating', 'form_factor']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1130,7 +1197,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Case";
-                setupFilter(tbody, pcCases, ['name', 'manufacturer']);
+                setupFilter(tbody, pcCases, ['manufacturer', 'form_factor', 'drive_bays', 'expansion_slots', 'front_panel_ports']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
