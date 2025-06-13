@@ -1738,6 +1738,7 @@ form{
     margin: 10%;
     border-radius: 50px;
     justify-content: center;
+    align-items: center;
 }
 .instructions-text{
     color: var(--text-black-900);
@@ -1745,7 +1746,7 @@ form{
     font-size: 1.2rem;
 }
 .build-help-image-image{
-    width: 75%;
+    width: 50%;
     border-radius: 20px;
     margin: 2rem auto;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -1768,6 +1769,28 @@ form{
     text-decoration: dotted underline;
     color: var(--text-black-900);
     transition: color 0.3s ease;
+}
+.instructions-text{
+    margin-left: 7%;
+    margin-right: 15%;
+    margin-bottom: 2%;
+    font-size: 150%;
+    position: relative;
+    text-align: left;
+}
+.build-help-list{
+    margin-left: 5%;
+    margin-right: 35%;
+    margin-bottom: 5%;
+    font-size: 1.1rem;
+    color: var(--text-black-900);
+    font-size: 120%;
+    margin-top: 5%;
+}
+.budget-text {
+    font-size: 130%;
+    color: var(--text-black-900);
+    margin-left: 7%;
 }
 
 /* Link to contact page section !!!this is finished!!!! */
