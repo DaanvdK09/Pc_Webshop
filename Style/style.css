@@ -458,6 +458,10 @@ footer {
     color: var(--text-black-600);
 }
 
+.favorites-content {
+    margin-top: -100px;
+}
+
 /* Login */
 .login-container {
     max-width: 400px;
@@ -1830,3 +1834,4 @@ form{
         justify-content: space-between;
     }
 }
+
