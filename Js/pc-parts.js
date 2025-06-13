@@ -1062,6 +1062,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('psu-table').style.display = "none";
         pcCaseTable.style.display = "table";
 
+        let subtitle = document.getElementById('case-subtitle');
+        if (!subtitle) {
+            subtitle = document.createElement('div');
+            subtitle.id = 'case-subtitle';
+            subtitle.textContent = "All Cases are Available in Black and White.";
+            pcCaseTable.parentNode.insertBefore(subtitle, pcCaseTable);
+        }
+        subtitle.style.display = "block";
+        pcCaseTable.style.display = "table";
+
         fetch('http://localhost:5000/api/cases')
             .then(response => response.json())
             .then(pcCases => {

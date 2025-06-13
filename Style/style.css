@@ -1463,6 +1463,16 @@ footer {
     color:#888;
 }
 
+#case-subtitle {
+    font-size: 1rem;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* Button */
 .add-button,
 .select-btn,
