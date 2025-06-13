@@ -1649,7 +1649,7 @@ form{
 .submit{
     background-color: var(--bg-black-600);
     border: none;
-    color: var(--textColor);
+    color: var(--bg-black-100);
     font-weight: bold;
     cursor: pointer;
     width: 95%;
