@@ -226,6 +226,14 @@ function displayProducts() {
         productCard.innerHTML = `
             <div class="prebuilt-pc-image">
                 <img src="${product.mainImage}">
+                <ul class="image-text-specs">
+                <li>${spec.cpu}</li>
+                <li>${spec.gpu}</li>
+                <li>${spec.ram}</li>
+                <li>${spec.storage}</li>
+                <li>${spec.cooler}</li>
+                <li>${spec.psu}</li>
+                </ul>
             </div>
             <h3 class="title">${product.name}</h3>
         `;
