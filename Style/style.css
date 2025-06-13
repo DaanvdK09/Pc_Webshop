@@ -453,8 +453,16 @@ footer {
 
 .home-contentbestsellers h1 {
     margin-top: 0%;
-    margin-bottom: 50px;
-    color: var(--text-black-600);
+    margin-bottom: 1rem;
+    color: var(--text-black-900);
+    font-weight: 900;
+    font-size: 2.2rem;
+}
+
+.home-sub-title-bestsellers {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
 }
 
 .favorites-content {
@@ -699,6 +707,7 @@ footer {
     font-weight: 700;
     color: var(--text-black-900);
     text-align: center;
+    margin-top: 20px;
 }
 
 .prebuilt-pc-card h5 {
@@ -712,20 +721,156 @@ footer {
     font-size: 16px;
 }
 
+.prebuilt-pc-image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
 .prebuilt-pc-image img {
     width: 65%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
+    display: block;
+    transition: filter 0.3s;
 }
 
-.prebuilt-pc-image img:hover {
+.image-text-specs {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%) scale(1);
+    transition: opacity 0.3s, transform 0.8s ease;
+    width: 65%;                
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(44, 44, 44, 0.82);
+    color: var(--text-black-900);
+    font-size: 1.1em;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+    text-align: center;
+    z-index: 2;
+}
+
+.image-text-specs span {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.prebuilt-pc-image:hover .image-text-specs {
+    opacity: 1;
+    cursor: pointer;
+    transform: translateX(-50%) scale(1.05);
+    transition: opacity 0.3s, transform 0.8s ease;
+}
+
+.prebuilt-pc-image:hover img {
+    filter: blur(2px) brightness(0.7);
     transform: scale(1.05);
-    transition: transform 0.5s;
-    opacity: 0.4;
+    transition: transform 0.8s ease;
+    cursor: pointer;
 }
 
+.image-text-specs li {
+    margin: 6px 0;
+    list-style: none;
+    text-shadow: 0 2px 8px #000;
+}
 
+.view-toggle {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 20px 20px 10px 0;
+}
+.view-toggle button {
+    background: var(--bg-black-550);
+    color: var(--text-black-900);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.view-toggle button.activeviewbutton,
+.view-toggle button:hover {
+    background: var(--bg-black-600);
+    color: var(--text-black-900);
+    font-weight: 700;
+}
+
+.prebuilt-list.grid-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+.prebuilt-list.list-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 18px;
+}
+.prebuilt-list.list-view .prebuilt-pc-card {
+    width: 60%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 28px 30px;
+    gap: 30px;
+}
+
+.prebuilt-list.list-view .prebuilt-pc-image,
+.prebuilt-list.list-view .prebuilt-pc-image img {
+    margin: 0;
+    width: 520px;
+}
+.prebuilt-list.list-view .prebuilt-pc-image {
+    justify-content: flex-start;
+}
+.prebuilt-list.list-view .image-text-specs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.prebuilt-list.list-view .prebuilt-pc-card h3 {
+    margin: 0 0 0 20px;
+    font-size: 1.5em;
+}
+
+/* forces small screen to list view*/
+@media (max-width: 900px) {
+    .prebuilt-list.grid-view {
+        grid-template-columns: 1fr;
+    }
+    .prebuilt-list.list-view .prebuilt-pc-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .prebuilt-list.list-view .prebuilt-pc-image,
+    .prebuilt-list.list-view .prebuilt-pc-image img,
+    .prebuilt-list.list-view .image-text-specs {
+        width: 65% !important;
+        min-width: 0;
+    }
+}
 /* Prebuilt PC Detail */
 .product-detail {
     display: grid;
@@ -1266,13 +1411,15 @@ footer {
 .add-button, .pc-builder-cart-button {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
     display: inline-block;
     text-align: center;
+    border: none;
+
 }
 
 .add-button:hover, .pc-builder-cart-button:hover {
