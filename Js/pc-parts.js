@@ -1103,8 +1103,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showPsuSelection() {
         selectedGpuDiv.style.display = "none";
-        document.querySelector('.builder-main-row').classList.remove('case-gap');
-        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('gap');
         const psuTable = document.getElementById('psu-table');
         document.getElementById('gpu-table').style.display = "none";
         document.getElementById('cpu-table').style.display = "none";
