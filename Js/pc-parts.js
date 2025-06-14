@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedPsu = null;
     let selectedCase = null;
 
-    // filter table rows
     function createFilterButtons(items, columns, onFilter) {
         const sidebar = document.getElementById('filter-sidebar');
         sidebar.innerHTML = '';
@@ -22,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const prices = items.map(item => Number(item.price)).filter(p => !isNaN(p));
         const minPrice = 0;
         const maxPrice = Math.ceil(Math.max(...prices));
+
+        const activeFilters = {};
 
         // Create price slider group
         const priceGroup = document.createElement('div');
@@ -63,17 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const [currentMin, currentMax] = values.map(Number);
             priceValues.querySelector('#price-min').textContent = `€ ${currentMin}`;
             priceValues.querySelector('#price-max').textContent = `€ ${currentMax}`;
-
-            // Filter items by price range
-            Array.from(sidebar.parentElement.querySelectorAll('tbody tr')).forEach((tr, idx) => {
-                const item = items[idx];
-                if (item.price >= currentMin && item.price <= currentMax) {
-                    tr.style.display = '';
-                } else {
-                    tr.style.display = 'none';
-                }
-            });
-            onFilter('price', [currentMin, currentMax], true);
+            activeFilters.price = [currentMin, currentMax];
+            applyAllFilters();
         });
 
         // Define units
@@ -150,15 +142,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 const unit = (units[col] && col !== 'fan_size' && col !== 'fan_size_only') ? ` ${units[col]}` : '';
                 btn.textContent = `${val}${unit}`;
                 btn.onclick = () => {
-                    // Toggle active
-                    sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     let filterVal = val;
                     if (col === 'manufacturer') {
                         filterVal = val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
                     }
                     if (isSSD && col === 'capacity') filterVal = val * 1000;
-                    onFilter(col, filterVal);
+                    activeFilters[col] = filterVal;
+                    applyAllFilters();
                 };
                 group.appendChild(btn);
             });
@@ -168,21 +160,51 @@ document.addEventListener('DOMContentLoaded', function() {
             resetBtn.className = 'filter-btn';
             resetBtn.textContent = 'All';
             resetBtn.onclick = () => {
-                sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 resetBtn.classList.add('active');
-                onFilter(null, null);
+                delete activeFilters[col];
+                applyAllFilters();
             };
             group.appendChild(resetBtn);
 
             sidebar.appendChild(group);
         });
+
+        // Apply all filters together
+        function applyAllFilters() {
+            const tbody = document.querySelector('.builder-main-row table[style*="table"] tbody') ||
+                          document.querySelector('.builder-main-row table:not([style*="none"]) tbody');
+            if (!tbody) return;
+            Array.from(tbody.children).forEach((tr, idx) => {
+                const item = items[idx];
+                let visible = true;
+                // Price filter
+                if (activeFilters.price) {
+                    const [min, max] = activeFilters.price;
+                    if (item.price < min || item.price > max) visible = false;
+                }
+                for (const [filterCol, filterVal] of Object.entries(activeFilters)) {
+                    if (filterCol === 'price') continue;
+                    let itemVal = item[filterCol];
+                    if (filterCol === 'manufacturer' && typeof itemVal === 'string') {
+                        itemVal = itemVal.charAt(0).toUpperCase() + itemVal.slice(1).toLowerCase();
+                    }
+                    if (Array.isArray(itemVal)) {
+                        if (!itemVal.includes(filterVal)) visible = false;
+                    } else {
+                        if (itemVal !== filterVal) visible = false;
+                    }
+                }
+                tr.style.display = visible ? '' : 'none';
+            });
+            onFilter(activeFilters);
+        }
     }
 
     function filterTableRows(tbody, items, columns) {
         const search = document.getElementById('filter-input').value.trim().toLowerCase();
         Array.from(tbody.children).forEach((tr, idx) => {
             const item = items[idx];
-            // Check all columns for a match (including arrays)
             const match = columns.some(col => {
                 let val = item[col];
                 if (Array.isArray(val)) {
@@ -199,35 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
         filterBar.style.display = 'block';
         filterInput.value = '';
         filterInput.oninput = () => filterTableRows(tbody, items, columns);
-
-        // Only pass columns for sidebar buttons (exclude "name")
         const sidebarColumns = columns.filter(col => col !== 'name');
-        createFilterButtons(items, sidebarColumns, (filterCol, filterVal, isPrice) => {
-            filterInput.value = '';
-            if (isPrice && filterCol === 'price') {
-                Array.from(tbody.children).forEach((tr, idx) => {
-                    const item = items[idx];
-                    tr.style.display = (item.price >= filterVal[0] && item.price <= filterVal[1]) ? '' : 'none';
-                });
-                return;
-            }
-            if (!filterCol) {
-                Array.from(tbody.children).forEach(tr => tr.style.display = '');
-            } else {
-                Array.from(tbody.children).forEach((tr, idx) => {
-                    const item = items[idx];
-                    let itemVal = item[filterCol];
-                    if (filterCol === 'manufacturer' && typeof itemVal === 'string') {
-                        itemVal = itemVal.charAt(0).toUpperCase() + itemVal.slice(1).toLowerCase();
-                    }
-                    if (Array.isArray(itemVal)) {
-                        tr.style.display = itemVal.includes(filterVal) ? '' : 'none';
-                    } else {
-                        tr.style.display = (itemVal === filterVal) ? '' : 'none';
-                    }
-                });
-            }
-        });
+        createFilterButtons(items, sidebarColumns, () => {});
     }
 
     // Hide filter bar when not needed
@@ -659,10 +654,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr class="total-amount-row">
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
-                                <p>${EURO.format(totalPrice.toFixed(2))}<p>
-                                
-                            </td>
-                            <td class="buy-button-container-builder">
+                                ${EURO.format(totalPrice.toFixed(2))}
                                 <button class="buy-button" id="buy-button-builder">
                                     <span class="add-to-cart">Add to cart</span>
                                     <span class="added">Added</span>
@@ -679,54 +671,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add to cart for custom PC
         const buyButton = selectedGpuDiv.querySelector('#buy-button-builder');
         if (buyButton) {
-        buyButton.addEventListener('click', function () {
-        // Check if all parts are selected
-        if (!selectedCpu || !selectedGpu || !selectedMotherboard || !selectedRam || !selectedSsd || !selectedCpuCooler || !selectedPsu || !selectedCase) {
-            // show custom popup if build is not complete
-            const popup = document.getElementById('incomplete-build-popup');
-            if (popup) popup.classList.add('active');
-
-            const closeBtn = document.getElementById('close-incomplete-build-popup');
-            if (closeBtn) {
-                closeBtn.onclick = function() {
-                    popup.classList.remove('active');
+            buyButton.addEventListener('click', function () {
+                // Gather all selected parts for the custom PC
+                const selectedParts = {
+                    cpu: selectedCpu,
+                    gpu: selectedGpu,
+                    motherboard: selectedMotherboard,
+                    ram: selectedRam,
+                    ssd: selectedSsd,
+                    cpu_cooler: selectedCpuCooler,
+                    psu: selectedPsu,
+                    case: selectedCase
                 };
-            }
-            return; 
+
+                // Add custom PC to cart
+                let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+                cart.push({
+                    id: "custom-" + Date.now(),
+                    name: "Custom PC",
+                    price: `€${totalPrice.toFixed(2)}`,
+                    image: "wrench", // Special label for custom
+                    quantity: 1,
+                    parts: selectedParts
+                });
+                sessionStorage.setItem("cart", JSON.stringify(cart));
+                if (typeof updateCartBadge === "function") updateCartBadge();
+
+                // Button animation
+                if (!buyButton.classList.contains('clicked')) {
+                    buyButton.classList.add('clicked');
+                    setTimeout(() => {
+                        buyButton.classList.remove('clicked');
+                    }, 1500);
+                }
+            });
         }
-
-        const selectedParts = {
-            cpu: selectedCpu,
-            gpu: selectedGpu,
-            motherboard: selectedMotherboard,
-            ram: selectedRam,
-            ssd: selectedSsd,
-            cpu_cooler: selectedCpuCooler,
-            psu: selectedPsu,
-            case: selectedCase
-        };
-
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-        cart.push({
-            id: "custom-" + Date.now(),
-            name: "Custom PC",
-            price: `€${totalPrice.toFixed(2)}`,
-            image: "wrench",
-            quantity: 1,
-            parts: selectedParts
-        });
-        sessionStorage.setItem("cart", JSON.stringify(cart));
-        if (typeof updateCartBadge === "function") updateCartBadge();
-
-        // Button animation
-        if (!buyButton.classList.contains('clicked')) {
-            buyButton.classList.add('clicked');
-            setTimeout(() => {
-                buyButton.classList.remove('clicked');
-            }, 1500);
-        }
-    });
-}
 
         // Add event listeners detail links
         selectedGpuDiv.querySelectorAll('.part-detail-link').forEach(link => {
