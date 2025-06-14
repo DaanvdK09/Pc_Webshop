@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Toggle between grid and list view
+// Toggle between grid and list view for prebuilt pc's
 document.addEventListener('DOMContentLoaded', function() {
     const gridBtn = document.getElementById('grid-view-btn');
     const listBtn = document.getElementById('list-view-btn');
@@ -140,3 +140,20 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('prebuiltView', 'list');
     });
 });
+function forceGridViewOnSmallScreen() {
+    const gridBtn = document.getElementById('grid-view-btn');
+    const listBtn = document.getElementById('list-view-btn');
+    const prebuiltList = document.querySelector('.prebuilt-list');
+    if (!gridBtn || !listBtn || !prebuiltList) return;
+
+    if (window.innerWidth < 1280) {
+        prebuiltList.classList.add('grid-view');
+        prebuiltList.classList.remove('list-view');
+        gridBtn.classList.add('activeviewbutton');
+        listBtn.classList.remove('activeviewbutton');
+        localStorage.setItem('prebuiltView', 'grid');
+    }
+}
+// to run the forceGridViewOnSmallScreen
+window.addEventListener('DOMContentLoaded', forceGridViewOnSmallScreen);
+window.addEventListener('resize', forceGridViewOnSmallScreen);

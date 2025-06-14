@@ -769,7 +769,11 @@ footer {
     text-align: center;
     z-index: 2;
 }
-
+.image-text-specs-instruction {
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
 .image-text-specs span {
     font-weight: 700;
     font-size: 1.5rem;
@@ -867,17 +871,19 @@ footer {
     .prebuilt-list.grid-view {
         grid-template-columns: 1fr;
     }
-    .prebuilt-list.list-view .prebuilt-pc-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-    }
     .prebuilt-list.list-view .prebuilt-pc-image,
     .prebuilt-list.list-view .prebuilt-pc-image img,
     .prebuilt-list.list-view .image-text-specs {
         width: 65% !important;
         min-width: 0;
+    }
+}
+@media (max-width: 1280px) {
+    #grid-view-btn {
+        display: none;
+    }
+    #list-view-btn {
+        display: none;
     }
 }
 /* Prebuilt PC Detail */

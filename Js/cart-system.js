@@ -235,6 +235,7 @@ function displayProducts() {
                 <li>${spec.storage}</li>
                 <li>${spec.cooler}</li>
                 <li>${spec.psu}</li>
+                <li class="image-text-specs-instruction">Click to see more details<li>
                 </ul>
             </div>
             <h3 class="title">${product.name}</h3>
