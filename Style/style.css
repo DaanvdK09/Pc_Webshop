@@ -209,6 +209,9 @@ footer {
     transition: transform 0.3s;
 }
 
+.login .login-text {
+    white-space: nowrap;
+}
 .login {
     display: flex;
     align-items: center;   
@@ -469,7 +472,7 @@ footer {
     margin-top: -100px;
 }
 
-/* Login */
+/* Login page */
 .login-container {
     max-width: 400px;
     margin: 5rem auto;
@@ -536,7 +539,13 @@ footer {
 .login-container a:hover {
     text-decoration: underline;
 }
-
+.login-page-switch {
+    font-weight: 700;
+}
+.login-page-switch:hover {
+    text-decoration: underline;
+    transition: underline 0.8s ease;
+}
 .password-wrapper {
     position: relative;
     display: flex;
@@ -1139,7 +1148,8 @@ footer {
 }
 
 /* Checkout button */
-.checkout-popup {
+/* custom-popup */
+.custom-popup {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -1148,10 +1158,10 @@ footer {
     justify-content: center;
     align-items: center;
 }
-.checkout-popup.active {
+.custom-popup.active {
     display: flex;
 }
-.checkout-popup-content {
+.custom-popup-content {
     background: var(--bg-black-800);
     padding: 32px 24px 24px 24px;
     border-radius: 12px;
@@ -1161,7 +1171,7 @@ footer {
     position: relative;
     color: var(--text-black-900);
 }
-.checkout-popup-ok {
+.custom-popup-ok {
     margin-top: 18px;
     padding: 8px 28px;
     border: none;
@@ -1171,10 +1181,9 @@ footer {
     font-size: 1em;
     cursor: pointer;
 }
-.checkout-popup-ok:hover {
-    background: var(--bg-black-900);
+.custom-popup-ok:hover {
     transform: scale(1.1);
-    transition: transform, background 0.4s ease;
+    transition: transform, background 0.6s ease;
 }
 /* add to cart button */
 .buy-button {
@@ -1205,10 +1214,6 @@ footer {
     background-color: var(--bg-black-600);
 }
 
-#buy-button-builder span:hover {
-    color: var(--text-black-900);
-    background-color: var(--bg-black-900);
-}
 
 .buy-button:hover {
     background: var(--bg-black-600);
@@ -1710,8 +1715,20 @@ footer {
 
 .total-amount-row .total-value, .build-price-row .build-value {
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%
 }
 
+.total-value p {
+    margin-right: 10px;
+    padding: 20px 0;
+}
+
+.buy-button-container-builder #buy-button-builder {
+    margin-left: 0;
+}
 .part-detail-link,
 .part-detail-link *,
 .part-detail-link:visited {

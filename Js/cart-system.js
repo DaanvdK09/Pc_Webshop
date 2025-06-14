@@ -446,9 +446,9 @@ function updateCartBadge() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const checkoutBtn = document.querySelector('.checkout-btn');
-    const popup = document.getElementById('checkout-popup');
-    const popupClose = document.querySelector('.checkout-popup-close');
-    const popupOk = document.querySelector('.checkout-popup-ok');
+    const popup = document.getElementById('custom-popup');
+    const popupClose = document.querySelector('.custom-popup-close');
+    const popupOk = document.querySelector('.custom-popup-ok');
 
     if (checkoutBtn && popup) {
         checkoutBtn.addEventListener('click', function() {

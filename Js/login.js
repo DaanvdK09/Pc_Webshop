@@ -9,14 +9,14 @@ function toggleForms() {
         loginForm.style.display = "block";
         signupForm.style.display = "none";
         formTitle.textContent = "Login";
-        toggleLink.innerHTML = `Don't have an account? <a href="#" class="Login" onclick="toggleForms()">Sign up</a>`;
+        toggleLink.innerHTML = `Don't have an account? <a href="#" class="Login-page-switch" onclick="toggleForms()">Sign up</a>`;
     }
     
     else {
         loginForm.style.display = "none";
         signupForm.style.display = "block";
         formTitle.textContent = "Sign Up";
-        toggleLink.innerHTML = `Already have an account? <a href="#" class="login" onclick="toggleForms()">Login</a>`;
+        toggleLink.innerHTML = `Already have an account? <a href="#" class="login-page-switch" onclick="toggleForms()">Login</a>`;
     }
 }
 

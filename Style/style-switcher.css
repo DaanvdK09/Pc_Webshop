@@ -29,7 +29,6 @@
     margin-right: 25px;
     cursor: pointer;
     border-radius: 50%;
-
 }
 
 .style-switcher .s-icon i {
@@ -72,4 +71,12 @@
 }
 .github-icons p {
     font-size: 45%
+}
+.light-dark-switch-text {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.light-dark-switch-text i {
+    margin-right: 5px;
 }

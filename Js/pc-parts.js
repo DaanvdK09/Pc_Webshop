@@ -429,7 +429,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr class="total-amount-row">
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
-                                ${EURO.format(totalPrice.toFixed(2))}
+                                <p>${EURO.format(totalPrice.toFixed(2))}<p>
+                                
+                            </td>
+                            <td class="buy-button-container-builder">
                                 <button class="buy-button" id="buy-button-builder">
                                     <span class="add-to-cart">Add to cart</span>
                                     <span class="added">Added</span>
@@ -446,41 +449,54 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add to cart for custom PC
         const buyButton = selectedGpuDiv.querySelector('#buy-button-builder');
         if (buyButton) {
-            buyButton.addEventListener('click', function () {
-                // Gather all selected parts for the custom PC
-                const selectedParts = {
-                    cpu: selectedCpu,
-                    gpu: selectedGpu,
-                    motherboard: selectedMotherboard,
-                    ram: selectedRam,
-                    ssd: selectedSsd,
-                    cpu_cooler: selectedCpuCooler,
-                    psu: selectedPsu,
-                    case: selectedCase
+        buyButton.addEventListener('click', function () {
+        // Check if all parts are selected
+        if (!selectedCpu || !selectedGpu || !selectedMotherboard || !selectedRam || !selectedSsd || !selectedCpuCooler || !selectedPsu || !selectedCase) {
+            // show custom popup if build is not complete
+            const popup = document.getElementById('incomplete-build-popup');
+            if (popup) popup.classList.add('active');
+
+            const closeBtn = document.getElementById('close-incomplete-build-popup');
+            if (closeBtn) {
+                closeBtn.onclick = function() {
+                    popup.classList.remove('active');
                 };
-
-                // Add custom PC to cart
-                let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-                cart.push({
-                    id: "custom-" + Date.now(),
-                    name: "Custom PC",
-                    price: `€${totalPrice.toFixed(2)}`,
-                    image: "wrench", // Special label for custom
-                    quantity: 1,
-                    parts: selectedParts
-                });
-                sessionStorage.setItem("cart", JSON.stringify(cart));
-                if (typeof updateCartBadge === "function") updateCartBadge();
-
-                // Button animation
-                if (!buyButton.classList.contains('clicked')) {
-                    buyButton.classList.add('clicked');
-                    setTimeout(() => {
-                        buyButton.classList.remove('clicked');
-                    }, 1500);
-                }
-            });
+            }
+            return; 
         }
+
+        const selectedParts = {
+            cpu: selectedCpu,
+            gpu: selectedGpu,
+            motherboard: selectedMotherboard,
+            ram: selectedRam,
+            ssd: selectedSsd,
+            cpu_cooler: selectedCpuCooler,
+            psu: selectedPsu,
+            case: selectedCase
+        };
+
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        cart.push({
+            id: "custom-" + Date.now(),
+            name: "Custom PC",
+            price: `€${totalPrice.toFixed(2)}`,
+            image: "wrench",
+            quantity: 1,
+            parts: selectedParts
+        });
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        if (typeof updateCartBadge === "function") updateCartBadge();
+
+        // Button animation
+        if (!buyButton.classList.contains('clicked')) {
+            buyButton.classList.add('clicked');
+            setTimeout(() => {
+                buyButton.classList.remove('clicked');
+            }, 1500);
+        }
+    });
+}
 
         // Add event listeners detail links
         selectedGpuDiv.querySelectorAll('.part-detail-link').forEach(link => {
