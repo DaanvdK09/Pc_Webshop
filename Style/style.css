@@ -1392,6 +1392,7 @@ footer {
     font-size: 1.5rem;
     font-weight: 900;
     margin-top: 30px;
+    text-align: center;
 }
 
 .disclamers-pc-builder {
@@ -1411,6 +1412,13 @@ footer {
 .disclamer a:hover {
     text-decoration: underline;
     transition: underline 0.8s;
+}
+
+.row .disclamers-pc-builder {
+    margin-left: 0 !important;
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
 }
 
 .add-button, .pc-builder-cart-button {
@@ -1441,6 +1449,8 @@ footer {
 }
 
 .parts-list {
+    flex: 1 1 0;
+    display: block;
     display: none;
 }
 
@@ -1557,11 +1567,51 @@ footer {
     width:100%;
 }
 
-#cpu_cooler-table, #case-table, #psu-table {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0% !important;
-    margin-right: 0% !important;
+.parts-list .table {
+    width: 135%;
+    max-width: 135%;
+    margin-left: -15%;
+    margin-right: 0;
+}
+
+.builder-main-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    gap: 15%;
+}
+
+#cpu_cooler-table, #case-table {
+    width: 95% !important;
+    margin-left: 2% !important;
+}
+
+.builder-main-row.cpu-cooler-gap, .builder-main-row.case-gap {
+    gap: 5% !important;
+    column-gap: 1% !important;
+}
+
+.builder-main-row.cpu-cooler-gap #filter-sidebar, .builder-main-row.case-gap #filter-sidebar {
+    margin-left: 3%;
+    margin-top: 6%;
+    width: 15%;
+}
+
+.builder-main-row.cpu-cooler-gap #filter-bar, .builder-main-row.case-gap #filter-bar {
+    margin-right: 5%;
+}
+
+.builder-main-row.psu-gap #filter-bar {
+    margin-right: -15%;
+}
+
+.builder-main-row.case-gap #filter-sidebar {
+    margin-top: 11%;
+}
+
+.builder-main-row.filter-bar-gap #filter-bar {
+    margin-right: -20% !important;
 }
 
 .select-btn {
@@ -1619,7 +1669,7 @@ footer {
     padding: 10px 18px;
     border-radius: 8px;
     margin-bottom: 8px;
-    margin-top: 8px;
+    margin-top: 16px;
     text-align: center;
     font-weight: bold;
 }
@@ -1631,7 +1681,7 @@ footer {
     border-radius: 8px;
     margin-bottom: 8px;
     margin-top: 8px;
-    margin-right: -28%;
+    margin-right: -25%;
     text-align: right;
     font-weight: bold;
     display: none;
@@ -1640,6 +1690,120 @@ footer {
 .filter-input {
     width: 300px;
     padding: 6px;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    margin-left: -16%;
+    margin-top: 11%;
+    width: 20%;
+    background: var(--bg-black-100);
+    border-radius: 10px;
+    padding: 18px 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.filter-sidebar h4 {
+    margin-bottom: 10px;
+    color: var(--text-black-900);
+    font-size: 1.1em;
+}
+
+.filter-btn-group {
+    margin-bottom: 18px;
+}
+
+.filter-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 7px 10px;
+    background: var(--bg-black-800);
+    color: var(--text-black-900);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--bg-black-600);
+    color: #fff;
+}
+
+/* price filter */
+.filter-price-slider-wrapper {
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+}
+
+#nouislider-price {
+    height: 18px;
+    margin: 10px 0 18px 0;
+}
+
+.noUi-horizontal {
+    height: 10px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.noUi-handle {
+    width: 16px !important;
+    height: 16px !important;
+    top: -2px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: var(--bg-black-600) !important;
+    border: 2px solid var(--bg-black-800) !important;
+    cursor: pointer !important;
+    right: -6px !important;
+}
+
+.noUi-connect {
+    background: var(--bg-black-600) !important;
+    height: 12px !important;
+    border-radius: 6px !important;
+}
+
+.noUi-target {
+    height: 12px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+.noUi-base {
+    background: var(--bg-black-800);
+}
+
+.noUi-handle:after, .noUi-handle:before {
+    background: none;
+}
+
+.noUi-target, .noUi-base, .noUi-connects {
+    border-radius: 6px;
+}
+
+.noUi-horizontal .noUi-connects {
+    height: 8px;
+}
+
+.noUi-base, .noUi-connects {
+    height: 12px !important;
+    border-radius: 6px !important;
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+#nouislider-price .noUi-handle:before,
+#nouislider-price .noUi-handle:after {
+    display: none !important;
+    content: none !important;
 }
 
 /* Button */

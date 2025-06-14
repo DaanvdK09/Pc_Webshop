@@ -14,12 +14,183 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedCase = null;
 
     // filter table rows
+    function createFilterButtons(items, columns, onFilter) {
+        const sidebar = document.getElementById('filter-sidebar');
+        sidebar.innerHTML = '';
+
+        // Find min and max price
+        const prices = items.map(item => Number(item.price)).filter(p => !isNaN(p));
+        const minPrice = 0;
+        const maxPrice = Math.ceil(Math.max(...prices));
+
+        // Create price slider group
+        const priceGroup = document.createElement('div');
+        priceGroup.className = 'filter-price-group';
+
+        const priceValues = document.createElement('div');
+        priceValues.className = 'filter-price-values';
+        priceValues.innerHTML = `<span id="price-min">${minPrice} €</span> - <span id="price-max">${maxPrice} €</span>`;
+
+        const sliderWrapper = document.createElement('div');
+        sliderWrapper.className = 'filter-price-slider-wrapper';
+
+        // Create noUiSlider element
+        const slider = document.createElement('div');
+        slider.id = 'nouislider-price';
+        sliderWrapper.appendChild(slider);
+
+        priceGroup.appendChild(priceValues);
+        priceGroup.appendChild(sliderWrapper);
+        sidebar.appendChild(priceGroup);
+
+        // Initialize noUiSlider
+        noUiSlider.create(slider, {
+            start: [minPrice, maxPrice],
+            connect: true,
+            range: {
+                'min': minPrice,
+                'max': maxPrice
+            },
+            step: 1,
+            tooltips: false,
+            format: {
+                to: value => Math.round(value),
+                from: value => Number(value)
+            }
+        });
+
+        slider.noUiSlider.on('update', function(values) {
+            const [currentMin, currentMax] = values.map(Number);
+            priceValues.querySelector('#price-min').textContent = `€ ${currentMin}`;
+            priceValues.querySelector('#price-max').textContent = `€ ${currentMax}`;
+
+            // Filter items by price range
+            Array.from(sidebar.parentElement.querySelectorAll('tbody tr')).forEach((tr, idx) => {
+                const item = items[idx];
+                if (item.price >= currentMin && item.price <= currentMax) {
+                    tr.style.display = '';
+                } else {
+                    tr.style.display = 'none';
+                }
+            });
+            onFilter('price', [currentMin, currentMax], true);
+        });
+
+        // Define units
+        const units = {
+            memory_size: 'GB',
+            capacity: 'GB',
+            ram_speed: 'MHz',
+            read_speed: 'MHz',
+            write_speed: 'MHz',
+            wattage: 'W'
+        };
+
+        const isSSD = items.length > 0 && items[0].hasOwnProperty('read_speed') && items[0].hasOwnProperty('write_speed');
+        columns.forEach(col => {
+            let values;
+            if (
+                col === 'front_panel_port_amounts' ||
+                col === 'front_panel_port_types' ||
+                col === 'drive_bay_amounts' ||
+                col === 'drive_bay_types'
+            ) {
+                values = [...new Set(items.flatMap(item => item[col] || []))];
+            } else if (col === 'socket' && items.some(item => Array.isArray(item.socket_list))) {
+                values = [...new Set(items.flatMap(item => item.socket_list || []))];
+            } else {
+                values = [...new Set(items.map(item => {
+                    if (col === 'manufacturer' && typeof item[col] === 'string') {
+                        return item[col].charAt(0).toUpperCase() + item[col].slice(1).toLowerCase();
+                    }
+                    if (col === 'fan_size' && typeof item[col] === 'string') {
+                        return item[col].replace('x', '×').replace('X', '×').replace('*', '×').replace(/ /g, '').replace('×', ' × ').replace(/mm/i, 'mm');
+                    }
+                    return item[col];
+                }).filter(Boolean))];
+            }
+
+            // convert to TB
+            if (isSSD && col === 'capacity') {
+                values = values.map(val => Number(val) / 1000);
+                units.capacity = 'TB';
+            }
+
+            values = values.sort((a, b) => {
+                return !isNaN(a) && !isNaN(b) ? Number(a) - Number(b) : String(a).localeCompare(String(b));
+            });
+            if (values.length === 0) return;
+
+            const group = document.createElement('div');
+            group.className = 'filter-btn-group';
+            const label = document.createElement('h4');
+            // Custom labels
+            if (col === 'fan_amount') {
+                label.textContent = 'Fan Amount';
+            } else if (col === 'fan_size_only') {
+                label.textContent = 'Fan Size';
+            } else if (col === 'socket') {
+                label.textContent = 'Socket';
+            } else if (col === 'front_panel_port_amounts') {
+                label.textContent = 'Front Panel Port Amount';
+            } else if (col === 'front_panel_port_types') {
+                label.textContent = 'Front Panel Port Type';
+            } else if (col === 'drive_bay_amounts') {
+                label.textContent = 'Drive Bay Amount';
+            } else if (col === 'drive_bay_types') {
+                label.textContent = 'Drive Bay Type';
+            } else {
+                label.textContent = col.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            }
+            group.appendChild(label);
+
+            values.forEach(val => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                const unit = (units[col] && col !== 'fan_size' && col !== 'fan_size_only') ? ` ${units[col]}` : '';
+                btn.textContent = `${val}${unit}`;
+                btn.onclick = () => {
+                    // Toggle active
+                    sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    let filterVal = val;
+                    if (col === 'manufacturer') {
+                        filterVal = val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+                    }
+                    if (isSSD && col === 'capacity') filterVal = val * 1000;
+                    onFilter(col, filterVal);
+                };
+                group.appendChild(btn);
+            });
+
+            // Add reset button
+            const resetBtn = document.createElement('button');
+            resetBtn.className = 'filter-btn';
+            resetBtn.textContent = 'All';
+            resetBtn.onclick = () => {
+                sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                resetBtn.classList.add('active');
+                onFilter(null, null);
+            };
+            group.appendChild(resetBtn);
+
+            sidebar.appendChild(group);
+        });
+    }
+
     function filterTableRows(tbody, items, columns) {
-        const filter = filterInput.value.trim().toLowerCase();
+        const search = document.getElementById('filter-input').value.trim().toLowerCase();
         Array.from(tbody.children).forEach((tr, idx) => {
             const item = items[idx];
-            const text = columns.map(col => (item[col] || '').toString().toLowerCase()).join(' ');
-            tr.style.display = text.includes(filter) ? '' : 'none';
+            // Check all columns for a match (including arrays)
+            const match = columns.some(col => {
+                let val = item[col];
+                if (Array.isArray(val)) {
+                    return val.some(v => String(v).toLowerCase().includes(search));
+                }
+                return String(val || '').toLowerCase().includes(search);
+            });
+            tr.style.display = match ? '' : 'none';
         });
     }
 
@@ -28,6 +199,35 @@ document.addEventListener('DOMContentLoaded', function() {
         filterBar.style.display = 'block';
         filterInput.value = '';
         filterInput.oninput = () => filterTableRows(tbody, items, columns);
+
+        // Only pass columns for sidebar buttons (exclude "name")
+        const sidebarColumns = columns.filter(col => col !== 'name');
+        createFilterButtons(items, sidebarColumns, (filterCol, filterVal, isPrice) => {
+            filterInput.value = '';
+            if (isPrice && filterCol === 'price') {
+                Array.from(tbody.children).forEach((tr, idx) => {
+                    const item = items[idx];
+                    tr.style.display = (item.price >= filterVal[0] && item.price <= filterVal[1]) ? '' : 'none';
+                });
+                return;
+            }
+            if (!filterCol) {
+                Array.from(tbody.children).forEach(tr => tr.style.display = '');
+            } else {
+                Array.from(tbody.children).forEach((tr, idx) => {
+                    const item = items[idx];
+                    let itemVal = item[filterCol];
+                    if (filterCol === 'manufacturer' && typeof itemVal === 'string') {
+                        itemVal = itemVal.charAt(0).toUpperCase() + itemVal.slice(1).toLowerCase();
+                    }
+                    if (Array.isArray(itemVal)) {
+                        tr.style.display = itemVal.includes(filterVal) ? '' : 'none';
+                    } else {
+                        tr.style.display = (itemVal === filterVal) ? '' : 'none';
+                    }
+                });
+            }
+        });
     }
 
     // Hide filter bar when not needed
@@ -88,10 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Create and insert selected table
-    selectedGpuDiv = document.createElement('div');
-    selectedGpuDiv.id = 'selected';
-    const pcBuilderContent = document.querySelector('.pc-builder-content');
-    pcBuilderContent.insertBefore(selectedGpuDiv, partsListDiv);
+    selectedGpuDiv = document.getElementById('selected');
 
     function renderSelectedTable() {
         // Calculate total TDP
@@ -189,6 +386,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // PSU | Case Form factor
+        if (
+            selectedPsu &&
+            selectedCase &&
+            selectedPsu.form_factor
+            && selectedCase.form_factor
+        ) {
+            // Map case form factor to supported PSUs
+            const psuSupportMap = {
+                "E-ATX": ["ATX", "Micro-ATX", "SFX", "ATX 3.0"],
+                "Full Tower": ["ATX", "Micro-ATX", "SFX", "ATX 3.0"],
+                "Mid Tower": ["ATX", "Micro-ATX", "SFX", "ATX 3.0"],
+                "Mini Tower": ["Micro-ATX", "SFX"],
+                "ATX": ["ATX", "Micro-ATX", "SFX", "ATX 3.0"],
+                "Micro-ATX": ["Micro-ATX", "SFX"],
+                "Mini-ITX": ["SFX"]
+            };
+
+            const caseType = selectedCase.form_factor.trim();
+            const psuType = selectedPsu.form_factor.trim();
+
+            const supported = psuSupportMap[caseType];
+            if (!supported || !supported.includes(psuType)) {
+                compatibilityWarnings.push("⚠️ Powersupply may not fit in selected Case.");
+            }
+        }
+
+
         const compatibilityHtml = `
             <div class="compatibility-bar">
                 ${
@@ -198,6 +423,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             </div>
         `;
+
+        // Hide filters
+        hideFilter();
+        const filterSidebar = document.getElementById('filter-sidebar');
+        if (filterSidebar) filterSidebar.style.display = 'none';
 
         // Render selected
         selectedGpuDiv.innerHTML = `
@@ -330,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <span>${selectedSsd.name}</span>
                                     </a>`
                                     : `<div class="add-button" id="add-ssd-btn">
-                                            <a><i class="fa-solid fa-plus"></i>Add Ssd</a>
+                                            <a><i class="fa-solid fa-plus"></i>Add SSD</a>
                                     </div>`
                                 }
                             </td>
@@ -675,6 +905,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showGpuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const gpuTable = document.getElementById('gpu-table');
         const cpuTable = document.getElementById('cpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
@@ -707,7 +941,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a GPU";
-                setupFilter(tbody, gpus, ['name', 'manufacturer']);
+                setupFilter(tbody, gpus, ['name', 'manufacturer', 'memory_size']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -735,6 +970,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCpuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
         const motherboardTable = document.getElementById('motherboard-table');
@@ -767,7 +1006,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a CPU";
-                setupFilter(tbody, cpus, ['name', 'manufacturer']);
+                setupFilter(tbody, cpus, ['name', 'manufacturer', 'socket', 'core_count', 'thread_count']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -795,6 +1035,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showMotherboardSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const motherboardTable = document.getElementById('motherboard-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -827,7 +1071,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Motherboard";
-                setupFilter(tbody, motherboards, ['name', 'manufacturer']);
+                setupFilter(tbody, motherboards, ['name', 'manufacturer', 'form_factor', 'socket', 'chipset']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -855,6 +1100,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showRamSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -887,7 +1136,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add RAM";
-                setupFilter(tbody, rams, ['name', 'manufacturer']);
+                setupFilter(tbody, rams, ['name', 'manufacturer', 'capacity', 'ram_type']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -915,6 +1165,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showSsdSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.add('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -940,7 +1194,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </a>
                         </td>
                         <td>${ssd.manufacturer}</td>
-                        <td>${ssd.capacity} GB</td>
+                        <td>${ssd.capacity/1000} TB</td>
                         <td>${ssd.read_speed} MHz</td>
                         <td>${ssd.write_speed} MHz</td>
                         <td>${EURO.format(ssd.price)}</td>
@@ -949,7 +1203,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add SSD";
-                setupFilter(tbody, ssds, ['name', 'manufacturer']);
+                setupFilter(tbody, ssds, ['name', 'manufacturer', 'capacity']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -977,6 +1232,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCpuCoolerSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.add('cpu-cooler-gap');
         const ramTable = document.getElementById('ram-table');
         const cpuTable = document.getElementById('cpu-table');
         const gpuTable = document.getElementById('gpu-table');
@@ -994,6 +1253,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(cpuCoolers => {
                 const tbody = cpuCoolerTable.querySelector('tbody');
                 tbody.innerHTML = "";
+                cpuCoolers.forEach(cooler => {
+                    if (cooler.manufacturer)
+                        cooler.manufacturer = cooler.manufacturer.charAt(0).toUpperCase() + cooler.manufacturer.slice(1).toLowerCase();
+                    const match = (cooler.fan_size || '').match(/^(\d+)\s*[×x*]\s*(\d+mm)$/i);
+                    if (match) {
+                        cooler.fan_amount = match[1];
+                        cooler.fan_size_only = match[2];
+                    } else {
+                        cooler.fan_amount = '';
+                        cooler.fan_size_only = '';
+                    }
+                    if (cooler.socket) {
+                        cooler.socket_list = cooler.socket
+                            .replace(/Intel|AMD/gi, '') // Remove Intel/AMD labels
+                            .split(/[,;]+/)
+                            .map(s => s.trim())
+                            .filter(s => s.length > 0);
+                    } else {
+                        cooler.socket_list = [];
+                    }
+                });
+
                 cpuCoolers.forEach((cpuCooler, idx) => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
@@ -1012,8 +1293,60 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     tbody.appendChild(tr);
                 });
+
+                function customSocketFilter(col, val) {
+                    Array.from(tbody.children).forEach((tr, idx) => {
+                        const item = cpuCoolers[idx];
+                        if (col === 'socket') {
+                            tr.style.display = item.socket_list.includes(val) ? '' : 'none';
+                        } else {
+                            tr.style.display = (item[col] === val) ? '' : 'none';
+                        }
+                    });
+                }
+
+                setupFilter(tbody, cpuCoolers, ['name', 'manufacturer', 'cooling_type', 'fan_amount', 'fan_size_only', 'socket']);
+                const sidebar = document.getElementById('filter-sidebar');
+                const socketGroup = Array.from(sidebar.querySelectorAll('.filter-btn-group h4'))
+                    .find(h4 => h4.textContent === 'Socket');
+                if (socketGroup) {
+                    socketGroup.parentElement.remove();
+                }
+                const allSockets = Array.from(new Set(cpuCoolers.flatMap(cooler => cooler.socket_list)));
+                const group = document.createElement('div');
+                group.className = 'filter-btn-group';
+                const label = document.createElement('h4');
+                label.textContent = 'Socket';
+                group.appendChild(label);
+
+                allSockets.forEach(socket => {
+                    const btn = document.createElement('button');
+                    btn.className = 'filter-btn';
+                    btn.textContent = socket;
+                    btn.onclick = () => {
+                        sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        customSocketFilter('socket', socket);
+                    };
+                    group.appendChild(btn);
+                });
+
+                // Add reset button
+                const resetBtn = document.createElement('button');
+                resetBtn.className = 'filter-btn';
+                resetBtn.textContent = 'All';
+                resetBtn.onclick = () => {
+                    sidebar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    resetBtn.classList.add('active');
+                    Array.from(tbody.children).forEach(tr => tr.style.display = '');
+                };
+                group.appendChild(resetBtn);
+
+                sidebar.appendChild(group);
+
                 builderTitle.textContent = "Add CPU Cooler";
-                setupFilter(tbody, cpuCoolers, ['name', 'manufacturer']);
+                document.getElementById('filter-sidebar').style.display = 'block';
+
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1041,6 +1374,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showPsuSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.add('psu-gap');
+        document.querySelector('.builder-main-row').classList.remove('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const psuTable = document.getElementById('psu-table');
         document.getElementById('gpu-table').style.display = "none";
         document.getElementById('cpu-table').style.display = "none";
@@ -1073,7 +1410,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Powersupply";
-                setupFilter(tbody, psus, ['name', 'manufacturer']);
+                setupFilter(tbody, psus, ['name', 'manufacturer', 'wattage', 'efficiency_rating', 'form_factor']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
@@ -1101,6 +1439,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCaseSelection() {
         selectedGpuDiv.style.display = "none";
+        document.querySelector('.builder-main-row').classList.remove('filter-bar-gap');
+        document.querySelector('.builder-main-row').classList.remove('psu-gap');
+        document.querySelector('.builder-main-row').classList.add('case-gap');
+        document.querySelector('.builder-main-row').classList.remove('cpu-cooler-gap');
         const pcCaseTable = document.getElementById('case-table');
         document.getElementById('gpu-table').style.display = "none";
         document.getElementById('cpu-table').style.display = "none";
@@ -1110,20 +1452,51 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('cpu_cooler-table').style.display = "none";
         document.getElementById('psu-table').style.display = "none";
         pcCaseTable.style.display = "table";
-
         let subtitle = document.getElementById('case-subtitle');
+        const filterBar = document.getElementById('filter-bar');
         if (!subtitle) {
             subtitle = document.createElement('div');
             subtitle.id = 'case-subtitle';
             subtitle.textContent = "All Cases are Available in Black and White.";
-            pcCaseTable.parentNode.insertBefore(subtitle, pcCaseTable);
+            filterBar.parentNode.insertBefore(subtitle, filterBar);
         }
         subtitle.style.display = "block";
         pcCaseTable.style.display = "table";
-
         fetch('http://localhost:5000/api/cases')
             .then(response => response.json())
             .then(pcCases => {
+                pcCases.forEach(pcCase => {
+                    pcCase.front_panel_port_amounts = [];
+                    pcCase.front_panel_port_types = [];
+                    if (pcCase.front_panel_ports) {
+                        pcCase.front_panel_ports.split(',').forEach(port => {
+                            const match = port.match(/^(\d+)[×x*]\s*(.+)$/i);
+                            if (match) {
+                                pcCase.front_panel_port_amounts.push(match[1]);
+                                pcCase.front_panel_port_types.push(match[2].trim());
+                            } else {
+                                pcCase.front_panel_port_amounts.push('1');
+                                pcCase.front_panel_port_types.push(port.trim());
+                            }
+                        });
+                    }
+
+                    pcCase.drive_bay_amounts = [];
+                    pcCase.drive_bay_types = [];
+                    if (pcCase.drive_bays) {
+                        pcCase.drive_bays.split('+').forEach(bay => {
+                            const match = bay.match(/^(\d+)[×x*]\s*(.+)$/i);
+                            if (match) {
+                                pcCase.drive_bay_amounts.push(match[1]);
+                                pcCase.drive_bay_types.push(match[2].trim());
+                            } else {
+                                pcCase.drive_bay_amounts.push('1');
+                                pcCase.drive_bay_types.push(bay.trim());
+                            }
+                        });
+                    }
+                });
+
                 const tbody = pcCaseTable.querySelector('tbody');
                 tbody.innerHTML = "";
                 pcCases.forEach((pcCase, idx) => {
@@ -1146,7 +1519,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     tbody.appendChild(tr);
                 });
                 builderTitle.textContent = "Add a Case";
-                setupFilter(tbody, pcCases, ['name', 'manufacturer']);
+                setupFilter(tbody, pcCases, ['name', 'manufacturer', 'form_factor', 'drive_bay_amounts', 'drive_bay_types', 'expansion_slots', 'front_panel_port_amounts', 'front_panel_port_types']);
+                document.getElementById('filter-sidebar').style.display = 'block';
                 // Add event listeners
                 tbody.querySelectorAll('.select-btn').forEach((btn) => {
                     btn.addEventListener('click', function() {
