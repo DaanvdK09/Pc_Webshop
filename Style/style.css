@@ -1589,11 +1589,24 @@ footer {
 
 .builder-main-row.cpu-cooler-gap #filter-sidebar, .builder-main-row.case-gap #filter-sidebar {
     margin-left: 3%;
+    margin-top: 6%;
     width: 15%;
 }
 
 .builder-main-row.cpu-cooler-gap #filter-bar, .builder-main-row.case-gap #filter-bar {
     margin-right: 5%;
+}
+
+.builder-main-row.psu-gap #filter-bar {
+    margin-right: -15%;
+}
+
+.builder-main-row.case-gap #filter-sidebar {
+    margin-top: 11%;
+}
+
+.builder-main-row.filter-bar-gap #filter-bar {
+    margin-right: -20% !important;
 }
 
 .select-btn {
@@ -1677,6 +1690,7 @@ footer {
 /* Filter Sidebar */
 .filter-sidebar {
     margin-left: -16%;
+    margin-top: 11%;
     width: 20%;
     background: var(--bg-black-100);
     border-radius: 10px;
