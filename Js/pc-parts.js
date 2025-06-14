@@ -18,6 +18,64 @@ document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.getElementById('filter-sidebar');
         sidebar.innerHTML = '';
 
+        // Find min and max price
+        const prices = items.map(item => Number(item.price)).filter(p => !isNaN(p));
+        const minPrice = 0;
+        const maxPrice = Math.ceil(Math.max(...prices));
+
+        // Create price slider group
+        const priceGroup = document.createElement('div');
+        priceGroup.className = 'filter-price-group';
+
+        const priceValues = document.createElement('div');
+        priceValues.className = 'filter-price-values';
+        priceValues.innerHTML = `<span id="price-min">${minPrice} €</span> - <span id="price-max">${maxPrice} €</span>`;
+
+        const sliderWrapper = document.createElement('div');
+        sliderWrapper.className = 'filter-price-slider-wrapper';
+
+        // Create noUiSlider element
+        const slider = document.createElement('div');
+        slider.id = 'nouislider-price';
+        sliderWrapper.appendChild(slider);
+
+        priceGroup.appendChild(priceValues);
+        priceGroup.appendChild(sliderWrapper);
+        sidebar.appendChild(priceGroup);
+
+        // Initialize noUiSlider
+        noUiSlider.create(slider, {
+            start: [minPrice, maxPrice],
+            connect: true,
+            range: {
+                'min': minPrice,
+                'max': maxPrice
+            },
+            step: 1,
+            tooltips: false,
+            format: {
+                to: value => Math.round(value),
+                from: value => Number(value)
+            }
+        });
+
+        slider.noUiSlider.on('update', function(values) {
+            const [currentMin, currentMax] = values.map(Number);
+            priceValues.querySelector('#price-min').textContent = `€ ${currentMin}`;
+            priceValues.querySelector('#price-max').textContent = `€ ${currentMax}`;
+
+            // Filter items by price range
+            Array.from(sidebar.parentElement.querySelectorAll('tbody tr')).forEach((tr, idx) => {
+                const item = items[idx];
+                if (item.price >= currentMin && item.price <= currentMax) {
+                    tr.style.display = '';
+                } else {
+                    tr.style.display = 'none';
+                }
+            });
+            onFilter('price', [currentMin, currentMax], true);
+        });
+
         // Define units
         const units = {
             memory_size: 'GB',
@@ -144,8 +202,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Only pass columns for sidebar buttons (exclude "name")
         const sidebarColumns = columns.filter(col => col !== 'name');
-        createFilterButtons(items, sidebarColumns, (filterCol, filterVal) => {
+        createFilterButtons(items, sidebarColumns, (filterCol, filterVal, isPrice) => {
             filterInput.value = '';
+            if (isPrice && filterCol === 'price') {
+                Array.from(tbody.children).forEach((tr, idx) => {
+                    const item = items[idx];
+                    tr.style.display = (item.price >= filterVal[0] && item.price <= filterVal[1]) ? '' : 'none';
+                });
+                return;
+            }
             if (!filterCol) {
                 Array.from(tbody.children).forEach(tr => tr.style.display = '');
             } else {
@@ -361,7 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Hide filters
         hideFilter();
-        document.getElementById('filter-sidebar').style.display = 'none';
+        const filterSidebar = document.getElementById('filter-sidebar');
+        if (filterSidebar) filterSidebar.style.display = 'none';
 
         // Render selected
         selectedGpuDiv.innerHTML = `

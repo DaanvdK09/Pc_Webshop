@@ -1729,6 +1729,78 @@ footer {
     color: #fff;
 }
 
+/* price filter */
+.filter-price-slider-wrapper {
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+}
+
+#nouislider-price {
+    height: 18px;
+    margin: 10px 0 18px 0;
+}
+
+.noUi-horizontal {
+    height: 10px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.noUi-handle {
+    width: 16px !important;
+    height: 16px !important;
+    top: -2px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: var(--bg-black-600) !important;
+    border: 2px solid var(--bg-black-800) !important;
+    cursor: pointer !important;
+    right: -6px !important;
+}
+
+.noUi-connect {
+    background: var(--bg-black-600) !important;
+    height: 12px !important;
+    border-radius: 6px !important;
+}
+
+.noUi-target {
+    height: 12px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+.noUi-base {
+    background: var(--bg-black-800);
+}
+
+.noUi-handle:after, .noUi-handle:before {
+    background: none;
+}
+
+.noUi-target, .noUi-base, .noUi-connects {
+    border-radius: 6px;
+}
+
+.noUi-horizontal .noUi-connects {
+    height: 8px;
+}
+
+.noUi-base, .noUi-connects {
+    height: 12px !important;
+    border-radius: 6px !important;
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+#nouislider-price .noUi-handle:before,
+#nouislider-price .noUi-handle:after {
+    display: none !important;
+    content: none !important;
+}
+
 /* Button */
 .add-button,
 .select-btn,
