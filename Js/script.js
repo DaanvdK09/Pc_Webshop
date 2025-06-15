@@ -42,14 +42,48 @@ if (logoutBtn) {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('username');
         localStorage.removeItem('email');
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem('email');
         sidebar.classList.remove("open");
         alert("You have been logged out.");
         setLoginState(false);
     };
 }
 
+function loadSavedBuilds() {
+    const username = sessionStorage.getItem('username');
+    const buildsList = document.getElementById('saved-builds-list');
+    if (!username || !buildsList) return;
+    fetch(`http://localhost:5000/api/builds/${username}`)
+        .then(res => res.json())
+        .then(builds => {
+            buildsList.innerHTML = '';
+            if (builds.length === 0) {
+                buildsList.innerHTML = '<li>No builds saved.</li>';
+                return;
+            }
+            builds.forEach(build => {
+                const li = document.createElement('li');
+                li.textContent = build.name;
+                li.style.cursor = 'pointer';
+                li.onclick = () => {
+                    // Load build into builder
+                    sessionStorage.setItem('selectedParts', build.data);
+                    window.location.href = 'pc-builder.html';
+                };
+                buildsList.appendChild(li);
+            });
+        });
+}
+
+// Call loadSavedBuilds when opening the sidebar
+document.getElementById('login-link').addEventListener('click', function() {
+    loadSavedBuilds();
+});
+
 // Initialize login on page load
 setLoginState(localStorage.getItem('isLoggedIn') === 'true');
+
 //logo switch
 function updateLogo() {
     var img = document.getElementById('wissel-img');
@@ -59,6 +93,7 @@ function updateLogo() {
         img.src = '../Foto/Logo-white.png';
     }
 }
+
 //homepage img switch
 function updateHomepageImage() {
     var img = document.getElementById('homepage-img');
@@ -68,6 +103,7 @@ function updateHomepageImage() {
         img.src = '../Foto/HomepageCSTBuilderPNG.png';
     }
 }
+
 //add-to-cart-button
 document.querySelectorAll('.buy-button').forEach(function(button) {
     button.addEventListener('click', function() {
@@ -83,6 +119,7 @@ document.querySelectorAll('.buy-button').forEach(function(button) {
         }, 2200);
     });
 });
+
 //specs menu
 document.querySelectorAll('.specs-menu').forEach(function(menu) {
     const toggle = menu.querySelector('.specs-toggle');
@@ -92,6 +129,7 @@ document.querySelectorAll('.specs-menu').forEach(function(menu) {
         });
     }
 });
+
 //nav underline
 document.addEventListener('DOMContentLoaded', function() {
     const activeLink = document.querySelector('.nav-links .nav-link.active');

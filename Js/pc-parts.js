@@ -661,6 +661,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <i class="fas fa-shopping-cart"></i>
                                     <i class="fas fa-box"></i>
                                 </button>
+                                <button class="buy-button" id="save-build-btn">
+                                    <i class="fa fa-save"></i> Save Build
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -704,6 +707,44 @@ document.addEventListener('DOMContentLoaded', function() {
                         buyButton.classList.remove('clicked');
                     }, 1500);
                 }
+            });
+        }
+
+        // Save Build button logic
+        const saveBuildBtn = selectedGpuDiv.querySelector('#save-build-btn');
+        if (saveBuildBtn) {
+            saveBuildBtn.addEventListener('click', function () {
+                const username = sessionStorage.getItem('username');
+                if (!username) {
+                    alert('You must be logged in to save a build.');
+                    return;
+                }
+                const buildName = prompt('Enter a name for your build:');
+                if (!buildName) return;
+                const buildData = {
+                    cpu: selectedCpu,
+                    gpu: selectedGpu,
+                    motherboard: selectedMotherboard,
+                    ram: selectedRam,
+                    ssd: selectedSsd,
+                    cpu_cooler: selectedCpuCooler,
+                    psu: selectedPsu,
+                    case: selectedCase
+                };
+                fetch('http://localhost:5000/api/builds', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: username,
+                        name: buildName,
+                        data: JSON.stringify(buildData)
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert('Build saved!');
+                })
+                .catch(() => alert('Failed to save build.'));
             });
         }
 

@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Text
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -21,6 +22,13 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+
+# Build model
+class Build(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    data = db.Column(Text, nullable=False)
 
 # Initialize the database
 with app.app_context():
@@ -60,6 +68,34 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 400
 
     return jsonify({'message': 'Login successful', 'username': user.username, 'email': user.email}), 200
+
+@app.route('/api/builds', methods=['POST'])
+def save_build():
+    data = request.get_json()
+    username = data.get('username')
+    build_name = data.get('name')
+    build_data = data.get('data')
+
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+
+    build = Build(user_id=user.id, name=build_name, data=build_data)
+    db.session.add(build)
+    db.session.commit()
+    return jsonify({'message': 'Build saved'}), 201
+
+# Get builds endpoint
+@app.route('/api/builds/<username>', methods=['GET'])
+def get_builds(username):
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return jsonify([])
+    builds = Build.query.filter_by(user_id=user.id).all()
+    return jsonify([
+        {'id': b.id, 'name': b.name, 'data': b.data}
+        for b in builds
+    ])
 
 # GPU API
 @app.route('/api/gpus', methods=['GET'])

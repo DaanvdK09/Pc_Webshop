@@ -3,7 +3,7 @@
 
 -- .tables
 
-SELECT * FROM user;
+SELECT * FROM build;
 
 -- Add new user
 -- Note: Passwords have to be hashed before inserting
