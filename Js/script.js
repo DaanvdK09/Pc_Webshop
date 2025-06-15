@@ -195,3 +195,19 @@ function forceGridViewOnSmallScreen() {
 // to run the forceGridViewOnSmallScreen
 window.addEventListener('DOMContentLoaded', forceGridViewOnSmallScreen);
 window.addEventListener('resize', forceGridViewOnSmallScreen);
+
+//toggle-nav-btn
+    const toggleNavBtn = document.querySelector('.toggle-nav-btn')
+    const toggleNavBtnIcon = document.querySelector('.toggle-nav-btn i')
+    const dropDownNavMenu = document.querySelector('.dropdown-nav-menu')
+
+    toggleNavBtn.onclick = function () {
+        dropDownNavMenu.classList.toggle('open')
+        const isOpen = dropDownNavMenu.classList.contains('open')
+
+        if (isOpen) {
+        toggleNavBtnIcon.classList = 'fas fa-xmark';
+        } else {
+            toggleNavBtnIcon.classList = 'fas fa-bars';
+        }
+    }

@@ -15,6 +15,9 @@
         <div class="webshop-logo">
             <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
         </div>
+        <div class="toggle-nav-btn">
+            <i class="fa fa-bars"></i>
+        </div>
          <!--Navbar-->
         <div class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
@@ -45,6 +48,7 @@
                     <i class="fa fa-briefcase"></i>
                     <p id="sidebar-email"></p>
                 </div>
+                <button id="logout-btn"><i class="fa fa-arrow-right-from-bracket"></i>Log out</button>
                 <div id="saved-builds-section">
                     <h3>Saved Builds</h3>
                     <ul id="saved-builds-list"></ul>
@@ -64,15 +68,21 @@
                             <a href="https://github.com/KingJulian1239"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911524?v=4" class="img-circle"><p>Julian</p></span></a> <!--icons voor onze github accounts-->
                         </div>
                         <p class="light-dark-switch-text"><i class="fa fa-arrow-left"></i>Light/darkmode switch</p>
-                </div>
-                <button id="logout-btn"><i class="fa fa-arrow-right-from-bracket"></i>Log out</button>
+                </div>             
             </div>
         </div>
-
-        <a href="cart.html" class="cart-icon"> <!--Need a new page for the shopping cart-->
+        <a href="cart.html" class="cart-icon">
             <i class="fa fa-cart-shopping"></i>
             <span class="cart-x-count"></span>
         </a>
+        <div class="dropdown-nav-menu">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
+            <a href="build-help.html" class="nav-link">Build help</a>
+            <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+            <a href="contact.html" class="nav-link">Contact</a>
+            <div class="animation start-home"></div>
+        </div>
     </div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
     <div class="home-container">

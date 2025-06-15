@@ -272,7 +272,84 @@ footer {
     text-align: center;
 }
 
+.toggle-nav-btn {
+    color: var(--text-black-900);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    text-align: left;
+}
 
+.dropdown-nav-menu {
+    position: absolute;
+    left: 5px;
+    top: 94px;
+    height: 0;
+    width: 300px;
+    background-color: rgba(44, 44, 44, 0.82);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-nav-menu.open {
+    height: auto;
+}
+.dropdown-nav-menu a {
+    display: flex;
+    text-decoration: none;
+    color: var(--text-black-900);
+    padding: 0.7rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.dropdown-nav-menu .cart-icon {
+    text-align: left;
+}
+/* Navbar responsiveness */
+@media (max-width: 1300px) {
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 0.8rem;
+    }
+    .webshop-logo {
+        order: 1;
+        margin-right: 0;
+    }
+    .toggle-nav-btn {
+        order: 2;
+        margin-left: 0;
+        margin-right: 18px;
+        display: block;
+    }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        margin: 0;
+        display: none;
+    }
+    .login {
+        order: 4;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .cart-icon {
+        order: 5;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .nav-links {
+        display: none;
+    }
+    .dropdown-nav-menu {
+        display: block;
+    }
+}
 
 /* Account Sidebar */
 .account-sidebar {
@@ -640,6 +717,7 @@ footer {
 
 .account-item i {
     margin-right: 10px;
+    color: var(--text-black-500);
 }
 
 #logout-btn {
@@ -648,6 +726,7 @@ footer {
     font-size: 16px;
     cursor: pointer;
     color: var(--text-black-900);
+    margin-bottom: 7%;
 }
 
 #logout-btn:hover {
@@ -657,8 +736,26 @@ footer {
 
 #logout-btn i {
     margin-right: 5px;
+    color: var(--text-black-500);
 }
 
+#saved-builds-section h3{
+    color: var(--text-black-500);
+}
+#saved-builds-section ul {
+    list-style: none;
+    line-height: 1.4;
+    color: var(--text-black-900);
+}
+#saved-builds-section li {
+    font-size: 1.1rem;
+    margin-left: 15px;
+}
+#saved-builds-section li:hover {
+    text-decoration: underline;
+    transform: scale(1.03);
+    transition: all 0.8s ease;
+}
 /* Prebuilt PC */
 .prebuilt-pc-container {
     color: var(--text-black-900);
