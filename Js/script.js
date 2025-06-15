@@ -13,6 +13,16 @@ const sidebarUsername = document.getElementById("sidebar-username");
 const sidebarEmail = document.getElementById("sidebar-email");
 const sidebarPassword = document.getElementById("sidebar-password");
 
+// Sync sessionStorage with localStorage
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (!sessionStorage.getItem('username') && localStorage.getItem('username')) {
+        sessionStorage.setItem('username', localStorage.getItem('username'));
+    }
+    if (!sessionStorage.getItem('email') && localStorage.getItem('email')) {
+        sessionStorage.setItem('email', localStorage.getItem('email'));
+    }
+}
+
 function setLoginState(isLoggedIn) {
     if (isLoggedIn) {
         loginStatus.textContent = "Account";

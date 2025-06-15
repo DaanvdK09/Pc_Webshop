@@ -2261,8 +2261,7 @@ form{
 
 .build-help-image-image{
     width: 60%;
-    min-width: 220px;
-    max-width: 420px;
+    width: 100%;
     border-radius: 18px;
     margin: 0 auto;
     box-shadow: 0 2px 16px rgba(0,0,0,0.10);
