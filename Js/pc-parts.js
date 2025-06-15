@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const builderTitle = document.querySelector('.pc-builder-title h1');
     const filterBar = document.getElementById('filter-bar');
     const filterInput = document.getElementById('filter-input');
+    let activeFilters = {};
+    let currentItems = [];
+    let currentColumns = [];
     let selectedGpuDiv = null;
     let selectedGpu = null;
     let selectedCpu = null;
@@ -13,6 +16,51 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedPsu = null;
     let selectedCase = null;
 
+    // Apply all filters together
+    function applyAllFilters() {
+        const search = filterInput.value.trim().toLowerCase();
+        const tbody = document.querySelector('.builder-main-row table[style*="table"] tbody') ||
+        document.querySelector('.builder-main-row table:not([style*="none"]) tbody');
+        if (!tbody) return;
+        Array.from(tbody.children).forEach((tr, idx) => {
+            const item = currentItems[idx];
+            let visible = true;
+
+            // Sidebar filters
+            for (const [filterCol, filterVal] of Object.entries(activeFilters)) {
+                if (filterCol === 'price') continue;
+                let itemVal = item[filterCol];
+                if (filterCol === 'manufacturer' && typeof itemVal === 'string') {
+                    itemVal = itemVal.charAt(0).toUpperCase() + itemVal.slice(1).toLowerCase();
+                }
+                if (Array.isArray(itemVal)) {
+                    if (!itemVal.includes(filterVal)) visible = false;
+                } else {
+                    if (itemVal !== filterVal) visible = false;
+                }
+            }
+
+            // Price filter
+            if (activeFilters.price) {
+                const [min, max] = activeFilters.price;
+                const roundedPrice = Math.round(Number(item.price));
+                if (roundedPrice < min || roundedPrice > max) visible = false;
+            }
+            if (search) {
+                const match = currentColumns.some(col => {
+                    let val = item[col];
+                    if (Array.isArray(val)) {
+                        return val.some(v => String(v).toLowerCase().includes(search));
+                    }
+                    return String(val || '').toLowerCase().includes(search);
+                });
+                if (!match) visible = false;
+            }
+
+            tr.style.display = visible ? '' : 'none';
+        });
+    }
+
     function createFilterButtons(items, columns, onFilter) {
         const sidebar = document.getElementById('filter-sidebar');
         sidebar.innerHTML = '';
@@ -21,8 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const prices = items.map(item => Number(item.price)).filter(p => !isNaN(p));
         const minPrice = 0;
         const maxPrice = Math.ceil(Math.max(...prices));
-
-        const activeFilters = {};
 
         // Create price slider group
         const priceGroup = document.createElement('div');
@@ -169,36 +215,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             sidebar.appendChild(group);
         });
-
-        // Apply all filters together
-        function applyAllFilters() {
-            const tbody = document.querySelector('.builder-main-row table[style*="table"] tbody') ||
-                          document.querySelector('.builder-main-row table:not([style*="none"]) tbody');
-            if (!tbody) return;
-            Array.from(tbody.children).forEach((tr, idx) => {
-                const item = items[idx];
-                let visible = true;
-                // Price filter
-                if (activeFilters.price) {
-                    const [min, max] = activeFilters.price;
-                    if (item.price < min || item.price > max) visible = false;
-                }
-                for (const [filterCol, filterVal] of Object.entries(activeFilters)) {
-                    if (filterCol === 'price') continue;
-                    let itemVal = item[filterCol];
-                    if (filterCol === 'manufacturer' && typeof itemVal === 'string') {
-                        itemVal = itemVal.charAt(0).toUpperCase() + itemVal.slice(1).toLowerCase();
-                    }
-                    if (Array.isArray(itemVal)) {
-                        if (!itemVal.includes(filterVal)) visible = false;
-                    } else {
-                        if (itemVal !== filterVal) visible = false;
-                    }
-                }
-                tr.style.display = visible ? '' : 'none';
-            });
-            onFilter(activeFilters);
-        }
     }
 
     function filterTableRows(tbody, items, columns) {
@@ -220,9 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupFilter(tbody, items, columns) {
         filterBar.style.display = 'block';
         filterInput.value = '';
-        filterInput.oninput = () => filterTableRows(tbody, items, columns);
-        const sidebarColumns = columns.filter(col => col !== 'name');
-        createFilterButtons(items, sidebarColumns, () => {});
+        currentItems = items;
+        currentColumns = columns;
+        filterInput.oninput = applyAllFilters; // <-- direct reference
+        createFilterButtons(items, columns.filter(col => col !== 'name'), () => {});
     }
 
     // Hide filter bar when not needed

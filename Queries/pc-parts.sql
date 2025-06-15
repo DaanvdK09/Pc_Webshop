@@ -2,7 +2,7 @@
 
 -- .tables
 
-SELECT * FROM Pc_Case;
+SELECT * FROM PSU;
 
 -- Create Table
 -- CREATE TABLE IF NOT EXISTS Pc_Case (
@@ -324,7 +324,7 @@ SELECT * FROM Pc_Case;
 -- DELETE FROM GPU WHERE (name, manufacturer, price, memory_size, memory_type, core_clock, boost_clock, tdp) = ('RTX 5090', 'NVIDIA', '1899', '32', 'GDDR7', '1500', '1800', '250');
 
 -- Edit
--- UPDATE GPU SET boost_clock ='2602' WHERE id = 5;
+-- UPDATE GPU SET boost_clock = '2602' WHERE id = 5;
 
 -- Add new column
 -- ALTER TABLE RAM ADD COLUMN CAS_Latency TEXT;
