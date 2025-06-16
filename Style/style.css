@@ -47,7 +47,6 @@ body {
     visibility: hidden;
     background-color: var(--bg-black-900);
     font-size: 16px; /* Base font size */
-    
 }
 
 body.loaded {
@@ -340,7 +339,7 @@ footer {
     }
     .cart-icon {
         order: 5;
-        margin-right: 0;
+        margin-right: 50px;
         margin-left: 0;
     }
     .nav-links {
@@ -769,10 +768,10 @@ footer {
     color: var(--text-black-900);
     font-weight:bold;
     padding: 1% 2%;
-    border-radius: 5px;
+    border-radius: 25px;
     font-size: 1rem;
     margin-left: 3%;
-    display:inline-block;
+    border: none;
 }
 
 .remove-build-btn:hover {
@@ -997,6 +996,9 @@ footer {
         width: 65% !important;
         min-width: 0;
     }
+    .prebuilt-pc-card{
+        padding: 10px;
+    } 
 }
 @media (max-width: 1280px) {
     #grid-view-btn {
@@ -1004,6 +1006,9 @@ footer {
     }
     #list-view-btn {
         display: none;
+    }
+    .prebuilt-pc-card {
+        padding: 15px;
     }
 }
 /* Prebuilt PC Detail */
@@ -1747,11 +1752,10 @@ footer {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
     font-weight:bold;
-    padding: 15% 25%;
-    border-radius: 5px;
+    padding: 15% 20%;
+    border-radius: 25px;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
-    display:inline-block;
 }
 
 .select-btn:hover {
@@ -1775,10 +1779,9 @@ footer {
     color: var(--text-black-900);
     font-weight:bold;
     padding: 5% 10%;
-    border-radius: 5px;
+    border-radius: 25px;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
-    display:inline-block;
 }
 
 .remove-selected-btn:hover, .remove-selected-cpu-btn:hover, .remove-selected-motherboard-btn:hover, .remove-selected-ram-btn:hover, .remove-selected-ssd-btn:hover, .remove-selected-cpu-cooler-btn:hover, .remove-selected-psu-btn:hover, .remove-selected-case-btn:hover {
@@ -1934,7 +1937,6 @@ footer {
 
 /* Button */
 .add-button,
-.select-btn,
 .remove-selected-btn,
 .remove-selected-cpu-btn,
 .remove-selected-motherboard-btn,
@@ -1943,9 +1945,9 @@ footer {
 .remove-selected-cpu-cooler-btn,
 .remove-selected-psu-btn,
 .remove-selected-case-btn {
-    padding: 2% 5%;
+    padding: 4% 10%;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 .buy-button {
     padding: 5px 10px;
