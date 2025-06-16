@@ -739,6 +739,10 @@ footer {
     color: var(--text-black-500);
 }
 
+.saved-build-item {
+    cursor: pointer;
+}
+
 #saved-builds-section h3{
     color: var(--text-black-500);
 }
@@ -756,6 +760,25 @@ footer {
     transform: scale(1.03);
     transition: all 0.8s ease;
 }
+
+.remove-build-btn {
+    cursor:pointer;
+    display:inline-block;
+    margin-top:8px;
+    background-color: #ad0000;
+    color: var(--text-black-900);
+    font-weight:bold;
+    padding: 1% 2%;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 3%;
+    display:inline-block;
+}
+
+.remove-build-btn:hover {
+    background-color: #b71c1c;
+}
+
 /* Prebuilt PC */
 .prebuilt-pc-container {
     color: var(--text-black-900);

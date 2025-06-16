@@ -69,6 +69,7 @@ def login():
 
     return jsonify({'message': 'Login successful', 'username': user.username, 'email': user.email}), 200
 
+# Save Build
 @app.route('/api/builds', methods=['POST'])
 def save_build():
     data = request.get_json()
@@ -84,6 +85,16 @@ def save_build():
     db.session.add(build)
     db.session.commit()
     return jsonify({'message': 'Build saved'}), 201
+
+# Delete Saved Build
+@app.route('/api/builds/<int:build_id>', methods=['DELETE'])
+def delete_build(build_id):
+    build = Build.query.get(build_id)
+    if not build:
+        return jsonify({'message': 'Build not found'}), 404
+    db.session.delete(build)
+    db.session.commit()
+    return jsonify({'message': 'Build deleted'}), 200
 
 # Get builds endpoint
 @app.route('/api/builds/<username>', methods=['GET'])

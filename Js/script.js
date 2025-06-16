@@ -62,26 +62,45 @@ if (logoutBtn) {
 
 function loadSavedBuilds() {
     const username = sessionStorage.getItem('username');
-    const buildsList = document.getElementById('saved-builds-list');
-    if (!username || !buildsList) return;
+    const list = document.getElementById('saved-builds-list');
+    list.innerHTML = '';
+    if (!username) return;
     fetch(`http://localhost:5000/api/builds/${username}`)
         .then(res => res.json())
         .then(builds => {
-            buildsList.innerHTML = '';
-            if (builds.length === 0) {
-                buildsList.innerHTML = '<li>No builds saved.</li>';
-                return;
-            }
             builds.forEach(build => {
                 const li = document.createElement('li');
                 li.textContent = build.name;
-                li.style.cursor = 'pointer';
-                li.onclick = () => {
-                    // Load build into builder
-                    sessionStorage.setItem('selectedParts', build.data);
-                    window.location.href = 'pc-builder.html';
+                li.classList.add('saved-build-item');
+                // Add remove button
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.classList.add('remove-build-btn');
+                removeBtn.onclick = function() {
+                    if (confirm('Are you sure you want to delete this build?')) {
+                        fetch(`http://localhost:5000/api/builds/${build.id}`, {
+                            method: 'DELETE'
+                        })
+                        .then(res => res.json())
+                        .then(() => {
+                            loadSavedBuilds(); // Refresh list
+                        });
+                    }
                 };
-                buildsList.appendChild(li);
+                li.appendChild(removeBtn);
+
+                li.addEventListener('click', function(e) {
+                    if (e.target === removeBtn) return; // Ignore if remove button
+                    try {
+                        const buildData = JSON.parse(build.data);
+                        sessionStorage.setItem('selectedParts', JSON.stringify(buildData));
+                        window.location.href = "pc-builder.html";
+                    } catch (err) {
+                        alert("Failed to load build.");
+                    }
+                });
+
+                list.appendChild(li);
             });
         });
 }

@@ -760,6 +760,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(res => res.json())
                 .then(data => {
                     alert('Build saved!');
+                    // Clear Table
+                    selectedCpu = null;
+                    selectedGpu = null;
+                    selectedMotherboard = null;
+                    selectedRam = null;
+                    selectedSsd = null;
+                    selectedCpuCooler = null;
+                    selectedPsu = null;
+                    selectedCase = null;
+                    saveSelectedParts();
+                    renderSelectedTable();
                 })
                 .catch(() => alert('Failed to save build.'));
             });
