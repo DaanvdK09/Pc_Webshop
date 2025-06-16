@@ -162,7 +162,7 @@ def get_cpus():
 def get_motherboards():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor, expansion_slots, ram_type, tdp FROM Motherboard")
+    cursor.execute("SELECT name, manufacturer, image_url, price, socket, chipset, form_factor, expansion_slots, ram_type, tdp, M_2_slots, SATA_ports, wifi, bluetooth, ram_slots, max_ram FROM Motherboard")
     motherboards = [
         {
             'name': row[0],
@@ -175,6 +175,12 @@ def get_motherboards():
             'expansion_slots': row[7],
             'ram_type': row[8],
             'tdp': row[9],
+            'M_2_slots': row[10],
+            'SATA_ports': row[11],
+            'wifi': row[12],
+            'bluetooth': row[13],
+            'ram_slots': row[14],
+            'max_ram': row[15],
         }
         for row in cursor.fetchall()
     ]
@@ -186,7 +192,7 @@ def get_motherboards():
 def get_rams():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, ram_speed, ram_type, tdp FROM RAM")
+    cursor.execute("SELECT name, manufacturer, image_url, price, capacity, ram_speed, ram_type, tdp, ram_slots, CAS_Latency FROM RAM")
     rams = [
         {
             'name': row[0],
@@ -197,6 +203,8 @@ def get_rams():
             'ram_speed': row[5],
             'ram_type': row[6],
             'tdp': row[7],
+            'ram_slots': row[8],
+            'CAS_Latency': row[9],
         }
         for row in cursor.fetchall()
     ]
@@ -256,7 +264,7 @@ def get_cpu_coolers():
 def get_psus():
     conn = sqlite3.connect('instance/pc-parts.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT name, manufacturer, image_url, price, wattage, efficiency_rating, form_factor FROM PSU")
+    cursor.execute("SELECT name, manufacturer, image_url, price, wattage, efficiency_rating, form_factor, modularity FROM PSU")
     psus = [
         {
             'name': row[0],
@@ -266,6 +274,7 @@ def get_psus():
             'wattage': row[4],
             'efficiency_rating': row[5],
             'form_factor': row[6],
+            'modularity': row[7],
         }
         for row in cursor.fetchall()
     ]
