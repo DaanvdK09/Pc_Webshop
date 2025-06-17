@@ -938,6 +938,11 @@ footer {
     text-shadow: 0 2px 8px #000;
 }
 
+.image-text-specs .li-1 {
+    font-weight: bold;
+    font-style: italic;
+}
+
 .view-toggle {
     display: flex;
     justify-content: flex-end;
