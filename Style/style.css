@@ -459,13 +459,6 @@ footer {
 
 }
 
-.bestseller-card img:hover {
-    filter: blur(2px) brightness(0.7);
-    transform: scale(1.05);
-    transition: transform 0.8s ease;
-    cursor: pointer;
-}
-
 .go-button a {
     color: var(--text-black-600);
     text-decoration: none;
@@ -559,9 +552,13 @@ footer {
 .home-contentbestsellers h1 {
     margin-top: 0%;
     margin-bottom: 1rem;
-    color: var(--text-black-900);
+    color: var(--text-black-600);
     font-weight: 900;
     font-size: 2.2rem;
+}
+
+.home-contentbestsellers h2 {
+    color: var(--text-black-600);
 }
 
 .home-sub-title-bestsellers {
@@ -941,6 +938,11 @@ footer {
     margin: 6px 0;
     list-style: none;
     text-shadow: 0 2px 8px #000;
+}
+
+.image-text-specs .li-1 {
+    font-weight: bold;
+    font-style: italic;
 }
 
 .view-toggle {
