@@ -454,13 +454,6 @@ footer {
 
 }
 
-.bestseller-card img:hover {
-    filter: blur(2px) brightness(0.7);
-    transform: scale(1.05);
-    transition: transform 0.8s ease;
-    cursor: pointer;
-}
-
 .go-button a {
     color: var(--text-black-600);
     text-decoration: none;
