@@ -428,16 +428,21 @@ footer {
     text-align: center;
     margin-bottom: 75px;
     background: var(--bg-black-1000);
-    padding: 40px 0;
+    padding: 30px 0;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.bestseller-card img {
+#homepage-bestseller-img {
     border-radius: 8px;
     margin-bottom: 10px;
+    height: 250px !important; 
+}
+
+#homepage-bestseller-img img {
+    height: 230px !important;
 }
 
 .details-hover-favorites {
@@ -900,7 +905,7 @@ footer {
     align-items: center;
     background: rgba(44, 44, 44, 0.82);
     color: var(--text-black-900);
-    font-size: 1.1em;
+    font-size: 1rem;
     font-weight: 600;
     opacity: 0;
     pointer-events: none;

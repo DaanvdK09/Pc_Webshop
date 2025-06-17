@@ -210,10 +210,14 @@ let EURO = new Intl.NumberFormat('nl-NL', {
 const productContainer = document.querySelector(".prebuilt-list");
 const isProductDetailPage = window.location.pathname.includes("prebuilt-pc-detail.html");
 const isCartPage = document.querySelector(".cart");
+const isHomePage = document.querySelector (".bestsellers-row");
 
 if (productContainer) {
     displayProducts();
-} else if (isProductDetailPage) {
+} else if (isHomePage) {
+    displayHomepageBestsellers();
+}
+else if (isProductDetailPage) {
     displayProductDetail();
 } else if (isCartPage) {
     displayCart();
@@ -235,7 +239,6 @@ function displayProducts() {
                 <li>${spec.storage}</li>
                 <li>${spec.cooler}</li>
                 <li>${spec.psu}</li>
-                <li class="image-text-specs-instruction">Click to see more details<li>
                 </ul>
             </div>
             <h3 class="title">${product.name}</h3>
@@ -468,5 +471,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function displayHomepageBestsellers() {
+    const bestsellersContainer = document.querySelector(".bestsellers-row");
+    if (!bestsellersContainer) return;
+
+    // Alleen producten met id 1, 2, 3
+    const bestsellers = products.filter(p => [1, 2, 3].includes(p.id));
+    bestsellers.forEach(product => {
+        const spec = product.specs[0];
+        const productCard = document.createElement("div");
+        productCard.classList.add("bestseller-card");
+        productCard.innerHTML = `
+            <div class="prebuilt-pc-image" id = "homepage-bestseller-img">
+                <img src="${product.mainImage}">
+                <ul class="image-text-specs">
+                <li><span>Specs:</span></li>
+                <li>${spec.cpu}</li>
+                <li>${spec.gpu}</li>
+                <li>${spec.ram}</li>
+                <li>${spec.storage}</li>
+                <li>${spec.cooler}</li>
+                <li>${spec.psu}</li>
+                </ul>
+            </div>
+            <h3 class="title">${product.name}</h3>
+        `;
+        bestsellersContainer.appendChild(productCard);
+
+        productCard.addEventListener("click", () => {
+            sessionStorage.setItem('selectedProduct', JSON.stringify(product));
+            window.location.href = "prebuilt-pc-detail.html";
+        });
+    });
+}
 
 updateCartBadge();
