@@ -469,6 +469,7 @@ footer {
     border: none;
     border-radius: 35px;
     transition: background-color 0.5s, color 0.5s;
+    position: relative;
 }
 
 .go-button a:hover {
