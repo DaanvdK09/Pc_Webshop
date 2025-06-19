@@ -2316,23 +2316,20 @@ form{
     font-size: 1.2rem;
 }
 
-.build-help-image-image{
+.build-help-image img{
     width: 60%;
     width: 100%;
     border-radius: 18px;
     margin: 0 auto;
     box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.build-help-image {
     margin: 2.5rem auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.build-help-image-image:hover {
+.build-help-image img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
