@@ -2358,4 +2358,22 @@ form{
     max-width: 600px;
     font-size: 1.1rem;
 }
-
+.build-help-contact-section h2 {
+    font-size: 1.4rem;
+    color: var(--text-black-500);
+    margin: 1rem 0;
+    text-align: center;
+}
+.build-help-btn {
+    text-align: center;
+    background-color: var(--bg-black-600);
+    border: none;
+    border-radius: 25px;
+    color: var(--text-black-900);
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+.build-help-btn a {
+    text-decoration: none;
+    color: var(--text-black-900);
+}
