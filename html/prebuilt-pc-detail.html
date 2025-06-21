@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link href="../Style/style.css" rel="stylesheet" type="text/CSS">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../Style/style-switcher.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>The PC Boys</title>
+    <title>Product Detail</title>
     <link rel="icon" type="image/x-icon" href="../Foto's/Logo.png">
 </head>
 <body>
@@ -75,33 +75,70 @@
                 <span class="cart-item-count"></span>
             </a>
             <div class="dropdown-nav-menu">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
-            <a href="build-help.html" class="nav-link">Build help</a>
-            <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
-            <a href="contact.html" class="nav-link">Contact</a>
-            <div class="animation start-home"></div>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
+                <a href="build-help.html" class="nav-link">Build help</a>
+                <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="animation start-home"></div>
         </div>
     </div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
-<div class="prebuild-collection"> <!-- Javascript is used for the innerHTML display-->
-    <h1 class="prebuilt-pc-title">Our Prebuild-pc's</h1>
-        <!-- Toggle view button -->
-    <div class="view-toggle">
-        <button id="grid-view-btn" class="activeviewbutton"><i class="fa fa-th"></i> Grid</button>
-        <button id="list-view-btn"><i class="fa fa-bars"></i> List</button>
-    </div>
-    <div class="prebuilt-list"></div>
+<div class="page-back">
+    <a href="prebuilt-pc.html">
+        <button><i class="fa fa-arrow-left"></i>Go Back</button>
+    </a>
 </div>
-
-<footer>
-  © 2025 The PC Boys. Built by gamers, for gamers.
-</footer>
-<!--Alle afbeeldingen zijn in gebruik met dank aan gamecomputers.nl en zttbuilds.com-->
+<div class="product-detail">
+    <div class="product-img">
+        <div class="thumbnail-list">
+            <!--<img src="../Foto/budget-black-thumbnail-1.png">
+            <img src="../Foto/budget-black-thumbnail-2.png">
+            <img src="../Foto/budget-black-thumbnail-3.png">
+            <img src="../Foto/thumbnail-benchmarks-RX6600.png">-->
+        </div>
+        <div class="main-img">
+            <!--<img src="../Foto/budget-black-thumbnail-1.png">-->
+        </div>
+    </div>
+    <div class="prebuilt-pc-info">
+        <h2 class="title"></h2>
+        <div class="rating">
+            <!--<i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span></span>-->
+        </div>
+        <span class="price"></span>
+        <p class="description"></p>
+        <h3 class="specs-title">Specs:</h3>
+        <ul class="specs">
+            <!--<li><span>Cpu:</span>ryzen 5 5500</li>
+            <li><span>Gpu:</span>RX 6600</li>
+            <li><span>Ram:</span>16GB DDR4</li>
+            <li><span>Storage:</span>1TB SSD</li>
+            <li><span>Cooler:</span>Wraith Stealth Cooler</li>
+            <li><span>Power Supply:</span>550W</li>-->
+        </ul>
+        <button class="buy-button">
+            <span class="add-to-cart">Add to cart</span>
+            <span class="added">Added</span>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-box"></i>
+        </button>
+        <div class="product-policy">
+            <p>Price includes taxes</p>
+            <p>Free shipping</p>
+        </div>
+    </div>
+</div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
-<!--Js file links-->    
-    <script src="../Js/style-switcher.js"></script>
-    <script src="../Js/script.js"></script>
-    <script src="../Js/cart-system.js"></script>
+<!--Js file links-->
+<script src="../crs/style-switcher.js"></script>
+<script src="../crs/script.js"></script>
+<script src="../crs/cart-system.js"></script>
+
 </body>
 </html>

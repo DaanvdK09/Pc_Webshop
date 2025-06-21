@@ -12,31 +12,29 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="webshop-logo">
-            <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
-        </div>
+    <div class="webshop-logo">
+        <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
+    </div>
         <div class="toggle-nav-btn">
             <i class="fa fa-bars"></i>
         </div>
-         <!--Navbar-->
+        <!-- navbar -->
         <div class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
-            <a href="build-help.html" class="nav-link">Build help</a>
-            <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
-            <a href="contact.html" class="nav-link">Contact</a>
-            <div class="animation start-home"></div>
-        </div>
-        <div class="login">
-            <a href="#" id="login-link" class="login">
-                <span class="login-icon">
-                    <i class="fas fa-user"></i>
-                </span>
-                <span class="login-text" id="login-status">Log in</span>
-            </a>
-        </div>
-
-        <div id="account-sidebar" class="account-sidebar"> <!--Sidebar for account info-->
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
+                <a href="build-help.html" class="nav-link">Build help</a>
+                <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="login">
+                <a href="#" id="login-link" class="login">
+                    <span class="login-icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="login-text" id="login-status">Log in</span>
+                </a>
+            </div>
+        <div id="account-sidebar" class="account-sidebar">
             <div class="sidebar-content">
                 <span id="close-sidebar" style="cursor:pointer;float:right;font-size:1.5em;">&times;</span>
                 <h2 class="sidebar-title">Account Info</h2>
@@ -68,12 +66,13 @@
                             <a href="https://github.com/KingJulian1239"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911524?v=4" class="img-circle"><p>Julian</p></span></a> <!--icons voor onze github accounts-->
                         </div>
                         <p class="light-dark-switch-text"><i class="fa fa-arrow-left"></i>Light/darkmode switch</p>
-                </div>             
+                </div>
             </div>
         </div>
-        <a href="cart.html" class="cart-icon">
+
+        <a href="cart.html" class="cart-icon"> <!--new page for the shopping cart-->
             <i class="fa fa-cart-shopping"></i>
-            <span class="cart-x-count"></span>
+            <span class="cart-item-count"></span>
         </a>
         <div class="dropdown-nav-menu">
             <a href="index.html" class="nav-link active">Home</a>
@@ -85,52 +84,64 @@
         </div>
     </div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
-    <div class="home-container">
-        <div class="row">
-            <div class="home-title">
-                <h1>Buy a prebuilt PC or pick PC parts. Compare. And start sharing!</h1> 
-                <p>Welcome to The PC Boys webshop! We provide prebuilt- and custom pc's.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="btn-homepg">
-                <a href="pc-builder.html">Start customizing</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="homepg-image">
-                <img id="homepage-img" src="HomepageCSTBuilderPNGDark.png">
-            </div>
-        </div>
-        <div class="row">       
-            <div class="home-contentbestsellers">
-                <h1>Bestselling Prebuilt PC's</h1>
-                <h2 class="home-sub-title-bestsellers">These are our most populair prebuilds</h2>
-                <div class="row">
-                    <div class="bestsellers-row">
+<section class="contact-form">
+    <h4 class="sectionHeader">contact us</h4>
+    <h1 class="heading">Get In Touch!</h1>
+    <p class="para">If you need help, please contact us in one of the ways given below</p>
+    
+    <div class="contactForm">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="apikey" value="350328c6-758d-4e1e-9b12-25f4ec15b7ab">
+                <h1 class="sub-heading1">Need Support ?</h1>
+                    <p class="para para2">Send a message through this form !</p>
+                        <input type="text" class="input" name="name" placeholder="your name" required>
+                        <input type="email" class="input" name="email" placeholder="your email" required>
+                        <input type="text" class="input" name="subject" placeholder="your Subject" required>
+                        <textarea class="input" name="message" cols="30" rows="5" placeholder="Your message..." required></textarea>
+                        <input type="submit" class="input submit" value="Send Message">
+        </form>
 
-                    </div>
-                    <div class="go-button">
-                        <a href="prebuilt-pc.html">Discover Our Prebuilt Pc's<img src="../Foto/Arrow-Button.png"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="favorites-content">
-            <div class="row">
-                <h1>Our Favorite Custom PC's</h1>
+        <div class="map-container">
+            <div class="mapBg"></div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2451.341144511381!2d4.867891976991321!3d52.09172266784921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c67780669d95c5%3A0x988598e973e75064!2sKalsbeek%20College!5e0!3m2!1snl!2snl!4v1748360092192!5m2!1snl!2snl"></iframe>
             </div>
         </div>
     </div>
-    
-    <footer>
-    © 2025 The PC Boys. Built by gamers, for gamers.
-    </footer> 
+
+    <div class="contactMethod">
+        <div class="method">
+            <i class="fa-solid fa-location-dot contactIcon"></i>
+            <article class="text">
+                <h1 class="sub-heading">Location</h1>
+                <p class="para">Jozef Israelslaan 56, 3443 CT Woerden</p>
+            </article>
+        </div>
+
+        <div class="method">
+            <i class="fa-solid fa-envelope contactIcon"></i>
+            <article class="text">
+                <h1 class="sub-heading">Email</h1>
+                <p class="para">Email: thepcboys2025@gmail.com</p>
+            </article>
+        </div>
+
+        <div class="method">
+            <i class="fa-solid fa-phone contactIcon"></i>
+            <article class="text">
+                <h1 class="sub-heading">Phone</h1>
+                <p class="para">0682367554</p>
+            </article>
+        </div>
+    </div>
+   </section>
+<footer>
+  © 2025 The PC Boys. Built by gamers, for gamers.
+</footer>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
 <!--Js file links-->
-    <script src="../Js/style-switcher.js"></script>
-    <script src="../Js/script.js"></script>
-    <script src="../Js/cart-system.js"></script>
+    <script src="../crs/style-switcher.js"></script>
+    <script src="../crs/script.js"></script>
+    <script src="../crs/cart-system.js"></script>
 </body>
 </html>
