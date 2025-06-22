@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../Style/style.css" rel="stylesheet" type="text/CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../Style/style-switcher.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Product Detail</title>
+    <link rel="icon" type="image/x-icon" href="../Foto's/Logo.png">
+</head>
+<body>
+    <div class="navbar">
+    <div class="webshop-logo">
+        <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
+    </div>
+        <div class="toggle-nav-btn">
+            <i class="fa fa-bars"></i>
+        </div>
+    <!-- navbar -->
+        <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="prebuilt-pc.html" class="nav-link active">Prebuilt pc's</a>
+                <a href="build-help.html" class="nav-link">Build help</a>
+                <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="login">
+                <a href="#" id="login-link" class="login">
+                    <span class="login-icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="login-text" id="login-status">Log in</span>
+                </a>
+            </div>
+
+        <div id="account-sidebar" class="account-sidebar">
+            <div class="sidebar-content">
+                <span id="close-sidebar" style="cursor:pointer;float:right;font-size:1.5em;">&times;</span>
+                <h2 class="sidebar-title">Account Info</h2>
+                <div class="account-item">
+                    <i class="fa fa-user"></i>
+                    <p id="sidebar-username"></p>
+                </div>
+                <div class="account-item">
+                    <i class="fa fa-briefcase"></i>
+                    <p id="sidebar-email"></p>
+                </div>
+                <button id="logout-btn"><i class="fa fa-arrow-right-from-bracket"></i>Log out</button>
+                <div id="saved-builds-section">
+                    <h3>Saved Builds</h3>
+                    <ul id="saved-builds-list"></ul>
+                </div>
+                <div class="style-switcher">
+                    <div class="style-switcher-toggler s-icon">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                    <div class="day-night s-icon" style="margin-top: 25px;">
+                        <i id="wissel-icoon" class="fas "></i>
+                    </div>
+                        <h4>Development team</h4> 
+                        <div class="colors">
+                            <a href="https://github.com/Bramblokker"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911489?v=4" class="img-circle"><p>Bram</p></span></a> <!--icons voor onze github accounts-->
+                            <a href="https://github.com/DaanvdK09"><span class="github-icons"><img src="../Foto/Logo-daan-github.png" class="img-circle"><p>Daan</p></span></a>
+                            <a href="https://github.com/Steven-str"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/211330477?v=4" class="img-circle"><p>Steven</p></span></a>
+                            <a href="https://github.com/KingJulian1239"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911524?v=4" class="img-circle"><p>Julian</p></span></a> <!--icons voor onze github accounts-->
+                        </div>
+                        <p class="light-dark-switch-text"><i class="fa fa-arrow-left"></i>Light/darkmode switch</p>
+                </div>
+            </div>
+        </div>
+            <a href="cart.html" class="cart-icon"> <!--Need a new page for the shopping cart-->
+                <i class="fa fa-cart-shopping"></i>
+                <span class="cart-item-count"></span>
+            </a>
+            <div class="dropdown-nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
+                <a href="build-help.html" class="nav-link">Build help</a>
+                <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="animation start-home"></div>
+        </div>
+    </div>
+<!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
+<div class="page-back">
+    <a href="prebuilt-pc.html">
+        <button><i class="fa fa-arrow-left"></i>Go Back</button>
+    </a>
+</div>
+<div class="product-detail">
+    <div class="product-img">
+        <div class="thumbnail-list">
+            <!--<img src="../Foto/budget-black-thumbnail-1.png">
+            <img src="../Foto/budget-black-thumbnail-2.png">
+            <img src="../Foto/budget-black-thumbnail-3.png">
+            <img src="../Foto/thumbnail-benchmarks-RX6600.png">-->
+        </div>
+        <div class="main-img">
+            <!--<img src="../Foto/budget-black-thumbnail-1.png">-->
+        </div>
+    </div>
+    <div class="prebuilt-pc-info">
+        <h2 class="title"></h2>
+        <div class="rating">
+            <!--<i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span></span>-->
+        </div>
+        <span class="price"></span>
+        <p class="description"></p>
+        <h3 class="specs-title">Specs:</h3>
+        <ul class="specs">
+            <!--<li><span>Cpu:</span>ryzen 5 5500</li>
+            <li><span>Gpu:</span>RX 6600</li>
+            <li><span>Ram:</span>16GB DDR4</li>
+            <li><span>Storage:</span>1TB SSD</li>
+            <li><span>Cooler:</span>Wraith Stealth Cooler</li>
+            <li><span>Power Supply:</span>550W</li>-->
+        </ul>
+        <button class="buy-button">
+            <span class="add-to-cart">Add to cart</span>
+            <span class="added">Added</span>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-box"></i>
+        </button>
+        <div class="product-policy">
+            <p>Price includes taxes</p>
+            <p>Free shipping</p>
+        </div>
+    </div>
+</div>
+<!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
+<!--Js file links-->
+<script src="../crs/style-switcher.js"></script>
+<script src="../crs/script.js"></script>
+<script src="../crs/cart-system.js"></script>
+
+</body>
+</html>
