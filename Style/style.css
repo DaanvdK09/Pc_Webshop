@@ -448,20 +448,6 @@ footer {
     width: 85%;
 }
 
-.details-hover-favorites {
-    border-radius: 8px;
-    margin-top: 50px;
-    margin-bottom: 10px;
-    background: none;
-    position: absolute;
-}
-
-.details-hover-favorites p1 {
-    font-style: italic;
-    font-weight: bold;
-
-}
-
 .go-button a {
     color: var(--text-black-600);
     text-decoration: none;
@@ -570,11 +556,6 @@ footer {
     margin-bottom: 3rem;
     font-size: 1.5rem;
 }
-
-.favorites-content {
-    margin-top: -100px;
-}
-
 /* Login page */
 .login-container {
     max-width: 400px;
