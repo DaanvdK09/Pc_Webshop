@@ -126,6 +126,7 @@ function updateLogo() {
 //homepage img switch
 function updateHomepageImage() {
     var img = document.getElementById('homepage-img');
+    if (!img) return;
     if (document.body.classList.contains('light')) {
         img.src = '../Foto/HomepageCSTBuilderPNGDark.png';
     } else {

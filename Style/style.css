@@ -428,16 +428,35 @@ footer {
     text-align: center;
     margin-bottom: 75px;
     background: var(--bg-black-1000);
-    padding: 25px 0;
+    padding: 30px 0;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.bestseller-card img {
+#homepage-bestseller-img {
     border-radius: 8px;
     margin-bottom: 10px;
+    height: 250px !important; 
+}
+
+#homepage-bestseller-img img {
+    height: 230px !important;
+}
+
+.details-hover-favorites {
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    background: none;
+    position: absolute;
+}
+
+.details-hover-favorites p1 {
+    font-style: italic;
+    font-weight: bold;
+
 }
 
 .go-button a {
@@ -450,6 +469,7 @@ footer {
     border: none;
     border-radius: 35px;
     transition: background-color 0.5s, color 0.5s;
+    position: relative;
 }
 
 .go-button a:hover {
@@ -533,9 +553,13 @@ footer {
 .home-contentbestsellers h1 {
     margin-top: 0%;
     margin-bottom: 1rem;
-    color: var(--text-black-900);
+    color: var(--text-black-600);
     font-weight: 900;
     font-size: 2.2rem;
+}
+
+.home-contentbestsellers h2 {
+    color: var(--text-black-600);
 }
 
 .home-sub-title-bestsellers {
@@ -879,7 +903,7 @@ footer {
     align-items: center;
     background: rgba(44, 44, 44, 0.82);
     color: var(--text-black-900);
-    font-size: 1.1em;
+    font-size: 1rem;
     font-weight: 600;
     opacity: 0;
     pointer-events: none;
@@ -915,6 +939,11 @@ footer {
     margin: 6px 0;
     list-style: none;
     text-shadow: 0 2px 8px #000;
+}
+
+.image-text-specs .li-1 {
+    font-weight: bold;
+    font-style: italic;
 }
 
 .view-toggle {

@@ -38,7 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><span>Chipset:</span> ${data.chipset}</li>
                         <li><span>Form Factor:</span> ${data.form_factor}</li>
                         <li><span>Expansion Slots:</span> ${data.expansion_slots}</li>
+                        <li><span>M.2 Slots:</span> ${data.M_2_slots}</li>
+                        <li><span>SATA Ports:</span> ${data.SATA_ports}</li>
                         <li><span>RAM Type:</span> ${data.ram_type}</li>
+                        <li><span>RAM Slots:</span> ${data.ram_slots}</li>
+                        <li><span>Max RAM:</span> ${data.max_ram}</li>
+                        <li><span>Wifi:</span> ${data.wifi}</li>
+                        <li><span>Bluetooth:</span> ${data.bluetooth}</li>
                         <li><span>TDP:</span> ${data.tdp} W</li>
                     </ul>`;
             case 'ram':
@@ -47,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><span>Capacity:</span> ${data.capacity} GB</li>
                         <li><span>Speed:</span> ${data.ram_speed} MHz</li>
                         <li><span>Type:</span> ${data.ram_type}</li>
+                        <li><span>Slots:</span> ${data.ram_slots}</li>
+                        <li><span>CAS Latency:</span> ${data.CAS_Latency}</li>
                         <li><span>TDP:</span> ${data.tdp} W</li>
                     </ul>`;
             case 'ssd':
@@ -69,12 +77,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><span>Cooling Type:</span> ${data.cooling_type}</li>
                         <li><span>TDP:</span> ${data.tdp} W</li>
                     </ul>`;
-            case 'psu':
+            case 'powersupply':
                 return `
                     <ul class="specs">
                         <li><span>Wattage:</span> ${data.wattage} W</li>
                         <li><span>Efficiency:</span> ${data.efficiency_rating}</li>
                         <li><span>Form Factor:</span> ${data.form_factor}</li>
+                        <li><span>Modularity:</span> ${data.modularity}</li>
                     </ul>`;
             case 'case':
                 return `
