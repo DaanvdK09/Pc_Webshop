@@ -438,25 +438,14 @@ footer {
 #homepage-bestseller-img {
     border-radius: 8px;
     margin-bottom: 10px;
-    height: 250px !important; 
 }
 
 #homepage-bestseller-img img {
-    height: 230px !important;
+    width: 85%;
 }
 
-.details-hover-favorites {
-    border-radius: 8px;
-    margin-top: 50px;
-    margin-bottom: 10px;
-    background: none;
-    position: absolute;
-}
-
-.details-hover-favorites p1 {
-    font-style: italic;
-    font-weight: bold;
-
+#image-text-specs-bestsellers {
+    width: 85%;
 }
 
 .go-button a {
@@ -567,11 +556,6 @@ footer {
     margin-bottom: 3rem;
     font-size: 1.5rem;
 }
-
-.favorites-content {
-    margin-top: -100px;
-}
-
 /* Login page */
 .login-container {
     max-width: 400px;
@@ -2217,14 +2201,9 @@ form{
     margin-top: 2.5rem;
     margin-bottom: 2.2rem;
     letter-spacing: 1px;
-}
-
-.build-help-title, .build-help-sub-title {
     text-align: center;
-    margin-bottom: 1.2rem;
     position: relative;
 }
-
 .build-help-title::after {
     content: '';
     display: block;
@@ -2235,62 +2214,30 @@ form{
     background: var(--bg-black-600);
     opacity: 0.5;
 }
-
 .build-help-sub-title {
-    font-size: 1.5rem;
-    color: var(--text-black-700);
+    font-size: 2rem;
+    color: var(--text-black-500);
     margin-top: 2.5rem;
     margin-bottom: 1.2rem;
     font-weight: 700;
-}
-
-.build-help-card {
-    background: var(--bg-black-100);
-    border-radius: 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-    padding: 2.5rem 2rem;
-    margin: 2rem auto;
-    max-width: 900px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.3s, transform 0.3s;
-}
-
-.build-help-card:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    transform: translateY(-4px) scale(1.01);
-}
-
-.build-help-sub-title {
     text-align: center;
-    font-size: 1.8rem;
-    color: var(--text-black-700);
-    margin: 4rem;
+    position: relative;
 }
-.build-help-list {
-    line-height: 1.6;
-    margin: 20px;
-    margin-left: 10%;
-    color: var(--text-black-900);
-}
-.pc-builder-link-btn {
-    display: inline-block;
-    color: var(--text-black-900);
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-.pc-builder-link-btn a {
-    text-decoration: none;
-    color: var(--bg-black-550);
-}
-.pc-builder-link-btn a:hover {
-    text-decoration: underline;
-    transition: underline 0.3s ease;
+.build-help-sub-title::after {
+    content: '';
+    display: block;
+    margin: 0.7rem auto 0 auto;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--bg-black-600);
+    opacity: 0.5;
 }
 
+.build-help-container {
+    width: 100%;
+    margin: 0 auto;
+}
 .row-pc-help {
     background-color: var(--bg-black-50);
     margin: 3rem auto 3.5rem auto;
@@ -2302,77 +2249,87 @@ form{
     flex-direction: column;
     align-items: center;
 }
-
 .row-pc-help p {
     color: var(--text-black-900);
 }
 
-.instructions-text{
-    color: var(--text-black-900);
-    margin: 2rem;
-    font-size: 1.2rem;
+.build-help-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    background: var(--bg-black-100);
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    width: 90%;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.build-help-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transform: translateY(-4px) scale(1.01);
 }
 
-.build-help-image-image{
-    width: 60%;
+.build-help-content {
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.build-help-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.build-help-image img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
     border-radius: 18px;
     margin: 0 auto;
     box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
 }
-
-.build-help-image {
-    margin: 2.5rem auto 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.build-help-image-image:hover {
+.build-help-image img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
-.build-link:hover{
-    text-decoration: none;
-    color: var(--text-black-500);
-}
-.build-link{
-    text-decoration: dotted underline;
-    color: var(--text-black-900);
-    transition: color 0.3s ease;
-}
-.instructions-text{
-    margin-left: 7%;
-    margin-right: 15%;
-    margin-bottom: 2%;
-    font-size: 150%;
-    position: relative;
-    text-align: left;
-}
 
-.build-help-list{
-    margin-left: 5%;
-    margin-right: 35%;
-    margin-bottom: 5%;
+.instructions-text {
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-black-900);
+    width: 100%;
+}
+.budget-text {
+    font-size: 1.2rem;
+    color: var(--text-black-900);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+.build-help-list {
+    line-height: 1.6;
     font-size: 1.1rem;
     color: var(--text-black-900);
-    font-size: 120%;
-    margin-top: 5%;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
 }
-
 .build-help-list ul {
     list-style: none;
     padding-left: 0;
 }
-
 .build-help-list li {
     position: relative;
     padding-left: 2.2em;
     margin-bottom: 1.1em;
-    font-size: 1.08em;
+    font-size: 1.18rem;
 }
-
 .build-help-list li::before {
     content: "\f058";
     font-family: "Font Awesome 6 Free";
@@ -2383,32 +2340,62 @@ form{
     top: 0.1em;
     font-size: 1.2em;
 }
-
-.budget-text {
-    font-size: 130%;
-    color: var(--text-black-900);
-    margin-left: 7%;
-}
-
-/* Link to contact page section !!!this is finished!!!! */
-  .build-help-contact-section {
-    margin: 3rem auto;
-    text-align: center;
-    padding: 1.5rem;
-}
-  .build-help-contact-section h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.9rem;
-    color: var(--bg-black-550);
-  }
-  .build-help-contact-section p {
-    font-size: 1rem;
-    margin-bottom: 2.6rem;
-    color: var(--text-black-700);
-  }
 .build-help-list span {
     color: var(--text-black-900);
     font-weight: 900;
+}
+
+/* Link naar builder */
+.build-configurator-link {
+    text-align: left;
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    margin: 1.2rem 1.2rem 0 0;
+}
+.build-configurator-link p {
+    margin-bottom: 10px;
+}
+.pc-builder-link-btn {
+    display: inline-block;
+    color: var(--text-black-900);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pc-builder-link-btn a {
+    text-decoration: none;
+    color: var(--bg-black-550);
+    margin-top: 25px;
+}
+.pc-builder-link-btn a:hover {
+    text-decoration: underline;
+    transition: underline 0.3s ease;
+}
+.build-link {
+    text-decoration: dotted underline;
+    color: var(--text-black-900);
+    transition: color 0.3s ease;
+}
+.build-link:hover {
+    text-decoration: none;
+    color: var(--text-black-500);
+}
+
+/* Contact sectie onderaan */
+.build-help-contact-section {
+    margin: 1rem auto;
+    text-align: center;
+}
+.build-help-contact-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+    color: var(--bg-black-550);
+}
+.build-help-contact-section p {
+    font-size: 1rem;
+    margin-bottom: 2.6rem;
+    color: var(--text-black-700);
 }
 .btn-contact {
     color: var(--text-black-900);
@@ -2423,6 +2410,19 @@ form{
     cursor: pointer;
     text-decoration: none;
     transform: scale(1.15);
+}
+
+/* Responsiveness build-help*/
+@media (max-width: 700px) {
+    .build-help-card {
+        padding: 1.5rem 0.5rem;
+    }
+    .build-help-content, .build-help-image {
+        max-width: 100%;
+    }
+    .build-help-image img {
+        max-width: 80vw;
+    }
 }
   /* Animations */
   @keyframes fadeUp {
@@ -2446,4 +2446,3 @@ form{
         justify-content: space-between;
     }
 }
-

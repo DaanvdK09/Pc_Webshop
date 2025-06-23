@@ -471,13 +471,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
+// homepage bestsellers
 function displayHomepageBestsellers() {
     const bestsellersContainer = document.querySelector(".bestsellers-row");
     if (!bestsellersContainer) return;
 
-    // Alleen producten met id 1, 2, 3
-    const bestsellers = products.filter(p => [1, 2, 3].includes(p.id));
+    // Just the 3 bestsellers
+    const bestsellers = products.filter(p => [3, 4, 5].includes(p.id));
     bestsellers.forEach(product => {
         const spec = product.specs[0];
         const productCard = document.createElement("div");
@@ -485,7 +485,7 @@ function displayHomepageBestsellers() {
         productCard.innerHTML = `
             <div class="prebuilt-pc-image" id = "homepage-bestseller-img">
                 <img src="${product.mainImage}">
-                <ul class="image-text-specs">
+                <ul class="image-text-specs" id="image-text-specs-bestsellers">
                 <li><span>Specs:</span></li>
                 <li>${spec.cpu}</li>
                 <li>${spec.gpu}</li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <link href="../Style/style.css" rel="stylesheet" type="text/CSS">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -7,35 +7,36 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../Style/style-switcher.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Product Detail</title>
+    <title>The PC Boys</title>
     <link rel="icon" type="image/x-icon" href="../Foto's/Logo.png">
 </head>
-<body class="pc-part-detail-page">
+<body>
     <div class="navbar">
-    <div class="webshop-logo">
-        <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
-    </div>
+        <div class="webshop-logo">
+            <a href="index.html"><img id="wissel-img" src="../Foto/Logo-white.png"></a> <!--img that changes with light and dark mode-->
+        </div>
         <div class="toggle-nav-btn">
             <i class="fa fa-bars"></i>
         </div>
-    <!-- navbar -->
+         <!--Navbar-->
         <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
-                <a href="build-help.html" class="nav-link">Build help</a>
-                <a href="pc-builder.html" class="nav-link active">Custom pc builder</a> 
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
-            <div class="login">
-                <a href="#" id="login-link" class="login">
-                    <span class="login-icon">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span class="login-text" id="login-status">Log in</span>
-                </a>
-            </div>
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
+            <a href="build-help.html" class="nav-link">Build help</a>
+            <a href="pc-builder.html" class="nav-link">Custom pc builder</a> 
+            <a href="contact.html" class="nav-link">Contact</a>
+            <div class="animation start-home"></div>
+        </div>
+        <div class="login">
+            <a href="#" id="login-link" class="login">
+                <span class="login-icon">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="login-text" id="login-status">Log in</span>
+            </a>
+        </div>
 
-        <div id="account-sidebar" class="account-sidebar">
+        <div id="account-sidebar" class="account-sidebar"> <!--Sidebar for account info-->
             <div class="sidebar-content">
                 <span id="close-sidebar" style="cursor:pointer;float:right;font-size:1.5em;">&times;</span>
                 <h2 class="sidebar-title">Account Info</h2>
@@ -67,14 +68,14 @@
                             <a href="https://github.com/KingJulian1239"><span class="github-icons"><img src="https://avatars.githubusercontent.com/u/196911524?v=4" class="img-circle"><p>Julian</p></span></a> <!--icons voor onze github accounts-->
                         </div>
                         <p class="light-dark-switch-text"><i class="fa fa-arrow-left"></i>Light/darkmode switch</p>
-                </div>
+                </div>             
             </div>
         </div>
-            <a href="cart.html" class="cart-icon"> <!--Need a new page for the shopping cart-->
-                <i class="fa fa-cart-shopping"></i>
-                <span class="cart-item-count"></span>
-            </a>
-            <div class="dropdown-nav-menu">
+        <a href="cart.html" class="cart-icon">
+            <i class="fa fa-cart-shopping"></i>
+            <span class="cart-x-count"></span>
+        </a>
+        <div class="dropdown-nav-menu">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="prebuilt-pc.html" class="nav-link">Prebuilt pc's</a>
             <a href="build-help.html" class="nav-link">Build help</a>
@@ -84,12 +85,44 @@
         </div>
     </div>
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
-<div class="product-detail" id="part-detail-container"></div>
+    <div class="home-container">
+        <div class="row">
+            <div class="home-title">
+                <h1>Buy a prebuilt PC or pick PC parts. Compare. And start sharing!</h1> 
+                <p>Welcome to The PC Boys webshop! We provide prebuilt- and custom pc's.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="btn-homepg">
+                <a href="pc-builder.html">Start customizing</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="homepg-image">
+                <img id="homepage-img" src="HomepageCSTBuilderPNGDark.png">
+            </div>
+        </div>
+        <div class="row">       
+            <div class="home-contentbestsellers">
+                <h1>Bestselling Prebuilt PC's</h1>
+                <h2 class="home-sub-title-bestsellers">These are our most populair prebuilds</h2>
+                <div class="row">
+                    <div class="bestsellers-row">
+
+                    </div>
+                    <div class="go-button">
+                        <a href="prebuilt-pc.html">Discover Our Prebuilt Pc's<img src="../Foto/Arrow-Button.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <footer>
+    © 2025 The PC Boys. Built by gamers, for gamers.
+    </footer> 
 <!-------------------------------------------------------------------All of the page content under the navbar-------------------------------------------------------------------->
-<script src="../Js/style-switcher.js"></script>
-<script src="../Js/script.js"></script>
-<script src="../Js/cart-system.js"></script>
-<script src="../Js/pc-parts.js"></script>
-<script src="../Js/pc-part-detail.js"></script>
+<!--Js file links-->
+    <script src="../crs/style-switcher.js"></script>
+    <script src="../crs/script.js"></script>
+    <script src="../crs/cart-system.js"></script>
 </body>
 </html>
