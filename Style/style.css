@@ -2239,7 +2239,7 @@ form{
     margin: 0 auto;
 }
 .row-pc-help {
-    background-color: var(--bg-black-1000);
+    background: var(--bg-black-800);
     margin: 3rem auto 3.5rem auto;
     border-radius: 32px;
     padding: 2.5rem 0.5rem;
