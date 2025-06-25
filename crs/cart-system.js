@@ -455,15 +455,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const popupOk = document.querySelector('.custom-popup-ok');
 
     if (checkoutBtn && popup) {
-        checkoutBtn.addEventListener('click', function() {
-            // Show popup
+        checkoutBtn.addEventListener('click', function(event) {
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                event.preventDefault();
+                alert('Please log in to proceed to checkout.');
+                return;
+            }
+
+            // If logged in checkout
             popup.classList.add('active');
-            // Empty the cart
             sessionStorage.removeItem('cart');
             displayCart();
             if (typeof updateCartBadge === "function") updateCartBadge();
         });
     }
+
     // Close popup on OK
     [popupClose, popupOk].forEach(btn => {
         if (btn) btn.addEventListener('click', function() {
