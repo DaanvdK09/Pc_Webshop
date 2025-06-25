@@ -886,7 +886,7 @@ footer {
     justify-content: center;
     align-items: center;
     background: rgba(44, 44, 44, 0.82);
-    color: var(--text-black-900);
+    color: var(--text-black-600);
     font-size: 1rem;
     font-weight: 600;
     opacity: 0;
@@ -952,7 +952,7 @@ footer {
 .view-toggle button.activeviewbutton,
 .view-toggle button:hover {
     background: var(--bg-black-600);
-    color: var(--text-black-900);
+    color: var(--text-black-600);
     font-weight: 700;
 }
 
@@ -2220,7 +2220,7 @@ form{
 }
 .build-help-sub-title {
     font-size: 2rem;
-    color: var(--text-black-500);
+    color: var(--bg-black-600);
     margin-top: 2.5rem;
     margin-bottom: 1.2rem;
     font-weight: 700;
@@ -2394,7 +2394,7 @@ form{
 .build-help-contact-section h2 {
     font-size: 1.4rem;
     margin-bottom: 0.9rem;
-    color: var(--bg-black-550);
+    color: var(--bg-black-600);
 }
 .build-help-contact-section p {
     font-size: 1rem;
