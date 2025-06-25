@@ -1,12 +1,12 @@
 # Website
 
 ## Table of Contents
-- [Table of Contents](https://github.com/DaanvdK09/Website#table-of-contents)
-- [Features](https://github.com/DaanvdK09/Website#Features)
-- [Setup](https://github.com/DaanvdK09/Website#setup)
-- [Usage](https://github.com/DaanvdK09/Website#usage)
-- [Contributing](https://github.com/DaanvdK09/Website#contributing)
-- [License](https://github.com/DaanvdK09/Website#license)
+- [Table of Contents](https://github.com/DaanvdK09/Pc_Webshop#table-of-contents)
+- [Features](https://github.com/DaanvdK09/Pc_Webshop#Features)
+- [Setup](https://github.com/DaanvdK09/Pc_Webshop#setup)
+- [Usage](https://github.com/DaanvdK09/Pc_Webshop#usage)
+- [Contributing](https://github.com/DaanvdK09/Pc_Webshop#contributing)
+- [License](https://github.com/DaanvdK09/Pc_Webshop#license)
 
 ## Features
 - **Prebuilt Pc's**: Choose one of our Prebuilt pc's.
@@ -26,7 +26,7 @@
 ## Usage
 to use features which use databases please first direct to the repository by using this line in the terminal:
 ```sh
-cd Website
+cd Pc_Webshop
 ```
 after directing to the repository, use this command in the terminal, to start the server:
 ```sh
