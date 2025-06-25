@@ -1,4 +1,5 @@
-# Website
+# PC Webshop
+
 
 ## Table of Contents
 - [Table of Contents](https://github.com/DaanvdK09/Pc_Webshop#table-of-contents)
