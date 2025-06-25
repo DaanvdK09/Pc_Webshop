@@ -736,8 +736,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('You must be logged in to save a build.');
                     return;
                 }
-                const buildName = prompt('Enter a name for your build:');
+
+                // Show modal
+                const modal = document.getElementById('save-build-modal');
+                modal.style.display = 'block';
+
+                // Handle Save New Build
+                document.getElementById('save-new-build-btn').addEventListener('click', function () {
+                const buildName = prompt('Enter a name for your new build:');
                 if (!buildName) return;
+
                 const buildData = {
                     cpu: selectedCpu,
                     gpu: selectedGpu,
@@ -748,31 +756,66 @@ document.addEventListener('DOMContentLoaded', function() {
                     psu: selectedPsu,
                     case: selectedCase
                 };
+
                 fetch('http://localhost:5000/api/builds', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        username: username,
-                        name: buildName,
-                        data: JSON.stringify(buildData)
+                    username: username,
+                    name: buildName,
+                    data: JSON.stringify(buildData)
                     })
                 })
                 .then(res => res.json())
                 .then(data => {
-                    alert('Build saved!');
-                    // Clear Table
-                    selectedCpu = null;
-                    selectedGpu = null;
-                    selectedMotherboard = null;
-                    selectedRam = null;
-                    selectedSsd = null;
-                    selectedCpuCooler = null;
-                    selectedPsu = null;
-                    selectedCase = null;
-                    saveSelectedParts();
+                    alert(data.message);
+                    modal.style.display = 'none';
                     renderSelectedTable();
                 })
                 .catch(() => alert('Failed to save build.'));
+                });
+
+                // Handle Update Build
+                document.getElementById('update-existing-build-btn').addEventListener('click', function () {
+                const buildName = sessionStorage.getItem('currentBuildName');
+                if (!buildName) {
+                    alert('No existing build to update.');
+                    return;
+                }
+
+                const buildData = {
+                    cpu: selectedCpu,
+                    gpu: selectedGpu,
+                    motherboard: selectedMotherboard,
+                    ram: selectedRam,
+                    ssd: selectedSsd,
+                    cpu_cooler: selectedCpuCooler,
+                    psu: selectedPsu,
+                    case: selectedCase
+                };
+
+                fetch('http://localhost:5000/api/builds', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                    username: username,
+                    name: buildName,
+                    data: JSON.stringify(buildData)
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    modal.style.display = 'none';
+                    renderSelectedTable();
+                })
+                .catch(() => alert('Failed to update build.'));
+                });
+
+                // Handle Cancel
+                document.getElementById('cancel-save-build-btn').addEventListener('click', function () {
+                modal.style.display = 'none';
+                });
             });
         }
 

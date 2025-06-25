@@ -65,6 +65,7 @@ function loadSavedBuilds() {
     const list = document.getElementById('saved-builds-list');
     list.innerHTML = '';
     if (!username) return;
+
     fetch(`http://localhost:5000/api/builds/${username}`)
         .then(res => res.json())
         .then(builds => {
@@ -72,28 +73,31 @@ function loadSavedBuilds() {
                 const li = document.createElement('li');
                 li.textContent = build.name;
                 li.classList.add('saved-build-item');
+
                 // Add remove button
                 const removeBtn = document.createElement('button');
                 removeBtn.textContent = 'Remove';
                 removeBtn.classList.add('remove-build-btn');
-                removeBtn.onclick = function() {
+                removeBtn.onclick = function(e) {
+                    e.stopPropagation();
                     if (confirm('Are you sure you want to delete this build?')) {
                         fetch(`http://localhost:5000/api/builds/${build.id}`, {
                             method: 'DELETE'
                         })
                         .then(res => res.json())
                         .then(() => {
-                            loadSavedBuilds(); // Refresh list
+                            loadSavedBuilds();
                         });
                     }
                 };
                 li.appendChild(removeBtn);
 
                 li.addEventListener('click', function(e) {
-                    if (e.target === removeBtn) return; // Ignore if remove button
+                    if (e.target === removeBtn) return;
                     try {
                         const buildData = JSON.parse(build.data);
                         sessionStorage.setItem('selectedParts', JSON.stringify(buildData));
+                        sessionStorage.setItem('currentBuildName', build.name);
                         window.location.href = "pc-builder.html";
                     } catch (err) {
                         alert("Failed to load build.");

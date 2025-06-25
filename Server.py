@@ -81,10 +81,20 @@ def save_build():
     if not user:
         return jsonify({'message': 'User not found'}), 404
 
-    build = Build(user_id=user.id, name=build_name, data=build_data)
-    db.session.add(build)
-    db.session.commit()
-    return jsonify({'message': 'Build saved'}), 201
+    # Check if build has same name
+    existing_build = Build.query.filter_by(user_id=user.id, name=build_name).first()
+
+    if existing_build:
+        # Update existing build
+        existing_build.data = build_data
+        db.session.commit()
+        return jsonify({'message': 'Build updated'}), 200
+    else:
+        # Create new build
+        build = Build(user_id=user.id, name=build_name, data=build_data)
+        db.session.add(build)
+        db.session.commit()
+        return jsonify({'message': 'Build saved'}), 201
 
 # Delete Saved Build
 @app.route('/api/builds/<int:build_id>', methods=['DELETE'])
