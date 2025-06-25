@@ -1353,6 +1353,11 @@ footer {
     background-color: var(--bg-black-600);
 }
 
+#save-build-btn {
+    color: var(--text-black-600);
+    background-color: var(--bg-black-600);
+}
+
 #buy-button-builder span {
     color: var(--text-black-600);
     background-color: var(--bg-black-600);
@@ -1576,7 +1581,6 @@ footer {
     display: inline-block;
     text-align: center;
     border: none;
-
 }
 
 .add-button:hover, .pc-builder-cart-button:hover {
