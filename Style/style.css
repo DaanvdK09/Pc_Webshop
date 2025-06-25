@@ -537,6 +537,7 @@ footer {
     position: relative;
     top: -20vh;
     border: none;
+    margin-bottom: -12vh;
 }
 
 .home-contentbestsellers h1 {
