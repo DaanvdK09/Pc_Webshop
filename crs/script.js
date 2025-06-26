@@ -245,3 +245,68 @@ window.addEventListener('resize', forceGridViewOnSmallScreen);
             toggleNavBtnIcon.classList = 'fas fa-bars';
         }
     }
+
+// Review system
+document.addEventListener('DOMContentLoaded', function() {
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    if (loginStatus) {
+        document.getElementById('review-form-container').style.display = 'block';
+    }
+
+    // Fetch and display reviews
+    fetchReviews();
+
+    // Handle review form submission
+    document.getElementById('review-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const rating = document.querySelector('input[name="rating"]:checked').value;
+        const reviewText = document.getElementById('review-text').value;
+        const username = localStorage.getItem('username');
+
+        fetch('http://localhost:5000/api/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                rating: rating,
+                review_text: reviewText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            fetchReviews();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});
+
+function fetchReviews() {
+    fetch('http://localhost:5000/api/reviews')
+    .then(response => response.json())
+    .then(reviews => {
+        const reviewsContainer = document.getElementById('reviews-container');
+        reviewsContainer.innerHTML = '';
+        reviews.forEach(review => {
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review';
+            reviewElement.innerHTML = `
+                <p><strong>${review.username}</strong>:
+                    <span class="star-rating-display">
+                        ${'★'.repeat(review.rating).split('').map(star => `<span class="star">${star}</span>`).join('')}
+                        ${'☆'.repeat(5 - review.rating)}
+                    </span>
+                </p>
+                <p>${review.review_text}</p>
+            `;
+            reviewsContainer.appendChild(reviewElement);
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}

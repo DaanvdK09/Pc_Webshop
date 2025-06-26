@@ -30,6 +30,14 @@ class Build(db.Model):
     name = db.Column(db.String(120), nullable=False)
     data = db.Column(Text, nullable=False)
 
+# Review model
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+    review_text = db.Column(db.Text, nullable=False)
+    user = db.relationship('User', backref=db.backref('reviews', lazy=True))
+
 # Initialize the database
 with app.app_context():
     db.create_all()
@@ -117,6 +125,37 @@ def get_builds(username):
         {'id': b.id, 'name': b.name, 'data': b.data}
         for b in builds
     ])
+
+# Review system
+@app.route('/api/reviews', methods=['POST'])
+def submit_review():
+    data = request.get_json()
+    username = data.get('username')
+    rating = data.get('rating')
+    review_text = data.get('review_text')
+
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+
+    review = Review(user_id=user.id, rating=rating, review_text=review_text)
+    db.session.add(review)
+    db.session.commit()
+
+    return jsonify({'message': 'Review submitted successfully'}), 201
+
+@app.route('/api/reviews', methods=['GET'])
+def get_reviews():
+    reviews = Review.query.all()
+    reviews_data = [
+        {
+            'username': review.user.username,
+            'rating': review.rating,
+            'review_text': review.review_text
+        }
+        for review in reviews
+    ]
+    return jsonify(reviews_data)
 
 # GPU API
 @app.route('/api/gpus', methods=['GET'])
