@@ -585,8 +585,13 @@ footer {
     padding: 8px;
     border: 1px solid var(--text-black-900);
     border-radius: 4px;
+    resize: none;
 }
 
+.form-group textarea:focus {
+    border: 1px solid var(--bg-black-400);
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
 button[type="submit"] {
     background-color: var(--bg-black-600);
     color: var(--text-black-900);
