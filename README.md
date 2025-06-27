@@ -48,3 +48,4 @@ $ git clone https://github.com/DaanvdK09/Website.git
 ```
 
 ## License
+THIS PROJECT DOES NOT HAVE A LICENSE, HOWEVER IT IS PROTECTED UNDER COPYRIGHT LAW.
