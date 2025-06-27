@@ -630,7 +630,9 @@ button[type="submit"]:hover {
 }
 
 .average-rating {
+    font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .star-bar {
@@ -650,10 +652,11 @@ button[type="submit"]:hover {
 }
 
 .average-star-rating {
-    font-size: 1.5rem;
+    font-size: 3rem;
     color: var(--text-black-900);
     margin-top: 10px;
     display: flex;
+    justify-content: center;
 }
 
 .average-star-rating .filled-star {
