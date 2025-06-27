@@ -671,16 +671,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr class="total-amount-row">
                             <td colspan="2" class="total-label">Total Amount:</td>
                             <td colspan="2" class="total-value">
-                                ${EURO.format(totalPrice.toFixed(2))}
-                                <button class="buy-button" id="buy-button-builder">
-                                    <span class="add-to-cart">Add to cart</span>
-                                    <span class="added">Added</span>
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <i class="fas fa-box"></i>
-                                </button>
-                                <button class="buy-button" id="save-build-btn">
-                                    <i class="fa fa-save"></i> Save Build
-                                </button>
+                                <div class="total-amount-text">${EURO.format(totalPrice.toFixed(2))}</div>
+                                <div class="button-container">
+                                    <button class="buy-button" id="buy-button-builder">
+                                        <span class="add-to-cart">Add to cart</span>
+                                        <span class="added">Added</span>
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <i class="fas fa-box"></i>
+                                    </button>
+                                    <button class="buy-button" id="save-build-btn">
+                                        <i class="fa fa-save"></i> Save Build
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
