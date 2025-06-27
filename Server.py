@@ -157,6 +157,16 @@ def get_reviews():
     ]
     return jsonify(reviews_data)
 
+@app.route('/api/reviews/average', methods=['GET'])
+def get_average_rating():
+    reviews = Review.query.all()
+    if not reviews:
+        return jsonify({'average_rating': 0})
+
+    total_rating = sum(review.rating for review in reviews)
+    average_rating = total_rating / len(reviews)
+    return jsonify({'average_rating': average_rating})
+
 # GPU API
 @app.route('/api/gpus', methods=['GET'])
 def get_gpus():

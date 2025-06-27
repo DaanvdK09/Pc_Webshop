@@ -253,8 +253,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('review-form-container').style.display = 'block';
     }
 
-    // Fetch and display reviews
+    // Fetch and display reviews and average rating
     fetchReviews();
+    fetchAverageRating();
 
     // Handle review form submission
     document.getElementById('review-form').addEventListener('submit', function(event) {
@@ -278,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             alert(data.message);
             fetchReviews();
+            fetchAverageRating();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -305,6 +307,50 @@ function fetchReviews() {
             `;
             reviewsContainer.appendChild(reviewElement);
         });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function fetchAverageRating() {
+    fetch('http://localhost:5000/api/reviews/average')
+    .then(response => response.json())
+    .then(data => {
+        const averageRating = data.average_rating;
+        document.getElementById('average-rating-value').textContent = averageRating.toFixed(1);
+
+        const averageStarRating = document.getElementById('average-star-rating');
+        averageStarRating.innerHTML = '';
+
+        // Create stars on average rating
+        for (let i = 0; i < 5; i++) {
+            const starContainer = document.createElement('div');
+            starContainer.className = 'star-container';
+
+            const star = document.createElement('span');
+            star.textContent = '★';
+            star.className = 'star';
+
+            const filledStar = document.createElement('span');
+            filledStar.textContent = '★';
+            filledStar.className = 'filled-star';
+
+            const starIndex = i + 1;
+            let fillPercentage = 0;
+
+            if (averageRating >= starIndex) {
+                fillPercentage = 100;
+            } else if (averageRating > i) {
+                fillPercentage = (averageRating - i) * 100;
+            }
+
+            filledStar.style.width = `${fillPercentage}%`;
+
+            starContainer.appendChild(star);
+            starContainer.appendChild(filledStar);
+            averageStarRating.appendChild(starContainer);
+        }
     })
     .catch(error => {
         console.error('Error:', error);

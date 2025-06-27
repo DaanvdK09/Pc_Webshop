@@ -629,6 +629,54 @@ button[type="submit"]:hover {
     color: var(--bg-black-600);
 }
 
+.average-rating {
+    margin-bottom: 20px;
+}
+
+.star-bar {
+    width: 100%;
+    background-color: var(--text-black-900);
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.star-bar-filled {
+    height: 100%;
+    background-color: var(--bg-black-600);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.average-star-rating {
+    font-size: 1.5rem;
+    color: var(--text-black-900);
+    margin-top: 10px;
+    display: flex;
+}
+
+.average-star-rating .filled-star {
+    color: var(--bg-black-600);
+}
+
+.star-container {
+    position: relative;
+    display: inline-block;
+}
+
+.star-container .star {
+    color: var(--text-black-900);
+}
+
+.star-container .filled-star {
+    position: absolute;
+    overflow: hidden;
+    color: var(--bg-black-600);
+    top: 0;
+    left: 0;
+}
+
 /* Login page */
 .login-container {
     max-width: 400px;
