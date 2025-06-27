@@ -1811,10 +1811,9 @@ button[type="submit"]:hover {
 
 .table {
     margin-top: 2rem;
-    width: 150%;
-    max-width: 150%;
-    margin-left: -25%;
-    margin-right: -25%;
+    width: 140%;
+    max-width: 140%;
+    margin-right: 0% !important;
     border-collapse: collapse;
     background: var(--bg-black-200);
     color: var(--text-black-900);
@@ -2209,20 +2208,36 @@ button[type="submit"]:hover {
     margin-right: 8px;
 }
 
+.power-usage-meter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    width: 100%;
+    margin-bottom: -2%;
+}
+
 .power-meter {
     width: 250px;
     height: 20px;
-    vertical-align: middle;
+    margin-right: 10px;
 }
 
 .power-watt {
-    margin-left: 8px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.watt-symbol {
+    margin-left: 2px;
 }
 
 .power-usage {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .pc-builder-status-row {

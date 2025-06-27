@@ -326,9 +326,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Power usage meter
         const powerMeterHtml = `
             <div class="power-usage-meter">
-                <strong><i class="fa-solid fa-bolt"></i>Estimated Power Usage:</strong>
+                <strong><i class="fa-solid fa-bolt"></i> Estimated Power Usage:</strong>
                 <meter min="0" max="1200" value="${totalTdp}" class="power-meter"></meter>
-                <span class="power-watt">${totalTdp} W</span>
+                <span class="power-watt">${totalTdp} <span class="watt-symbol">W</span></span>
             </div>
         `;
 
