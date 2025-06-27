@@ -10,12 +10,12 @@
 
 ## Features
 - **Prebuilt Pc's**: Choose one of our Prebuilt pc's.
-  - **Specs**: We have a very different assortment of pc's for beginners to proffesionals.
+  - **Specs**: We have a very different assortment of pc's for beginners to professionals.
 - **Reviews**: Check out the comments of our awesome customers.
-- **Build Help**: Check out our build help page if you need help with everything about building a pc.
+- **Build Help**: Check out our build help page if you need help with anything about building a pc.
 - **Custom Pc Builder**: Customize your pc and choose your own parts.
   - **Parts**: Check out our selection of parts you can use to build your own pc.
-  - **Compatability**: We have compatability checks to check if all your parts are compatible.
+  - **Compatability**: We have compatability checks to make sure all your parts are compatible.
 - **Contact**: contact us if you have any further questions.
 - **Cart**: order a prebuilt or custom pc with our cart system.
 - **Account**: create an account or log in to save your builds, write reviews and order a pc.
