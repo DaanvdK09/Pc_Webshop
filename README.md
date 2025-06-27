@@ -1,6 +1,5 @@
 # PC Webshop
 
-
 ## Table of Contents
 - [Table of Contents](https://github.com/DaanvdK09/Pc_Webshop#table-of-contents)
 - [Features](https://github.com/DaanvdK09/Pc_Webshop#Features)
@@ -22,7 +21,10 @@
 - **Account**: create an account or log in to save your builds, write reviews and order a pc.
 
 ## Setup
-
+to use the website please install this line in the terminal:
+```sh
+pip install flask flask-bcrypt flask-cors flask-sqlalchemy
+```
 
 ## Usage
 to use features which use databases please first direct to the repository by using this line in the terminal:
