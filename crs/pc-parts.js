@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'ram': selectedRam = addPart.data; break;
             case 'ssd': selectedSsd = addPart.data; break;
             case 'cpu_cooler': selectedCpuCooler = addPart.data; break;
-            case 'psu': selectedPsu = addPart.data; break;
+            case 'powersupply': selectedPsu = addPart.data; break;
             case 'case': selectedCase = addPart.data; break;
         }
         sessionStorage.removeItem('addPartToBuild');
@@ -689,11 +689,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 </table>
             </div>
         `;
+        
+        // All parts selected
+        function areAllPartsSelected() {
+            return selectedCpu && selectedGpu && selectedMotherboard && selectedRam && selectedSsd && selectedCpuCooler && selectedPsu && selectedCase;
+        }
 
         // Add to cart for custom PC
         const buyButton = selectedGpuDiv.querySelector('#buy-button-builder');
         if (buyButton) {
             buyButton.addEventListener('click', function () {
+                // All parts selected
+                if (!areAllPartsSelected()) {
+                    const incompleteBuildPopup = document.getElementById('incomplete-build-popup');
+                    incompleteBuildPopup.style.display = 'flex';
+                    return;
+                }
+
+
                 // Gather all selected parts for the custom PC
                 const selectedParts = {
                     cpu: selectedCpu,
@@ -712,7 +725,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     id: "custom-" + Date.now(),
                     name: "Custom PC",
                     price: `€${totalPrice.toFixed(2)}`,
-                    image: "wrench", // Special label for custom
+                    image: "wrench",
                     quantity: 1,
                     parts: selectedParts
                 });
@@ -728,6 +741,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+
+
+        // Close the incomplete build
+        document.getElementById('close-incomplete-build-popup').addEventListener('click', function() {
+            const incompleteBuildPopup = document.getElementById('incomplete-build-popup');
+            incompleteBuildPopup.style.display = 'none';
+        });
 
         // Save Build button logic
         const saveBuildBtn = selectedGpuDiv.querySelector('#save-build-btn');

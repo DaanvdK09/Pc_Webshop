@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fromSelectionTable) {
         document.getElementById('add-part-btn').addEventListener('click', function() {
             sessionStorage.setItem('addPartToBuild', JSON.stringify({ type, data }));
-            sessionStorage.removeItem('fromSelectionTable'); // Clean up
+            sessionStorage.removeItem('fromSelectionTable');
             window.location.href = 'pc-builder.html';
         });
     }
