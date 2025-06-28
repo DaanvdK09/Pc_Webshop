@@ -1857,27 +1857,27 @@ button[type="submit"]:hover {
 }
 
 .table th:nth-child(1), .table td:nth-child(1) {
-    width: 25%;
+    width: 15%;
 }
 
 .table th:nth-child(2), .table td:nth-child(2) {
-    width: 25%;
+    width: 15%;
 }
 
 .table th:nth-child(3), .table td:nth-child(3) {
-    width: 25%;
+    width: 15%;
 }
 
 .table th:nth-child(4), .table td:nth-child(4) {
-    width: 25%;
+    width: 15%;
 }
 
 .table th:nth-child(5), .table td:nth-child(5) {
-    width: 25%;
+    width: 15%;
 }
 
 .table th:nth-child(6), .table td:nth-child(6) {
-    width: 25%;
+    width: 15%;
 }
 
 .table td:last-child {
@@ -2275,7 +2275,7 @@ button[type="submit"]:hover {
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    margin-left: 76%;
+    margin-left: 60%;
 }
 
 .total-amount-row .total-label {
@@ -2292,7 +2292,7 @@ button[type="submit"]:hover {
 }
 
 .total-amount-text {
-    margin-top: 15% !important;
+    margin-top: 20% !important;
 }
 
 .total-value p {
@@ -2321,8 +2321,8 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-top: -20%;
-    margin-left: 500%;
+    margin-top: -50% !important;
+    margin-left: 750%;
 }
 
 .part-detail-link,
